@@ -1,0 +1,20 @@
+{
+    "name": "failure-record",
+    "version": "1.0.0",
+    "description": "Serves failure record based on database object",
+    "scripts": {
+        "build": "webpack"
+    },
+    "keywords": [],
+    "author": "Jolene Borrelli",
+    "license": "MIT",
+    "main": "index.js",
+    "devDependencies": {
+        "gulp": "^4.0.2",
+        "webpack": "^4.20.2",
+        "webpack-cli": "^3.1.2"
+    },
+    "dependencies": {
+        "universalviewer": "^3.0.36"
+    }
+}

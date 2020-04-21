@@ -1,0 +1,71 @@
+*
+{
+	font-family : "helvetica neue";
+}
+
+#uv
+{
+    width  : 800px;
+    height : 600px;
+}
+
+.fa-title, .fa-module
+{
+	border     : solid 1px;
+    margin     : 15px 50px 30px 50px;
+    box-shadow : 5px 5px;
+}
+
+.fa-submodule
+{
+    padding : 5px 30px 30px 30px;
+}
+
+.fa-title
+{
+    padding: 15px 40px 15px 40px;
+}
+
+.fa-module-header
+{
+    margin-block-start : 0;
+    margin-block-end   : 0;
+    text-transform     : capitalize;
+    font-weight        : bold;
+    font-size          : 1.15em;
+    border-bottom      : solid 1px;
+    padding            : 10px 40px;
+}
+
+.fa-submodule-header
+{
+	font-style         : italic;
+    margin-block-start : 0;
+    margin-block-end   : 0;
+    margin             : 15px 0 5px 15px;
+}
+
+.fa-ul-lines 
+{
+	list-style-type      : none;
+	padding-inline-start : 0;
+	margin-block-start   : 0;
+}
+
+.fa-ul-lines  > li 
+{
+	text-indent  : 5px;
+    padding-left : 15px;
+}
+
+.fa-ul-lines  > li:before 
+{
+	content     : "- ";
+	text-indent : 5px;
+}
+
+.fa-line
+{
+    margin-block-start : 0.1em;
+    margin             : 5px 15px 0 15px;
+}
