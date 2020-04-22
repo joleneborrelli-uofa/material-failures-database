@@ -7,6 +7,7 @@ export const database =
 
         "object" :
         {
+            "id"          : "1",
             "inscription" : ["Home Presence", "homepresence.com", "2007 HIT/K Chapman", "Cup and fork symbol", "Crossed-out microwave symbol", "Recycling symbol with 7", "Do not microwave", "Hand wash only"],
             "feature"     : [
                                 {
@@ -74,6 +75,11 @@ export const database =
         {
             "problem_statement"   : "The Bob the Builder Plate was removed from service. It experienced catastrophic structural failure with warping and fracture. The causes of warping and fracture are unknown.",
             "functionality_loss"  : "Use as an eating surface.",
+            "record"              : [
+                                        {
+                                            "record_type"        : "Maintenance",
+                                            "record_description" : "Cleaned in dishwasher."
+                                        } ],
             "operational_factor"  : [
                                         {
                                             "operational_factor_type"        : "Moisture",

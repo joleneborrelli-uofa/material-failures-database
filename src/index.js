@@ -1,6 +1,6 @@
 import { displayHeaders, unknownObject } from './constants.js';
 import { generateRecordHtml }            from './templates/record.js';
-import { database } 				     from './database.js';
+import { database } 				     from './database/record.js';
 
 /**
 	@function buildHeaders

@@ -1,6 +1,6 @@
 import { htmlClass, displayLines, databaseKeys } from '../constants.js';
 import { isString, isArray, isObject }           from '../helpers.js';
-import { database }                              from '../database.js';
+import { database }                              from '../database/record.js';
 
 export function generateRecordHtml ( headers, title )
 { 
