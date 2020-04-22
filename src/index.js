@@ -1,5 +1,5 @@
 import { displayHeaders, unknownObject } from './constants.js';
-import { generateRecordHtml }            from './templates.js';
+import { generateRecordHtml }            from './templates/record.js';
 import { database } 				     from './database.js';
 
 /**

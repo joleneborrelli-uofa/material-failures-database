@@ -74,6 +74,7 @@ export const lines =
         operator_name      : 'Operator',
         operational_factor : 'Operational Factors'
     }  
+    
 };
 
 export const caseStudy =

@@ -1,6 +1,6 @@
-import { htmlClass, displayLines, databaseKeys } from './constants.js';
-import { isString, isArray, isObject }           from './helpers.js';
-import { database }                              from './database.js';
+import { htmlClass, displayLines, databaseKeys } from '../constants.js';
+import { isString, isArray, isObject }           from '../helpers.js';
+import { database }                              from '../database.js';
 
 export function generateRecordHtml ( headers, title )
 { 
@@ -20,7 +20,7 @@ export function generateRecordHtml ( headers, title )
     @function generateModuleHtml
 
     @arg module : { Object }
-    @ard header : { String }
+    @arg header : { String }
     @return     : { String } 
 */ 
 const generateModuleHtml = ( module, header ) =>
