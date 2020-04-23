@@ -1,12 +1,15 @@
 import 
 { 
-    recordHtmlClass as htmlClass, 
-    displayLines, 
-    databaseKeys,
-    getObjectName
-} from '../constants.js';
+    isString, 
+    isArray, 
+    isObject, 
+    buildHeaders, 
+    getObjectName 
+} from '../helpers.js';
 
-import { isString, isArray, isObject, buildHeaders } from '../helpers.js';
+import { recordHtmlClass as htmlClass } from '../constants/htmlClass.constants.js';
+import { displayLines } from '../constants/webDisplay.constants.js'; 
+import { databaseKeys } from '../constants/database.constants.js';
 
 
 /** 

@@ -1,4 +1,4 @@
-import { displayHeaders, unknownObject } from './constants.js';
+import { displayHeaders, unknownObject } from './constants/webDisplay.constants.js';
 import { generateRecordHtml }            from './templates/record.js';
 import { generateCaseStudyHtml }         from './templates/caseStudy.js';
 
