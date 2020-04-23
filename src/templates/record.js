@@ -7,7 +7,6 @@ import
 } from '../constants.js';
 
 import { isString, isArray, isObject, buildHeaders } from '../helpers.js';
-import { database } from '../database/record.js';
 
 
 /** 
@@ -15,7 +14,7 @@ import { database } from '../database/record.js';
 
     @return : { String } 
 */ 
-export function generateRecordHtml()
+export function generateRecordHtml( database )
 { 
     let headers = buildHeaders( database );
     let title   = getObjectName( database );
