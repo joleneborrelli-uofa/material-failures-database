@@ -1,14 +1,30 @@
-import { htmlClass, displayLines, databaseKeys } from '../constants.js';
-import { isString, isArray, isObject }           from '../helpers.js';
-import { database }                              from '../database/record.js';
-
-export function generateRecordHtml ( headers, title )
+import 
 { 
+    recordHtmlClass as htmlClass, 
+    displayLines, 
+    databaseKeys,
+    getObjectName
+} from '../constants.js';
+
+import { isString, isArray, isObject, buildHeaders } from '../helpers.js';
+import { database } from '../database/record.js';
+
+
+/** 
+    @function generateRecordHtml
+
+    @return : { String } 
+*/ 
+export function generateRecordHtml()
+{ 
+    let headers = buildHeaders( database );
+    let title   = getObjectName( database );
+
     let innerHtml = `<h3 class="${ htmlClass.title }">${ title }</h3>`;
 
     for( let header in headers )
     {
-        let module = database.object[header];
+        let module = database[header];
 
         innerHtml += generateModuleHtml( module, header );
     }
