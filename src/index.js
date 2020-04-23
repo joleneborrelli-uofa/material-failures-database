@@ -1,5 +1,6 @@
 import { displayHeaders, unknownObject } from './constants.js';
 import { generateRecordHtml }            from './templates/record.js';
+import { generateCaseStudyHtml }         from './templates/caseStudy.js';
 import { database } 				     from './database/record.js';
 
 /**
@@ -22,26 +23,32 @@ const buildHeaders = () =>
 };
 
 /**
-	@function createRecord
-	
-	@return : { String }     
+	@function createHtml
+
+	@arg type : { String } 
+	@return   : { String }
 */
-const createRecordHtml = () =>
+const createHtml = ( type ) =>
 {
-	const record = document.createElement( 'div' );
+	const child = document.createElement( 'div' );
+
+	if( type !== 'caseStudy' || type !== 'record' ) type = 'record';
 
 	if( database.hasOwnProperty( 'object' ) )
 	{
+		let innerHtml;
+
 		const title     = database.object.name || unknownObject;
 		const headers   = buildHeaders();
-		const innerHtml = generateRecordHtml( headers, title );
 
-		record.innerHTML = innerHtml;
+		if ( type === 'caseStudy' ) innerHtml = generateCaseStudyHtml( headers, title );
+		if ( type === 'record' )    innerHtml = generateRecordHtml( headers, title );
+
+		child.innerHTML = innerHtml;
 	}
 
-	return record;
+	return child;
 };
 
-
 // Initiate failure record
-document.body.appendChild( createRecordHtml() );
+document.body.appendChild( createHtml() );
