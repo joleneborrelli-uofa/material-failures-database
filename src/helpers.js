@@ -1,4 +1,4 @@
-import { unknownObject } from './constants.js';
+import { displayHeaders, unknownObject } from './constants.js';
 
 /** 
     @function isString
