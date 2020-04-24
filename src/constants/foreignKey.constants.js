@@ -26,7 +26,7 @@ export const foreignKeys =
             'Other' 
         ],
 
-        subclass :
+        class_subtype :
         [
             'Glass',
             'Non-technical ceramic',
@@ -171,6 +171,8 @@ export const foreignKeys =
             'Normal',
             'Abnormal'
         ],
+
+        // Add loading_frequency?
 
         loading:
         [
