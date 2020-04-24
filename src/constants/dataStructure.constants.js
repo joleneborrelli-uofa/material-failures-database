@@ -14,9 +14,9 @@ export const dataStructure =
 		'name',
 		{ 
 			'class' : 
-				[ 
-					'class_subtype' 
-				] 
+			[ 
+				'class_subtype' 
+			] 
 		},
 		'crystallinity',
 		'alloy_designation',

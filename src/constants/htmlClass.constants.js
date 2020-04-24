@@ -24,7 +24,16 @@ export const caseStudyHtmlClass =
         logo       : 'fa-landing-logo'
     },
 
-    photographicEvidenceTitle : 'fa-landing-photo-evidence-title',
-    backgroundResearchTitle   : 'fa-landing-background-research-title'
+    photographicEvidence : 
+    {
+        page  : 'fa-landing-photo-evidence-page',
+        title : 'fa-landing-photo-evidence-title'
+    },
+
+    backgroundResearchTitle :
+    {
+        page  : 'fa-landing-background-research-page'
+        title : 'fa-landing-background-research-title'  
+    } 
 
 };
