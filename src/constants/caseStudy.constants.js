@@ -18,22 +18,35 @@ export const caseStudy =
     {
         title : 'The photos...the background research...How does it all add up? You put on your detective\'s cap and get to work.'
 
+        default_prompts:
+        {
+            object :
+            {
+                fractography : 'Does the object have cracks and fractures? Draw the object, the cracks and the fractures. Determine the crack and fracture origin(s).'
+            },
+
+            fault_tree :
+            {
+                title       : 'With the information you gathered you make a fault tree.',
+                description : 'First, decide which generic factors make up the top levels of the fault tree. Then, find specific factors based on the possible mechanisms of failure.'
+            }
+        },
+
         object :
         {
             // rating
-            inscription   : 'Are there any inscriptions on the plate? What do they tell you about the plate?',
-            fractography  : 'Are there fractures in the plate? Draw the plate and the fractures. Determine the fracture origin(s).',
-            feature       : 'What physical features are there on the plate?'
+            inscription : 'Are there any inscriptions on the object? What do they tell you about the object?',
+            feature     : 'What physical features are there on the object?'
             // serial_number
         },
 
         material :
         {
-            name          : 'What is the plate made of?',
+            name          : 'What is the object made of?',
             crystallinity : 'What kind of crystal structure does the material have?',
             'class'       : 'What class of material is it?',
             subclass      : 'Given the material family, what is the subclass of material?'
-            recyclability : 'Is the plate recyclable? Does the recyclability tell you something about the material?'
+            recyclability : 'Is the object recyclable? Does the recyclability tell you something about the material?'
             // biodegradability
             // alloy_designation
             // grade
@@ -43,10 +56,10 @@ export const caseStudy =
 
         processing :
         {
-            treatment             : 'What treatment procedures did the plate have?',
-            procedure             : 'What shaping procedures did the plate have?', 
+            treatment             : 'What treatment procedures did the object have?',
+            procedure             : 'What shaping procedures did the object have?', 
             residual_stress       : 'What kind of residual stresses could have been introduced during processing?',
-            residual_stress_force : 'What kind of forces could have been created in the plate from the residual stresses? Did the physical features on the plate play a role?'
+            residual_stress_force : 'What kind of forces could have been created in the object from the residual stresses? Did the physical features on the object play a role?'
             // manufacturer
             // date
             // location
@@ -55,7 +68,7 @@ export const caseStudy =
 
         environment :
         {
-            loading : 'What type of loading did the plate experience?'
+            loading : 'What type of loading did the object experience?'
             // loading_normalcy 
             // loading_frequency
             // ambient
@@ -66,8 +79,8 @@ export const caseStudy =
 
         use :
         {
-            functionality_loss : 'What functionality was lost when the plate failed?',
-            operational_factor : 'Which factors played a part in the plate’s failure during operation or maintenance?'
+            functionality_loss : 'What functionality was lost when the object failed?',
+            operational_factor : 'Which factors played a part in the object’s failure during operation or maintenance?'
             // problem_statement
             // failure_time
             // failure_operation_stage
@@ -75,13 +88,6 @@ export const caseStudy =
             // record
             // operation
             // operator
-        },
-
-        fault_tree :
-        {
-            title       : 'With the information you gathered you make a fault tree.',
-            description : 'First, decide which generic factors make up the top levels of the fault tree. Then, find specific factors based on the possible mechanisms of failure.'
-
         }
     }
 

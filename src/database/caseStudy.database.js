@@ -37,4 +37,41 @@ export const database =
 
     "references" : []
 
-}
+};
+
+export const visible_prompts =
+{
+    object :
+    [
+        'inscription',
+        'feature'
+    ],
+
+    material :
+    [
+        'name',
+        'crystallinity',
+        'class',
+        'subclass',
+        'recyclability'
+    ],
+
+    processing :
+    [
+        'treatment',             
+        'procedure',             
+        'residual_stress',       
+        'residual_stress_force' 
+    ],
+
+    environment :
+    [
+        'loading'
+    ],
+
+    use :
+    [
+        'functionality_loss',
+        'operational_factor'
+    ]
+};
