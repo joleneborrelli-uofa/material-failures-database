@@ -17,7 +17,7 @@ export const database =
     {
         "name"             : "Melamine formaldehyde",
         "class_type"       : "Polymer",
-        "subclass_type"    : "Thermoset plastic",
+        "class_subtype"    : "Thermoset plastic",
         "crystallinity"    : "Amorphous",
         "biodegradibility" : "None",
         "recyclability"    : ["Category 7", "Non-recyclable or difficult to recycle"],

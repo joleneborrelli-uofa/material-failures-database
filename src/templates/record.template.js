@@ -108,7 +108,7 @@ const generateMultipleLineHtml = ( lines ) =>
 };
 
 /**
-    DO THIS BETTER
+    !!DO THIS BETTER!!
     @function generateInnerTypeLineHtml
 
     @arg subHeader : { String }
