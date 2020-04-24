@@ -52,7 +52,6 @@ export const visible_prompts =
         'name',
         'crystallinity',
         'class',
-        'subclass',
         'recyclability'
     ],
 
@@ -60,8 +59,7 @@ export const visible_prompts =
     [
         'treatment',             
         'procedure',             
-        'residual_stress',       
-        'residual_stress_force' 
+        'residual_stress'
     ],
 
     environment :
