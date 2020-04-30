@@ -9,15 +9,6 @@ class ObjectCaseStudyModule extends React.component
     constructor( props )
     {
         super( props );
-
-        this.state =
-        {
-            rating        : '',
-            inscription   : '',
-            serial_number : '',
-            feature       : [],
-            feature_note  : ''
-        }
     }
 
     render()
