@@ -2,6 +2,9 @@
 
 export const caseStudy =
 {
+    button : 'Add',
+    note   : 'Notes',
+
     landing :
     {
         title      : 'You\'ve been assigned the following case',
@@ -20,22 +23,22 @@ export const caseStudy =
     {
         object :
         {
-            // rating
-            inscription : 'Are there any inscriptions on the object? What do they tell you about the object?',
-            feature     : 'What physical features are there on the object?'
-            // serial_number
+            rating        : '',
+            inscription   : 'Are there any inscriptions on the object? What do they tell you about the object?',
+            feature       : 'What physical features are there on the object?'
+            serial_number : ''
         },
 
         material :
         {
-            name          : 'What is the object made of?',
-            crystallinity : 'What kind of crystal structure does the material have?',
-            'class'       : 'What material familiy does it belong to?',
-            recyclability : 'Is the object recyclable? Does the recyclability tell you something about the material?'
-            // biodegradability
-            // alloy_designation
-            // grade
-            // toxicity
+            name              : 'What is the object made of?',
+            crystallinity     : 'What kind of crystal structure does the material have?',
+            'class'           : 'What material familiy does it belong to?',
+            recyclability     : 'Is the object recyclable? Does the recyclability tell you something about the material?'
+            biodegradability  : '',
+            alloy_designation : '',
+            grade             : '',
+            toxicity          : ''
 
         },
 
@@ -43,40 +46,40 @@ export const caseStudy =
         {
             treatment             : 'What treatment procedures did the object have?',
             shaping               : 'What shaping procedures did the object have?', 
-            // machining
-            // joining
+            machining             : '',
+            joining               : '',
             residual_stress       : 'What kind of residual stresses could have been introduced during processing? Did the physical features on the object play a role?',
             residual_stress_force : 'What kind of forces could have been created in the object from the residual stresses?'
-            // manufacturer
-            // date
-            // location
-            // plant
+            manufacturer          : '',
+            date                  : '',
+            location              : '',
+            plant                 : ''
         },
 
         environment :
         {
-            loading : 'What type of loading did the object experience?'
-            // loading_normalcy 
-            // loading_frequency
-            // ambient
-            // light_exposure
-            // geographic_location
-            // stress_orientation
-            // weather_exposure
-            // storage_location
+            loading             : 'What type of loading did the object experience?'
+            loading_normalcy    : '',
+            loading_frequency   : '',
+            ambient             : '',
+            light_exposure      : '',
+            geographic_location : '',
+            stress_orientation  : '',
+            weather_exposure    : '',
+            storage_location    : ''
         },
 
         use :
         {
-            functionality_loss : 'What functionality was lost when the object failed?',
-            operational_factor : 'Which factors played a part in the object’s failure during operation or maintenance?'
-            // problem_statement
-            // failure_time
-            // failure_operation_stage
-            // specification
-            // record
-            // operation
-            // operator
+            functionality_loss      : 'What functionality was lost when the object failed?',
+            operational_factor      : 'Which factors played a part in the object’s failure during operation or maintenance?'
+            problem_statement       : '',
+            failure_time            : '',
+            failure_operation_stage : '',
+            specification           : '',
+            record                  : '',
+            operation               : '',
+            operator                : ''
         }
     },
 
