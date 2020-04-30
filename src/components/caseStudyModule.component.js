@@ -1,6 +1,7 @@
-import { caseStudyHtmlClass }  from '../constants/htmlClass.constants.js';
-import ObjectCaseStudyModule   from './promptTextArea.components.js'; 
-import MaterialCaseStudyModule from './promptTitle.components.js'; 
+import { caseStudyHtmlClass }    from '../constants/htmlClass.constants.js';
+import ObjectCaseStudyModule     from './objectCaseStudyModule.components.js'; 
+import MaterialCaseStudyModule   from './materialCaseStudyModule.components.js'; 
+import ProcessingCaseStudyModule from './processingCaseStudyModule.components.js'
 
 class CaseStudyModule extends React.component
 {
@@ -24,11 +25,21 @@ class CaseStudyModule extends React.component
             grade             : '',
             recyclability     : '',
             biodegradability  : '',
-            toxicity          : ''
+            toxicity          : '',
+            machining         : new Map(),
+            machining_note    : '',
+            joining           : new Map(),
+            joining_note      : '',
+            manufacturer      : '',
+            date              : '',
+            location          : '',
+            plant             : ''
         }
 
-        this.handleGenericChange      = this.handleGenericChange.bind( this );
-        this.handleObjectModuleChange = this.handleObjectModuleChange.bind( this );
+        this.handleGenericChange          = this.handleGenericChange.bind( this );
+        this.handleCheckboxChange         = this.handleCheckboxChange.bind( this )
+        this.handleObjectModuleChange     = this.handleObjectModuleChange.bind( this );
+        this.handleProcessingModuleChange = this.handleProcessingModuleChange.bind( this );
     }
 
     handleGenericChange( e )
@@ -41,14 +52,31 @@ class CaseStudyModule extends React.component
         } );
     }
 
+    handleCheckboxChange( e )
+    {
+        this.setState( prevState =>
+        ( {
+            [e.target.name] : prevState.feature.set( name, e.target.checked ) 
+        } ) );
+    }
+
     handleObjectModuleChange( e )
     {
         if( e.target.name === 'feature' )
         {
-            return this.setState( prevState =>
-            ( {
-                feature : prevState.feature.set( name, e.target.checked ) 
-            } ) );
+            this.handleCheckboxChange( e )
+        }
+
+        this.handleGenericChange( e );
+    }
+
+    handleProcessingModuleChange( e )
+    {
+        const checkboxChanges = ['machining', 'joining'];
+
+        if( checkboxChanges.includes( e.target.name )
+        {
+            this.handleCheckboxChange( e )
         }
 
         this.handleGenericChange( e );
@@ -68,6 +96,10 @@ class CaseStudyModule extends React.component
                 <MaterialCaseStudyModule 
                     visibility={ this.props.visibility.material }
                     handleMaterialModuleChange={ this.handleGenericChange } />
+
+                <ProcessingCaseStudyModule 
+                    visibility={ this.props.visibility.processing }
+                    handleMaterialModuleChange={ this.props.handleProcessingModuleChange } />
 
             </div>`
         )
