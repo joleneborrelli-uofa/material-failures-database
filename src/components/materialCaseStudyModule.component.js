@@ -14,6 +14,13 @@ class MaterialCaseStudyModule extends React.component
 
     render()
     {
+        const 
+        {
+            state,
+            visibility,
+            handleGenericChange
+        } = this.props;
+
         const constants = caseStudy.fieldPrompts.material;
         const htmlClass = caseStudyHtmlClass.fieldPrompts;
 
@@ -22,80 +29,102 @@ class MaterialCaseStudyModule extends React.component
 
                 <PromptTitle 
                     title="${ constants.name }" 
-                    visibility={ this.props.visibility.name }>
+                    visibility={ visibility.name }>
+
                     <PromptTextArea 
                         name="name"
+                        value={ state.name }
                         labelVisibility="${ htmlClass.visibility.off }"
-                        handleChange={ this.handleGenericChange } />
+                        handleChange={ handleGenericChange } />
                 </PromptTitle>
 
                 <PromptTitle  
                     title="${ constants.class }" 
-                    visibility={ this.props.visibility['class'] }>
+                    visibility={ visibility['class'] }>
+
                     <PromptRadioGroup
                         name="class"
-                        handleChange={ this.handleGenericChange } />
+                        value={ state['class']}
+                        foreignKeys={ foreignKeys.material['class'] }
+                        handleChange={ handleGenericChange } />
+
                     <PromptRadioGroup
                         name="class_subtype"
-                        handleChange={ this.handleGenericChange } />
+                        value={ state.class_subtype }
+                        foreignKeys={ foreignKeys.material.class_subtype }
+                        handleChange={ handleGenericChange } />
+
                     <PromptTextArea 
                         name="class_note"
+                        value={ state.class_note }
                         labelVisibility="${ htmlClass.visibility.on }"
-                        handleChange={ this.handleGenericChange } />
+                        handleChange={ handleGenericChange } />
                 </PromptTitle>
 
                 <PromptTitle  
                     title="${ constants.crystallinity }" 
-                    visibility={ this.props.visibility.crystallinity }>
+                    visibility={ visibility.crystallinity }>
+
                     <PromptTextArea 
                         name="crystallinity"
+                        value={ state.crystallinity }
                         labelVisibility="${ htmlClass.visibility.off }"
-                        handleChange={ this.handleGenericChange } />
+                        handleChange={ handleGenericChange } />
                 </PromptTitle>
 
                 <PromptTitle  
                     title="${ constants.alloy_designation }" 
-                    visibility={ this.props.visibility.alloy_designation }>
+                    visibility={ visibility.alloy_designation }>
+
                     <PromptTextArea 
                         name="alloy_designation"
+                        value={ state.alloy_designation }
                         labelVisibility="${ htmlClass.visibility.off }"
-                        handleChange={ this.handleGenericChange } />
+                        handleChange={ handleGenericChange } />
                 </PromptTitle>
 
                 <PromptTitle  
                     title="${ constants.grade }" 
-                    visibility={ this.props.visibility.grade }>
+                    visibility={ visibility.grade }>
+
                     <PromptTextArea 
                         name="grade"
+                        value={ state.grade }
                         labelVisibility="${ htmlClass.visibility.off }"
-                        handleChange={ this.handleGenericChange } />
+                        handleChange={ handleGenericChange } />
                 </PromptTitle>
 
                 <PromptTitle  
                     title="${ constants.recyclability }" 
-                    visibility={ this.props.visibility.recyclability }>
+                    visibility={ visibility.recyclability }>
+
                     <PromptTextArea 
                         name="recyclability"
+                        value={ state.recyclability }
                         labelVisibility="${ htmlClass.visibility.off }"
-                        handleChange={ this.handleGenericChange } />
+                        handleChange={ handleGenericChange } />
                 </PromptTitle>
 
                 <PromptTitle  
                     title="${ constants.biodegradability }" 
-                    visibility={ this.props.visibility.biodegradability }>
+                    visibility={ visibility.biodegradability }>
+
                     <PromptTextArea 
                         name="biodegradability"
+                        value={ state.biodegradability }
                         labelVisibility="${ htmlClass.visibility.off }"
-                        handleChange={ this.handleGenericChange } />
+                        handleChange={ handleGenericChange } />
                 </PromptTitle>
 
                 <PromptTitle  
                     title="${ constants.toxicity }" 
-                    visibility={ this.props.visibility.toxicity }>
+                    visibility={ visibility.toxicity }>
+
                     <PromptTextArea 
                         name="toxicity"
+                        value={ state.toxicity }
                         labelVisibility="${ htmlClass.visibility.off }"
-                        handleChange={ this.handleGenericChange } />
+                        handleChange={ handleGenericChange } />
                 </PromptTitle>
 
             </div>`
