@@ -13,6 +13,13 @@ class ObjectCaseStudyModule extends React.component
 
     render()
     {
+        const 
+        {
+            state,
+            visibility,
+            handleObjectModuleChange
+        } = this.props;
+
         const constants = caseStudy.fieldPrompts.object;
         const htmlClass = caseStudyHtmlClass.fieldPrompts;
 
@@ -21,42 +28,52 @@ class ObjectCaseStudyModule extends React.component
 
                 <PromptTitle 
                     title="${ constants.rating }" 
-                    visibility={ this.props.visibility.rating } >
+                    visibility={ visibility.rating }>
+
                     <PromptTextArea 
                         name="rating"
+                        value={ state.rating }
                         labelVisibility="${ htmlClass.visibility.off }"
-                        handleChange={ this.props.handleObjectModuleChange } />
+                        handleChange={ handleObjectModuleChange } />
                 </PromptTitle>
 
                 <PromptTitle  
                     title="${ constants.inscription }" 
-                    visibility={ this.props.visibility.inscription }>
+                    visibility={ visibility.inscription }>
+
                     <PromptTextArea 
                         name="inscription"
+                        value={ state.inscription }
                         labelVisibility="${ htmlClass.visibility.off }"
-                        handleChange={ this.props.handleObjectModuleChange } />
+                        handleChange={ handleObjectModuleChange } />
                 </PromptTitle>
 
                 <PromptTitle  
                     title="${ constants.serial_number }" 
-                    visibility={ this.props.visibility.serial_number }>
+                    visibility={ visibility.serial_number }>
+
                     <PromptTextArea 
                         name="serial_number"
+                        value={ state.serial_number }
                         labelVisibility="${ htmlClass.visibility.off }"
-                        handleChange={ this.props.handleObjectModuleChange } />
+                        handleChange={ handleObjectModuleChange } />
                 </PromptTitle>
 
                 <PromptTitle  
                     title="${ constants.feature }" 
-                    visibility={ this.props.visibility.feature }>
+                    visibility={ visibility.feature }>
+
                     <PromptCheckboxGroup
                         name="feature"
-                        handleChange={ this.props.handleObjectModuleChange }
+                        value={ state.feature }
+                        handleChange={ handleObjectModuleChange }
                         foreignKeys={ foreignKeys.object.feature } />
+
                     <PromptTextArea 
                         name="feature_note"
+                        value={ state.feature_note }
                         labelVisibility="${ htmlClass.visibility.on }"
-                        handleChange={ this.props.handleObjectModuleChange } />
+                        handleChange={ handleObjectModuleChange } />
                 </PromptTitle>
 
             </div>`
