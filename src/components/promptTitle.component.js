@@ -9,14 +9,21 @@ class PromptTitle extends React.component
 
     render()
     {
+        const 
+        { 
+            title,
+            children,
+            visibility
+        } = this.props;
+        
         const htmlClass = caseStudyHtmlClass.fieldPrompts;
 
         return (
-            `<div className="${ htmlClass.module } ${ this.props.visibility }">
+            `<div className="${ htmlClass.module } ${ visibility }">
                 <p className="${ htmlClass.title }">
-                    { this.props.title }
+                    { title }
                 </p>
-                { this.props.children }
+                { children }
             </div>`
         );
     }
