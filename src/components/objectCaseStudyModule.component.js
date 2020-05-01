@@ -76,6 +76,9 @@ class ObjectCaseStudyModule extends React.component
                         handleChange={ handleObjectModuleChange } />
                 </PromptTitle>
 
+                <PromptTitle  
+                    title="${ caseStudy.additionalPrompts.fractography }" />
+
             </div>`
         )
     }
