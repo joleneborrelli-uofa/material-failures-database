@@ -34,6 +34,32 @@ export const caseStudyHtmlClass =
     {
         page  : 'fa-landing-background-research-page'
         title : 'fa-landing-background-research-title'  
-    } 
+    },
+
+    promptsTitle : 'fa-prompts-title',
+
+    fieldPrompts :
+    {
+        caseStudy        : 'fa-prompt-case-study',
+        object           : 'fa-prompt-object',
+        material         : 'fa-prompt-material',
+        processing       : 'fa-prompt-processing',
+        environment      : 'fa-prompt-environment',
+        use              : 'fa-prompt-use',
+        module           : 'fa-prompt-module',
+        title            : 'fa-prompt-title',
+        textarea         : 'fa-prompt-textarea',
+        note             : 'fa-prompt-note',
+        radioButton      : 'fa-prompt-radio-button',
+        radioGroup       : 'fa-prompt-radio-group',
+        pairedRadioGroup : 'fa-prompt-paired-radio-group',
+        checkbox         : 'fa-prompt-checkbox',
+        checkboxGroup    : 'fa-prompt-checkbox-group'
+        visibility       : 
+        {
+            on  : 'fa-prompt-visibility-on',
+            off : 'fa-prompt-visibility-off'
+        }
+    }
 
 };
