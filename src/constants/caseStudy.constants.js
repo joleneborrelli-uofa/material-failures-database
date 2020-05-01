@@ -48,8 +48,7 @@ export const caseStudy =
             shaping               : 'What shaping procedures did the object have?', 
             machining             : '',
             joining               : '',
-            residual_stress       : 'What kind of residual stresses could have been introduced during processing? Did the physical features on the object play a role?',
-            residual_stress_force : 'What kind of forces could have been created in the object from the residual stresses?'
+            residual_stress       : 'What kind of residual stresses could have been introduced during processing? Did the physical features on the object play a role? What kind of forces could have been created in the object from the residual stresses?',
             manufacturer          : '',
             date                  : '',
             location              : '',
