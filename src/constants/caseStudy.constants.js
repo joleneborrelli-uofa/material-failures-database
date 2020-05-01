@@ -25,7 +25,7 @@ export const caseStudy =
         {
             rating        : '',
             inscription   : 'Are there any inscriptions on the object? What do they tell you about the object?',
-            feature       : 'What physical features are there on the object?'
+            feature       : 'What physical features are there on the object?',
             serial_number : ''
         },
 
@@ -34,7 +34,7 @@ export const caseStudy =
             name              : 'What is the object made of?',
             crystallinity     : 'What kind of crystal structure does the material have?',
             'class'           : 'What material familiy does it belong to?',
-            recyclability     : 'Is the object recyclable? Does the recyclability tell you something about the material?'
+            recyclability     : 'Is the object recyclable? Does the recyclability tell you something about the material?',
             biodegradability  : '',
             alloy_designation : '',
             grade             : '',
@@ -57,9 +57,7 @@ export const caseStudy =
 
         environment :
         {
-            loading             : 'What type of loading did the object experience?'
-            loading_normalcy    : '',
-            loading_frequency   : '',
+            loading             : 'What type of loading did the object experience? How frequent did it occur?',
             ambient             : '',
             light_exposure      : '',
             geographic_location : '',
@@ -71,7 +69,7 @@ export const caseStudy =
         use :
         {
             functionality_loss      : 'What functionality was lost when the object failed?',
-            operational_factor      : 'Which factors played a part in the object’s failure during operation or maintenance?'
+            operational_factor      : 'Which factors played a part in the object’s failure during operation or maintenance?',
             problem_statement       : '',
             failure_time            : '',
             failure_operation_stage : '',
