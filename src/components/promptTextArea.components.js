@@ -10,19 +10,27 @@ class PromptTextArea extends React.component
 
     render()
     {
+        const
+        {
+            name,
+            value,
+            handleChange
+            labelVisibility
+        } = this.props;
+
         const constants = caseStudy.fieldPrompts;
         const htmlClass = caseStudyHtmlClass.fieldPrompts;
 
         return (
             `<div>
-                <label className="${ htmlClass.title } { this.props.labelVisibility }">
+                <label className="${ htmlClass.title } ${ labelVisibility }">
                     ${ constants.note }
                 </label>
                 <textarea 
                     className="${ htmlClass.textarea }"
-                    name={ this.props.name }
-                    onChange={ this.props.handleChange }
-                    defaultValue={ this.props.value } />
+                    name={ name }
+                    onChange={ handleChange }
+                    defaultValue={ value } />
             </div>`
         );
     }
