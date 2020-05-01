@@ -1,5 +1,13 @@
 export const optionChanges = 
 {
+    object :
+    {
+        checkbox :
+        [
+            'feature'
+        ]
+    },
+
     processing :
     {
         checkbox:
@@ -24,5 +32,39 @@ export const optionChanges =
             'shaping',
             'residual_stress'
         ]
+    },
+
+    environment :
+    {
+        checkbox :
+        [
+            'light_exposure',
+            'ambient',
+            'weather_exposure',
+            'storage_location'
+        ],
+
+        radio :
+        [
+            'loading',
+            'loading_frequency'
+        ],
+
+        button :
+        [
+            'loading'
+        ]
+    },
+
+    use :
+    {
+        checkbox :
+        [
+            'specification',
+            'record',
+            'operation',
+            'operational_factor'
+        ]
     }
+
 };
