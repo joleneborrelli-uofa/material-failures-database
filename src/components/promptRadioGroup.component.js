@@ -12,7 +12,8 @@ class PromptRadioGroup extends React.component
         const htmlClass    = caseStudyHtmlClass.fieldPrompts;
         const radioButtons = this.props.foreignKeys.forEach( option )
         {
-            const key = this.props.key ? this.props.key : index;
+            let key   = this.props.key || '';
+            let index = this.props.index || '';
 
             return ( 
                 `<input
@@ -21,6 +22,7 @@ class PromptRadioGroup extends React.component
                     name={ this.props.name }
                     value={ option }
                     key={ key }
+                    index={ index }
                     checked={ this.props.value === option }
                     onChange={ this.props.handleChange } />`
             ) 
