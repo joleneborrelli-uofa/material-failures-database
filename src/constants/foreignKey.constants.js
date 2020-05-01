@@ -34,7 +34,7 @@ export const foreignKeys =
             'Ferrous metal',
             'Non-ferrous metal',
             'Precious metal',
-            'Rare Earth metal',
+            'Rare earth metal',
             'Refractory metal',
             'Elastomer',
             'Thermoplastic',
@@ -85,7 +85,7 @@ export const foreignKeys =
             'Casting',
             'Molding',
             'Deformation',
-            'Composite forming'
+            'Composite forming',
             'Powder',
             'Special methods'
         ],
@@ -115,14 +115,14 @@ export const foreignKeys =
         joining :
         [
             'Welding',
-            'Heat Bonding',
+            'Heat bonding',
             'Adhesives',
             'Cements',
             'Fastening',
             'Bolting',
             'Riveting',
-            'Snap Fits',
-            'Friction Bond'
+            'Snap fits',
+            'Friction bond'
         ],
 
         machining :
@@ -172,16 +172,14 @@ export const foreignKeys =
             'Abnormal'
         ],
 
-        // Add loading_frequency?
-
         loading:
         [
             'Axial',
             'Bending',
             'Tortional',
             'Dynamic',
-            'Tensile Mean',
-            'Compressive Mean',
+            'Tensile mean',
+            'Compressive mean',
             'Cyclic',
             'Suddenly applied',
             'Impact',
@@ -215,7 +213,7 @@ export const foreignKeys =
         record :
         [
             'Maintenance', 
-            'Inspections'
+            'Inspection'
         ],
 
         operation :
