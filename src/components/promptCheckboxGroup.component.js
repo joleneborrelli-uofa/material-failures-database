@@ -9,21 +9,30 @@ class PromptCheckboxGroup extends React.component
 
     render()
     {
-        const htmlClass  = caseStudyHtmlClass.fieldPrompts;
-        const checkboxes = this.props.foreignKeys.forEach( option )
+        const 
         {
-            const isChecked = this.props.values.includes( option, index );
-            const key       = this.props.key ? this.props.key : index;
+            key,
+            value,
+            name,
+            foreignKeys,
+            handleChange
+        } = this.props;
+
+        const htmlClass  = caseStudyHtmlClass.fieldPrompts;
+        const checkboxes = foreignKeys.forEach( option )
+        {
+            const isChecked = value.get( option );
+            const key       = key || index;
 
             return ( 
                 `<input
                     type="checkbox"
                     className="${ htmlClass.checkbox }"
-                    name={ this.props.name }
+                    name={ name }
                     value={ option }
                     key={ key }
                     checked={ isChecked }
-                    onChange={ this.props.handleChange } />`  
+                    onChange={ handleChange } />`  
             ) 
         };
 
