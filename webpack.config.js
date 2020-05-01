@@ -1,4 +1,5 @@
 const path = require( 'path' );
+const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 module.exports = 
 {
@@ -12,9 +13,41 @@ module.exports =
     },
     resolve: 
     {
-        alias: 
+        // alias: 
+        // {
+        //     'uv' : path.join( __dirname, 'node_modules/universalviewer/dist/' )
+        // }
+    },
+    module: 
+    {
+        rules: 
+        [
+            {
+                test    : /\.(js|jsx)$/,
+                exclude : /node_modules/,
+                use : 
+                {
+                    loader : "babel-loader"
+                }
+            },
+            {
+                test : /\.html$/,
+                use  : 
+                [
+                    {
+                        loader: "html-loader"
+                    }
+                ]
+            }
+        ]
+    },
+    plugins: 
+    [
+        new HtmlWebPackPlugin(
         {
-            'uv' : path.join( __dirname, 'node_modules/universalviewer/dist/' )
-        }
-    }
+            template: "./src/index.html",
+            filename: "./index.html"
+        } )
+    ]
+
 };
