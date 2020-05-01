@@ -38,5 +38,17 @@ export const groupedComponents =
             name        : 'residual_stress_force',
             foreignKeys : foreignKeys.processing.residual_stress_force
         }
+    ],
+
+    loading :
+    [
+        {
+            name        : 'loading',
+            foreignKeys : foreignKeys.environment.loading
+        },
+        {
+            name        : 'loading_normalcy',
+            foreignKeys : foreignKeys.environment.loading_normalcy
+        }
     ]
 };
