@@ -18,7 +18,7 @@ class MaterialCaseStudyModule extends React.component
         {
             state,
             visibility,
-            handleGenericChange
+            handleMaterialModuleChange
         } = this.props;
 
         const constants = caseStudy.fieldPrompts.material;
@@ -35,30 +35,24 @@ class MaterialCaseStudyModule extends React.component
                         name="name"
                         value={ state.name }
                         labelVisibility="${ htmlClass.visibility.off }"
-                        handleChange={ handleGenericChange } />
+                        handleChange={ handleMaterialModuleChange } />
                 </PromptTitle>
 
-                <PromptTitle  
+                <PromptTitle 
                     title="${ constants.class }" 
                     visibility={ visibility['class'] }>
 
-                    <PromptRadioGroup
-                        name="class"
-                        value={ state['class']}
-                        foreignKeys={ foreignKeys.material['class'] }
-                        handleChange={ handleGenericChange } />
-
-                    <PromptRadioGroup
-                        name="class_subtype"
-                        value={ state.class_subtype }
-                        foreignKeys={ foreignKeys.material.class_subtype }
-                        handleChange={ handleGenericChange } />
+                    <PromptPairedRadioGroupList
+                        key="class"
+                        pairedRadioGroup={ state['class'] }
+                        pairedData={ groupedComponents['class'] }
+                        handleChange={ handleMaterialModuleChange } />
 
                     <PromptTextArea 
                         name="class_note"
                         value={ state.class_note }
                         labelVisibility="${ htmlClass.visibility.on }"
-                        handleChange={ handleGenericChange } />
+                        handleChange={ handleMaterialModuleChange } />
                 </PromptTitle>
 
                 <PromptTitle  
@@ -69,7 +63,7 @@ class MaterialCaseStudyModule extends React.component
                         name="crystallinity"
                         value={ state.crystallinity }
                         labelVisibility="${ htmlClass.visibility.off }"
-                        handleChange={ handleGenericChange } />
+                        handleChange={ handleMaterialModuleChange } />
                 </PromptTitle>
 
                 <PromptTitle  
@@ -80,7 +74,7 @@ class MaterialCaseStudyModule extends React.component
                         name="alloy_designation"
                         value={ state.alloy_designation }
                         labelVisibility="${ htmlClass.visibility.off }"
-                        handleChange={ handleGenericChange } />
+                        handleChange={ handleMaterialModuleChange } />
                 </PromptTitle>
 
                 <PromptTitle  
@@ -91,7 +85,7 @@ class MaterialCaseStudyModule extends React.component
                         name="grade"
                         value={ state.grade }
                         labelVisibility="${ htmlClass.visibility.off }"
-                        handleChange={ handleGenericChange } />
+                        handleChange={ handleMaterialModuleChange } />
                 </PromptTitle>
 
                 <PromptTitle  
@@ -102,7 +96,7 @@ class MaterialCaseStudyModule extends React.component
                         name="recyclability"
                         value={ state.recyclability }
                         labelVisibility="${ htmlClass.visibility.off }"
-                        handleChange={ handleGenericChange } />
+                        handleChange={ handleMaterialModuleChange } />
                 </PromptTitle>
 
                 <PromptTitle  
@@ -113,7 +107,7 @@ class MaterialCaseStudyModule extends React.component
                         name="biodegradability"
                         value={ state.biodegradability }
                         labelVisibility="${ htmlClass.visibility.off }"
-                        handleChange={ handleGenericChange } />
+                        handleChange={ handleMaterialModuleChange } />
                 </PromptTitle>
 
                 <PromptTitle  
@@ -124,7 +118,7 @@ class MaterialCaseStudyModule extends React.component
                         name="toxicity"
                         value={ state.toxicity }
                         labelVisibility="${ htmlClass.visibility.off }"
-                        handleChange={ handleGenericChange } />
+                        handleChange={ handleMaterialModuleChange } />
                 </PromptTitle>
 
             </div>`
