@@ -21,8 +21,11 @@ class CaseStudyModule extends React.component
             feature              : new Map(),
             feature_note         : '',
             name                 : '',
-            'class'              : '',
-            class_subtype        : '',
+            'class'              : new Map( [[0,
+            {
+                'class'        : '',
+                 class_subtype : ''
+            } ]] ),,
             class_note           : '',
             crystallinity        : '',
             alloy_designation    : '',
@@ -79,7 +82,12 @@ class CaseStudyModule extends React.component
             operation               : new Map(),
             operation_note          : '',
             operational_factor      : new Map()
-            operational_factor_note : ''
+            operational_factor_note : '',
+            functionality_loss      : '',
+            problem_statement       : '',
+            failure_time            : '',
+            failure_operation_stage : '',
+            operator                : ''
         }
 
         // Handlers
@@ -87,6 +95,7 @@ class CaseStudyModule extends React.component
         this.handleGenericChange           = this.handleGenericChange.bind( this );
         this.handleCheckboxChange          = this.handleCheckboxChange.bind( this )
         this.handleObjectModuleChange      = this.handleObjectModuleChange.bind( this );
+        this.handleMaterialModuleChange    = this.handleMaterialModuleChange.bind( this );
         this.handleProcessingModuleChange  = this.handleProcessingModuleChange.bind( this );
         this.handlePairedRadioGroupChange  = this.handlePairedRadioGroupChange.bind( this );
         this.handleEnvironmentModuleChange = this.handleEnvironmentModuleChange.bind( this );
@@ -196,6 +205,25 @@ class CaseStudyModule extends React.component
     }
 
     /**
+     * Handles the changes in the material module, 
+     * which include radio, button and generic 
+     * changes
+     *
+     * @param  { Object Literal } e event object
+     */
+    handleMaterialModuleChange( e )
+    {
+        const { name } = e.target;
+        const { radio, button } = optionChanges.material;
+
+        if( radio.includes( name ) ) return this.handlePairedRadioGroupChange( e )
+
+        if( button.includes( name ) ) return this.handleButtonClick( e )
+
+        this.handleGenericChange( e );
+    }
+
+    /**
      * Handles the changes in the processing module, 
      * which include checkbox, radio, button and 
      * generic changes
@@ -206,6 +234,27 @@ class CaseStudyModule extends React.component
     {
         const { name } = e.target;
         const { checkbox, radio, button } = optionChanges.processing;
+
+        if( checkbox.includes( name ) ) return this.handleCheckboxChange( e )
+
+        if( radio.includes( name ) ) return this.handlePairedRadioGroupChange( e )
+
+        if( button.includes( name ) ) return this.handleButtonClick( e )
+
+        this.handleGenericChange( e );
+    }
+
+    /**
+     * Handles the changes in the environment module, 
+     * which include checkbox, radio, button and 
+     * generic changes
+     *
+     * @param  { Object Literal } e event object
+     */
+    handleEnvironmentModuleChange( e )
+    {
+        const { name } = e.target;
+        const { checkbox, radio, button } = optionChanges.environment;
 
         if( checkbox.includes( name ) ) return this.handleCheckboxChange( e )
 
@@ -234,7 +283,6 @@ class CaseStudyModule extends React.component
         {
             name              : this.state.name,
             'class'           : this.state.['class'],
-            class_subtype     : this.state.class_subtype,
             class_note        : this.state.class_note,
             crystallinity     : this.state.crystallinity,
             alloy_designation : this.state.alloy_designation,
@@ -264,19 +312,26 @@ class CaseStudyModule extends React.component
 
         const environmentState =
         {
-            light_exposure   : this.state.light_exposure,
-            ambient          : this.state.ambient,
-            loading          : this.state.loading,
-            weather_exposure : this.state.weather_exposure,
-            storage_location : this.state.storage_location
+            light_exposure      : this.state.light_exposure,
+            ambient             : this.state.ambient,
+            loading             : this.state.loading,
+            weather_exposure    : this.state.weather_exposure,
+            storage_location    : this.state.storage_location,
+            geographic_location : this.state.geographic_location,
+            stress_orientation  : this.state.stress_orientation
         };
 
         const useState =
         {
-            specification      : this.state.specification,
-            record             : this.state.record,
-            operation          : this.state.operation,
-            operational_factor : this.state.operational_factor
+            specification           : this.state.specification,
+            record                  : this.state.record,
+            operation               : this.state.operation,
+            operational_factor      : this.state.operational_factor,
+            functionality_loss      : this.state.functionality_loss,
+            problem_statement       : this.state.problem_statement,
+            failure_time            : this.state.failure_time,
+            failure_operation_stage : this.state.failure_operation_stage,           
+            operator                : this.state.operator
         };
 
         return (
@@ -290,22 +345,22 @@ class CaseStudyModule extends React.component
                 <MaterialCaseStudyModule 
                     state={ materialState }
                     visibility={ visibility.material }
-                    handleMaterialModuleChange={ this.handleGenericChange } />
+                    handleMaterialModuleChange={ this.handleMaterialModuleChange } />
 
                 <ProcessingCaseStudyModule 
                     state={ processingState }
                     visibility={ visibility.processing }
-                    handleMaterialModuleChange={ this.handleProcessingModuleChange } />
+                    handleProcessinglModuleChange={ this.handleProcessingModuleChange } />
 
                 <EnvironmentCaseStudyModule 
                     state={ environmentState }
                     visibility={ visibility.environment }
-                    handleMaterialModuleChange={ this.handleEnvironmentModuleChange } />
+                    handleEnvironmentModuleChange={ this.handleEnvironmentModuleChange } />
 
                 <UseCaseStudyModule 
                     state={ useState }
                     visibility={ visibility.use }
-                    handleMaterialModuleChange={ this.handleUseModuleChange } />
+                    handleUseModuleChange={ this.handleUseModuleChange } />
 
             </div>`
         )
