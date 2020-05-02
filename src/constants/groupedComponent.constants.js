@@ -2,6 +2,18 @@ import { foreignKeys } from '../constants/foreignKey.constants.js';
 
 export const groupedComponents =
 {
+    'class' :
+    [
+        {
+            name        : 'class',
+            foreignKeys : foreignKeys.material['class']
+        },
+        {
+            name        : 'class_subtype',
+            foreignKeys : foreignKeys.material.class_subtype
+        }
+    ],
+
     treatment :
     [
         {

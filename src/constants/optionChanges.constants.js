@@ -8,6 +8,20 @@ export const optionChanges =
         ]
     },
 
+    material :
+    {
+        radio :
+        [
+            'class', 
+            'class_subtype'
+        ],
+
+        button :
+        [
+            'class'
+        ]
+    },
+
     processing :
     {
         checkbox:
