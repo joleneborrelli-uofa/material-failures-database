@@ -39,37 +39,62 @@ export const database =
 
 };
 
-export const visible_prompts =
+export const visiblility =
 {
     object :
-    [
-        'inscription',
-        'feature'
-    ],
+    {
+        rating        : 'off',
+        inscription   : 'on',
+        serial_number : 'off',
+        feature       : 'on'
+    },
 
     material :
-    [
-        'name',
-        'crystallinity',
-        'class',
-        'recyclability'
-    ],
+    {
+        name              : 'on',
+        'class'           : 'on',
+        crystallinity     : 'on',
+        alloy_designation : 'off',
+        grade             : 'off',
+        recyclability     : 'on',
+        biodegradability  : 'off',
+        toxicity          : 'off'
+    }
 
     processing :
     [
-        'treatment',             
-        'procedure',             
-        'residual_stress'
+        machining       : 'off',
+        joining         : 'off',
+        manufacturer    : 'off',
+        date            : 'off',
+        location        : 'off',
+        plant           : 'off',
+        treatment       : 'on',
+        shaping         : 'on',
+        residual_stress : 'on'
     ],
 
     environment :
     [
-        'loading'
+        light_exposure      : 'off',
+        ambient             : 'off',
+        loading             : 'on',
+        weather_exposure    : 'off',
+        storage_location    : 'off',
+        geographic_location : 'off',
+        stress_orientation  : 'off'
     ],
 
     use :
     [
-        'functionality_loss',
-        'operational_factor'
+        specification           : 'off',
+        record                  : 'off',
+        operation               : 'off',
+        operational_factor      : 'on',
+        functionality_loss      : 'on',
+        problem_statement       : 'off',
+        failure_time            : 'off',
+        failure_operation_stage : 'off',           
+        operator                : 'off'
     ]
 };
