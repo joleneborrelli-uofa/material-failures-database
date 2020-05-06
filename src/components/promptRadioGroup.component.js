@@ -1,6 +1,8 @@
+import React                  from 'react';
+import { createUniqueId }     from '../helpers.js';
 import { caseStudyHtmlClass } from '../constants/htmlClass.constants.js'; 
 
-class PromptRadioGroup extends React.component
+export default class PromptRadioGroup extends React.Component
 {
     constructor( props )
     {
@@ -9,29 +11,54 @@ class PromptRadioGroup extends React.component
 
     render()
     {
-        const htmlClass    = caseStudyHtmlClass.fieldPrompts;
-        const radioButtons = this.props.foreignKeys.forEach( option )
+        // statekey is a key in the state
+        // mapkey is a key in a Map
+        let
         {
-            let key   = this.props.key || '';
-            let index = this.props.index || '';
+            statekey = '',
+            mapkey = '',
+            name,
+            value,
+            foreignKeys,
+            handleRadioGroupChange
+        } = this.props;
+
+        // hack for ensuring each radio group on page has a
+        // unique name
+        name = createUniqueId( name );
+
+        const htmlClass = caseStudyHtmlClass.fieldPrompts;
+
+        // foreignKeys is an array. Option is the value in the
+        // array, index is the index number of that value.
+        const radioButtons = foreignKeys.map( ( option, index ) =>
+        {
+            let isChecked = value === option;
 
             return ( 
-                `<input
-                    type="radio"
-                    className="${ htmlClass.radioButton }"
-                    name={ this.props.name }
-                    value={ option }
-                    key={ key }
-                    index={ index }
-                    checked={ this.props.value === option }
-                    onChange={ this.props.handleChange } />`
+                    <div
+                        key={ createUniqueId( index ) } 
+                        className={ htmlClass.radio }>
+                        <label className={ htmlClass.optionLabel }>
+                            { option }
+                        </label>
+                        <input
+                            type="radio"
+                            className={ htmlClass.radioInput }
+                            name={ name }
+                            value={ option }
+                            statekey={ statekey }
+                            mapkey={ mapkey }
+                            defaultChecked={ isChecked }
+                            onChange={ handleRadioGroupChange } />
+                    </div>
             ) 
-        };
+        } );
 
         return (
-            `<div className="${ htmlClass.radioGroup }">
+            <div className={ htmlClass.radioGroup }>
                 { radioButtons }
-            </div>`
+            </div>
         );
     }
 
