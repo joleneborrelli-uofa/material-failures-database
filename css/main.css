@@ -9,6 +9,8 @@
     height : 600px;
 }
 
+/* Record CSS */
+
 .fa-title, .fa-module
 {
 	border     : solid 1px;
@@ -68,4 +70,16 @@
 {
     margin-block-start : 0.1em;
     margin             : 5px 15px 0 15px;
+}
+
+/* Case study CSS */
+
+.fa-visibility-on
+{
+    display: block;
+}
+
+.fa-visibility-off
+{
+    display: none;
 }
