@@ -1,12 +1,14 @@
-import { groupedComponents }  from '../constants/groupedComponents.constants.js';
-import { caseStudy }          from '../constants/caseStudy.constants.js';
-import { caseStudyHtmlClass } from '../constants/htmlClass.constants.js';
-import { foreignKeys }        from '../constants/foreignKey.constants.js';
-import PromptTextArea         from './promptTextArea.components.js'; 
-import PromptTitle            from './promptTitle.components.js'; 
-import PromptCheckboxGroup    from './promptCheckboxGroup.components.js';
+import React                   from 'react';
+import { groupedComponents }   from '../constants/groupedComponent.constants.js';
+import { caseStudy }           from '../constants/caseStudy.constants.js';
+import { caseStudyHtmlClass }  from '../constants/htmlClass.constants.js';
+import { foreignKeys }         from '../constants/foreignKey.constants.js';
+import PromptTextArea          from './promptTextArea.component.js'; 
+import PromptTitle             from './promptTitle.component.js'; 
+import PromptCheckboxGroup     from './promptCheckboxGroup.component.js';
+import PromptAdditionalPrompts from './promptAdditionalPrompts.component.js';
 
-class UseCaseStudyModule extends React.component
+export default class UseCaseStudyModule extends React.Component
 {
     constructor( props )
     {
@@ -19,139 +21,147 @@ class UseCaseStudyModule extends React.component
         {
             state,
             visibility,
-            handleUseModuleChange
+            additionalPrompts,
+            handleModuleChange
         } = this.props;
 
-        const constants = caseStudy.fieldPrompts.use;
-        const htmlClass = caseStudyHtmlClass.fieldPrompts;
+        const constants      = caseStudy.fieldPrompts.use;
+        const htmlClass      = caseStudyHtmlClass.fieldPrompts;
+        const htmlVisibility = caseStudyHtmlClass.visibility;
 
         return (
-            `<div className="${ htmlClass.use }">
+            <div className={ htmlClass.use }>
 
                 <PromptTitle 
-                    title="${ constants.specification }" 
-                    visibility={ visibility.specification }>
+                    title={ constants.specification } 
+                    visibility={ htmlVisibility[visibility.specification] }>
 
                     <PromptCheckboxGroup
                         name="specification"
                         value={ state.specification }
-                        handleChange={ handleUseModuleChange }
+                        handleCheckboxChange={ handleModuleChange }
                         foreignKeys={ foreignKeys.use.specification } />
 
                     <PromptTextArea 
                         name="specification_note"
                         value={ state.light_exposure_note }
-                        labelVisibility="${ htmlClass.visibility.on }"
-                        handleChange={ handleUseModuleChange } />
+                        labelVisibility={ htmlVisibility.on }
+                        handleTextAreaChange={ handleModuleChange } />
                 </PromptTitle>
 
                 <PromptTitle 
-                    title="${ constants.record }" 
-                    visibility={ visibility.record }>
+                    title={ constants.record }
+                    visibility={ htmlVisibility[visibility.record] }>
 
                     <PromptCheckboxGroup
                         name="record"
                         value={ state.record }
-                        handleChange={ handleUseModuleChange }
+                        handleCheckboxChange={ handleModuleChange }
                         foreignKeys={ foreignKeys.use.record } />
 
                     <PromptTextArea 
                         name="record_note"
                         value={ state.ambient_note }
-                        labelVisibility="${ htmlClass.visibility.on }"
-                        handleChange={ handleUseModuleChange } />
+                        labelVisibility={ htmlVisibility.on }
+                        handleTextAreaChange={ handleModuleChange } />
                 </PromptTitle>
 
                 <PromptTitle 
-                    title="${ constants.operation }" 
-                    visibility={ visibility.operation }>
+                    title={ constants.operation }
+                    visibility={ htmlVisibility[visibility.operation] }>
 
                     <PromptCheckboxGroup
                         name="operation"
                         value={ state.operation }
-                        handleChange={ handleUseModuleChange }
+                        handleCheckboxChange={ handleModuleChange }
                         foreignKeys={ foreignKeys.use.operation } />
 
                     <PromptTextArea 
                         name="operation_note"
                         value={ state.weather_exposure_note }
-                        labelVisibility="${ htmlClass.visibility.on }"
-                        handleChange={ handleUseModuleChange } />
+                        labelVisibility={ htmlVisibility.on }
+                        handleTextAreaChange={ handleModuleChange } />
                 </PromptTitle>
 
                 <PromptTitle 
-                    title="${ constants.operational_factor }" 
-                    visibility={ visibility.operational_factor }>
+                    title={ constants.operational_factor }
+                    visibility={ htmlVisibility[visibility.operational_factor] }>
 
                     <PromptCheckboxGroup
                         name="operational_factor"
                         value={ state.operational_factor }
-                        handleChange={ handleUseModuleChange }
+                        handleCheckboxChange={ handleModuleChange }
                         foreignKeys={ foreignKeys.use.operational_factor } />
 
                     <PromptTextArea 
                         name="operation_factor_note"
                         value={ state.storage_location_note }
-                        labelVisibility="${ htmlClass.visibility.on }"
-                        handleChange={ handleUseModuleChange } />
+                        labelVisibility={ htmlVisibility.on }
+                        handleTextAreaChange={ handleModuleChange } />
                 </PromptTitle>
 
                 <PromptTitle 
-                    title="${ constants.functionality_loss }" 
-                    visibility={ visibility.functionality_loss }>
+                    title={ constants.functionality_loss }
+                    visibility={ htmlVisibility[visibility.functionality_loss] }>
 
                     <PromptTextArea 
                         name="functionality_loss"
                         value={ state.functionality_loss }
-                        labelVisibility="${ htmlClass.visibility.on }"
-                        handleChange={ handleUseModuleChange } />
+                        labelVisibility={ htmlVisibility.on }
+                        handleTextAreaChange={ handleModuleChange } />
                 </PromptTitle>
 
                 <PromptTitle 
-                    title="${ constants.problem_statement }" 
-                    visibility={ visibility.problem_statement }>
+                    title={ constants.problem_statement }
+                    visibility={ htmlVisibility[visibility.problem_statement] }>
 
                     <PromptTextArea 
                         name="problem_statement"
                         value={ state.problem_statement }
-                        labelVisibility="${ htmlClass.visibility.on }"
-                        handleChange={ handleUseModuleChange } />
+                        labelVisibility={ htmlVisibility.on }
+                        handleTextAreaChange={ handleModuleChange } />
                 </PromptTitle>
 
                 <PromptTitle 
-                    title="${ constants.failure_time }" 
-                    visibility={ visibility.failure_time }>
+                    title={ constants.failure_time } 
+                    visibility={ htmlVisibility[visibility.failure_time] }>
 
                     <PromptTextArea 
                         name="failure_time"
                         value={ state.failure_time }
-                        labelVisibility="${ htmlClass.visibility.on }"
-                        handleChange={ handleUseModuleChange } />
+                        labelVisibility={ htmlVisibility.on }
+                        handleTextAreaChange={ handleModuleChange } />
                 </PromptTitle>
 
                 <PromptTitle 
-                    title="${ constants.failure_operation_stage }" 
-                    visibility={ visibility.failure_operation_stage }>
+                    title={ constants.failure_operation_stage }
+                    visibility={ htmlVisibility[visibility.failure_operation_stage] }>
 
                     <PromptTextArea 
                         name="failure_operation_stage"
                         value={ state.failure_operation_stage }
-                        labelVisibility="${ htmlClass.visibility.on }"
-                        handleChange={ handleUseModuleChange } />
+                        labelVisibility={ htmlVisibility.on }
+                        handleTextAreaChange={ handleModuleChange } />
                 </PromptTitle>
 
                 <PromptTitle 
-                    title="${ constants.operator }" 
-                    visibility={ visibility.operator }>
+                    title={ constants.operator }
+                    visibility={ htmlVisibility[visibility.operator] }>
 
                     <PromptTextArea 
                         name="operator"
                         value={ state.operator }
-                        labelVisibility="${ htmlClass.visibility.on }"
-                        handleChange={ handleUseModuleChange } />
+                        labelVisibility={ htmlVisibility.on }
+                        handleTextAreaChange={ handleModuleChange } />
                 </PromptTitle>
 
-            </div>`
+                <PromptAdditionalPrompts
+                    name="use"
+                    value={ state.additionalPromptText }
+                    prompts={ additionalPrompts } 
+                    handleChange={ handleModuleChange } />
+
+            </div>
         )
     }
 
