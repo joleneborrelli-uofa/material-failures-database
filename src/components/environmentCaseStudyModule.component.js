@@ -1,12 +1,15 @@
-import { groupedComponents }  from '../constants/groupedComponents.constants.js';
-import { caseStudy }          from '../constants/caseStudy.constants.js';
-import { caseStudyHtmlClass } from '../constants/htmlClass.constants.js';
-import { foreignKeys }        from '../constants/foreignKey.constants.js';
-import PromptTextArea         from './promptTextArea.components.js'; 
-import PromptTitle            from './promptTitle.components.js'; 
-import PromptCheckboxGroup    from './promptCheckboxGroup.components.js';
+import React                      from 'react';
+import { groupedComponents }      from '../constants/groupedComponent.constants.js';
+import { caseStudy }              from '../constants/caseStudy.constants.js';
+import { caseStudyHtmlClass }     from '../constants/htmlClass.constants.js';
+import { foreignKeys }            from '../constants/foreignKey.constants.js';
+import PromptTextArea             from './promptTextArea.component.js'; 
+import PromptTitle                from './promptTitle.component.js'; 
+import PromptCheckboxGroup        from './promptCheckboxGroup.component.js';
+import PromptPairedRadioGroupList from './promptPairedRadioGroupList.component.js';
+import PromptAdditionalPrompts    from './promptAdditionalPrompts.component.js';
 
-class EnvironmentCaseStudyModule extends React.component
+export default class EnvironmentCaseStudyModule extends React.Component
 {
     constructor( props )
     {
@@ -19,124 +22,133 @@ class EnvironmentCaseStudyModule extends React.component
         {
             state,
             visibility,
-            handleEnvironmentModuleChange
+            additionalPrompts,
+            handleModuleChange
         } = this.props;
 
-        const constants = caseStudy.fieldPrompts.environment;
-        const htmlClass = caseStudyHtmlClass.fieldPrompts;
+        const constants      = caseStudy.fieldPrompts.environment;
+        const htmlClass      = caseStudyHtmlClass.fieldPrompts;
+        const htmlVisibility = caseStudyHtmlClass.visibility;
 
         return (
-            `<div className="${ htmlClass.environment }">
+            <div className={ htmlClass.environment }>
 
                 <PromptTitle 
-                    title="${ constants.light_exposure }" 
-                    visibility={ visibility.light_exposure }>
+                    title={ constants.light_exposure }
+                    visibility={ htmlVisibility[visibility.light_exposure] }>
 
                     <PromptCheckboxGroup
                         name="light_exposure"
                         value={ state.light_exposure }
-                        handleChange={ handleEnvironmentModuleChange }
+                        handleCheckboxChange={ handleModuleChange }
                         foreignKeys={ foreignKeys.environment.light_exposure } />
 
                     <PromptTextArea 
                         name="light_exposure_note"
                         value={ state.light_exposure_note }
-                        labelVisibility="${ htmlClass.visibility.on }"
-                        handleChange={ handleEnvironmentModuleChange } />
+                        labelVisibility={ htmlVisibility.on }
+                        handleTextAreaChange={ handleModuleChange } />
                 </PromptTitle>
 
                 <PromptTitle 
-                    title="${ constants.ambient }" 
-                    visibility={ visibility.ambient }>
+                    title={ constants.ambient } 
+                    visibility={ htmlVisibility[visibility.ambient] }>
 
                     <PromptCheckboxGroup
                         name="ambient"
                         value={ state.ambient }
-                        handleChange={ handleEnvironmentModuleChange }
+                        handleCheckboxChange={ handleModuleChange }
                         foreignKeys={ foreignKeys.environment.ambient } />
 
                     <PromptTextArea 
                         name="ambient_note"
                         value={ state.ambient_note }
-                        labelVisibility="${ htmlClass.visibility.on }"
-                        handleChange={ handleEnvironmentModuleChange } />
+                        labelVisibility={ htmlVisibility.on }
+                        handleTextAreaChange={ handleModuleChange } />
                 </PromptTitle>
 
                 <PromptTitle 
-                    title="${ constants.weather_exposure }" 
-                    visibility={ visibility.weather_exposure }>
+                    title={ constants.weather_exposure }
+                    visibility={ htmlVisibility[visibility.weather_exposure] }>
 
                     <PromptCheckboxGroup
                         name="weather_exposure"
                         value={ state.weather_exposure }
-                        handleChange={ handleEnvironmentModuleChange }
+                        handleCheckboxChange={ handleModuleChange }
                         foreignKeys={ foreignKeys.environment.weather_exposure } />
 
                     <PromptTextArea 
                         name="weather_exposure_note"
                         value={ state.weather_exposure_note }
-                        labelVisibility="${ htmlClass.visibility.on }"
-                        handleChange={ handleEnvironmentModuleChange } />
+                        labelVisibility={ htmlVisibility.on }
+                        handleTextAreaChange={ handleModuleChange } />
                 </PromptTitle>
 
                 <PromptTitle 
-                    title="${ constants.storage_location }" 
-                    visibility={ visibility.storage_location }>
+                    title={ constants.storage_location }
+                    visibility={ htmlVisibility[visibility.storage_location] }>
 
                     <PromptCheckboxGroup
                         name="storage_location"
                         value={ state.storage_location }
-                        handleChange={ handleEnvironmentModuleChange }
+                        handleCheckboxChange={ handleModuleChange }
                         foreignKeys={ foreignKeys.environment.storage_location } />
 
                     <PromptTextArea 
                         name="storage_location_note"
                         value={ state.storage_location_note }
-                        labelVisibility="${ htmlClass.visibility.on }"
-                        handleChange={ handleEnvironmentModuleChange } />
+                        labelVisibility={ htmlVisibility.on }
+                        handleTextAreaChange={ handleModuleChange } />
                 </PromptTitle>
 
                 <PromptTitle 
-                    title="${ constants.geographic_location }" 
-                    visibility={ visibility.geographic_location }>
+                    title={ constants.geographic_location } 
+                    visibility={ htmlVisibility[visibility.geographic_location] }>
 
                     <PromptTextArea 
                         name="geographic_location"
                         value={ state.geographic_location }
-                        labelVisibility="${ htmlClass.visibility.on }"
-                        handleChange={ handleEnvironmentModuleChange } />
+                        labelVisibility={ htmlVisibility.on }
+                        handleTextAreaChange={ handleModuleChange } />
                 </PromptTitle>
 
                 <PromptTitle 
-                    title="${ constants.stress_orientation }" 
-                    visibility={ visibility.stress_orientation }>
+                    title={ constants.stress_orientation } 
+                    visibility={ htmlVisibility[visibility.stress_orientation] }>
 
                     <PromptTextArea 
                         name="stress_orientation"
                         value={ state.stress_orientation }
-                        labelVisibility="${ htmlClass.visibility.on }"
-                        handleChange={ handleEnvironmentModuleChange } />
+                        labelVisibility={ htmlVisibility.on }
+                        handleTextAreaChange={ handleModuleChange } />
                 </PromptTitle>
 
 
                 <PromptTitle 
-                    title="${ constants.loading }" 
-                    visibility={ visibility.loading }>
+                    title={ constants.loading }
+                    visibility={ htmlVisibility[visibility.loading] }>
 
                     <PromptPairedRadioGroupList
-                        key="loading"
+                        statekey="loading"
+                        buttonName="loading_button"
                         pairedRadioGroup={ state.loading }
                         pairedData={ groupedComponents.loading }
-                        handleChange={ handleEnvironmentModuleChange } />
+                        handleChange={ handleModuleChange } />
 
                     <PromptTextArea 
                         name="loading_note"
                         value={ state.loading_note }
-                        labelVisibility="${ htmlClass.visibility.on }"
-                        handleChange={ handleEnvironmentModuleChange } />
+                        labelVisibility={ htmlVisibility.on }
+                        handleTextAreaChange={ handleModuleChange } />
                 </PromptTitle>
 
-            </div>`
+                <PromptAdditionalPrompts
+                    name="environment"
+                    value={ state.additionalPromptText }
+                    prompts={ additionalPrompts } 
+                    handleChange={ handleModuleChange }/>
+
+            </div>  
         )
     }
 
