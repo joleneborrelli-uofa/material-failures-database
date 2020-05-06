@@ -1,10 +1,13 @@
-import { caseStudy }          from '../constants/caseStudy.constants.js';
-import { caseStudyHtmlClass } from '../constants/htmlClass.constants.js';
-import { foreignKeys }        from '../constants/foreignKey.constants.js';
-import PromptTextArea         from './promptTextArea.components.js'; 
-import PromptTitle            from './promptTitle.components.js'; 
+import React                   from 'react';
+import { caseStudy }           from '../constants/caseStudy.constants.js';
+import { caseStudyHtmlClass }  from '../constants/htmlClass.constants.js';
+import { foreignKeys }         from '../constants/foreignKey.constants.js';
+import PromptTextArea          from './promptTextArea.component.js'; 
+import PromptTitle             from './promptTitle.component.js'; 
+import PromptCheckboxGroup     from './promptCheckboxGroup.component.js';
+import PromptAdditionalPrompts from './promptAdditionalPrompts.component.js';
 
-class ObjectCaseStudyModule extends React.component
+export default class ObjectCaseStudyModule extends React.Component
 {
     constructor( props )
     {
@@ -13,73 +16,81 @@ class ObjectCaseStudyModule extends React.component
 
     render()
     {
-        const 
+      const  
         {
             state,
             visibility,
-            handleObjectModuleChange
+            additionalPrompts,
+            handleModuleChange
         } = this.props;
 
-        const constants = caseStudy.fieldPrompts.object;
-        const htmlClass = caseStudyHtmlClass.fieldPrompts;
+        const constants      = caseStudy.fieldPrompts.object;
+        const htmlClass      = caseStudyHtmlClass.fieldPrompts;
+        const htmlVisibility = caseStudyHtmlClass.visibility
+
+        // Add the prompt which is constant to this module
+        const prompts = [ ...additionalPrompts, caseStudy.additionalPrompts.fractography ];
 
         return (
-            `<div className="${ htmlClass.object }">
+            <div className={ htmlClass.object }>
 
                 <PromptTitle 
-                    title="${ constants.rating }" 
-                    visibility={ visibility.rating }>
+                    title={ constants.rating }
+                    visibility={ htmlVisibility[visibility.rating] }>
 
                     <PromptTextArea 
                         name="rating"
                         value={ state.rating }
-                        labelVisibility="${ htmlClass.visibility.off }"
-                        handleChange={ handleObjectModuleChange } />
+                        labelVisibility={ htmlVisibility.off }
+                        handleTextAreaChange={ handleModuleChange } />
                 </PromptTitle>
 
                 <PromptTitle  
-                    title="${ constants.inscription }" 
-                    visibility={ visibility.inscription }>
+                    title={ constants.inscription } 
+                    visibility={ htmlVisibility[visibility.inscription] }>
 
                     <PromptTextArea 
                         name="inscription"
                         value={ state.inscription }
-                        labelVisibility="${ htmlClass.visibility.off }"
-                        handleChange={ handleObjectModuleChange } />
+                        labelVisibility={ htmlVisibility.off }
+                        handleTextAreaChange={ handleModuleChange } />
                 </PromptTitle>
 
                 <PromptTitle  
-                    title="${ constants.serial_number }" 
-                    visibility={ visibility.serial_number }>
+                    title={ constants.serial_number }
+                    visibility={ htmlVisibility[visibility.serial_number] }>
 
                     <PromptTextArea 
                         name="serial_number"
                         value={ state.serial_number }
-                        labelVisibility="${ htmlClass.visibility.off }"
-                        handleChange={ handleObjectModuleChange } />
+                        labelVisibility={ htmlVisibility.off }
+                        handleTextAreaChange={ handleModuleChange } />
                 </PromptTitle>
 
                 <PromptTitle  
-                    title="${ constants.feature }" 
-                    visibility={ visibility.feature }>
+                    title={ constants.feature } 
+                    visibility={ htmlVisibility[visibility.feature] }>
 
                     <PromptCheckboxGroup
                         name="feature"
                         value={ state.feature }
-                        handleChange={ handleObjectModuleChange }
+                        handleCheckboxChange={ handleModuleChange }
                         foreignKeys={ foreignKeys.object.feature } />
 
                     <PromptTextArea 
                         name="feature_note"
                         value={ state.feature_note }
-                        labelVisibility="${ htmlClass.visibility.on }"
-                        handleChange={ handleObjectModuleChange } />
+                        labelVisibility={ htmlVisibility.on }
+                        handleTextAreaChange={ handleModuleChange } />
                 </PromptTitle>
 
-                <PromptTitle  
-                    title="${ caseStudy.additionalPrompts.fractography }" />
+                <PromptAdditionalPrompts
+                    name="object"
+                    value={ state.additionalPromptText }
+                    prompts={ prompts } 
+                    handleChange={ handleModuleChange }/>
 
-            </div>`
+            </div>
         )
     }
 
