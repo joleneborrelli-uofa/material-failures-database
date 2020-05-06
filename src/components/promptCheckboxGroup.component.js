@@ -1,6 +1,8 @@
+import React                  from 'react';
+import { createUniqueId }     from '../helpers.js';
 import { caseStudyHtmlClass } from '../constants/htmlClass.constants.js'; 
 
-class PromptCheckboxGroup extends React.component
+export default class PromptCheckboxGroup extends React.Component
 {
     constructor( props )
     {
@@ -11,35 +13,42 @@ class PromptCheckboxGroup extends React.component
     {
         const 
         {
-            key,
             value,
             name,
             foreignKeys,
-            handleChange
+            handleCheckboxChange
         } = this.props;
 
-        const htmlClass  = caseStudyHtmlClass.fieldPrompts;
-        const checkboxes = foreignKeys.forEach( option, index )
+        const htmlClass = caseStudyHtmlClass.fieldPrompts;
+
+        // foreignKeys is an array. Option is the value in the
+        // array, index is the index number of that value.
+        const checkboxes = foreignKeys.map( ( option, index ) =>
         {
-            const isChecked = value.get( option );
-            const key       = key || index;
+            let isChecked = value.get( option );
 
             return ( 
-                `<input
-                    type="checkbox"
-                    className="${ htmlClass.checkbox }"
-                    name={ name }
-                    value={ option }
-                    key={ key }
-                    checked={ isChecked }
-                    onChange={ handleChange } />`  
+                <div 
+                    key={ createUniqueId( index ) }
+                    className={ htmlClass.checkbox }>
+                    <label className={ htmlClass.optionLabel }>
+                        { option }
+                    </label>
+                    <input
+                        className={ htmlClass.checkboxInput }
+                        type="checkbox"
+                        name={ name }
+                        value={ option }
+                        checked={ isChecked }
+                        onChange={ handleCheckboxChange } /> 
+                </div>
             ) 
-        };
+        } );
 
         return (
-            `<div className="${ htmlClass.checkboxGroup }">
+            <div className={ htmlClass.checkboxGroup }>
                 { checkboxes }
-            </div>`
+            </div>
         );
     }
 
