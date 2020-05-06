@@ -1,11 +1,15 @@
-import { caseStudy }          from '../constants/caseStudy.constants.js';
-import { caseStudyHtmlClass } from '../constants/htmlClass.constants.js';
-import { foreignKeys }        from '../constants/foreignKey.constants.js';
-import PromptTextArea         from './promptTextArea.components.js'; 
-import PromptTitle            from './promptTitle.components.js'; 
-import PromptRadioGroup       from './PromptRadioGroup.components.js';
+import React                      from 'react';
+import { groupedComponents }      from '../constants/groupedComponent.constants.js';
+import { caseStudy }              from '../constants/caseStudy.constants.js';
+import { caseStudyHtmlClass }     from '../constants/htmlClass.constants.js';
+import { foreignKeys }            from '../constants/foreignKey.constants.js';
+import PromptTextArea             from './promptTextArea.component.js'; 
+import PromptTitle                from './promptTitle.component.js'; 
+import PromptRadioGroup           from './promptRadioGroup.component.js';
+import PromptPairedRadioGroupList from './promptPairedRadioGroupList.component.js';
+import PromptAdditionalPrompts    from './promptAdditionalPrompts.component.js';
 
-class MaterialCaseStudyModule extends React.component
+export default class MaterialCaseStudyModule extends React.Component
 {
     constructor( props )
     {
@@ -18,110 +22,125 @@ class MaterialCaseStudyModule extends React.component
         {
             state,
             visibility,
-            handleMaterialModuleChange
+            additionalPrompts,
+            handleModuleChange
         } = this.props;
 
-        const constants = caseStudy.fieldPrompts.material;
-        const htmlClass = caseStudyHtmlClass.fieldPrompts;
+        const constants      = caseStudy.fieldPrompts.material;
+        const htmlClass      = caseStudyHtmlClass.fieldPrompts;
+        const htmlVisibility = caseStudyHtmlClass.visibility;
 
         return (
-            `<div className="${ htmlClass.material }">
+            <div className={ htmlClass.material }>
 
                 <PromptTitle 
-                    title="${ constants.name }" 
-                    visibility={ visibility.name }>
+                    title={ constants.name }
+                    visibility={ htmlVisibility[visibility.name] }>
 
                     <PromptTextArea 
                         name="name"
                         value={ state.name }
-                        labelVisibility="${ htmlClass.visibility.off }"
-                        handleChange={ handleMaterialModuleChange } />
+                        labelVisibility={ htmlVisibility.off }
+                        handleTextAreaChange={ handleModuleChange } />
                 </PromptTitle>
 
                 <PromptTitle 
-                    title="${ constants.class }" 
-                    visibility={ visibility['class'] }>
+                    title={ constants.class }
+                    visibility={ htmlVisibility[visibility['class']] }>
 
                     <PromptPairedRadioGroupList
-                        key="class"
+                        statekey="class"
+                        buttonName="class_button"
                         pairedRadioGroup={ state['class'] }
                         pairedData={ groupedComponents['class'] }
-                        handleChange={ handleMaterialModuleChange } />
+                        handleChange={ handleModuleChange } />
 
                     <PromptTextArea 
                         name="class_note"
                         value={ state.class_note }
-                        labelVisibility="${ htmlClass.visibility.on }"
-                        handleChange={ handleMaterialModuleChange } />
+                        labelVisibility={ htmlVisibility.on }
+                        handleTextAreaChange={ handleModuleChange } />
                 </PromptTitle>
 
                 <PromptTitle  
-                    title="${ constants.crystallinity }" 
-                    visibility={ visibility.crystallinity }>
+                    title={ constants.crystallinity }
+                    visibility={ htmlVisibility[visibility.crystallinity] }>
 
-                    <PromptTextArea 
+                    <PromptRadioGroup
                         name="crystallinity"
                         value={ state.crystallinity }
-                        labelVisibility="${ htmlClass.visibility.off }"
-                        handleChange={ handleMaterialModuleChange } />
+                        foreignKeys={ foreignKeys.material.crystallinity }
+                        handleRadioGroupChange={ handleModuleChange } />
+
+                    <PromptTextArea 
+                        name="crystallinity_note"
+                        value={ state.crystallinity_note }
+                        labelVisibility={ htmlVisibility.off }
+                        handleTextAreaChange={ handleModuleChange } />
                 </PromptTitle>
 
                 <PromptTitle  
-                    title="${ constants.alloy_designation }" 
-                    visibility={ visibility.alloy_designation }>
+                    title={ constants.alloy_designation }
+                    visibility={ htmlVisibility[visibility.alloy_designation] }>
 
                     <PromptTextArea 
                         name="alloy_designation"
                         value={ state.alloy_designation }
-                        labelVisibility="${ htmlClass.visibility.off }"
-                        handleChange={ handleMaterialModuleChange } />
+                        labelVisibility={ htmlVisibility.off }
+                        handleTextAreaChange={ handleModuleChange } />
                 </PromptTitle>
 
                 <PromptTitle  
-                    title="${ constants.grade }" 
-                    visibility={ visibility.grade }>
+                    title={ constants.grade } 
+                    visibility={ htmlVisibility[visibility.grade] }>
 
                     <PromptTextArea 
                         name="grade"
                         value={ state.grade }
-                        labelVisibility="${ htmlClass.visibility.off }"
-                        handleChange={ handleMaterialModuleChange } />
+                        labelVisibility={ htmlVisibility.off }
+                        handleTextAreaChange={ handleModuleChange } />
                 </PromptTitle>
 
                 <PromptTitle  
-                    title="${ constants.recyclability }" 
-                    visibility={ visibility.recyclability }>
+                    title={ constants.recyclability }
+                    visibility={ htmlVisibility[visibility.recyclability] }>
 
                     <PromptTextArea 
                         name="recyclability"
                         value={ state.recyclability }
-                        labelVisibility="${ htmlClass.visibility.off }"
-                        handleChange={ handleMaterialModuleChange } />
+                        labelVisibility={ htmlVisibility.off }
+                        handleTextAreaChange={ handleModuleChange } />
                 </PromptTitle>
 
                 <PromptTitle  
-                    title="${ constants.biodegradability }" 
-                    visibility={ visibility.biodegradability }>
+                    title={ constants.biodegradability }
+                    visibility={ htmlVisibility[visibility.biodegradability] }>
 
                     <PromptTextArea 
                         name="biodegradability"
                         value={ state.biodegradability }
-                        labelVisibility="${ htmlClass.visibility.off }"
-                        handleChange={ handleMaterialModuleChange } />
+                        labelVisibility={ htmlVisibility.off }
+                        handleTextAreaChange={ handleModuleChange } />
                 </PromptTitle>
 
                 <PromptTitle  
-                    title="${ constants.toxicity }" 
-                    visibility={ visibility.toxicity }>
+                    title={ constants.toxicity }
+                    visibility={ htmlVisibility[visibility.toxicity] }>
 
                     <PromptTextArea 
                         name="toxicity"
                         value={ state.toxicity }
-                        labelVisibility="${ htmlClass.visibility.off }"
-                        handleChange={ handleMaterialModuleChange } />
+                        labelVisibility={ htmlVisibility.off }
+                        handleTextAreaChange={ handleModuleChange } />
                 </PromptTitle>
 
-            </div>`
+                <PromptAdditionalPrompts
+                    name="material"
+                    value={ state.additionalPromptText }
+                    prompts={ additionalPrompts } 
+                    handleChange={ handleModuleChange }/>
+
+            </div>
         )
     }
 
