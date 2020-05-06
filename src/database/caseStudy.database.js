@@ -1,4 +1,4 @@
-export const database =
+export const caseStudyDatabase =
 {
 
     "object" :
@@ -39,7 +39,7 @@ export const database =
 
 };
 
-export const visiblility =
+export const visibility =
 {
     object :
     {
@@ -59,10 +59,10 @@ export const visiblility =
         recyclability     : 'on',
         biodegradability  : 'off',
         toxicity          : 'off'
-    }
+    },
 
     processing :
-    [
+    {
         machining       : 'off',
         joining         : 'off',
         manufacturer    : 'off',
@@ -72,10 +72,10 @@ export const visiblility =
         treatment       : 'on',
         shaping         : 'on',
         residual_stress : 'on'
-    ],
+    },
 
     environment :
-    [
+    {
         light_exposure      : 'off',
         ambient             : 'off',
         loading             : 'on',
@@ -83,10 +83,10 @@ export const visiblility =
         storage_location    : 'off',
         geographic_location : 'off',
         stress_orientation  : 'off'
-    ],
+    },
 
     use :
-    [
+    {
         specification           : 'off',
         record                  : 'off',
         operation               : 'off',
@@ -96,5 +96,5 @@ export const visiblility =
         failure_time            : 'off',
         failure_operation_stage : 'off',           
         operator                : 'off'
-    ]
+    }
 };
