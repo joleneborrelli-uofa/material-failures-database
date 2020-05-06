@@ -32,7 +32,6 @@ export const groupedComponents =
             name        : 'shaping',
             foreignKeys : foreignKeys.processing.shaping
         },
-        secondGroup :
         {
             name        : 'shaping_subtype',
             foreignKeys : foreignKeys.processing.shaping_subtype
@@ -45,7 +44,6 @@ export const groupedComponents =
             name        : 'residual_stress',
             foreignKeys : foreignKeys.processing.residual_stress
         },
-        secondRadioGroup :
         {
             name        : 'residual_stress_force',
             foreignKeys : foreignKeys.processing.residual_stress_force

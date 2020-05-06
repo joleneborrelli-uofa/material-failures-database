@@ -1,9 +1,13 @@
 // Case Study Constants
 
 export const caseStudy =
-{
-    button : 'Add',
-    note   : 'Notes',
+{  
+    add      : 'Add',
+    next     : 'Next',
+    prev     : 'Prev',
+    note     : 'Notes',
+    download : 'Download',
+    pages  : [ 'landing', 'photo', 'background', 'prompt' ],
 
     landing :
     {

@@ -2,6 +2,7 @@
 
 export const recordHtmlClass = 
 {
+    record          : 'fa-record',
     title           : 'fa-title',
     module          : 'fa-module',
     submodule       : 'fa-submodule',
@@ -14,7 +15,27 @@ export const recordHtmlClass =
 
 export const caseStudyHtmlClass =
 {
-    landing :
+    caseStudy  : 'fa-case-study',
+    download   : 
+    {
+        wrapper : 'fa-download-wrapper',
+        button  : 'fa-download-button'
+    },
+
+    visibility : 
+    {
+        on  : 'fa-visibility-on',
+        off : 'fa-visibility-off'
+    },
+
+    pagination : 
+    {
+        page : 'fa-pagination',
+        next : 'fa-pagination-next',
+        prev : 'fa-pagination-prev',
+    },
+
+    landing   :
     {
         page       : 'fa-landing-page',
         title      : 'fa-landing-title',
@@ -24,15 +45,15 @@ export const caseStudyHtmlClass =
         logo       : 'fa-landing-logo'
     },
 
-    photographicEvidence : 
+    photoEvidence : 
     {
         page  : 'fa-landing-photo-evidence-page',
         title : 'fa-landing-photo-evidence-title'
     },
 
-    backgroundResearchTitle :
+    backgroundResearch :
     {
-        page  : 'fa-landing-background-research-page'
+        page  : 'fa-landing-background-research-page',
         title : 'fa-landing-background-research-title'  
     },
 
@@ -40,7 +61,7 @@ export const caseStudyHtmlClass =
 
     fieldPrompts :
     {
-        caseStudy        : 'fa-prompt-case-study',
+        page             : 'fa-prompt-case-study',
         object           : 'fa-prompt-object',
         material         : 'fa-prompt-material',
         processing       : 'fa-prompt-processing',
@@ -50,16 +71,15 @@ export const caseStudyHtmlClass =
         title            : 'fa-prompt-title',
         textarea         : 'fa-prompt-textarea',
         note             : 'fa-prompt-note',
-        radioButton      : 'fa-prompt-radio-button',
+        optionLabel      : 'fa-prompt-option-label',
+        radio            : 'fa-prompt-radio-button',
+        radioInput       : 'fa-prompt-radio-input',
         radioGroup       : 'fa-prompt-radio-group',
         pairedRadioGroup : 'fa-prompt-paired-radio-group',
         checkbox         : 'fa-prompt-checkbox',
-        checkboxGroup    : 'fa-prompt-checkbox-group'
-        visibility       : 
-        {
-            on  : 'fa-prompt-visibility-on',
-            off : 'fa-prompt-visibility-off'
-        }
+        checkboxInput    : 'fa-prompt-checkbox-input',
+        checkboxGroup    : 'fa-prompt-checkbox-group',
+        additionalPrompt : 'fa-prompt-additional-prompt'
     }
 
 };

@@ -1,84 +1,50 @@
 export const optionChanges = 
 {
-    object :
-    {
-        checkbox :
-        [
-            'feature'
-        ]
-    },
+    checkbox :
+    [
+        'feature',
+        'machining', 
+        'joining',
+        'light_exposure',
+        'ambient',
+        'weather_exposure',
+        'storage_location',
+        'specification',
+        'record',
+        'operation',
+        'operational_factor'
+    ],
 
-    material :
-    {
-        radio :
-        [
-            'class', 
-            'class_subtype'
-        ],
+    radio :
+    [
+        'class', 
+        'class_subtype',
+        'treatment', 
+        'treatment_subtype', 
+        'shaping',
+        'shaping_subtype',
+        'residual_stress',
+        'residual_stress_force',
+        'loading',
+        'loading_frequency'
+    ],
 
-        button :
-        [
-            'class'
-        ]
-    },
+    button :
+    [
+        'class_button',
+        'treatment_button',
+        'shaping_button',
+        'residual_stress_button',
+        'loading_button'
+    ],
 
-    processing :
-    {
-        checkbox:
-        [
-            'machining', 
-            'joining'
-        ],
-
-        radio :
-        [
-            'treatment', 
-            'treatment_subtype', 
-            'shaping',
-            'shaping_subtype',
-            'residual_stress',
-            'residual_stress_force'
-        ],
-
-        button :
-        [
-            'treatment',
-            'shaping',
-            'residual_stress'
-        ]
-    },
-
-    environment :
-    {
-        checkbox :
-        [
-            'light_exposure',
-            'ambient',
-            'weather_exposure',
-            'storage_location'
-        ],
-
-        radio :
-        [
-            'loading',
-            'loading_frequency'
-        ],
-
-        button :
-        [
-            'loading'
-        ]
-    },
-
-    use :
-    {
-        checkbox :
-        [
-            'specification',
-            'record',
-            'operation',
-            'operational_factor'
-        ]
-    }
+    module :
+    [
+        'object',
+        'material',
+        'environment',
+        'processing',
+        'use'
+    ]
 
 };

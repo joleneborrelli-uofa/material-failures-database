@@ -22,7 +22,7 @@ export const foreignKeys =
             'Glasses and ceramics', 
             'Polymers',
             'Composites',
-            'Natural materials'
+            'Natural materials',
             'Other' 
         ],
 
