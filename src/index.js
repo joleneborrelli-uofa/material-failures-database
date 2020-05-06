@@ -1,30 +1,48 @@
-import { displayHeaders, unknownObject } from './constants/webDisplay.constants.js';
-import { generateRecordHtml }            from './templates/record.js';
-import { generateCaseStudyHtml }         from './templates/caseStudy.js';
+import React           from 'react';
+import ReactDOM        from 'react-dom';
+import CaseStudyModule from './components/caseStudyModule.component.js';
+import RecordModule    from './components/recordModule.component.js';
+
+// CSS
+import '../css/main.css';
 
 // Will eventually be a singular database response
-import { recordDatabase }    from '../database/record.js';
-import { caseStudyDatabase } from '../database/caseStudy.js';
+import { recordDatabase }                from './database/record.database.js';
+import { caseStudyDatabase, visibility } from './database/caseStudy.database.js';
 
 /**
-	@function createHtml
-
-	@arg type : { String } 
-	@return   : { String }
-*/
-const createHtml = ( type ) =>
+ * Renders the record or case study modules
+ *
+ * @param  { String } type type of module to render
+ * @return { React Component || Boolean } 
+ */
+const renderHtml = ( type ) =>
 {
-	const child = document.createElement( 'div' );
+    let element;
 
-	if( type !== 'caseStudy' || type !== 'record' ) type = 'record';
+    const wrapper = document.getElementById( 'container' );
 
-	if ( type === 'caseStudy' ) innerHtml = generateCaseStudyHtml( caseStudyDatabase );
-	if ( type === 'record' )    innerHtml = generateRecordHtml( recordDatabase );
+    if( type !== 'caseStudy' && type !== 'record' ) type = 'record';
 
-	child.innerHTML = innerHtml;
+    if( wrapper )
+    {
+        if( type === 'caseStudy' )
+        {
+            element = <CaseStudyModule 
+                            database={ caseStudyDatabase }
+                            visibility={ visibility } />;
+        }
 
-	return child;
+        if( type === 'record' )
+        {
+            element = <RecordModule 
+                            database={ recordDatabase } />;
+        }
+
+        return ReactDOM.render( element, wrapper );
+    }
+
+    return false;
 };
 
-// Initiate failure record
-document.body.appendChild( createHtml() );
+renderHtml( 'caseStudy' );
