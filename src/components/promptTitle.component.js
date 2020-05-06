@@ -1,6 +1,7 @@
-import { caseStudyHtmlClass } from '../constants/caseStudy.constants.js';
+import React                  from 'react';
+import { caseStudyHtmlClass } from '../constants/htmlClass.constants.js';
 
-class PromptTitle extends React.component
+export default class PromptTitle extends React.Component
 {
     constructor( props )
     {
@@ -16,15 +17,16 @@ class PromptTitle extends React.component
             visibility
         } = this.props;
         
-        const htmlClass = caseStudyHtmlClass.fieldPrompts;
+        const htmlClass  = caseStudyHtmlClass.fieldPrompts;
+        const labelClass = `${ htmlClass.module } ${ visibility }`;
 
         return (
-            `<div className="${ htmlClass.module } ${ visibility }">
-                <p className="${ htmlClass.title }">
+            <div className={ labelClass }>
+                <p className={ htmlClass.title }>
                     { title }
                 </p>
                 { children }
-            </div>`
+            </div>
         );
     }
 };
