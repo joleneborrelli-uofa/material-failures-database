@@ -37,6 +37,7 @@ export const caseStudyHtmlClass =
 
     landing   :
     {
+        wrapper    : 'fa-landing-wrapper',
         page       : 'fa-landing-page',
         title      : 'fa-landing-title',
         caseTitle  : 'fa-landing-case-title',
@@ -47,21 +48,25 @@ export const caseStudyHtmlClass =
 
     photoEvidence : 
     {
-        page  : 'fa-photo-evidence-page',
-        title : 'fa-photo-evidence-title'
+        wrapper : 'fa-photo-evidence-wrapper',
+        page    : 'fa-photo-evidence-page',
+        title   : 'fa-photo-evidence-title'
     },
 
     backgroundResearch :
     {
-        page  : 'fa-background-research-page',
-        title : 'fa-background-research-title'  
+        wrapper : 'fa-background-research-wrapper',
+        page    : 'fa-background-research-page',
+        title   : 'fa-background-research-title'  
     },
 
     promptsTitle : 'fa-prompts-title',
 
     fieldPrompts :
     {
-        page             : 'fa-prompt-case-study',
+        wrapper          : 'fa-prompt-wrapper',
+        page             : 'fa-prompt-page',
+        header           : 'fa-prompt-header',
         object           : 'fa-prompt-object',
         material         : 'fa-prompt-material',
         processing       : 'fa-prompt-processing',
