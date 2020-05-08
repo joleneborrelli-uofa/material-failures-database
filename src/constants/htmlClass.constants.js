@@ -47,14 +47,14 @@ export const caseStudyHtmlClass =
 
     photoEvidence : 
     {
-        page  : 'fa-landing-photo-evidence-page',
-        title : 'fa-landing-photo-evidence-title'
+        page  : 'fa-photo-evidence-page',
+        title : 'fa-photo-evidence-title'
     },
 
     backgroundResearch :
     {
-        page  : 'fa-landing-background-research-page',
-        title : 'fa-landing-background-research-title'  
+        page  : 'fa-background-research-page',
+        title : 'fa-background-research-title'  
     },
 
     promptsTitle : 'fa-prompts-title',

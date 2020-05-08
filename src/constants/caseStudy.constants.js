@@ -13,11 +13,11 @@ export const caseStudy =
     {
         title      : 'You\'ve been assigned the following case',
         caseTitle  : ( title ) => `The ${ title } Files`,
-        caseNumber : ( objectId ) => `Case # : ${ objectId }`,
-        status     : 'Status :'
+        caseNumber : ( objectId ) => `Case #: ${ objectId }`,
+        status     : 'Status:'
     },
 
-    photoEvidenceTitle      : `A failure occurs! On ${ new Date() }, you arrive at the scene with your handy field investigation kit and take out your camera. This is the visual evidence you collect.`,
+    photoEvidenceTitle      : `A failure occurs! On ${ new Date() }, you arrive at the scene with your handy field investigation kit and take out your camera. <br> <br> This is the visual evidence you collect.`,
 
     backgroundResearchTitle : `You head back to the office. You access literature, go online, make phone calls and write emails in order to collect background research on the case. This is the data you find.`,
 
