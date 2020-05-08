@@ -1,6 +1,7 @@
 *
 {
 	font-family : "helvetica neue";
+    font-weight : normal;
 }
 
 #uv
@@ -82,4 +83,59 @@
 .fa-visibility-off
 {
     display: none;
+}
+
+/* Pagination */
+
+.fa-pagination-prev, .fa-pagination-next
+{
+    width:  8em;
+    height: 3em;
+    margin-left: 150px;
+}
+
+.fa-pagination-prev
+{
+    margin-bottom: 20px;
+}
+
+/* Pages */
+
+.fa-case-study
+{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+}
+
+.fa-landing-title
+{
+    margin-bottom: 5em;
+    text-align: center;
+}
+
+.fa-landing-case-title, .fa-landing-case-number, .fa-landing-status
+{
+    border-bottom: 1px solid black;
+    height: 2em;
+}
+
+.fa-landing-status:after
+{
+    display: block;
+    content: "";
+/*    width: 20px;
+    height: 20px;*/
+    /* background: transparent url( 'unsolved.png' ) no-repeat; */
+}
+
+.fa-landing-page, .fa-photo-evidence-page
+{
+}
+
+.fa-pagination
+{
+    height: 50px;
+    width: 400px;
 }
