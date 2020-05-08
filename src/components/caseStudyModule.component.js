@@ -86,7 +86,6 @@ export default class CaseStudyModule extends React.Component
         const nextButtonClass = `${ htmlClass.pagination.next } ${ this.state.nextVisibility }`;
 
         return (
-            <div>
                 <div className={ htmlClass.caseStudy }>
 
                     <div className={ pageVisibility[0] }>
@@ -109,25 +108,23 @@ export default class CaseStudyModule extends React.Component
                             visibility={ visibility } />
                     </div>
 
+                    <div className={ htmlClass.pagination.page }>
+                        <button
+                            type="button"
+                            className={ prevButtonClass }
+                            value="prev"
+                            onClick={ this.setCurrentPage }>
+                            { caseStudy.prev }
+                        </button>
+                        <button
+                            type="button"
+                            className={ nextButtonClass }
+                            value="next"
+                            onClick={ this.setCurrentPage }>
+                            { caseStudy.next }
+                        </button>
+                    </div>
                 </div>
-
-                <div className={ htmlClass.pagination.page }>
-                    <button
-                        type="button"
-                        className={ prevButtonClass }
-                        value="prev"
-                        onClick={ this.setCurrentPage }>
-                        { caseStudy.prev }
-                    </button>
-                    <button
-                        type="button"
-                        className={ nextButtonClass }
-                        value="next"
-                        onClick={ this.setCurrentPage }>
-                        { caseStudy.next }
-                    </button>
-                </div>
-            </div>
         )
     }
 };
