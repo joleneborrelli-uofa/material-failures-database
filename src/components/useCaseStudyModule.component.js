@@ -3,6 +3,7 @@ import { groupedComponents }   from '../constants/groupedComponent.constants.js'
 import { caseStudy }           from '../constants/caseStudy.constants.js';
 import { caseStudyHtmlClass }  from '../constants/htmlClass.constants.js';
 import { foreignKeys }         from '../constants/foreignKey.constants.js';
+import { headers }             from '../constants/webDisplay.constants.js';
 import PromptTextArea          from './promptTextArea.component.js'; 
 import PromptTitle             from './promptTitle.component.js'; 
 import PromptCheckboxGroup     from './promptCheckboxGroup.component.js';
@@ -31,6 +32,10 @@ export default class UseCaseStudyModule extends React.Component
 
         return (
             <div className={ htmlClass.use }>
+
+                <div className={ htmlClass.header }>
+                    { headers.use }
+                </div>
 
                 <PromptTitle 
                     title={ constants.specification } 

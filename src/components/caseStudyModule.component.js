@@ -82,27 +82,32 @@ export default class CaseStudyModule extends React.Component
             return currentPage === index ? htmlClass.visibility.on : htmlClass.visibility.off;
         } );
 
+        const landingClass    = `${ pageVisibility[0] } ${ htmlClass.landing.wrapper }`;
+        const photoClass      = `${ pageVisibility[1] } ${ htmlClass.photoEvidence.wrapper }`;
+        const backgroundClass = `${ pageVisibility[2] } ${ htmlClass.backgroundResearch.wrapper }`;
+        const promptClass     = `${ pageVisibility[3] } ${ htmlClass.fieldPrompts.wrapper }`;
         const prevButtonClass = `${ htmlClass.pagination.prev } ${ this.state.prevVisibility }`;
         const nextButtonClass = `${ htmlClass.pagination.next } ${ this.state.nextVisibility }`;
+
 
         return (
                 <div className={ htmlClass.caseStudy }>
 
-                    <div className={ pageVisibility[0] }>
+                    <div className={ landingClass }>
                         <LandingCaseStudyModule 
                             title={ title }
                             caseNumber={ caseNumber } />
                     </div>
 
-                    <div className={ pageVisibility[1] }>
+                    <div className={ photoClass }>
                         <PhotoEvidenceCaseStudyModule />
                     </div>
 
-                    <div className={ pageVisibility[2] }>
+                    <div className={ backgroundClass }>
                         <BackgroundEvidenceCaseStudyModule database={ database } />
                     </div>
 
-                    <div className={ pageVisibility[3] }>
+                    <div className={ promptClass }>
                         <PromptCaseStudyModule 
                             additionalPrompts={ additionalPrompts }
                             visibility={ visibility } />
