@@ -31,7 +31,9 @@ export default class PromptPairedRadioGroupList extends React.Component
         pairedRadioGroup.forEach( ( group, mapkey ) =>
         {
             radioGroups.push( 
-                <div key={ createUniqueId( mapkey ) }>
+                <div
+                    className={ htmlClass.pairedRadioGroup } 
+                    key={ createUniqueId( mapkey ) }>
                     <PromptRadioGroup
                         mapkey={ mapkey }
                         statekey={ statekey }
@@ -51,7 +53,7 @@ export default class PromptPairedRadioGroupList extends React.Component
         } );
 
         return (
-            <div className={ htmlClass.pairedRadioGroup }>
+            <div>
                 { radioGroups }
                 <button
                     className={ htmlClass.button }
