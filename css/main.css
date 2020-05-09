@@ -99,7 +99,7 @@
     margin: auto;
 }
 
-.fa-pagination-prev, .fa-download-button
+.fa-pagination-prev, .fa-download-button, .fa-prompt-button
 {
     margin-bottom: 20px;
 }
@@ -165,3 +165,45 @@
     border-bottom: 1px solid black;
 }
 
+.fa-prompt-module
+{
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+}
+
+.fa-prompt-object, .fa-prompt-processing, .fa-prompt-environment, .fa-prompt-material, .fa-prompt-use
+{
+    border: 1px solid black;
+    padding: 20px;
+    margin-bottom: 1em;
+}
+
+.fa-prompt-title
+{
+    font-style: italic;
+}
+
+.fa-prompt-checkbox-group
+{
+    margin-bottom: 1em;
+}
+
+.fa-prompt-checkbox
+{
+    display: inline-block;
+    margin-right: 1em
+}
+
+.fa-paired-radio-group
+{
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    margin-bottom: 1em;
+}
+
+.fa-prompt-radio-group
+{
+    border-bottom: 1px solid black;
+    padding: 10px;
+}
