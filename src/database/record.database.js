@@ -15,7 +15,7 @@ export const database =
 
     "material" :
     {
-        "name"             : "Melamine formaldehyde",
+        "handle"           : "Melamine formaldehyde",
         "class"            : [
                                 {
                                     "class_type"    : "Polymer",
