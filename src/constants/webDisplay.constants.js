@@ -20,7 +20,7 @@ export const lines =
     alloy_designation   : 'Alloy Designation',
     type                : 'Type',
     grade               : 'Grade',
-    name                : 'Name',
+    full_name           : 'Full Name',
     'class'             : 'Class',
     crystallinity       : 'Crystallinity',
     biodegradibility    : 'Biodegradibility',

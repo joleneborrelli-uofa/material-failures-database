@@ -73,6 +73,7 @@ export const caseStudyHtmlClass =
         environment      : 'fa-prompt-environment',
         use              : 'fa-prompt-use',
         module           : 'fa-prompt-module',
+        button           : 'fa-prompt-button',
         title            : 'fa-prompt-title',
         textarea         : 'fa-prompt-textarea',
         note             : 'fa-prompt-note',

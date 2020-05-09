@@ -17,9 +17,11 @@ export const caseStudy =
         status     : 'Status:'
     },
 
-    photoEvidenceTitle      : `A failure occurs! On ${ new Date() }, you arrive at the scene with your handy field investigation kit and take out your camera. <br> <br> This is the visual evidence you collect.`,
+    photoEvidenceTitle      : `A failure occurs! On ${ new Date() }, you arrive at the scene with your handy field investigation kit and take out your camera.`,
+    photoEvidenceSubtitle   : `This is the visual evidence you collect.`,
 
-    backgroundResearchTitle : `You head back to the office. You access literature, go online, make phone calls and write emails in order to collect background research on the case. This is the data you find.`,
+    backgroundResearchTitle    : `You head back to the office. To collect background research, you access literature, go online, make phone calls and write emails.`,
+    backgroundResearchSubtitle : `This is the data you find.`,
 
     promptsTitle            : 'The photos...the background research...How does it all add up? You put on your detective\'s cap and get to work.', 
 
