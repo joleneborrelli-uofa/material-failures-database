@@ -54,6 +54,7 @@ export default class PromptPairedRadioGroupList extends React.Component
             <div className={ htmlClass.pairedRadioGroup }>
                 { radioGroups }
                 <button
+                    className={ htmlClass.button }
                     type="button" 
                     name={ buttonName }
                     statekey={ statekey }

@@ -19,9 +19,14 @@ export default class BackgroundEvidenceCaseStudyModule extends React.Component
 
 	return (
 		    <div className={ htmlClass.page }>
-				<h3 className={ htmlClass.title }>
-					{ caseStudy.backgroundResearchTitle }
-				</h3>
+                <div className={ htmlClass.title }>
+                    <h3>
+                        { caseStudy.backgroundResearchTitle }
+                    </h3>
+                    <h3>
+                        { caseStudy.backgroundResearchSubtitle }
+                    </h3>
+                </div>
 				<RecordModule database={ database } />
 			</div>
 		)

@@ -15,9 +15,14 @@ export default class PhotoEvidenceCaseStudyModule extends React.Component
 
     return (
         <div className={ htmlClass.page }>
-            <h3 className={ htmlClass.title }>
-                { caseStudy.photoEvidenceTitle }
-            </h3> 
+            <div className={ htmlClass.title }>
+                <h3>
+                    { caseStudy.photoEvidenceTitle }
+                </h3>
+                <h3>
+                    { caseStudy.photoEvidenceSubtitle }
+                </h3> 
+            </div>
         </div>
         )
     }
