@@ -87,26 +87,24 @@
 
 /* Pagination */
 
-.fa-pagination-prev, .fa-pagination-next
+.fa-pagination
+{
+    margin: auto;
+}
+
+.fa-pagination-prev, .fa-pagination-next, .fa-download-button, .fa-prompt-button
 {
     width:  8em;
     height: 3em;
-    margin-left: 150px;
+    margin: auto;
 }
 
-.fa-pagination-prev
+.fa-pagination-prev, .fa-download-button
 {
     margin-bottom: 20px;
 }
 
 /* Pages */
-
-.fa-case-study
-{
-    display: table;
-    width: 100%;
-    height: 100%;
-}
 
 .fa-landing-title
 {
@@ -124,15 +122,22 @@
 {
     display: block;
     content: "";
-/*    width: 20px;
-    height: 20px;*/
-    /* background: transparent url( 'unsolved.png' ) no-repeat; */
+    width: 20px;
+    height: 20px;
+/*    background: transparent url( './unsolved.png' ) no-repeat; */
 }
 
 .fa-pagination
 {
     height: 50px;
     width: 400px;
+}
+
+.fa-case-study
+{
+    display: table;
+    width: 100%;
+    height: 80%;
 }
 
 .fa-landing-wrapper, .fa-photo-evidence-wrapper, .fa-background-research-wrapper, .fa-prompt-wrapper
@@ -146,4 +151,17 @@
 {
     display: inline-block;
     text-align: left;
+    width: 40em;
 }
+
+.fa-record
+{
+    width: 100%;
+    border-top: 1px solid black;
+}
+
+.fa-photo-evidence-title
+{
+    border-bottom: 1px solid black;
+}
+
