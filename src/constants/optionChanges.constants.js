@@ -26,7 +26,7 @@ export const optionChanges =
         'residual_stress',
         'residual_stress_force',
         'loading',
-        'loading_frequency'
+        'loading_normalcy'
     ],
 
     button :

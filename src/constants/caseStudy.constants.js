@@ -37,7 +37,7 @@ export const caseStudy =
 
         material :
         {
-            name              : 'What is the object made of?',
+            full_name         : 'What is the object made of?',
             crystallinity     : 'What kind of crystal structure does the material have?',
             'class'           : 'What material familiy does it belong to?',
             recyclability     : 'Is the object recyclable? Does the recyclability tell you something about the material?',
