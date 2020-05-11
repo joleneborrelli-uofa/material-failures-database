@@ -39,12 +39,12 @@ export default class MaterialCaseStudyModule extends React.Component
                 </div>
 
                 <PromptTitle 
-                    title={ constants.name }
-                    visibility={ htmlVisibility[visibility.name] }>
+                    title={ constants.full_name }
+                    visibility={ htmlVisibility[visibility.full_name] }>
 
                     <PromptTextArea 
-                        name="name"
-                        value={ state.name }
+                        name="full_name"
+                        value={ state.full_name }
                         labelVisibility={ htmlVisibility.off }
                         handleTextAreaChange={ handleModuleChange } />
                 </PromptTitle>
@@ -80,7 +80,7 @@ export default class MaterialCaseStudyModule extends React.Component
                     <PromptTextArea 
                         name="crystallinity_note"
                         value={ state.crystallinity_note }
-                        labelVisibility={ htmlVisibility.off }
+                        labelVisibility={ htmlVisibility.on }
                         handleTextAreaChange={ handleModuleChange } />
                 </PromptTitle>
 
