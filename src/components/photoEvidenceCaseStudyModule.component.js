@@ -23,6 +23,12 @@ export default class PhotoEvidenceCaseStudyModule extends React.Component
                     { caseStudy.photoEvidenceSubtitle }
                 </h3> 
             </div>
+            <div 
+                className="uv" 
+                data-config="/config.json"
+                data-no-load="true"
+                data-uri="http://wellcomelibrary.org/iiif/b18035723/manifest">
+            </div>
         </div>
         )
     }
