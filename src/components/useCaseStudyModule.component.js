@@ -99,8 +99,8 @@ export default class UseCaseStudyModule extends React.Component
                         foreignKeys={ foreignKeys.use.operational_factor } />
 
                     <PromptTextArea 
-                        name="operation_factor_note"
-                        value={ state.storage_location_note }
+                        name="operational_factor_note"
+                        value={ state.operational_factor_note }
                         labelVisibility={ htmlVisibility.on }
                         handleTextAreaChange={ handleModuleChange } />
                 </PromptTitle>
