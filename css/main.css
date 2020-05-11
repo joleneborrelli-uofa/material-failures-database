@@ -29,7 +29,7 @@
     padding: 15px 40px 15px 40px;
 }
 
-.fa-module-header
+.fa-module-header, .fa-prompt-header
 {
     margin-block-start : 0;
     margin-block-end   : 0;
@@ -61,7 +61,7 @@
     padding-left : 15px;
 }
 
-.fa-ul-lines  > li:before 
+.fa-ul-lines > li:before 
 {
 	content     : "- ";
 	text-indent : 5px;
@@ -99,7 +99,7 @@
     margin: auto;
 }
 
-.fa-pagination-prev, .fa-download-button, .fa-prompt-button
+.fa-pagination-next, .fa-download-button, .fa-prompt-button
 {
     margin-bottom: 20px;
 }
@@ -122,9 +122,23 @@
 {
     display: block;
     content: "";
-    width: 20px;
-    height: 20px;
-/*    background: transparent url( './unsolved.png' ) no-repeat; */
+    background: transparent url( './unsolved.png' ) no-repeat; 
+    width: 200px;
+    height: 105px;
+    margin-top: -54px;
+    margin-left: 60px;
+}
+
+.fa-landing-logo
+{
+    display: block;
+    content: "";
+    background: transparent url( './globe.png' ) no-repeat; 
+    width: 300px;
+    height: 140px;
+    margin-top: -70px;
+    margin-left: 178px;
+    margin-bottom: 30px;
 }
 
 .fa-pagination
@@ -167,15 +181,16 @@
 
 .fa-prompt-module
 {
-    border-bottom: 1px solid black;
-    padding-bottom: 10px;
+    border-top: 1px solid black;
+    padding: 20px;
 }
 
 .fa-prompt-object, .fa-prompt-processing, .fa-prompt-environment, .fa-prompt-material, .fa-prompt-use
 {
     border: 1px solid black;
-    padding: 20px;
+    padding-top: 20px;
     margin-bottom: 1em;
+    padding-bottom: 20px;
 }
 
 .fa-prompt-title
@@ -194,16 +209,38 @@
     margin-right: 1em
 }
 
-.fa-paired-radio-group
+.fa-prompt-radio-group, .fa-prompt-checkbox-group
 {
-    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 10px;
     border-left: 1px solid black;
+    border-right: 1px solid black;
     border-top: 1px solid black;
     margin-bottom: 1em;
 }
 
-.fa-prompt-radio-group
+.fa-prompt-radio-input, .fa-prompt-checkbox-input
 {
-    border-bottom: 1px solid black;
-    padding: 10px;
+    margin-left: 20px;
+}
+
+.fa-prompt-header
+{
+    padding: 10px 0px 25px 10px;
+    border: none;
+}
+
+.fa-prompt-additional-prompt .fa-prompt-textarea
+{
+    padding-left: 20px;
+}
+
+.uv
+{
+    width: 600px !important;
+    height: 600px !important;
+    background-color: #000;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 15px;
 }
