@@ -51,7 +51,7 @@ export const visibility =
 
     material :
     {
-        name              : 'on',
+        full_name         : 'on',
         'class'           : 'on',
         crystallinity     : 'on',
         alloy_designation : 'off',
