@@ -135,11 +135,12 @@ export const convertStateIntoText = state =>
         {
             let string = '';
 
-            const parts = statekey.split( '_' );
+            const parts     = statekey.split( '_' );
+            const lastIndex = parts.length-1;
 
             string = `${ lines[statekey] }: ${ statevalue } \n`;
 
-            if( parts[1] === 'note' ) string = `Notes: ${ statevalue } \n`;
+            if( parts[lastIndex] === 'note' ) string = `Notes: ${ statevalue } \n`;
 
             text += string;
         }
@@ -181,14 +182,14 @@ export const convertStateIntoText = state =>
 
             if( statekey === 'additionalPromptText' )
             {
-                let string = 'Module Notes: \n';
+                let string = '';
 
                 statevalue.forEach( ( note, moduleName ) => 
                 {
                     if( note ) string += `${ headers[moduleName] }: ${ note } \n`;
                 } ); 
 
-                text += string;
+                if( string ) text += 'Module Notes: \n' + string;
             }
         }
     }
