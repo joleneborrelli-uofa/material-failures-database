@@ -29,7 +29,7 @@ export default class AdditionalPrompts extends React.Component
         let visibility     = prompts.length > 0 ? on : off; 
         const wrapperClass = `${ htmlClass.additionalPrompt } ${ visibility }`;
 
-        const additionalPrompts = prompts.map( ( prompt, index ) =>
+        const title = prompts.map( ( prompt, index ) =>
         {
             return (
                 <PromptTitle 
@@ -41,7 +41,7 @@ export default class AdditionalPrompts extends React.Component
 
         return (
             <div className={ wrapperClass }>
-                { additionalPrompts }
+                { title }            
                 <PromptTextArea 
                     name={ name }
                     value={ value }
