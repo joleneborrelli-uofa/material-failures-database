@@ -24,12 +24,12 @@ export default class PromptTextArea extends React.Component
         const labelClass = `${ htmlClass.title } ${ labelVisibility }`;
 
         return (
-            <div>
+            <div className={ htmlClass.textarea }>
                 <label className={ labelClass }>
                     { caseStudy.note }
                 </label>
                 <textarea 
-                    className={ htmlClass.textarea }
+                    className={ htmlClass.textareaInput }
                     name={ name }
                     onChange={ handleTextAreaChange }
                     defaultValue={ value } />
