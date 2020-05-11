@@ -28,6 +28,12 @@ export default class BackgroundEvidenceCaseStudyModule extends React.Component
                     </h3>
                 </div>
 				<RecordModule database={ database } />
+                <div 
+                    className="uv" 
+                    data-config="/config.json"
+                    data-no-load="true"
+                    data-uri="http://wellcomelibrary.org/iiif/b18035723/manifest">
+                </div>
 			</div>
 		)
     }
