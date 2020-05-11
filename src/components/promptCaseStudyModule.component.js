@@ -28,7 +28,7 @@ export default class PromptCaseStudyModule extends React.Component
             serial_number        : '',
             feature              : new Map(),
             feature_note         : '',
-            name                 : '',
+            full_name            : '',
             'class'              : new Map( [['0',
             {
                 'class'        : '',
@@ -283,7 +283,7 @@ export default class PromptCaseStudyModule extends React.Component
 
         const materialState =
         {
-            name                 : this.state.name,
+            fulle_name           : this.state.fulle_name,
             'class'              : this.state['class'],
             class_note           : this.state.class_note,
             crystallinity        : this.state.crystallinity,
@@ -333,6 +333,7 @@ export default class PromptCaseStudyModule extends React.Component
             record                  : this.state.record,
             operation               : this.state.operation,
             operational_factor      : this.state.operational_factor,
+            operational_factor_note : this.state.operational_factor_note,
             functionality_loss      : this.state.functionality_loss,
             problem_statement       : this.state.problem_statement,
             failure_time            : this.state.failure_time,
