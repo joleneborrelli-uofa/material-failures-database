@@ -1,4 +1,4 @@
-export const database =
+export const recordDatabase =
 {
 
     "object" :
