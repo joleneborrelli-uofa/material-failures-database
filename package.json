@@ -3,7 +3,9 @@
     "version": "1.0.0",
     "description": "Serves failure record based on database object",
     "scripts": {
-        "build": "webpack"
+        "build": "webpack",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d dist"
     },
     "keywords": [],
     "author": "Jolene Borrelli",
@@ -15,6 +17,8 @@
         "@babel/preset-react": "^7.9.4",
         "babel-loader": "^8.1.0",
         "css-loader": "^3.5.3",
+        "file-loader": "^6.0.0",
+        "gh-pages": "^2.2.0",
         "gulp": "^4.0.2",
         "html-loader": "^1.1.0",
         "html-webpack-plugin": "^4.2.0",
@@ -25,5 +29,6 @@
     "dependencies": {
         "react": "^16.13.1",
         "react-dom": "^16.13.1"
-    }
+    },
+    "homepage": "http://joleneborrelli-uofa.github.io/material-failures-database"
 }
