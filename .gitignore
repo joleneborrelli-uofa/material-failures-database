@@ -1,7 +1,0 @@
-~*
-
-# ignore node/grunt dependency directories
-node_modules/
-
-# ignore .DS_Store
-.DS_Store
