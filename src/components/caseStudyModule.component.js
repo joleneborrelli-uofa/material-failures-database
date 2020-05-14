@@ -101,7 +101,7 @@ export default class CaseStudyModule extends React.Component
                     </div>
 
                     <div className={ photoClass }>
-                        <PhotoEvidenceCaseStudyModule />
+                        <PhotoEvidenceCaseStudyModule database={ database } />
                     </div>
 
                     <div className={ backgroundClass }>
