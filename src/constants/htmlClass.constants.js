@@ -2,6 +2,7 @@
 
 export const genericHtmlClass =
 {
+    viewer        : 'fa-viewer',
     referenceList :
     {
         list      : 'fa-reference-list', 
