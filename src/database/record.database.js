@@ -105,6 +105,20 @@ export const recordDatabase =
            ] 
 
         }
+    ],
+
+    "manifests":
+    [
+        {
+            "page"     : "backgroundEvidence",
+            "viewerId" : "1",
+            "path"     : "/IIIF-image-server/img/derivatives/iiif/compiled/bob_the_builder/background_manifest.json"
+        },
+        {
+            "page"     : "photoEvidence",
+            "viewerId" : "2",
+            "path"     : "/IIIF-image-server/img/derivatives/iiif/compiled/bob_the_builder/photo_manifest.json"
+        }
     ]
 
 };
