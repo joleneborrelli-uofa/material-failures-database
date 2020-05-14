@@ -1,5 +1,5 @@
-import React                               from 'react';
-import { caseStudyHtmlClass as htmlClass } from '../constants/htmlClass.constants.js';
+import React                            from 'react';
+import { genericHtmlClass as htmlClass} from '../constants/htmlClass.constants.js';
 
 export default class ReferenceList extends React.Component
 {
@@ -17,14 +17,14 @@ export default class ReferenceList extends React.Component
             return (
                     <p 
                     key={ index }
-                    className={ htmlClass.reference }>
+                    className={ htmlClass.referenceList.reference }>
                         { reference }
                     </p>
             )
         } );
 
         return (
-            <div className={ htmlClass.referenceList }>
+            <div className={ htmlClass.referenceList.list }>
                 { references }
             </div>
         );

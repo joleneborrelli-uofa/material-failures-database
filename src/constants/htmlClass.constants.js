@@ -1,5 +1,14 @@
 // HTML Constants
 
+export const genericHtmlClass =
+{
+    referenceList :
+    {
+        list      : 'fa-reference-list', 
+        reference : 'fa-reference'
+    }
+};
+
 export const recordHtmlClass = 
 {
     record          : 'fa-record',
@@ -15,8 +24,8 @@ export const recordHtmlClass =
 
 export const caseStudyHtmlClass =
 {
-    caseStudy  : 'fa-case-study',
-    download   : 
+    caseStudy : 'fa-case-study',
+    download  : 
     {
         wrapper : 'fa-download-wrapper',
         button  : 'fa-download-button'
