@@ -1,6 +1,8 @@
 import React                  from 'react';
 import { caseStudy }          from '../constants/caseStudy.constants.js';
 import { caseStudyHtmlClass } from '../constants/htmlClass.constants.js';
+import ReferenceList          from './referenceList.component.js';
+import Viewer                 from './viewer.component.js';
 
 export default class PhotoEvidenceCaseStudyModule extends React.Component
 {
@@ -11,7 +13,22 @@ export default class PhotoEvidenceCaseStudyModule extends React.Component
 
     render()
     {
-        const htmlClass = caseStudyHtmlClass.photoEvidence;
+        let viewer;
+
+        const { database } = this.props;
+        const 
+        { 
+            references, 
+            manifests 
+        } = database;
+
+        const htmlClass     = caseStudyHtmlClass.photoEvidence;
+        const pageManifests = manifests.filter( manifest => manifest.page === "photoEvidence" );
+
+        const viewers = pageManifests.map( ( pageManifest, index ) =>
+        {
+            return <Viewer key={ index } manifest={ pageManifest } />
+        } );
 
     return (
         <div className={ htmlClass.page }>
@@ -23,12 +40,7 @@ export default class PhotoEvidenceCaseStudyModule extends React.Component
                     { caseStudy.photoEvidenceSubtitle }
                 </h3> 
             </div>
-            <div 
-                className="uv" 
-                data-config="/config.json"
-                data-no-load="true"
-                data-uri="http://wellcomelibrary.org/iiif/b18035723/manifest">
-            </div>
+            { viewers } 
         </div>
         )
     }
