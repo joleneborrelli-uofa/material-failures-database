@@ -2,8 +2,11 @@
     "name": "failure-record",
     "version": "1.0.0",
     "description": "Serves failure record based on database object",
+    "homepage": "http://joleneborrelli-uofa.github.io/materials-failure-database",
     "scripts": {
-        "build": "webpack"
+        "build": "webpack",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d dist"
     },
     "keywords": [],
     "author": "Jolene Borrelli",
@@ -16,6 +19,7 @@
         "babel-loader": "^8.1.0",
         "css-loader": "^3.5.3",
         "file-loader": "^6.0.0",
+        "gh-pages": "^2.2.0",
         "gulp": "^4.0.2",
         "html-loader": "^1.1.0",
         "html-webpack-plugin": "^4.2.0",
