@@ -26,7 +26,7 @@ export default class BackgroundEvidenceCaseStudyModule extends React.Component
 
         const viewers = pageManifests.map( ( pageManifest, index ) =>
         {
-            return <Viewer key={ index } manifest={ pageManifest } />
+            return <Viewer key={ index } path={ pageManifest.path } />
         } );
 
 	return (
