@@ -1,7 +1,7 @@
 import React                from 'react';
 import { genericHtmlClass } from '../constants/htmlClass.constants.js';
 
-export default class ViewerComponent extends React.Component
+export default class Viewer extends React.Component
 {
     constructor( props )
     {
