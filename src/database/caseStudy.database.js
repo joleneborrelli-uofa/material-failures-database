@@ -38,7 +38,7 @@ export const caseStudyDatabase =
     "references" : 
     [
         {
-           "viewer"     : "backgroundEvidence",
+           "page"       : "backgroundEvidence",
            "viewerId"   : "1",
            "references" : 
            [

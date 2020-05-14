@@ -95,7 +95,7 @@ export const recordDatabase =
     "references" : 
     [
         {
-           "viewer"     : "backgroundEvidence",
+           "page"       : "backgroundEvidence",
            "viewerId"   : "1",
            "references" : 
            [
