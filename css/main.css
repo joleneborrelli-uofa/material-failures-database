@@ -188,7 +188,6 @@
 .fa-prompt-object, .fa-prompt-processing, .fa-prompt-environment, .fa-prompt-material, .fa-prompt-use
 {
     border: 1px solid black;
-    padding-top: 20px;
     margin-bottom: 1em;
     padding-bottom: 20px;
 }
@@ -226,13 +225,14 @@
 
 .fa-prompt-header
 {
-    padding: 10px 0px 25px 10px;
+    padding: 20px;
     border: none;
+    background-color: lightgray;
 }
 
 .fa-prompt-additional-prompt .fa-prompt-textarea
 {
-    padding-left: 20px;
+    padding: 20px 20px 0px 20px;
 }
 
 .uv
