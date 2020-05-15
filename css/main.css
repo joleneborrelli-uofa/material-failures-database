@@ -246,6 +246,11 @@ a:visited
 
 .fa-prompt-additional-prompt .fa-prompt-textarea
 {
+    padding: 0px 20px 0px 20px;
+}
+
+.fa-prompt-additional-prompt .fa-prompt-module
+{
     padding: 20px 20px 0px 20px;
 }
 
