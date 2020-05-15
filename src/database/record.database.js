@@ -15,7 +15,7 @@ export const recordDatabase =
 
     "material" :
     {
-        "fulle_name"       : "Melamine formaldehyde",
+        "full_name"        : "Melamine formaldehyde",
         "class"            : [
                                 {
                                     "class_type"    : "Polymer",
@@ -92,32 +92,13 @@ export const recordDatabase =
                                     }]
     },
 
-    "references" : 
-    [
-        {
-           "page"       : "backgroundEvidence",
-           "viewerId"   : "1",
-           "references" : 
-           [
-                "Melamine Formaldehyde. CESEdupack 2019, Granata Design Limited, Cambridge, UK, 2019.",
-                "Characterization and Failure Analysis of Plastics. ASM International, Materials Park, OH, 2003.",
-                "Synthetic Resins Technology Handbook. NIIR Board of Consultants and Engineers, Asia Pacific Business Press Inc., 2005."
-           ] 
-
-        }
-    ],
+    "references" : [],
 
     "manifests":
     [
         {
-            "page"     : "backgroundEvidence",
-            "viewerId" : "1",
-            "path"     : "/IIIF-image-server/img/derivatives/iiif/compiled/bob_the_builder/background_manifest.json"
-        },
-        {
-            "page"     : "photoEvidence",
-            "viewerId" : "2",
-            "path"     : "/IIIF-image-server/img/derivatives/iiif/compiled/bob_the_builder/photo_manifest.json"
+            "page" : "photoEvidence",
+            "path" : "/IIIF-image-server/img/derivatives/iiif/compiled/bob_the_builder/photo_manifest.json"
         }
     ]
 
