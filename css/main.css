@@ -188,6 +188,11 @@ a:visited
     margin: auto;
 }
 
+.fa-background-research-page .fa-record
+{
+    width: 100%;
+}
+
 .fa-photo-evidence-title
 {
     border-bottom: 1px solid black;
