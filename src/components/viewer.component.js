@@ -1,5 +1,5 @@
 import React                from 'react';
-import { domain }           from '../constants/database.constants.js';
+import { domain }           from '../constants/path.constants.js';
 import { genericHtmlClass } from '../constants/htmlClass.constants.js';
 
 export default class Viewer extends React.Component

@@ -7,7 +7,19 @@ export const genericHtmlClass =
     {
         list      : 'fa-reference-list', 
         reference : 'fa-reference'
-    }
+    },
+
+    visibility : 
+    {
+        on  : 'fa-visibility-on',
+        off : 'fa-visibility-off'
+    },
+
+    caseStudyLink : 'fa-case-study-link',
+    recordLink    : 'fa-record-link',
+    displayItem   : 'fa-display-item',
+    displayImage  : 'fa-display-image',
+    mainHeader    : 'fa-main-header'
 };
 
 export const recordHtmlClass = 

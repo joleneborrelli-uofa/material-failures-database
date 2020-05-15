@@ -4,10 +4,25 @@
     font-weight : normal;
 }
 
+a:visited 
+{
+    color: #000;
+}
+
 #uv
 {
     width  : 800px;
     height : 600px;
+}
+
+.uv
+{
+    width: 600px !important;
+    height: 600px !important;
+    background-color: #000;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 15px;
 }
 
 /* Record CSS */
@@ -171,7 +186,6 @@
 .fa-record
 {
     width: 100%;
-    border-top: 1px solid black;
 }
 
 .fa-photo-evidence-title
@@ -235,12 +249,37 @@
     padding: 20px 20px 0px 20px;
 }
 
-.uv
+.fa-background-research-title
 {
-    width: 600px !important;
-    height: 600px !important;
-    background-color: #000;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    margin-left: 15px;
+    border-bottom: 1px solid black;
+}
+
+.fa-main-header
+{
+    text-align: center;
+    margin-bottom: 50px;
+    border-bottom: 1px solid black;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.fa-display-item
+{
+    list-style-type: none;
+    width: 260px;
+    height: 260px;
+}
+
+.fa-display-image
+{
+    box-shadow: 5px 5px;
+    margin-bottom: 15px;
+}
+
+.fa-case-study-link, .fa-record-link
+{
+    margin: auto;
+    text-align: center;
+    margin-bottom: 10px;
+    text-decoration: none;
 }

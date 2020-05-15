@@ -2,6 +2,13 @@
 
 export const unknownObject  = 'Unknown Object';
 
+export const mainPage =
+{
+    caseStudyLink : 'Case Study',
+    recordLink    : 'Record',
+    title         : 'Materials Failure Database'
+};
+
 export const headers =
 {
     object      : 'Object Properties',

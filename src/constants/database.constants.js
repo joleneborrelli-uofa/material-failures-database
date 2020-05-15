@@ -9,5 +9,3 @@ export const databaseKeys =
     forces      : '_forces',
     frequency   : '_frequency'
 };
-
-export const domain = "https://joleneborrelli-uofa.github.io"
