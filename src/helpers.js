@@ -1,6 +1,6 @@
 import { optionChanges }                 from './constants/optionChanges.constants.js';
 import { headers, unknownObject, lines } from './constants/webDisplay.constants.js';
-import { random }                        from 'lodash';
+import { random, isString }              from 'lodash';
 
 /**
  * Gets the object name from the database
