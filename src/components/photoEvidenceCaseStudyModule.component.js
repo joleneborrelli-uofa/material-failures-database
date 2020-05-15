@@ -1,7 +1,6 @@
 import React                  from 'react';
 import { caseStudy }          from '../constants/caseStudy.constants.js';
 import { caseStudyHtmlClass } from '../constants/htmlClass.constants.js';
-import ReferenceList          from './referenceList.component.js';
 import Viewer                 from './viewer.component.js';
 
 export default class PhotoEvidenceCaseStudyModule extends React.Component
