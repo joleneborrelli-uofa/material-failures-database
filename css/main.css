@@ -184,7 +184,8 @@ a:visited
 
 .fa-record
 {
-    width: 100%;
+    width: 44em;
+    margin: auto;
 }
 
 .fa-photo-evidence-title
