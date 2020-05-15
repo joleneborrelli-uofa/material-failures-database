@@ -2,7 +2,6 @@ import React                  from 'react';
 import { caseStudy }          from '../constants/caseStudy.constants.js';
 import { caseStudyHtmlClass } from '../constants/htmlClass.constants.js';
 import RecordModule           from '../components/recordModule.component.js';
-import ReferenceList          from './referenceList.component.js';
 import Viewer                 from './viewer.component.js';
 
 export default class BackgroundEvidenceCaseStudyModule extends React.Component
@@ -14,6 +13,7 @@ export default class BackgroundEvidenceCaseStudyModule extends React.Component
 
     render()
     {
+        const showViewer   = false;
     	const { database } = this.props;
         const 
         { 
@@ -39,7 +39,9 @@ export default class BackgroundEvidenceCaseStudyModule extends React.Component
                         { caseStudy.backgroundResearchSubtitle }
                     </h3>
                 </div>
-				<RecordModule database={ database } />
+				<RecordModule 
+                    showViewer={ showViewer }
+                    database={ database } />
                 { viewers }
 			</div>
 		)
