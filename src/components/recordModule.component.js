@@ -1,4 +1,6 @@
 import React               from 'react';
+import ReferenceList       from './referenceList.component.js';
+import Viewer              from './viewer.component.js';
 import { recordHtmlClass } from '../constants/htmlClass.constants.js';
 import { lines }           from '../constants/webDisplay.constants.js'; 
 import { databaseKeys }    from '../constants/database.constants.js';
@@ -143,7 +145,9 @@ export default class RecordModule extends React.Component
                     </li> )
         }
 
-        return <ul className={ recordHtmlClass.ulLines }>
+        return <ul 
+                key={ createUniqueId () }
+                className={ recordHtmlClass.ulLines }>
                     { li }
                 </ul>;   
     }
@@ -209,17 +213,36 @@ export default class RecordModule extends React.Component
 
     render()
     {
-        const { database } = this.props;
+        const 
+        { 
+            database,
+            showViewer = true
+        } = this.props;
+
+        const 
+        {
+            manifests,
+            references
+        } = database;
 
         const title   = getObjectName( database );
         const modules = this.generateModules( database );
 
+        const viewers = showViewer ? manifests.map( ( manifest, index ) =>
+        {
+            return <Viewer key={ index } path={ manifest.path } />
+        } ) : false;
+
         return(
         	<div className={ recordHtmlClass.record }>
+
         		<h3 className={ recordHtmlClass.title }>
         			{ title }
         		</h3>
         		{ modules }
+                <ReferenceList list={ references } />
+                { viewers }
+
         	</div>
         )
     }
