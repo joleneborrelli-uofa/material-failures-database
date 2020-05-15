@@ -45,7 +45,7 @@ export default class RecordModule extends React.Component
             if( submodule.length > 0 )
             {
                 modules.push( <div 
-                                key={ createUniqueId( header ) }
+                                key={ createUniqueId() }
                                 className={ recordHtmlClass.module }>
                                     <div className={ recordHtmlClass.moduleHeader }>
                                         { header }
@@ -85,7 +85,7 @@ export default class RecordModule extends React.Component
             if( lineHeader )
             {
                 const submoduleHeader = <p 
-                                         key={ createUniqueId( lineHeader ) }
+                                         key={ createUniqueId() }
                                          className={ recordHtmlClass.submoduleHeader }>
                                             { lineHeader }
                                         </p>;
@@ -93,7 +93,7 @@ export default class RecordModule extends React.Component
                 if ( isString( moduleValue ) ) 
                 {
                     singleLine = <p 
-                                  key={ createUniqueId( key ) }
+                                  key={ createUniqueId() }
                                   className={ recordHtmlClass.line }>
                                     { moduleValue }
                                  </p>;

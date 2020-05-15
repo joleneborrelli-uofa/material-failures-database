@@ -21,15 +21,14 @@ export default class PromptCheckboxGroup extends React.Component
 
         const htmlClass = caseStudyHtmlClass.fieldPrompts;
 
-        // foreignKeys is an array. Option is the value in the
-        // array, index is the index number of that value.
-        const checkboxes = foreignKeys.map( ( option, index ) =>
+        // foreignKeys is an array. Option is the value in the array.
+        const checkboxes = foreignKeys.map( option =>
         {
             let isChecked = value.get( option );
 
             return ( 
                 <div 
-                    key={ createUniqueId( index ) }
+                    key={ createUniqueId() }
                     className={ htmlClass.checkbox }>
                     <label className={ htmlClass.optionLabel }>
                         { option }

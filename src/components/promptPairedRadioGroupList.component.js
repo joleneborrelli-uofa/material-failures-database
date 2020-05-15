@@ -33,7 +33,7 @@ export default class PromptPairedRadioGroupList extends React.Component
             radioGroups.push( 
                 <div
                     className={ htmlClass.pairedRadioGroup } 
-                    key={ createUniqueId( mapkey ) }>
+                    key={ createUniqueId() }>
                     <PromptRadioGroup
                         mapkey={ mapkey }
                         statekey={ statekey }

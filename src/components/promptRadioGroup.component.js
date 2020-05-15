@@ -25,19 +25,18 @@ export default class PromptRadioGroup extends React.Component
 
         // hack for ensuring each radio group on page has a
         // unique name
-        name = createUniqueId( name );
+        name = createUniqueId();
 
         const htmlClass = caseStudyHtmlClass.fieldPrompts;
 
-        // foreignKeys is an array. Option is the value in the
-        // array, index is the index number of that value.
-        const radioButtons = foreignKeys.map( ( option, index ) =>
+        // foreignKeys is an array. Option is the value in the array.
+        const radioButtons = foreignKeys.map( option =>
         {
             let isChecked = value === option;
 
             return ( 
                     <div
-                        key={ createUniqueId( index ) } 
+                        key={ createUniqueId() } 
                         className={ htmlClass.radio }>
                         <label className={ htmlClass.optionLabel }>
                             { option }

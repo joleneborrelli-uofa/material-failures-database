@@ -1,5 +1,5 @@
 import React                  from 'react';
-import { createUniqueId }     from '../helpers.js';
+import { createUniqueId       from '../helpers.js';
 import { caseStudy }          from '../constants/caseStudy.constants.js';
 import { caseStudyHtmlClass } from '../constants/htmlClass.constants.js';
 import PromptTitle            from './promptTitle.component.js'; 
@@ -29,11 +29,11 @@ export default class AdditionalPrompts extends React.Component
         let visibility     = prompts.length > 0 ? on : off; 
         const wrapperClass = `${ htmlClass.additionalPrompt } ${ visibility }`;
 
-        const title = prompts.map( ( prompt, index ) =>
+        const title = prompts.map( prompt =>
         {
             return (
                 <PromptTitle 
-                    key={ createUniqueId( index ) } 
+                    key={ createUniqueId() } 
                     title={ prompt } 
                     visibility={ on } />
             )

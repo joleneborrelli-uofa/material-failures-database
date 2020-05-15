@@ -1,29 +1,6 @@
 import { optionChanges }                 from './constants/optionChanges.constants.js';
 import { headers, unknownObject, lines } from './constants/webDisplay.constants.js';
-
-/**
- * Tests if the paramater is a string
- *
- * @param  { Any } val value to test
- * @return { Boolean } 
- */
-export const isString = ( val ) => typeof val === 'string';
-
-/**
- * Tests if the paramater is an array
- *
- * @param  { Any } val value to test
- * @return { Boolean } 
- */
-export const isArray  = ( val ) => Array.isArray( val );
-
-/**
- * Tests if the paramater is an object literal
- *
- * @param  { Any } val value to test
- * @return { Boolean } 
- */
-export const isObject = ( val ) => val && typeof val === 'object' && val.constructor === Object;
+import { random }                        from 'lodash';
 
 /**
  * Gets the object name from the database
@@ -53,9 +30,11 @@ export const getObjectCaseNumber = ( database ) =>
  * @param  { String } prefix prefix for the key
  * @return { String } 
  */
-export const createUniqueId = prefix => 
+export const createUniqueId = () => 
 {
-    return `${ prefix }-${ new Date().getTime() }`;
+    const randomNumber = random( 0, 1000000 );
+
+    return `${ randomNumber }-${ new Date().getTime() }`;
 };
 
 /**
@@ -196,4 +175,3 @@ export const convertStateIntoText = state =>
     
     return text;
 };
-
