@@ -6,7 +6,11 @@ import
 { 
     isString, 
     isArray, 
-    isObject, 
+    isPlainObject 
+} from 'lodash';
+
+import 
+{ 
     buildHeaders, 
     getObjectName ,
     createUniqueId
@@ -106,7 +110,7 @@ export default class RecordModule extends React.Component
                         multipleLine = this.generateMultipleLines( moduleValue );
                     }
 
-                    if( isObject( moduleValue[0] ) )
+                    if( isPlainObject( moduleValue[0] ) )
                     {
                         typeLine = this.generateTypeLines( moduleValue, key );
                     }
