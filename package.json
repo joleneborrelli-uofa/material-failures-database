@@ -28,8 +28,15 @@
         "webpack-cli": "^3.1.2"
     },
     "dependencies": {
+        "axios": "^0.19.2",
         "bluebird": "^3.7.2",
+        "body-parser": "^1.19.0",
+        "compression": "^1.7.4",
+        "concurrently": "^5.2.0",
+        "cors": "^2.8.5",
+        "express": "^4.17.1",
         "lodash": "^4.17.15",
+        "nodemon": "^2.0.4",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
         "react-router-dom": "^5.2.0",
