@@ -22,7 +22,7 @@ export default class PhotoEvidenceCaseStudyModule extends React.Component
         } = database;
 
         const htmlClass     = caseStudyHtmlClass.photoEvidence;
-        const pageManifests = manifests.filter( manifest => manifest.page === "photoEvidence" );
+        const pageManifests = manifests.filter( manifest => manifest.page === "photo" );
 
         const viewers = pageManifests.map( ( pageManifest, index ) =>
         {
