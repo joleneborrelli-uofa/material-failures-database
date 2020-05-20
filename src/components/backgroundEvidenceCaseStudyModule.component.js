@@ -22,7 +22,7 @@ export default class BackgroundEvidenceCaseStudyModule extends React.Component
         } = database;
 
         const htmlClass     = caseStudyHtmlClass.backgroundResearch;
-        const pageManifests = manifests.filter( manifest => manifest.page === "backgroundEvidence" );
+        const pageManifests = manifests.filter( manifest => manifest.page === "background" );
 
         const viewers = pageManifests.map( ( pageManifest, index ) =>
         {
