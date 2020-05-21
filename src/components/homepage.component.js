@@ -18,7 +18,7 @@ export default function Homepage()
     {
         let 
         {
-            id,
+            object_id : id,
             case_study,
             record,
             thumbnail

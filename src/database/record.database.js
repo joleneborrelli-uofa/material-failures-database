@@ -3,7 +3,7 @@ export const recordDatabase =
 
     "object" :
     {
-        "id"          : "1",
+        "object_id"   : "1",
         "name"        : "Bob the Builder Plate",
         "inscription" : ["Home Presence", "homepresence.com", "2007 HIT/K Chapman", "Cup and fork symbol", "Crossed-out microwave symbol", "Recycling symbol with 7", "Do not microwave", "Hand wash only"],
         "feature"     : [
@@ -97,7 +97,7 @@ export const recordDatabase =
     "manifests":
     [
         {
-            "page" : "photoEvidence",
+            "page" : "general",
             "path" : "/IIIF-image-server/img/derivatives/iiif/compiled/bob_the_builder/photo_manifest.json"
         }
     ]

@@ -21,7 +21,7 @@ export const getObjectName = ( database ) =>
  */
 export const getObjectCaseNumber = ( database ) =>
 {
-	return database.hasOwnProperty( 'object' ) ? database.object.id : '0';
+	return database.hasOwnProperty( 'object' ) ? database.object.object_id : '0';
 };
 
 /**

@@ -3,8 +3,8 @@ export const caseStudyDatabase =
 
     "object" :
     {
-        "id"   : "1",
-        "name" : "Bob the Builder Plate",
+        "object_id" : "1",
+        "name"      : "Bob the Builder Plate",
     },
 
     "material" :
@@ -40,11 +40,11 @@ export const caseStudyDatabase =
     "manifests":
     [
         {
-            "page" : "backgroundEvidence",
+            "page" : "background",
             "path" : "/IIIF-image-server/img/derivatives/iiif/compiled/bob_the_builder/background_manifest.json"
         },
         {
-            "page" : "photoEvidence",
+            "page" : "photo",
             "path" : "/IIIF-image-server/img/derivatives/iiif/compiled/bob_the_builder/photo_manifest.json"
         }
     ]
