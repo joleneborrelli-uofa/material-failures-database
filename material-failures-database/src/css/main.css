@@ -1,0 +1,296 @@
+*
+{
+	font-family : "helvetica neue";
+    font-weight : normal;
+}
+
+a:visited 
+{
+    color: #000;
+}
+
+#uv
+{
+    width  : 800px;
+    height : 600px;
+}
+
+.uv
+{
+    width: 600px !important;
+    height: 600px !important;
+    background-color: #000;
+    margin: auto;
+}
+
+/* Record CSS */
+
+.fa-title, .fa-module
+{
+	border     : solid 1px;
+    margin     : 15px 50px 30px 50px;
+    box-shadow : 5px 5px;
+}
+
+.fa-submodule
+{
+    padding : 5px 30px 30px 30px;
+}
+
+.fa-title
+{
+    padding: 15px 40px 15px 40px;
+}
+
+.fa-module-header, .fa-prompt-header
+{
+    margin-block-start : 0;
+    margin-block-end   : 0;
+    text-transform     : capitalize;
+    font-weight        : bold;
+    font-size          : 1.15em;
+    border-bottom      : solid 1px;
+    padding            : 10px 40px;
+}
+
+.fa-submodule-header
+{
+	font-style         : italic;
+    margin-block-start : 0;
+    margin-block-end   : 0;
+    margin             : 15px 0 5px 15px;
+}
+
+.fa-ul-lines 
+{
+	list-style-type      : none;
+	padding-inline-start : 0;
+	margin-block-start   : 0;
+}
+
+.fa-ul-lines  > li 
+{
+	text-indent  : 5px;
+    padding-left : 15px;
+}
+
+.fa-ul-lines > li:before 
+{
+	content     : "- ";
+	text-indent : 5px;
+}
+
+.fa-line
+{
+    margin-block-start : 0.1em;
+    margin             : 5px 15px 0 15px;
+}
+
+/* Case study CSS */
+
+.fa-visibility-on
+{
+    display: block;
+}
+
+.fa-visibility-off
+{
+    display: none !important;
+}
+
+/* Pagination */
+
+.fa-pagination
+{
+    margin: auto;
+}
+
+.fa-pagination-prev, .fa-pagination-next, .fa-download-button, .fa-prompt-button
+{
+    width:  8em;
+    height: 3em;
+    margin: auto;
+}
+
+.fa-pagination-next, .fa-download-button, .fa-prompt-button
+{
+    margin-bottom: 20px;
+}
+
+/* Pages */
+
+.fa-landing-title
+{
+    margin-bottom: 5em;
+    text-align: center;
+}
+
+.fa-landing-case-title, .fa-landing-case-number, .fa-landing-status
+{
+    border-bottom: 1px solid black;
+    height: 2em;
+}
+
+.fa-landing-status:after
+{
+    display: block;
+    content: "";
+    background: transparent url( './unsolved.png' ) no-repeat; 
+    width: 200px;
+    height: 105px;
+    margin-top: -54px;
+    margin-left: 60px;
+}
+
+.fa-landing-logo
+{
+    display: block;
+    content: "";
+    background: transparent url( './globe.png' ) no-repeat; 
+    width: 300px;
+    height: 140px;
+    margin-top: -70px;
+    margin-left: 178px;
+    margin-bottom: 30px;
+}
+
+.fa-pagination
+{
+    height: 50px;
+    width: 400px;
+    margin-top: 25px;
+}
+
+.fa-case-study
+{
+    display: table;
+    width: 100%;
+    height: 80%;
+}
+
+.fa-landing-wrapper, .fa-photo-evidence-wrapper, .fa-background-research-wrapper, .fa-prompt-wrapper
+{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.fa-landing-page, .fa-photo-evidence-page, .fa-background-research-page, .fa-prompt-page
+{
+    display: inline-block;
+    text-align: left;
+    width: 40em;
+}
+
+.fa-record
+{
+    width: 44em;
+    margin: auto;
+}
+
+.fa-background-research-page .fa-record
+{
+    width: 100%;
+}
+
+.fa-photo-evidence-title
+{
+    border-bottom: 1px solid black;
+    margin-bottom: 25px;
+}
+
+.fa-prompt-module
+{
+    border-top: 1px solid black;
+    padding: 20px;
+}
+
+.fa-prompt-object, .fa-prompt-processing, .fa-prompt-environment, .fa-prompt-material, .fa-prompt-use
+{
+    border: 1px solid black;
+    margin-bottom: 1em;
+    padding-bottom: 20px;
+}
+
+.fa-prompt-title
+{
+    font-style: italic;
+}
+
+.fa-prompt-checkbox-group
+{
+    margin-bottom: 1em;
+}
+
+.fa-prompt-checkbox
+{
+    display: inline-block;
+    margin-right: 1em
+}
+
+.fa-prompt-radio-group, .fa-prompt-checkbox-group
+{
+    border-bottom: 1px solid black;
+    padding: 10px;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+    margin-bottom: 1em;
+}
+
+.fa-prompt-radio-input, .fa-prompt-checkbox-input
+{
+    margin-left: 20px;
+}
+
+.fa-prompt-header
+{
+    padding: 20px;
+    border: none;
+    background-color: lightgray;
+}
+
+.fa-prompt-additional-prompt .fa-prompt-textarea
+{
+    padding: 0px 20px 0px 20px;
+}
+
+.fa-prompt-additional-prompt .fa-prompt-module
+{
+    padding: 20px 20px 0px 20px;
+}
+
+.fa-background-research-title
+{
+    border-bottom: 1px solid black;
+}
+
+.fa-main-header
+{
+    text-align: center;
+    margin-bottom: 50px;
+    border-bottom: 1px solid black;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.fa-display-item
+{
+    list-style-type: none;
+    width: 260px;
+    height: 260px;
+}
+
+.fa-display-image
+{
+    box-shadow: 5px 5px;
+    margin-bottom: 15px;
+}
+
+.fa-case-study-link, .fa-record-link
+{
+    margin: auto;
+    text-align: center;
+    margin-bottom: 10px;
+    text-decoration: none;
+}
