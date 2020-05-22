@@ -294,3 +294,9 @@ a:visited
     margin-bottom: 10px;
     text-decoration: none;
 }
+
+.fa-loading
+{
+    margin: auto;
+    text-align: center;
+}

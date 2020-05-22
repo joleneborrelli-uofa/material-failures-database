@@ -5,7 +5,7 @@ import Page     from './page.component.js';
 // React Router
 import 
 {
-  HashRouter,
+  BrowserRouter,
   Switch,
   Route
 } from "react-router-dom";
@@ -14,13 +14,13 @@ import
 export default function Router()
 {
     return (
-        <HashRouter>
+        <BrowserRouter>
             <div>
                 <Switch>
                     <Route exact path="/" exact component={ Homepage } />
                     <Route path="/:page/:id" exact component={ Page } />
                 </Switch>
             </div>
-        </HashRouter>
+        </BrowserRouter>
     );
 };

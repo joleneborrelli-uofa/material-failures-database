@@ -29,6 +29,7 @@ export const caseStudy =
     {
         object :
         {
+            // Identifying marks groups together
             rating        : '',
             inscription   : 'Are there any inscriptions on the object? What do they tell you about the object?',
             feature       : 'What physical features are there on the object?',
@@ -39,9 +40,11 @@ export const caseStudy =
         {
             full_name         : 'What is the object made of?',
             crystallinity     : 'What kind of crystal structure does the material have?',
-            'class'           : 'What material familiy does it belong to?',
+            'class'           : 'What material family does it belong to?',
             recyclability     : 'Is the object recyclable? Does the recyclability tell you something about the material?',
             biodegradability  : '',
+            // Could be from a marking or from chemical analysis/mechanical property tests (refer to these if not given)
+            // What do you think the material is and how do you know, how would you find out?
             alloy_designation : '',
             grade             : '',
             toxicity          : ''
@@ -52,8 +55,8 @@ export const caseStudy =
         {
             treatment             : 'What treatment procedures did the object have?',
             shaping               : 'What shaping procedures did the object have?', 
-            machining             : '',
-            joining               : '',
+            machining             : 'What machining procedures did the object have?',
+            joining               : 'What joining procedures did the object have?',
             residual_stress       : 'What kind of residual stresses could have been introduced during processing? Did the physical features on the object play a role? What kind of forces could have been created in the object from the residual stresses?',
             manufacturer          : '',
             date                  : '',
