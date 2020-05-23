@@ -13,6 +13,7 @@ import { displayDatabase } from '../database/display.database.js';
 
 export default function Homepage()
 {
+    // State
     const [links, setLinks]     = useState( [] );
     const [loading, setLoading] = useState( 'on' );
 
@@ -21,7 +22,7 @@ export default function Homepage()
         fetchDisplayItems();
     }, [] );
 
-    // Make call to database for display table
+    // Methods
     const fetchDisplayItems = async () => 
     {
         axios
@@ -84,6 +85,7 @@ export default function Homepage()
         setLinks( links );
     }
 
+    // Return
     const loadingClass = `${ htmlClass.visibility[loading] } ${ htmlClass.loading }`;
 
     return (

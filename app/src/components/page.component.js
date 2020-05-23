@@ -3,7 +3,7 @@ import CaseStudyModule from './caseStudyModule.component.js';
 import RecordModule    from './recordModule.component.js';
 
 // React Router
-import { useParams } from "react-router-dom";
+import { useParams } from 'react-router-dom';
 
 // Will eventually be a singular database response
 import { recordDatabase }                from '../database/record.database.js';
@@ -21,6 +21,7 @@ export default function Page()
 
     if( page === 'case-study' )
     {
+
         // Make case study query to database with the ID number
         element = <CaseStudyModule 
                         database={ caseStudyDatabase }

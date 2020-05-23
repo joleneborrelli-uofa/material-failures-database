@@ -1,34 +1,28 @@
-import React                               from 'react';
+import React, { useEffect, useState }      from 'react';
 import { caseStudyHtmlClass as htmlClass } from '../constants/htmlClass.constants.js';
 import { caseStudy }                       from '../constants/caseStudy.constants.js';
+import { getAdditionalPrompts }            from '../helpers.js';
 import LandingCaseStudyModule              from './landingCaseStudyModule.component.js'; 
 import PhotoEvidenceCaseStudyModule        from './photoEvidenceCaseStudyModule.component.js'; 
 import BackgroundEvidenceCaseStudyModule   from './backgroundEvidenceCaseStudyModule.component.js';
 import PromptCaseStudyModule               from './promptCaseStudyModule.component.js';
-import
+
+export default function CaseStudyModule ( props )
 {
-    getObjectName,
-    getObjectCaseNumber,
-    getAdditionalPrompts
-} from '../helpers.js';
+    // Props
+    const 
+    { 
+        visibility,
+        fields
+    } = this.props;
 
-export default class CaseStudyModule extends React.Component
-{
-    constructor( props )
-    {
-        super( props );
+    // State
+    const [currentPage, setCurrentPage]       = useState( 0 );
+    const [nextVisibility, setNextVisibility] = useState( htmlClass.visibility.on );
+    const [prevVisibility, setPrevVisibility] = useState( htmlClass.visibility.off );
 
-        this.state =
-        {
-            currentPage    : 0,
-            nextVisibility : htmlClass.visibility.on,
-            prevVisibility : htmlClass.visibility.off
-        }
-
-        this.setCurrentPage = this.setCurrentPage.bind( this );
-    }
-
-    setCurrentPage( e )
+    // Methods
+    const onButtonClick = ( e ) =>
     {
         let pageNumber;
 
@@ -39,8 +33,8 @@ export default class CaseStudyModule extends React.Component
         // To account for zero indexed array
         const pagesLength = caseStudy.pages.length - 1;
 
-        if( value === 'prev' ) pageNumber = this.state.currentPage - 1;
-        if( value === 'next' ) pageNumber = this.state.currentPage + 1;
+        if( value === 'prev' ) pageNumber = currentPage - 1;
+        if( value === 'next' ) pageNumber = currentPage + 1;
 
         if( pageNumber <= 0 )
         {
@@ -54,87 +48,73 @@ export default class CaseStudyModule extends React.Component
             nextVisibility = htmlClass.visibility.off;
         }
 
-        this.setState(
-        {
-            currentPage    : pageNumber,
-            nextVisibility : nextVisibility,
-            prevVisibility : prevVisibility
-        } );
-
+        setCurrentPage( pageNumber );
+        setNextVisibility( nextVisibility );
+        setPrevVisibility( prevVisibility );
     }
 
-    render()
+    // Return
+    const title             = fields.object && fields.object.name;
+    const caseNumber        = fields.object && fields.object.object_id;
+    const additionalPrompts = getAdditionalPrompts( fields );
+
+    // For pagination
+    const pageVisibility = caseStudy.pages.map( ( page, index ) =>
     {
-        const
-        {
-            database,
-            visibility
-        } = this.props;
- 
-        const { currentPage }   = this.state;
-        const title             = getObjectName( database );
-        const caseNumber        = getObjectCaseNumber( database );
-        const additionalPrompts = getAdditionalPrompts( database );
+        return currentPage === index ? htmlClass.visibility.on : htmlClass.visibility.off;
+    } );
 
-        // for pagination
-        const pageVisibility = caseStudy.pages.map( ( page, index ) =>
-        {
-            return currentPage === index ? htmlClass.visibility.on : htmlClass.visibility.off;
-        } );
+    const landingClass    = `${ pageVisibility[0] } ${ htmlClass.landing.wrapper }`;
+    const photoClass      = `${ pageVisibility[1] } ${ htmlClass.photoEvidence.wrapper }`;
+    const backgroundClass = `${ pageVisibility[2] } ${ htmlClass.backgroundResearch.wrapper }`;
+    const promptClass     = `${ pageVisibility[3] } ${ htmlClass.fieldPrompts.wrapper }`;
+    const prevButtonClass = `${ htmlClass.pagination.prev } ${ this.state.prevVisibility }`;
+    const nextButtonClass = `${ htmlClass.pagination.next } ${ this.state.nextVisibility }`;
 
-        const landingClass    = `${ pageVisibility[0] } ${ htmlClass.landing.wrapper }`;
-        const photoClass      = `${ pageVisibility[1] } ${ htmlClass.photoEvidence.wrapper }`;
-        const backgroundClass = `${ pageVisibility[2] } ${ htmlClass.backgroundResearch.wrapper }`;
-        const promptClass     = `${ pageVisibility[3] } ${ htmlClass.fieldPrompts.wrapper }`;
-        const prevButtonClass = `${ htmlClass.pagination.prev } ${ this.state.prevVisibility }`;
-        const nextButtonClass = `${ htmlClass.pagination.next } ${ this.state.nextVisibility }`;
+    return (
+        <div>
+            <div className={ htmlClass.caseStudy }>
 
-
-        return (
-            <div>
-                <div className={ htmlClass.caseStudy }>
-
-                    <div className={ landingClass }>
-                        <LandingCaseStudyModule 
-                            title={ title }
-                            caseNumber={ caseNumber } />
-                    </div>
-
-                    <div className={ photoClass }>
-                        <PhotoEvidenceCaseStudyModule database={ database } />
-                    </div>
-
-                    <div className={ backgroundClass }>
-                        <BackgroundEvidenceCaseStudyModule database={ database } />
-                    </div>
-
-                    <div className={ promptClass }>
-                        <PromptCaseStudyModule 
-                            additionalPrompts={ additionalPrompts }
-                            visibility={ visibility } />
-                    </div>
-
+                <div className={ landingClass }>
+                    <LandingCaseStudyModule 
+                        title={ title }
+                        caseNumber={ caseNumber } />
                 </div>
 
-                <div className={ htmlClass.pagination.page }>
-
-                    <button
-                        type="button"
-                        className={ nextButtonClass }
-                        value="next"
-                        onClick={ this.setCurrentPage }>
-                        { caseStudy.next }
-                    </button>
-
-                    <button
-                        type="button"
-                        className={ prevButtonClass }
-                        value="prev"
-                        onClick={ this.setCurrentPage }>
-                        { caseStudy.prev }
-                    </button>
+                <div className={ photoClass }>
+                    <PhotoEvidenceCaseStudyModule database={ database } />
                 </div>
+
+                <div className={ backgroundClass }>
+                    <BackgroundEvidenceCaseStudyModule database={ database } />
+                </div>
+
+                <div className={ promptClass }>
+                    <PromptCaseStudyModule 
+                        additionalPrompts={ additionalPrompts }
+                        visibility={ visibility } />
+                </div>
+
             </div>
-        )
-    }
+
+            <div className={ htmlClass.pagination.page }>
+
+                <button
+                    type="button"
+                    className={ nextButtonClass }
+                    value="next"
+                    onClick={ onButtonClick }>
+                    { caseStudy.next }
+                </button>
+
+                <button
+                    type="button"
+                    className={ prevButtonClass }
+                    value="prev"
+                    onClick={ onButtonClick }>
+                    { caseStudy.prev }
+                </button>
+            </div>
+        </div>
+    )
 };

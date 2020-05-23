@@ -13,10 +13,12 @@ router.get( '/display', routes.display );
 
 // Case study API call, to get all tables which will
 // have prompts shown
-// router.get( '/visibility/prompt', routes.visibility.prompt );
+router.get( '/visibility/prompt', routes.visibility.prompt );
 
 // Case study API call, to get all tables which will
 // have fields shown in the background evidence record
+// as well as the additional prompts an other necessary
+// tables
 // router.get( '/visibility/field', routes.visibility.field );
 
 module.exports = router;

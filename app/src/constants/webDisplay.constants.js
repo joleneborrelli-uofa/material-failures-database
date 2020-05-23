@@ -6,7 +6,7 @@ export const mainPage =
 {
     caseStudyLink : 'Case Study',
     recordLink    : 'Record',
-    title         : 'Materials Failure Database'
+    title         : 'Material Failures Database'
 };
 
 export const headers =
