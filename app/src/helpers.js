@@ -3,28 +3,6 @@ import { headers, unknownObject, lines } from './constants/webDisplay.constants.
 import { random, isString }              from 'lodash';
 
 /**
- * Gets the object name from the database
- *
- * @param  { Object Literal } database database
- * @return { String } 
- */
-export const getObjectName = ( database ) =>
-{
-	return database.hasOwnProperty( 'object' ) ? database.object.name : unknownObject;
-};
-
-/**
- * Gets the object case number from the database
- *
- * @param  { Object Literal } database database
- * @return { String } 
- */
-export const getObjectCaseNumber = ( database ) =>
-{
-	return database.hasOwnProperty( 'object' ) ? database.object.object_id : '0';
-};
-
-/**
  * Generates a unique id for React components
  *
  * @param  { String } prefix prefix for the key
@@ -69,13 +47,13 @@ export const buildHeaders = ( database ) =>
 };
 
 /**
- * Gets the additional prompts from the database
+ * Gets the additional prompts from the fields
  * object, organized per header
  *
- * @param  { Object Literal } database database
+ * @param  { Object Literal } fields fields
  * @return { Object Literal } 
  */
-export const getAdditionalPrompts = database =>
+export const getAdditionalPrompts = fields =>
 {
     const prompts = {};
 
@@ -83,9 +61,9 @@ export const getAdditionalPrompts = database =>
     {
         let additionalPrompt = [];
 
-        if( database[header] && database[header].additional_prompt )
+        if( fields[header] && fields[header].additional_prompt )
         {
-            additionalPrompt = database[header].additional_prompt;
+            additionalPrompt = fields[header].additional_prompt;
         }
         
         prompts[header] = additionalPrompt;
