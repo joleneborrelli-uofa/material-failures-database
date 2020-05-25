@@ -42,8 +42,6 @@ export default function Homepage()
     {
         let links;
 
-        if( !isArray( items ) ) items = [ items ];
-
         links = items.map( ( item, index ) =>
         {
             let 

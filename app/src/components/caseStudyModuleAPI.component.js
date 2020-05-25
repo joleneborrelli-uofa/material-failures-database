@@ -1,3 +1,4 @@
+import axios                             from 'axios';
 import React, { useEffect, useState }    from 'react';
 import { genericHtmlClass as htmlClass } from '../constants/htmlClass.constants.js';
 import CaseStudyModule                   from './caseStudyModule.component.js';
@@ -5,13 +6,11 @@ import CaseStudyModule                   from './caseStudyModule.component.js';
 export default function CaseStudyModuleAPI ( props )
 {
     // Props
-    const { id } = this.props;
+    const { id } = props;
 
     // State
-    const [caseStudyModule, setCaseStudyModule] = useState( [] );
     const [loading, setLoading]                 = useState( 'on' );
-    const [visibility, setVisibility]           = useState( {} );
-    const [fields, setFields]					= useState( {} );
+    const [caseStudyModule, setCaseStudyModule] = useState( [] ) ;
 
     useEffect( () =>
     {
@@ -21,50 +20,54 @@ export default function CaseStudyModuleAPI ( props )
     // Methods
     const fetchPromptVisibility = async () =>
     {
-        axios
-            .get( 'http://localhost:4001/api/visibility/prompt' )
-            .then( res => 
-            {
-                setVisibility( res.data );
-            } )
-            .catch( err => 
-            {
-                console.error( `Error getting prompt visibility: ${ err }` ) 
-            } )    	
+        return axios
+                .get( 'http://localhost:4001/api/visibility/prompt', 
+                { 
+                    params: { id } 
+                } )
+                .then( res => res.data )
+                .catch( err => 
+                {
+                    console.error( `Error getting prompt visibility: ${ err }` ) 
+                } )    	
     }
 
     const fetchFields = async () =>
     {
-        axios
-            .get( 'http://localhost:4001/api/visibility/field' )
-            .then( res => 
-            {
-            	// make a call to get visible fields, plus additional
-            	// prompts, references and manifests
-            	setFields( res.data );
-            } )
-            .catch( err => 
-            {
-                console.error( `Error getting fields: ${ err }` ) 
-            } )    	    	
+        let visibleTables = await axios
+                                .get( 'http://localhost:4001/api/visibility/field',
+                                { 
+                                    params: { id } 
+                                } )
+                                .then( res => res.data )
+                                .catch( err => 
+                                {
+                                    console.error( `Error getting field visibility: ${ err }` ) 
+                                } )
+
+        return axios 
+                .get( 'http://localhost:4001/api/background',
+                { 
+                    params: { id, visibleTables } 
+                } ) 
+                .then( res => res.data )
+                .catch( err => 
+                {
+                    console.error( `Error getting background fields: ${ err }` ) 
+                } )
     }
 
     const fetchCaseStudyModuleData = async () => 
     {
-    	fetchPromptVisibility()
-    	.then( () => 
-    	{
-    		fetchFields();
-    	} )
-    	.then( () =>
-    	{
-    		let caseStudyModule = <CaseStudyModule
-    								visibility={ visibility }
-    								fields={ fields } />
+        let visibility = await fetchPromptVisibility();
+        let fields     = await fetchFields();
 
-    		setCaseStudyModule( caseStudyModule );
-    		setLoading( false );
-    	} )
+        let caseStudyModule = <CaseStudyModule
+                                    visibility={ visibility }
+                                    fields={ fields } />
+
+        setCaseStudyModule( caseStudyModule );
+        setLoading( false );
     }
 
     // Return
