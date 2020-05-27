@@ -1,6 +1,6 @@
 // Web Display Constants
 
-export const unknownObject  = 'Unknown Object';
+export const unknownObject = 'Unknown Object';
 
 export const mainPage =
 {
@@ -18,7 +18,7 @@ export const headers =
     use         : 'Use Case and History'
 };
 
-export const lines =
+export const subheaders =
 {
     rating              : 'Rating',
     inscription         : 'Inscription',
