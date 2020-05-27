@@ -49,7 +49,6 @@ const formatByHeader = table =>
         {
             response[header] = {};
 
-            // Loop over each selected table
             selectTableNames.forEach( tableName =>
             {
                 let rows = table[tableName];
@@ -60,7 +59,7 @@ const formatByHeader = table =>
                     // Format the rows
                     try
                     {
-                        rows = formatRows( rows );
+                        rows = formatByRow( rows );
                     }
                     catch( error )
                     {
@@ -80,10 +79,18 @@ const formatByHeader = table =>
                     else
                     {
                         // Store the rows at header level
-                        response[header] = rows;
+                        return response[header] = rows;
                     }
                 }
-            } )
+
+            }, {} );
+
+            // If nothing has been added under the header,
+            // delete the header in the response object
+            if( !Object.keys( response[header] ).length > 0 )
+            {
+                delete response[header];
+            }
         }
     } )
 
@@ -92,90 +99,6 @@ const formatByHeader = table =>
 
     return response;
 };
-
-/**
- * Formats the prompt vibility table into an object with 
- * keys based on constant headers. Each header contains 
- * key-value pairs where the key is the table name (without 
- * the prefix header + _) and the value is a string.
- * 
- * ie.
- * response =   
- * {
- *      object : 
- *      {
- *          rating : 'on',
- *          ...
- *      }   
- * }
- *
- * @param  { Object Literal } table    has table names as keys
- * @return { Object Literal } response formatted table
- */
-const formatByPromptVisibility = table =>
-{
-    const 
-    { 
-        headers,
-        excludedColumns 
-    } = constants;
-
-    const response      = {};
-    const allTableNames = Object.keys( table );
-
-    headers.forEach( header =>
-    {
-        // Select all tables that have contain the header
-        let selectTableNames = allTableNames.filter( tableName => 
-                                    tableName.includes( header ) );
-
-        // If there are tables that contain the header
-        if( selectTableNames.length > 0 )
-        {
-            response[header] = {};
-
-            // Loop over each selected table
-            selectTableNames.forEach( tableName =>
-            {
-                // Remove the header prefix
-                let parts = tableName.split( '_' );
-                let field = parts[1];
-
-                if( field && !excludedColumns.includes( field ) )
-                {
-                    response[header][field] = table[tableName]; 
-                }
-            } )
-        }
-    } )
-
-    return response;
-};
-
-/**
- * Deletes all the table names that have their 
- * value set to visibility off
- *
- * @param  { Object Literal } table    visibility table
- * @return { Object Literal } response formatted table
- */
-const formatByValueVisibility = table =>
-{
-    const { excludedColumns } = constants;
-    const response            = { ...table };
-
-    for ( let column in response )
-    {
-        if( response[column] === constants.visibility.off ||
-            excludedColumns.includes( column ) )
-        {
-            delete response[column];
-        }
-    }
-
-    return Object.keys( response );
-};
-
 
 /**
  * Formats rows such that certain values within the row
@@ -190,7 +113,7 @@ const formatByValueVisibility = table =>
  * @param  { Array } rows     rows of data
  * @return { Array } response formatted row
  */
-const formatRows = rows =>
+const formatByRow = rows =>
 {
     const 
     { 
@@ -236,6 +159,90 @@ const formatRows = rows =>
         return row
     } )
 };
+
+/**
+ * Formats the prompt vibility table into an object with 
+ * keys based on constant headers. Each header contains 
+ * key-value pairs where the key is the table name (without 
+ * the prefix header + _) and the value is a string.
+ * 
+ * ie.
+ * response =   
+ * {
+ *      object : 
+ *      {
+ *          feature : 'off',
+ *          rating  : 'on',
+ *          ...
+ *      }   
+ * }
+ *
+ * @param  { Object Literal } table    has table names as keys
+ * @return { Object Literal } response formatted table
+ */
+const formatByPromptVisibility = table =>
+{
+    const 
+    { 
+        headers,
+        excludedColumns 
+    } = constants;
+
+    const response      = {};
+    const allTableNames = Object.keys( table );
+
+    headers.forEach( header =>
+    {
+        // Select all tables that have contain the header
+        let selectTableNames = allTableNames.filter( tableName => 
+                                    tableName.includes( header ) );
+
+        // If there are tables that contain the header
+        if( selectTableNames.length > 0 )
+        {
+            response[header] = {};
+
+            // Loop over each selected table
+            selectTableNames.forEach( tableName =>
+            {
+                // Remove the header prefix
+                let field = tableName.split( '_' ).slice( 1 ).join( '_' );
+
+                if( field && !excludedColumns.includes( field ) )
+                {
+                    response[header][field] = table[tableName]; 
+                }
+            } )
+        }
+    } )
+
+    return response;
+};
+
+/**
+ * Deletes all the table names that have their 
+ * value set to visibility off
+ *
+ * @param  { Object Literal } table    visibility table
+ * @return { Object Literal } response formatted table
+ */
+const formatByValueVisibility = table =>
+{
+    const { excludedColumns } = constants;
+    const response            = { ...table };
+
+    for ( let column in response )
+    {
+        if( response[column] === constants.visibility.off ||
+            excludedColumns.includes( column ) )
+        {
+            delete response[column];
+        }
+    }
+
+    return Object.keys( response );
+};
+
 
 exports.generateSql              = generateSql;
 exports.formatByHeader           = formatByHeader;
