@@ -119,7 +119,7 @@ export default class EnvironmentCaseStudyModule extends React.Component
 
                 <PromptTitle 
                     title={ constants.stress_orientation } 
-                    visibility={ htmlVisibility[visibility.stress_orientation] }>
+                    visibility={ htmlVisibility[visibility.interaction_stress] }>
 
                     <PromptTextArea 
                         name="stress_orientation"
@@ -130,8 +130,8 @@ export default class EnvironmentCaseStudyModule extends React.Component
 
 
                 <PromptTitle 
-                    title={ constants.loading }
-                    visibility={ htmlVisibility[visibility.loading] }>
+                    title={ constants.interaction_loading }
+                    visibility={ htmlVisibility[visibility.interaction_loading] }>
 
                     <PromptPairedRadioGroupList
                         statekey="loading"
