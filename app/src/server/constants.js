@@ -11,8 +11,8 @@ exports.headers =
 
 exports.visibility =
 {
-	on  : 'ON',
-	off : 'OFF'
+	on  : 'on',
+	off : 'off'
 };
 
 exports.defaultCaseStudyTables =
@@ -30,6 +30,7 @@ exports.defaultRecordTables =
 [
 	'reference',
 	'manifest',
+	'object_rating',
 	'object_inscription',
 	'object_serial_number',
 	'object_feature',

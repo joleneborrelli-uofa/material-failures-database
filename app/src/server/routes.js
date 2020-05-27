@@ -61,13 +61,13 @@ const routes =
     // Record route
     record : async ( request, response ) =>
     {
-        let recordTables = {};
-
         const 
         { 
             generateSql,
             formatByHeader 
         } = helpers;
+
+        let recordTables = {};
 
         const { defaultRecordTables : tables } = constants;
 
@@ -82,7 +82,7 @@ const routes =
             }
 
             // Add object table
-            sql = generateSql( 'object' );
+            sql = generateSql( 'object', request.query.id );
 
             recordTables.object = await get( sql, 'object' );            
 
