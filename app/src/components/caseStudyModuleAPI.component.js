@@ -3,7 +3,7 @@ import React, { useEffect, useState }    from 'react';
 import { genericHtmlClass as htmlClass } from '../constants/htmlClass.constants.js';
 import CaseStudyModule                   from './caseStudyModule.component.js';
 
-export default function CaseStudyModuleAPI ( props )
+export default function CaseStudyModuleApi ( props )
 {
     // Props
     const { id } = props;
@@ -32,7 +32,7 @@ export default function CaseStudyModuleAPI ( props )
                 } )    	
     }
 
-    const fetchFields = async () =>
+    const fetchStudyData = async () =>
     {
         let visibleTables = await axios
                                 .get( 'http://localhost:4001/api/visibility/field',
@@ -46,25 +46,25 @@ export default function CaseStudyModuleAPI ( props )
                                 } )
 
         return axios 
-                .get( 'http://localhost:4001/api/background',
+                .get( 'http://localhost:4001/api/study',
                 { 
                     params: { id, visibleTables } 
                 } ) 
                 .then( res => res.data )
                 .catch( err => 
                 {
-                    console.error( `Error getting background fields: ${ err }` ) 
+                    console.error( `Error getting case study fields: ${ err }` ) 
                 } )
     }
 
     const fetchCaseStudyModuleData = async () => 
     {
         let visibility = await fetchPromptVisibility();
-        let fields     = await fetchFields();
+        let studyData  = await fetchStudyData();
 
         let caseStudyModule = <CaseStudyModule
                                     visibility={ visibility }
-                                    fields={ fields } />
+                                    studyData={ studyData } />
 
         setCaseStudyModule( caseStudyModule );
         setLoading( false );
