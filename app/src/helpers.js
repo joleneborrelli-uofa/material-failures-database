@@ -1,6 +1,6 @@
-import { optionChanges }                 from './constants/optionChanges.constants.js';
-import { headers, unknownObject, lines } from './constants/webDisplay.constants.js';
-import { random, isString }              from 'lodash';
+import { optionChanges }                     from './constants/optionChanges.constants.js';
+import { headers, unknownObject, subheaders } from './constants/webDisplay.constants.js';
+import { random, isString }                  from 'lodash';
 
 /**
  * Generates a unique id for React components
@@ -78,7 +78,7 @@ export const getAdditionalPrompts = fields =>
  * @param  { Object Literal } state PromptCaseStudy state
  * @return { String } 
  */
-export const convertStateIntoText = state =>
+export const convertStateToText = state =>
 {
     const { checkbox, radio } = optionChanges;
 
@@ -95,7 +95,7 @@ export const convertStateIntoText = state =>
             const parts     = statekey.split( '_' );
             const lastIndex = parts.length-1;
 
-            string = `${ lines[statekey] }: ${ statevalue } \n`;
+            string = `${ subheaders[statekey] }: ${ statevalue } \n`;
 
             if( parts[lastIndex] === 'note' ) string = `Notes: ${ statevalue } \n`;
 
@@ -112,7 +112,7 @@ export const convertStateIntoText = state =>
 
                 if( checked.length > 0 )
                 {
-                    text += `${ lines[statekey] }: ${ checked.join(', ') } \n`;
+                    text += `${ subheaders[statekey] }: ${ checked.join(', ') } \n`;
                 }
             }
 
@@ -134,7 +134,7 @@ export const convertStateIntoText = state =>
                     }
                 } );
 
-                if( string ) text += `${ lines[statekey] } \n${ string }`;
+                if( string ) text += `${ subheaders[statekey] } \n${ string }`;
             }
 
             if( statekey === 'additionalPromptText' )
