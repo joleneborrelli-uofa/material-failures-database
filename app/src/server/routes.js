@@ -58,52 +58,91 @@ const get = ( sql, tableName ) =>
 
 const routes =
 {
-    // All route
-    all : async ( request, response ) =>
+    // Record route
+    record : async ( request, response ) =>
     {
-        // Todo
-    },
+        let recordTables = {};
 
-    // Background route
-    background : async ( request, response ) =>
-    {
-        let backgroundTables = {};
+        const 
+        { 
+            generateSql,
+            formatByHeader 
+        } = helpers;
 
-        const tables = 
-        [ 
-            ...request.query.visibleTables, 
-            ...constants.defaultBackgroundTables
-        ];
-
-        const generateSql = tableName =>
-        {
-            return `SELECT * 
-                    FROM ${ tableName } 
-                    WHERE object_id = ${ request.query.id }`;
-        }
+        const { defaultRecordTables : tables } = constants;
 
         try
         {
             for( let i = 0; i < tables.length; i++ )
             {
                 let tableName = tables[i];
-                let sql = generateSql( tableName );
+                let sql = generateSql( tableName, request.query.id );
 
-                backgroundTables[tableName] = await all( sql, tableName );
+                recordTables[tableName] = await all( sql, tableName );
             }
 
-            // To do
-            // backgroundTables = helpers.formatBackgroundTables( backgroundTables );
+            // Add object table
+            sql = generateSql( 'object' );
+
+            recordTables.object = await get( sql, 'object' );            
+
+            recordTables = helpers.formatByHeader( recordTables );
         }
         catch( error )
         {
             response.json( 
             { 
-                message: `Error in background response: ${ error }` 
+                message: `Error in record tables response: ${ error }` 
             } )
         }
 
-        response.json( backgroundTables );
+        response.json( recordTables );
+
+    },
+
+    // Study route
+    study : async ( request, response ) =>
+    {
+        const 
+        { 
+            generateSql,
+            formatByHeader
+        } = helpers;
+
+        let caseStudyTables = {};
+
+        const tables = 
+        [ 
+            ...request.query.visibleTables, 
+            ...constants.defaultCaseStudyTables
+        ];
+
+        try
+        {
+            for( let i = 0; i < tables.length; i++ )
+            {
+                let tableName = tables[i];
+                let sql = generateSql( tableName, request.query.id );
+
+                caseStudyTables[tableName] = await all( sql, tableName );
+            }
+
+            // Add object table
+            sql = generateSql( 'object', request.query.id );
+
+            caseStudyTables.object = await get( sql, 'object' );            
+
+            caseStudyTables = formatByHeader( caseStudyTables );
+        }
+        catch( error )
+        {
+            response.json( 
+            { 
+                message: `Error in case study tables response: ${ error }` 
+            } )
+        }
+
+        response.json( caseStudyTables );
     },
 
     // Display route
@@ -134,12 +173,16 @@ const routes =
     {
         prompt : async ( request, response ) =>
         {
-            const sql = `SELECT * 
-                         FROM prompt_visibility 
-                         WHERE object_id = ${ request.query.id }`;
+            const 
+            { 
+                generateSql,
+                formatByPromptVisibility
+            } = helpers;
+            
+            const sql = generateSql( 'prompt_visibility', request.query.id );
 
             return get( sql, 'prompt visibility' )
-                    .then( table => helpers.formatPromptVisibilityTable( table ) )
+                    .then( table => formatByPromptVisibility( table ) )
                     .then( table =>
                     {
                         response.json( table );
@@ -155,12 +198,16 @@ const routes =
 
         field : async ( request, response ) =>
         {
-            const sql = `SELECT * 
-                         FROM field_visibility 
-                         WHERE object_id = ${ request.query.id }`;
+            const 
+            { 
+                generateSql,
+                formatByValueVisibility 
+            } = helpers;
+
+            const sql = generateSql( 'field_visibility', request.query.id );
 
             return get( sql, 'field visibility' )
-                    .then( table => helpers.formatFieldVisibilityTable( table ) )
+                    .then( table => formatByValueVisibility( table ) )
                     .then( table =>
                     {
                         response.json( table );

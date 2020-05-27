@@ -4,7 +4,9 @@ exports.headers =
     'material', 
     'processing', 
     'environment', 
-    'use'
+    'use',
+    'reference',
+    'manifest'
 ];
 
 exports.visibility =
@@ -13,11 +15,10 @@ exports.visibility =
 	off : 'OFF'
 };
 
-exports.defaultBackgroundTables =
+exports.defaultCaseStudyTables =
 [
 	'reference',
 	'manifest',
-	'object',
 	'object_additional_prompt',
 	'material_additional_prompt',
 	'processing_additional_prompt',
@@ -25,8 +26,56 @@ exports.defaultBackgroundTables =
 	'use_additional_prompt'
 ];
 
-exports.columnsToDelete =
+exports.defaultRecordTables =
+[
+	'reference',
+	'manifest',
+	'object_inscription',
+	'object_serial_number',
+	'object_feature',
+	'material_alloy_designation',
+	'material_grade',
+	'material_full_name',
+	'material_class',
+	'material_crystallinity',
+	'material_recyclability',
+	'material_biodegradability',
+	'material_toxicity',
+	'processing_manufacturer',
+	'processing_date',
+	'processing_location',
+	'processing_plant',
+	'processing_treatment',
+	'processing_joining',
+	'processing_machining',
+	'processing_shaping',
+	'processing_residual_stress',
+	'environment_ambient',
+	'environment_light_exposure',
+	'environment_geographic_location',
+	'environment_weather_exposure',
+	'environment_storage_location',
+	'environment_interaction_stress',
+	'environment_interaction_loading',
+	'use_problem_statement',
+	'use_functionality_loss',
+	'use_failure_time',
+	'use_failure_operation_stage',
+	'use_specification',
+	'use_record',
+	'use_operation',
+	'use_operator',
+	'use_operational_factor'
+];
+
+exports.excludedColumns =
 [
 	'id',
 	'object_id'
 ];
+
+exports.errorMessages =
+{
+	nullValue : 'Field cannnot have a null value',
+	noFields  : 'Row does not have fields'
+};
