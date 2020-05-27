@@ -11,7 +11,7 @@ import UseCaseStudyModule                  from './useCaseStudyModule.component.
 import 
 { 
     extractPrefix, 
-    convertStateIntoText 
+    convertStateToText 
 } from '../helpers.js';
 
 
@@ -110,7 +110,7 @@ export default class PromptCaseStudyModule extends React.Component
      */
     downloadState()
     {
-        const text    = convertStateIntoText( this.state );
+        const text    = convertStateToText( this.state );
         const file    = new Blob( [text], { type: 'text/plain' } );
         const element = document.createElement( 'a' );
         const onClick = () => 
