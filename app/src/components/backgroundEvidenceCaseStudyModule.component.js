@@ -6,9 +6,12 @@ import Viewer                 from './viewer.component.js';
 
 export default function BackgroundEvidenceCaseStudyModule ( props )
 {
-    const showViewer    = false;
-    const { studyData } = props;
-    const { manifest }  = studyData;
+    const showViewer = false;
+    const 
+    { 
+        manifest,
+        recordData
+    }  = props;
 
     const htmlClass     = caseStudyHtmlClass.backgroundResearch;
     const pageManifests = manifest.filter( item => item.page === "background" );
@@ -30,9 +33,9 @@ export default function BackgroundEvidenceCaseStudyModule ( props )
             </div>
             <RecordModule 
                 showViewer={ showViewer }
-                recordData={ studyData } />
+                recordData={ recordData } />
             { viewers }
         </div>
     )
-    
+
 };

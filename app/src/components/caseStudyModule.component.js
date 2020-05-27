@@ -16,6 +16,8 @@ export default function CaseStudyModule ( props )
         studyData
     } = props;
 
+    const { manifest } = studyData;
+
     // State
     const [currentPage, setCurrentPage]       = useState( 0 );
     const [nextVisibility, setNextVisibility] = useState( htmlClass.visibility.on );
@@ -82,11 +84,14 @@ export default function CaseStudyModule ( props )
                 </div>
 
                 <div className={ photoClass }>
-                    <PhotoEvidenceCaseStudyModule studyData={ studyData } />
+                    <PhotoEvidenceCaseStudyModule 
+                        manifest={ manifest } />
                 </div>
 
                 <div className={ backgroundClass }>
-                    <BackgroundEvidenceCaseStudyModule studyData={ studyData } />
+                    <BackgroundEvidenceCaseStudyModule 
+                        manifest={ manifest }
+                        recordData={ studyData } />
                 </div>
 
                 <div className={ promptClass }>

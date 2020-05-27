@@ -2,7 +2,7 @@ import React               from 'react';
 import ReferenceList       from './referenceList.component.js';
 import Viewer              from './viewer.component.js';
 import { recordHtmlClass } from '../constants/htmlClass.constants.js';
-import { lines }           from '../constants/webDisplay.constants.js'; 
+import { subheaders }      from '../constants/webDisplay.constants.js'; 
 import { databaseKeys }    from '../constants/database.constants.js';
 import 
 { 
@@ -14,39 +14,27 @@ import
 import 
 { 
     buildHeaders, 
-    getObjectName ,
     createUniqueId
 } from '../helpers.js';
 
-export default class RecordModule extends React.Component
+export default function RecordModule ( props )
 {
-    constructor( props )
-    {
-        super( props );
-
-        this.generateModules       = this.generateModules.bind( this );
-        this.generateSubmodules    = this.generateSubmodules.bind( this );
-        this.generateMultipleLines = this.generateMultipleLines.bind( this );
-        this.generateTypeLines     = this.generateTypeLines.bind( this );
-        this.generateTypeLine      = this.generateTypeLine.bind( this );
-    }
-
     /**
      * Generates the modules given the headers that
      * will be present
      *
-     * @param  { Object Literal } database record database
-     * @return { String }         modules  record modules
+     * @param  { Object Literal } recordData record data
+     * @return { String }         modules    record modules
      */
-    generateModules( database )
+    const generateModules = recordData =>
     {
         let modules   = [];
-        const headers = buildHeaders( database );
+        const headers = buildHeaders( recordData );
 
         for( let header in headers )
         {
-            let moduleData = database[header];
-            let submodule  = this.generateSubmodules( moduleData );
+            let submoduleData = recordData[header];
+            let submodule     = generateSubmodules( submoduleData );
 
             if( submodule.length > 0 )
             {
@@ -67,81 +55,90 @@ export default class RecordModule extends React.Component
         return modules;
     }
 
-
     /**
      * Generates the submodules for each header, creating
      * a single line, list or formatted single line
      *
-     * @param  { Object Literal } moduleData data specific to the submodule
-     * @return { String }         submodules record submodules
+     * @param  { Object Literal } submoduleData value of subheader
+     * @return { String }         submodules    record submodules
      */
-	generateSubmodules( moduleData )
-	{
+    const generateSubmodules = submoduleData =>
+    {
         let submodules = [];
 
-        for( let key in moduleData )
+        for( let key in submoduleData )
         {
-            let singleLine   = '';
-            let typeLine     = '';
-            let multipleLine = '';
+            const value     = submoduleData[key];
+            const subheader = subheaders[key];
 
-            const moduleValue = moduleData[key];
-            const lineHeader  = lines[key];
-
-            if( lineHeader )
+            if( subheader )
             {
-                const submoduleHeader = <p 
-                                         key={ createUniqueId() }
-                                         className={ recordHtmlClass.submoduleHeader }>
-                                            { lineHeader }
-                                        </p>;
-
-                if ( isString( moduleValue ) ) 
-                {
-                    singleLine = <p 
+                // Subheader
+                submodules.push( <p 
                                   key={ createUniqueId() }
-                                  className={ recordHtmlClass.line }>
-                                    { moduleValue }
-                                 </p>;
-                }
+                                  className={ recordHtmlClass.submoduleHeader }>
+                                    { subheader }
+                                 </p> )
 
-                if( isArray( moduleValue ) )
+                if( isArray( value ) )
                 {
-                    if( isString( moduleValue[0] ) ) 
+                    const hasStrings = value.every( item => isString( item ) );
+                    const hasObjects = value.every( item => isPlainObject( item ) );
+
+                    if( hasStrings ) 
                     {
-                        multipleLine = this.generateMultipleLines( moduleValue );
+                        if( value.length > 1 ) 
+                        {
+                            submodules.push( generateMultipleLines( value ) );
+                        }
+                        else
+                        {
+                            submodules.push( generateSingleLine( value[0] ) );
+                        }
                     }
 
-                    if( isPlainObject( moduleValue[0] ) )
+                    if( hasObjects )
                     {
-                        typeLine = this.generateTypeLines( moduleValue, key );
+                        submodules.push( generateFormattedLines( value, key ) )
                     }
                 }
-
-                submodules.push( submoduleHeader, singleLine, multipleLine, typeLine );
             }
-            
         }
 
         return submodules;
-	}
+    }
 
+    /**
+     * Generates a single line
+     *
+     * @param  { String } value 
+     * @return { Markup } line
+     */
+    const generateSingleLine = value =>
+    {
+        return <p 
+                  key={ createUniqueId() }
+                  className={ recordHtmlClass.line }>
+                    { value }
+                 </p>;
+    }
+                  
     /**
      * Generates multiple lines in a list
      *
-     * @param  { Object Literal } moduleData data specific to the submodule
-     * @return { String }                    list
+     * @param  { Object Literal } value value of subheader
+     * @return { Markup }         list
      */
-    generateMultipleLines( moduleValue )
+    const generateMultipleLines = ( value ) =>
     {
         let li = [];
 
-        for( let i = 0; i < moduleValue.length; i++ )
+        for( let i = 0; i < value.length; i++ )
         {
             li.push( <li 
                         key={ i }
                         className={ recordHtmlClass.liLines }>
-                        { moduleValue[i] }
+                        { value[i] }
                     </li> )
         }
 
@@ -155,51 +152,49 @@ export default class RecordModule extends React.Component
     /**
      * !!DO THIS BETTER!!
      *
-     * Generates multiple type lines, which are formatted
-     * strings
+     * Generates multiple formatted strings
      *
-     * @param  { Array }  moduleData data specific to the submodule entry
-     * @param  { String } subheader  module subheader
-     * @return { String } typelines  formatted strings
+     * @param  { Array }  value             value of subheader 
+     * @param  { String } subheader         module subheader
+     * @return { Array }  formatted strings
      */
-    generateTypeLines( moduleValue, subheader )
+    const generateFormattedLines = ( value, subheader ) =>
     {
-        let typeLines = [];
+        let strings = [];
 
-        for( let i = 0; i < moduleValue.length; i ++ )
+        for( let i = 0; i < value.length; i ++ )
         {
-            let keys = Object.keys( moduleValue[i] );
+            let keys = Object.keys( value[i] );
 
             let typeKey        = subheader + databaseKeys.type;
             let descriptionKey = subheader + databaseKeys.description;
             let subtypeKeys    = 
             [
-                moduleValue[i][subheader + databaseKeys.subtype],
-                moduleValue[i][subheader + databaseKeys.normalcy],
-                moduleValue[i][subheader + databaseKeys.forces],
-                moduleValue[i][subheader + databaseKeys.frequency]
+                value[i][subheader + databaseKeys.subtype],
+                value[i][subheader + databaseKeys.normalcy],
+                value[i][subheader + databaseKeys.forces],
+                value[i][subheader + databaseKeys.frequency]
             ].filter( subtypeKey => subtypeKey !== undefined );
 
-            let type        = keys.includes( typeKey ) ? moduleValue[i][typeKey] : '';
+            let type        = keys.includes( typeKey ) ? value[i][typeKey] : '';
             let subtype     = subtypeKeys.length !== 0 ? subtypeKeys.join( ', ' ) : '';
-            let description = keys.includes( descriptionKey ) ? moduleValue[i][descriptionKey] : '';
+            let description = keys.includes( descriptionKey ) ? value[i][descriptionKey] : '';
             
-            typeLines.push( this.generateTypeLine( type, subtype, description ) );
+            strings.push( generateFormattedLine( type, subtype, description ) );
         }
 
-        return typeLines;
-    };
+        return strings;
+    }
 
     /**
-     * Generates a type line, which is a formatted
-     * string
+     * Generates a formatted string
      *
-     * @param  { String } type        data type
-     * @param  { String } subtype     data subtype
-     * @param  { String } description data description
-     * @return { String } typeline    formatted string
+     * @param  { String } type             data type
+     * @param  { String } subtype          data subtype
+     * @param  { String } description      data description
+     * @return { Markup } formatted string
      */
-    generateTypeLine( type, subtype, description )
+    const generateFormattedLine = ( type, subtype, description ) =>
     {
         // If there is no subtype, do not include it in the line
         subtype = subtype ? ` (${ subtype })` : '';
@@ -209,42 +204,40 @@ export default class RecordModule extends React.Component
                 className={ recordHtmlClass.line }>
                     { type }{ subtype }: { description }
                 </p>
-    };
-
-    render()
-    {
-        const 
-        { 
-            database,
-            showViewer = true
-        } = this.props;
-
-        const 
-        {
-            manifests,
-            references
-        } = database;
-
-        const title   = getObjectName( database );
-        const modules = this.generateModules( database );
-
-        const viewers = showViewer ? manifests.map( ( manifest, index ) =>
-        {
-            return <Viewer key={ index } path={ manifest.path } />
-        } ) : false;
-
-        return(
-        	<div className={ recordHtmlClass.record }>
-
-        		<h3 className={ recordHtmlClass.title }>
-        			{ title }
-        		</h3>
-        		{ modules }
-                <ReferenceList list={ references } />
-                { viewers }
-
-        	</div>
-        )
     }
 
-};
+    const 
+    { 
+        recordData,
+        showViewer = true
+    } = props;
+
+    const 
+    {
+        manifest,
+        reference
+    } = recordData;
+
+    const title   = recordData.object && recordData.object.object_id;
+    const modules = generateModules( recordData );
+
+    const referenceList = reference ? <ReferenceList list={ reference } /> : false;
+    const viewers       = showViewer && manifest ? manifest.map( ( item, index ) =>
+    {
+        return <Viewer key={ index } path={ item.path } />
+    } ) : false;
+
+    return(
+        <div className={ recordHtmlClass.record }>
+
+            <h3 className={ recordHtmlClass.title }>
+                { title }
+            </h3>
+            { modules }
+            { referenceList }
+            { viewers }
+
+        </div>
+    )
+
+}
