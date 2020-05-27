@@ -4,46 +4,35 @@ import { caseStudyHtmlClass } from '../constants/htmlClass.constants.js';
 import RecordModule           from '../components/recordModule.component.js';
 import Viewer                 from './viewer.component.js';
 
-export default class BackgroundEvidenceCaseStudyModule extends React.Component
+export default function BackgroundEvidenceCaseStudyModule ( props )
 {
-    constructor( props )
+    const showViewer    = false;
+    const { studyData } = props;
+    const { manifest }  = studyData;
+
+    const htmlClass     = caseStudyHtmlClass.backgroundResearch;
+    const pageManifests = manifest.filter( item => item.page === "background" );
+
+    const viewers = pageManifests.map( ( pageManifest, index ) =>
     {
-        super( props );
-    }
+        return <Viewer key={ index } path={ pageManifest.path } />
+    } );
 
-    render()
-    {
-        const showViewer   = false;
-    	const { database } = this.props;
-        const 
-        { 
-            references,
-            manifests
-        } = database;
-
-        const htmlClass     = caseStudyHtmlClass.backgroundResearch;
-        const pageManifests = manifests.filter( manifest => manifest.page === "background" );
-
-        const viewers = pageManifests.map( ( pageManifest, index ) =>
-        {
-            return <Viewer key={ index } path={ pageManifest.path } />
-        } );
-
-	return (
-		    <div className={ htmlClass.page }>
-                <div className={ htmlClass.title }>
-                    <h3>
-                        { caseStudy.backgroundResearchTitle }
-                    </h3>
-                    <h3>
-                        { caseStudy.backgroundResearchSubtitle }
-                    </h3>
-                </div>
-				<RecordModule 
-                    showViewer={ showViewer }
-                    database={ database } />
-                { viewers }
-			</div>
-		)
-    }
+    return (
+        <div className={ htmlClass.page }>
+            <div className={ htmlClass.title }>
+                <h3>
+                    { caseStudy.backgroundResearchTitle }
+                </h3>
+                <h3>
+                    { caseStudy.backgroundResearchSubtitle }
+                </h3>
+            </div>
+            <RecordModule 
+                showViewer={ showViewer }
+                recordData={ studyData } />
+            { viewers }
+        </div>
+    )
+    
 };

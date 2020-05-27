@@ -1,13 +1,9 @@
-import React           from 'react';
-import CaseStudyModule from './caseStudyModule.component.js';
-import RecordModule    from './recordModule.component.js';
+import React              from 'react';
+import CaseStudyModuleApi from './caseStudyModuleApi.component.js';
+import RecordModuleApi    from './recordModuleApi.component.js';
 
 // React Router
 import { useParams } from 'react-router-dom';
-
-// Will eventually be a singular database response
-import { recordDatabase }                from '../database/record.database.js';
-import { caseStudyDatabase, visibility } from '../database/caseStudy.database.js';
 
 export default function Page() 
 {
@@ -21,18 +17,14 @@ export default function Page()
 
     if( page === 'case-study' )
     {
-
-        // Make case study query to database with the ID number
-        element = <CaseStudyModule 
-                        database={ caseStudyDatabase }
-                        visibility={ visibility } />;
+        // Make case study query to database with the id number
+        element = <CaseStudyModuleApi id={ id } />;
     }
 
     if( page === 'record' )
     {
-        // Make record query to database with the ID number
-        element = <RecordModule 
-                        database={ recordDatabase } />;
+        // Make record query to database with the id number
+        element = <RecordModuleApi id={ id } />;
     }
 
     return element;

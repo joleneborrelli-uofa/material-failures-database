@@ -13,8 +13,8 @@ export default function CaseStudyModule ( props )
     const 
     { 
         visibility,
-        fields
-    } = this.props;
+        studyData
+    } = props;
 
     // State
     const [currentPage, setCurrentPage]       = useState( 0 );
@@ -54,9 +54,9 @@ export default function CaseStudyModule ( props )
     }
 
     // Return
-    const title             = fields.object && fields.object.name;
-    const caseNumber        = fields.object && fields.object.object_id;
-    const additionalPrompts = getAdditionalPrompts( fields );
+    const title             = studyData.object && studyData.object.name;
+    const caseNumber        = studyData.object && studyData.object.object_id;
+    const additionalPrompts = getAdditionalPrompts( studyData );
 
     // For pagination
     const pageVisibility = caseStudy.pages.map( ( page, index ) =>
@@ -68,8 +68,8 @@ export default function CaseStudyModule ( props )
     const photoClass      = `${ pageVisibility[1] } ${ htmlClass.photoEvidence.wrapper }`;
     const backgroundClass = `${ pageVisibility[2] } ${ htmlClass.backgroundResearch.wrapper }`;
     const promptClass     = `${ pageVisibility[3] } ${ htmlClass.fieldPrompts.wrapper }`;
-    const prevButtonClass = `${ htmlClass.pagination.prev } ${ this.state.prevVisibility }`;
-    const nextButtonClass = `${ htmlClass.pagination.next } ${ this.state.nextVisibility }`;
+    const prevButtonClass = `${ htmlClass.pagination.prev } ${ prevVisibility }`;
+    const nextButtonClass = `${ htmlClass.pagination.next } ${ nextVisibility }`;
 
     return (
         <div>
@@ -82,11 +82,11 @@ export default function CaseStudyModule ( props )
                 </div>
 
                 <div className={ photoClass }>
-                    <PhotoEvidenceCaseStudyModule database={ database } />
+                    <PhotoEvidenceCaseStudyModule studyData={ studyData } />
                 </div>
 
                 <div className={ backgroundClass }>
-                    <BackgroundEvidenceCaseStudyModule database={ database } />
+                    <BackgroundEvidenceCaseStudyModule studyData={ studyData } />
                 </div>
 
                 <div className={ promptClass }>
