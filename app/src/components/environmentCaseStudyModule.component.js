@@ -130,7 +130,7 @@ export default class EnvironmentCaseStudyModule extends React.Component
 
 
                 <PromptTitle 
-                    title={ constants.interaction_loading }
+                    title={ constants.loading }
                     visibility={ htmlVisibility[visibility.interaction_loading] }>
 
                     <PromptPairedRadioGroupList
