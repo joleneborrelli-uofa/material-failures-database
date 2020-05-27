@@ -9,42 +9,40 @@ export default function RecordModuleApi ( props )
     const { id } = props;
 
     // State
-    const [loading, setLoading]           = useState( 'on' );
-    const [recordModule, setRecordModule] = useState( [] ) ;
+    const [loading, setLoading]       = useState( 'on' );
+    const [recordData, setRecordData] = useState( {} ) ;
 
     useEffect( () =>
     {
-        fetchRecordModuleData();
+        fetchRecordData();
     }, [] );
 
     // Methods
     const fetchRecordData = async () =>
     {
-        return axios 
-                .get( 'http://localhost:4001/api/record',
-                { 
-                    params: { id } 
-                } ) 
-                .then( res => res.data )
-                .catch( err => 
-                {
-                    console.error( `Error getting record fields: ${ err }` ) 
-                } )
-    }
+        axios 
+            .get( 'http://localhost:4001/api/record',
+            { 
+                params: { id } 
+            } ) 
+            .then( res => 
+            {
+                let recordData = res.data;
 
-    const fetchRecordModuleData = async () => 
-    {
-        let recordData = await fetchRecordData();
-
-        let recordModule = <RecordModule
-                                recordData={ recordData } />
-
-        setRecordModule( recordModule );
-        setLoading( false );
+                setRecordData( recordData );
+                setLoading( 'off' );
+            } )
+            .catch( err => 
+            {
+                console.error( `Error getting record fields: ${ err }` ) 
+            } )
     }
 
     // Return
     const loadingClass = `${ htmlClass.visibility[loading] } ${ htmlClass.loading }`;
+    const recordModule = Object.keys( recordData ).length ? 
+                            ( <RecordModule 
+                                recordData={ recordData } /> ) : false;
 
     return (
         <div>

@@ -9,8 +9,9 @@ export default function CaseStudyModuleApi ( props )
     const { id } = props;
 
     // State
-    const [loading, setLoading]                 = useState( 'on' );
-    const [caseStudyModule, setCaseStudyModule] = useState( [] ) ;
+    const [loading, setLoading]       = useState( 'on' );
+    const [visibility, setVisibility] = useState( {} );
+    const [studyData, setStudyData]   = useState( {} );
 
     useEffect( () =>
     {
@@ -62,16 +63,17 @@ export default function CaseStudyModuleApi ( props )
         let visibility = await fetchPromptVisibility();
         let studyData  = await fetchStudyData();
 
-        let caseStudyModule = <CaseStudyModule
-                                    visibility={ visibility }
-                                    studyData={ studyData } />
-
-        setCaseStudyModule( caseStudyModule );
-        setLoading( false );
+        setVisibility( visibility );
+        setStudyData( studyData );
+        setLoading( 'off' );
     }
 
     // Return
-    const loadingClass = `${ htmlClass.visibility[loading] } ${ htmlClass.loading }`;
+    const loadingClass    = `${ htmlClass.visibility[loading] } ${ htmlClass.loading }`;
+    const caseStudyModule = Object.keys( visibility ).length && Object.keys( studyData ).length ?
+                            ( <CaseStudyModule 
+                                visibility={ visibility } 
+                                studyData={ studyData } /> ) : false;
 
     return (
         <div>
