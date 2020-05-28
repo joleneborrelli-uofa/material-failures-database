@@ -196,13 +196,15 @@ export default function RecordModule ( props )
      */
     const generateFormattedLine = ( type, subtype, description ) =>
     {
-        // If there is no subtype, do not include it in the line
-        subtype = subtype ? ` (${ subtype })` : '';
+        // If there is no subtype, do not include it
+        // If there is no description, do not include it or the colon
+        subtype     = subtype ? ` (${ subtype })` : '';
+        description = description ? `: { description }` : '';
 
         return <p 
                 key={ createUniqueId( type ) }
                 className={ recordHtmlClass.line }>
-                    { type }{ subtype }: { description }
+                    { type }{ subtype }{ description }
                 </p>
     }
 
