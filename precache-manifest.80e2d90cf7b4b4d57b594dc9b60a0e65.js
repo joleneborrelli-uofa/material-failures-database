@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9e331470a714182550959a51ef7bb71a",
+    "revision": "64f8d45d6eee197446351bf32b2b3cb6",
     "url": "/material-failures-database/index.html"
   },
   {
-    "revision": "82bda8953e827c58fea1",
+    "revision": "b94d90012e60ff4fe0d7",
     "url": "/material-failures-database/static/css/main.6069cca8.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/material-failures-database/static/js/2.087e3195.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "82bda8953e827c58fea1",
-    "url": "/material-failures-database/static/js/main.e6a37c2b.chunk.js"
+    "revision": "b94d90012e60ff4fe0d7",
+    "url": "/material-failures-database/static/js/main.99c3fb1c.chunk.js"
   },
   {
     "revision": "c1c5ebac4845516909c2",
