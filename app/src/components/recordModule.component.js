@@ -13,6 +13,7 @@ import
 
 import 
 { 
+    capitalize,
     buildHeaders, 
     createUniqueId
 } from '../helpers.js';
@@ -119,7 +120,7 @@ export default function RecordModule ( props )
         return <p 
                   key={ createUniqueId() }
                   className={ recordHtmlClass.line }>
-                    { value }
+                    { capitalize( value ) }
                  </p>;
     }
                   
@@ -138,7 +139,7 @@ export default function RecordModule ( props )
             li.push( <li 
                         key={ i }
                         className={ recordHtmlClass.liLines }>
-                        { value[i] }
+                        { capitalize( value[i] ) }
                     </li> )
         }
 
@@ -196,15 +197,16 @@ export default function RecordModule ( props )
      */
     const generateFormattedLine = ( type, subtype, description ) =>
     {
+
         // If there is no subtype, do not include it
         // If there is no description, do not include it or the colon
-        subtype     = subtype ? ` (${ subtype })` : '';
-        description = description ? `: { description }` : '';
+        subtype     = subtype ? ` (${ capitalize( subtype ) })` : '';
+        description = description ? `: ${ capitalize( description ) }` : '';
 
         return <p 
                 key={ createUniqueId( type ) }
                 className={ recordHtmlClass.line }>
-                    { type }{ subtype }{ description }
+                    { capitalize( type ) }{ subtype }{ description }
                 </p>
     }
 
@@ -220,14 +222,15 @@ export default function RecordModule ( props )
         reference
     } = recordData;
 
-    const title   = recordData.object && recordData.object.object_id;
+    const title   = recordData.object && recordData.object.name;
     const modules = generateModules( recordData );
 
     const referenceList = reference ? <ReferenceList list={ reference } /> : false;
-    const viewers       = showViewer && manifest ? manifest.map( ( item, index ) =>
-    {
-        return <Viewer key={ index } path={ item.path } />
-    } ) : false;
+    const viewers       = showViewer && manifest ? manifest.filter( item => item.page === "record" )
+                          .map( ( item, index ) =>
+                          {
+                                return <Viewer key={ index } path={ item.path } />
+                          } ) : false;
 
     return(
         <div className={ recordHtmlClass.record }>
