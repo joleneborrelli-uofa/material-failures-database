@@ -21,7 +21,7 @@ export default function RecordModuleApi ( props )
     const fetchRecordData = async () =>
     {
         axios 
-            .get( 'http://localhost:4001/api/record',
+            .get( '/api/record',
             { 
                 params: { id } 
             } ) 

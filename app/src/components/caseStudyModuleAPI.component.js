@@ -22,7 +22,7 @@ export default function CaseStudyModuleApi ( props )
     const fetchPromptVisibility = async () =>
     {
         return axios
-                .get( 'http://localhost:4001/api/visibility/prompt', 
+                .get( '/api/visibility/prompt', 
                 { 
                     params: { id } 
                 } )
@@ -36,7 +36,7 @@ export default function CaseStudyModuleApi ( props )
     const fetchStudyData = async () =>
     {
         let visibleTables = await axios
-                                .get( 'http://localhost:4001/api/visibility/field',
+                                .get( '/api/visibility/field',
                                 { 
                                     params: { id } 
                                 } )
@@ -47,7 +47,7 @@ export default function CaseStudyModuleApi ( props )
                                 } )
 
         return axios 
-                .get( 'http://localhost:4001/api/study',
+                .get( '/api/study',
                 { 
                     params: { id, visibleTables } 
                 } ) 
