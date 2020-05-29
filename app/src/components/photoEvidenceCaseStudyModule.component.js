@@ -7,12 +7,12 @@ export default function PhotoEvidenceCaseStudyModule ( props )
 {
     const { manifest }  = props;
     const htmlClass     = caseStudyHtmlClass.photoEvidence;
-    const pageManifests = manifest.filter( item => item.page === "photo" );
 
-    const viewers = pageManifests.map( ( pageManifest, index ) =>
-    {
-        return <Viewer key={ index } path={ pageManifest.path } />
-    } );
+    const viewers = manifest ? manifest.filter( item => item.page === "photo" )
+                                       .map( ( pageManifest, index ) =>
+                                       {
+                                          return <Viewer key={ index } path={ pageManifest.path } />
+                                       } ) : false;
 
     return (
         <div className={ htmlClass.page }>
