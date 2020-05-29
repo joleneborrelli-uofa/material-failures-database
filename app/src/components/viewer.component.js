@@ -1,6 +1,5 @@
-import React                from 'react';
-import { domain }           from '../constants/path.constants.js';
-import { genericHtmlClass } from '../constants/htmlClass.constants.js';
+import React      from 'react';
+import { domain } from '../constants/path.constants.js';
 
 export default function Viewer ( props )
 {

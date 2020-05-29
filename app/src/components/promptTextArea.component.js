@@ -12,7 +12,6 @@ export default function PromptTextArea ( props )
         labelVisibility
     } = props;
 
-    const constants  = caseStudy.fieldPrompts;
     const htmlClass  = caseStudyHtmlClass.fieldPrompts;
     const labelClass = `${ htmlClass.title } ${ labelVisibility }`;
 

@@ -1,5 +1,4 @@
 import React                   from 'react';
-import { groupedComponents }   from '../constants/groupedComponent.constants.js';
 import { caseStudy }           from '../constants/caseStudy.constants.js';
 import { caseStudyHtmlClass }  from '../constants/htmlClass.constants.js';
 import { foreignKeys }         from '../constants/foreignKey.constants.js';

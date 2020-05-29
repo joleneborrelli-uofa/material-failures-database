@@ -1,6 +1,5 @@
 import React                  from 'react';
 import { createUniqueId }     from '../helpers.js';
-import { caseStudy }          from '../constants/caseStudy.constants.js';
 import { caseStudyHtmlClass } from '../constants/htmlClass.constants.js';
 import PromptTitle            from './promptTitle.component.js'; 
 import PromptTextArea         from './promptTextArea.component.js'; 
@@ -15,7 +14,6 @@ export default function AdditionalPrompts ( props )
         handleChange
     } = props;
 
-    const constants   = caseStudy.fieldPrompts.object;
     const htmlClass   = caseStudyHtmlClass.fieldPrompts;
     const { on, off } = caseStudyHtmlClass.visibility;
 

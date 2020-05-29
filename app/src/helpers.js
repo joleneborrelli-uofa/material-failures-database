@@ -1,6 +1,6 @@
-import { optionChanges }                     from './constants/optionChanges.constants.js';
-import { headers, unknownObject, subheaders } from './constants/webDisplay.constants.js';
-import { random, isString }                  from 'lodash';
+import { optionChanges }       from './constants/optionChanges.constants.js';
+import { headers, subheaders } from './constants/webDisplay.constants.js';
+import { random, isString }    from 'lodash';
 
 /**
  * Generates a unique id for React components

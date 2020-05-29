@@ -46,7 +46,7 @@ export const subheaders =
     light_exposure      : 'Light Exposure',
     geographic_location : 'Geographic Location',
     weather_exposure    : 'Weather Exposure',
-    location            : 'Storage Location',
+    storage_location    : 'Storage Location',
     stress_orientation  : 'Orientation of Stresses',
     loading             : 'Loading',
     loading_frequency   : 'Loading Frequency',

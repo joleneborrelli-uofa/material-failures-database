@@ -1,7 +1,6 @@
 import React, { useEffect, useState }    from 'react';
 import { genericHtmlClass as htmlClass } from '../constants/htmlClass.constants.js';
 import axios        from 'axios';
-import { isArray }  from 'lodash';
 import { mainPage } from '../constants/webDisplay.constants.js';
 import { domain }   from '../constants/path.constants.js';
 
@@ -62,6 +61,7 @@ export default function Homepage()
                     key={ index }
                     className={ htmlClass.displayItem }>
                     <img 
+                        alt=""
                         className={ htmlClass.displayImage }
                         src={ uri } />
                     <Link 

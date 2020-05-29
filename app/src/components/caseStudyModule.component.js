@@ -1,4 +1,4 @@
-import React, { useEffect, useState }      from 'react';
+import React, { useState }                 from 'react';
 import { caseStudyHtmlClass as htmlClass } from '../constants/htmlClass.constants.js';
 import { caseStudy }                       from '../constants/caseStudy.constants.js';
 import { getAdditionalPrompts }            from '../helpers.js';

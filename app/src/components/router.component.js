@@ -17,7 +17,7 @@ export default function Router()
         <BrowserRouter basename={`${process.env.PUBLIC_URL}/`}>
             <div>
                 <Switch>
-                    <Route exact path="/" exact component={ Homepage } />
+                    <Route exact path="/" component={ Homepage } />
                     <Route path="/:page/:id" exact component={ Page } />
                 </Switch>
             </div>
