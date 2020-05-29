@@ -1,7 +1,7 @@
 {
   "name": "app",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "homepage": "https://joleneborrelli-uofa.github.io/material-failures-database",
   "proxy": "http://localhost:4001",
   "dependencies": {
