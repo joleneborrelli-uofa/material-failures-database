@@ -2,53 +2,45 @@ import React                  from 'react';
 import { createUniqueId }     from '../helpers.js';
 import { caseStudyHtmlClass } from '../constants/htmlClass.constants.js'; 
 
-export default class PromptCheckboxGroup extends React.Component
+export default function PromptCheckboxGroup ( props )
 {
-    constructor( props )
+    const 
     {
-        super( props );
-    }
+        value,
+        name,
+        foreignKeys,
+        handleCheckboxChange
+    } = props;
 
-    render()
+    const htmlClass = caseStudyHtmlClass.fieldPrompts;
+
+    // foreignKeys is an array. Option is the value in the array.
+    const checkboxes = foreignKeys.map( option =>
     {
-        const 
-        {
-            value,
-            name,
-            foreignKeys,
-            handleCheckboxChange
-        } = this.props;
+        let isChecked = value.get( option );
 
-        const htmlClass = caseStudyHtmlClass.fieldPrompts;
-
-        // foreignKeys is an array. Option is the value in the array.
-        const checkboxes = foreignKeys.map( option =>
-        {
-            let isChecked = value.get( option );
-
-            return ( 
-                <div 
-                    key={ createUniqueId() }
-                    className={ htmlClass.checkbox }>
-                    <label className={ htmlClass.optionLabel }>
-                        { option }
-                    </label>
-                    <input
-                        className={ htmlClass.checkboxInput }
-                        type="checkbox"
-                        name={ name }
-                        value={ option }
-                        checked={ isChecked }
-                        onChange={ handleCheckboxChange } /> 
-                </div>
-            ) 
-        } );
-
-        return (
-            <div className={ htmlClass.checkboxGroup }>
-                { checkboxes }
+        return ( 
+            <div 
+                key={ createUniqueId() }
+                className={ htmlClass.checkbox }>
+                <label className={ htmlClass.optionLabel }>
+                    { option }
+                </label>
+                <input
+                    className={ htmlClass.checkboxInput }
+                    type="checkbox"
+                    name={ name }
+                    value={ option }
+                    checked={ isChecked }
+                    onChange={ handleCheckboxChange } /> 
             </div>
-        );
-    }
+        ) 
+    } );
+
+    return (
+        <div className={ htmlClass.checkboxGroup }>
+            { checkboxes }
+        </div>
+    );
 
 };

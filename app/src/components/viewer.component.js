@@ -2,30 +2,22 @@ import React                from 'react';
 import { domain }           from '../constants/path.constants.js';
 import { genericHtmlClass } from '../constants/htmlClass.constants.js';
 
-export default class Viewer extends React.Component
+export default function Viewer ( props )
 {
-    constructor( props )
-    {
-        super( props );
-    }
+    const 
+    { 
+        path,
+        children 
+    } = props;
 
-    render()
-    {
-        const 
-        { 
-            path,
-            children 
-        } = this.props;
+    const uri = domain + path;
 
-        const uri = domain + path;
-
-    return (
-            <div 
-                className="uv" 
-                data-config=""
-                data-uri={ uri }>
-                { children }
-            </div>
-        )
-    }
+return (
+        <div 
+            className="uv" 
+            data-config=""
+            data-uri={ uri }>
+            { children }
+        </div>
+    )
 };

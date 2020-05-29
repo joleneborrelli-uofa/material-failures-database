@@ -1,32 +1,25 @@
 import React                  from 'react';
 import { caseStudyHtmlClass } from '../constants/htmlClass.constants.js';
 
-export default class PromptTitle extends React.Component
+export default function PromptTitle ( props )
 {
-    constructor( props )
-    {
-        super( props );
-    }
+    const 
+    { 
+        title,
+        children,
+        visibility
+    } = props;
+    
+    const htmlClass  = caseStudyHtmlClass.fieldPrompts;
+    const labelClass = `${ htmlClass.module } ${ visibility }`;
 
-    render()
-    {
-        const 
-        { 
-            title,
-            children,
-            visibility
-        } = this.props;
-        
-        const htmlClass  = caseStudyHtmlClass.fieldPrompts;
-        const labelClass = `${ htmlClass.module } ${ visibility }`;
+    return (
+        <div className={ labelClass }>
+            <p className={ htmlClass.title }>
+                { title }
+            </p>
+            { children }
+        </div>
+    );
 
-        return (
-            <div className={ labelClass }>
-                <p className={ htmlClass.title }>
-                    { title }
-                </p>
-                { children }
-            </div>
-        );
-    }
 };
