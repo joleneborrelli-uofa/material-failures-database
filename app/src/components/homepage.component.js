@@ -8,8 +8,6 @@ import { domain }   from '../constants/path.constants.js';
 // React Router
 import { Link } from "react-router-dom";
 
-// First call will be to the display table
-import { displayDatabase } from '../database/display.database.js';
 
 export default function Homepage()
 {
