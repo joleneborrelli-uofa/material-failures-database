@@ -60,7 +60,7 @@ exports.defaultRecordTables =
 	'environment_interaction_loading',
 	'use_problem_statement',
 	'use_functionality_loss',
-	'use_failure_time',
+	'use_failure_moment',
 	'use_failure_operation_stage',
 	'use_specification',
 	'use_record',
