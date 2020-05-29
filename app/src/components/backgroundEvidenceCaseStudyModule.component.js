@@ -13,13 +13,13 @@ export default function BackgroundEvidenceCaseStudyModule ( props )
         recordData
     }  = props;
 
-    const htmlClass     = caseStudyHtmlClass.backgroundResearch;
-    const pageManifests = manifest.filter( item => item.page === "background" );
+    const htmlClass = caseStudyHtmlClass.backgroundResearch;
 
-    const viewers = pageManifests.map( ( pageManifest, index ) =>
-    {
-        return <Viewer key={ index } path={ pageManifest.path } />
-    } );
+    const viewers = manifest ?  manifest.filter( item => item.page === "background" )
+                                        .map( ( pageManifest, index ) =>
+                                        {
+                                            return <Viewer key={ index } path={ pageManifest.path } />
+                                        } ) : false;
 
     return (
         <div className={ htmlClass.page }>
