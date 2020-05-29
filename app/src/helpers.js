@@ -23,7 +23,18 @@ export const createUniqueId = () =>
  */
 export const extractPrefix = value =>
 {
-    return value.split( '-' )[0];
+    return value.split( '-' ).shift();
+};
+
+/**
+ * Capitalizes a string
+ *
+ * @param  { String } value string
+ * @return { String } 
+ */
+export const capitalize = value =>
+{
+    return value.charAt( 0 ).toUpperCase() + value.slice( 1 ); 
 };
 
 /**
