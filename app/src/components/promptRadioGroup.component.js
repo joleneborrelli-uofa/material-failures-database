@@ -25,7 +25,7 @@ export default class PromptRadioGroup extends React.Component
 
         // hack for ensuring each radio group on page has a
         // unique name
-        name = createUniqueId();
+        name = `${ name }-${ createUniqueId()}`;
 
         const htmlClass = caseStudyHtmlClass.fieldPrompts;
 
