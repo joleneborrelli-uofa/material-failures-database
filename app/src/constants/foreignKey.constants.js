@@ -10,7 +10,8 @@ export const foreignKeys =
             'Fillet', 
             'Ridge', 
             'Notch', 
-            'Hole' 
+            'Hole',
+            'Other'
         ]
     },
 
@@ -97,7 +98,7 @@ export const foreignKeys =
             'Investment',
             'Injection', 
             'Compression',
-            'Blow molding', 
+            'Blow', 
             'Rolling',
             'Forging',
             'Drawing',
@@ -144,8 +145,8 @@ export const foreignKeys =
 
         residual_stress_force :
         [
-            'Tensile forces',
-            'Compressive forces'
+            'Tensile force',
+            'Compressive force'
         ]
     },
 
@@ -199,6 +200,41 @@ export const foreignKeys =
         [
             'Indoor',
             'Outdoor'
+        ],
+
+        interaction_stress :
+        [
+            'Tension',
+            'Compression',
+            'Shear',
+            'Torsion',
+            'Bending'
+        ],
+
+        interaction_electromagnetic :
+        [
+            'Electrons and voltage',
+            'Radiation'
+        ],
+
+        interaction_environment :
+        [
+            'Chemical',
+            'Biological'
+        ],
+
+        interaction_thermal :
+        [
+            'High temperature',
+            'Moderate temperature',
+            'Low temperature'
+        ],
+
+        interaction_tribological :
+        [
+            'Friction',
+            'Solids',
+            'Fluids and particles'
         ]
     },
 
@@ -224,10 +260,10 @@ export const foreignKeys =
 
         operational_factor :
         [
-            'Temperature levels',
+            'Temperature level',
             'Speed',
             'Pressure',
-            'Moisture levels'
+            'Moisture level'
         ]
     }
 

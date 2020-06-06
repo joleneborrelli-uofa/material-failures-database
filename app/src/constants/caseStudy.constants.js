@@ -66,13 +66,17 @@ export const caseStudy =
 
         environment :
         {
-            loading             : 'What type of loading did the object experience? How frequent did it occur?',
-            ambient             : '',
-            light_exposure      : '',
-            geographic_location : '',
-            stress_orientation  : '',
-            weather_exposure    : '',
-            storage_location    : ''
+            loading                     : 'What type of loading did the object experience? How frequent did it occur?',
+            ambient                     : '',
+            light_exposure              : '',
+            geographic_location         : '',
+            interaction_stress          : 'What type of stress interactions did the object experience?',
+            interaction_environmental   : 'What type of environmental interactions did the object experience?',
+            interaction_electromagnetic : 'What type of electromagnetic interactions did the object experience?',
+            interaction_thermal         : 'What type of thermal interactions did the object experience?',
+            interaction_tribological    : 'What type of tribological interactions did the object experience?',
+            weather_exposure            : '',
+            storage_location            : ''
         },
 
         use :
@@ -91,7 +95,7 @@ export const caseStudy =
 
     additionalPrompts:
     {
-        fractography : 'Does the object have cracks and fractures? Draw the object, the cracks and the fractures. Determine the crack and fracture origin(s).',
+        fractography : 'Does the object have cracks and fractures? If yes, draw the object, the cracks and the fractures. Determine the crack and fracture origin(s).',
     },
 
     fault_tree :

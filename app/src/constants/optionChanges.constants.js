@@ -26,7 +26,12 @@ export const optionChanges =
         'residual_stress',
         'residual_stress_force',
         'loading',
-        'loading_normalcy'
+        'loading_normalcy',
+        'interaction_stress',
+        'interaction_environment',
+        'interaction_electromagnetic',
+        'interaction_thermal',
+        'interaction_tribological'
     ],
 
     button :

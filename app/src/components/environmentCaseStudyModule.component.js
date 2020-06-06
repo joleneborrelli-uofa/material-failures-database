@@ -7,6 +7,7 @@ import { headers }                from '../constants/webDisplay.constants.js';
 import PromptTextArea             from './promptTextArea.component.js'; 
 import PromptTitle                from './promptTitle.component.js'; 
 import PromptCheckboxGroup        from './promptCheckboxGroup.component.js';
+import PromptRadioGroup           from './promptRadioGroup.component.js';
 import PromptPairedRadioGroupList from './promptPairedRadioGroupList.component.js';
 import PromptAdditionalPrompts    from './promptAdditionalPrompts.component.js';
 
@@ -111,16 +112,89 @@ export default function EnvironmentCaseStudyModule ( props )
             </PromptTitle>
 
             <PromptTitle 
-                title={ constants.stress_orientation } 
+                title={ constants.interaction_stress } 
                 visibility={ htmlVisibility[visibility.interaction_stress] }>
 
+                <PromptRadioGroup
+                    name="interaction_stress"
+                    value={ state.interaction_stress }
+                    foreignKeys={ foreignKeys.environment.interaction_stress }
+                    handleRadioGroupChange={ handleModuleChange } />
+
                 <PromptTextArea 
-                    name="stress_orientation"
-                    value={ state.stress_orientation }
+                    name="interaction_stress"
+                    value={ state.interaction_stress }
                     labelVisibility={ htmlVisibility.on }
                     handleTextAreaChange={ handleModuleChange } />
             </PromptTitle>
 
+            <PromptTitle 
+                title={ constants.interaction_environment } 
+                visibility={ htmlVisibility[visibility.interaction_environment] }>
+
+                <PromptRadioGroup
+                    name="interaction_environment"
+                    value={ state.interaction_environment }
+                    foreignKeys={ foreignKeys.environment.interaction_environment }
+                    handleRadioGroupChange={ handleModuleChange } />
+
+                <PromptTextArea 
+                    name="interaction_environment"
+                    value={ state.interaction_environment }
+                    labelVisibility={ htmlVisibility.on }
+                    handleTextAreaChange={ handleModuleChange } />
+            </PromptTitle>
+
+            <PromptTitle 
+                title={ constants.interaction_electromagnetic } 
+                visibility={ htmlVisibility[visibility.interaction_electromagnetic] }>
+
+                <PromptRadioGroup
+                    name="interaction_electromagnetic"
+                    value={ state.interaction_electromagnetic }
+                    foreignKeys={ foreignKeys.environment.interaction_electromagnetic }
+                    handleRadioGroupChange={ handleModuleChange } />
+
+                <PromptTextArea 
+                    name="interaction_electromagnetic"
+                    value={ state.interaction_electromagnetic }
+                    labelVisibility={ htmlVisibility.on }
+                    handleTextAreaChange={ handleModuleChange } />
+            </PromptTitle>
+
+            <PromptTitle 
+                title={ constants.interaction_thermal } 
+                visibility={ htmlVisibility[visibility.interaction_thermal] }>
+
+                <PromptRadioGroup
+                    name="interaction_thermal"
+                    value={ state.interaction_thermal }
+                    foreignKeys={ foreignKeys.environment.interaction_thermal }
+                    handleRadioGroupChange={ handleModuleChange } />
+
+                <PromptTextArea 
+                    name="interaction_thermal"
+                    value={ state.interaction_thermal }
+                    labelVisibility={ htmlVisibility.on }
+                    handleTextAreaChange={ handleModuleChange } />
+            </PromptTitle>
+
+            <PromptTitle 
+                title={ constants.interaction_tribological } 
+                visibility={ htmlVisibility[visibility.interaction_tribological] }>
+
+                <PromptRadioGroup
+                    name="interaction_tribological"
+                    value={ state.interaction_tribological }
+                    foreignKeys={ foreignKeys.environment.interaction_tribological }
+                    handleRadioGroupChange={ handleModuleChange } />
+
+                <PromptTextArea 
+                    name="interaction_tribological"
+                    value={ state.interaction_tribological }
+                    labelVisibility={ htmlVisibility.on }
+                    handleTextAreaChange={ handleModuleChange } />
+            </PromptTitle>
 
             <PromptTitle 
                 title={ constants.loading }
