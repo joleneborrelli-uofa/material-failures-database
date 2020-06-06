@@ -122,7 +122,7 @@ export default function EnvironmentCaseStudyModule ( props )
                     handleRadioGroupChange={ handleModuleChange } />
 
                 <PromptTextArea 
-                    name="interaction_stress"
+                    name="interaction_stress_note"
                     value={ state.interaction_stress }
                     labelVisibility={ htmlVisibility.on }
                     handleTextAreaChange={ handleModuleChange } />
@@ -139,7 +139,7 @@ export default function EnvironmentCaseStudyModule ( props )
                     handleRadioGroupChange={ handleModuleChange } />
 
                 <PromptTextArea 
-                    name="interaction_environment"
+                    name="interaction_environment_note"
                     value={ state.interaction_environment }
                     labelVisibility={ htmlVisibility.on }
                     handleTextAreaChange={ handleModuleChange } />
@@ -156,7 +156,7 @@ export default function EnvironmentCaseStudyModule ( props )
                     handleRadioGroupChange={ handleModuleChange } />
 
                 <PromptTextArea 
-                    name="interaction_electromagnetic"
+                    name="interaction_electromagnetic_note"
                     value={ state.interaction_electromagnetic }
                     labelVisibility={ htmlVisibility.on }
                     handleTextAreaChange={ handleModuleChange } />
@@ -173,7 +173,7 @@ export default function EnvironmentCaseStudyModule ( props )
                     handleRadioGroupChange={ handleModuleChange } />
 
                 <PromptTextArea 
-                    name="interaction_thermal"
+                    name="interaction_thermal_note"
                     value={ state.interaction_thermal }
                     labelVisibility={ htmlVisibility.on }
                     handleTextAreaChange={ handleModuleChange } />
@@ -190,7 +190,7 @@ export default function EnvironmentCaseStudyModule ( props )
                     handleRadioGroupChange={ handleModuleChange } />
 
                 <PromptTextArea 
-                    name="interaction_tribological"
+                    name="interaction_tribological_note"
                     value={ state.interaction_tribological }
                     labelVisibility={ htmlVisibility.on }
                     handleTextAreaChange={ handleModuleChange } />
