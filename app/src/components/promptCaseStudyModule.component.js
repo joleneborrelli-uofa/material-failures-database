@@ -326,13 +326,22 @@ export default class PromptCaseStudyModule extends React.Component
 
         const environmentState =
         {
-            light_exposure       : this.state.light_exposure,
-            ambient              : this.state.ambient,
-            loading              : this.state.loading,
-            weather_exposure     : this.state.weather_exposure,
-            storage_location     : this.state.storage_location,
-            geographic_location  : this.state.geographic_location,
-            interaction_stress   : this.state.interaction_stress,
+            light_exposure                   : this.state.light_exposure,
+            ambient                          : this.state.ambient,
+            loading                          : this.state.loading,
+            weather_exposure                 : this.state.weather_exposure,
+            storage_location                 : this.state.storage_location,
+            geographic_location              : this.state.geographic_location,
+            interaction_stress               : this.state.interaction_stress,
+            interaction_stress_note          : this.state.interaction_stress_note,
+            interaction_environment          : this.state.interaction_environment,
+            interaction_environment_note     : this.state.interaction_environment_note,
+            interaction_electromagnetic      : this.state.interaction_electromagnetic,
+            interaction_electromagnetic_note : this.state.interaction_electromagnetic_note,
+            interaction_thermal              : this.state.interaction_thermal,
+            interaction_thermal_note         : this.state.interaction_thermal_note,
+            interaction_tribological         : this.state.interaction_tribological,
+            interaction_tribological_note    : this.state.interaction_tribological_note,
             additionalPromptText : this.state.additionalPromptText.get( 'environment' )
         };
 
