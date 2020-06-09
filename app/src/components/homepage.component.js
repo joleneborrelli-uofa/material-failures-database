@@ -46,10 +46,10 @@ export default function Homepage()
                 object_id : id,
                 case_study,
                 record,
-                thumbnail
+                path
             } = item;
 
-            let uri           = domain + thumbnail;
+            let uri           = domain + path;
             let caseStudyPath = `/case-study/${ id }`;
             let recordPath    = `/record/${ id }`;
 

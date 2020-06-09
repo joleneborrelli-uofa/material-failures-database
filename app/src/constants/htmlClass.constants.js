@@ -5,6 +5,7 @@ export const genericHtmlClass =
     viewer        : 'fa-viewer',
     referenceList :
     {
+        header    : 'fa-reference-header',
         list      : 'fa-reference-list', 
         reference : 'fa-reference'
     },
@@ -33,7 +34,16 @@ export const recordHtmlClass =
     submoduleHeader : 'fa-submodule-header',
     line            : 'fa-line',
     liLines         : 'fa-li-lines',
-    ulLines         : 'fa-ul-lines'
+    ulLines         : 'fa-ul-lines',
+    faultTree       : 'fa-fault-tree',
+    conclusion      : 
+    {
+        wrapper   : 'fa-conclusion-wrapper',
+        subheader : 'fa-conclusion-subheader',
+        text      : 'fa-conclusion-text',
+        header    : 'fa-conclusion-header',
+        section   : 'fa-conclusion-section'
+    }
 };
 
 export const caseStudyHtmlClass =

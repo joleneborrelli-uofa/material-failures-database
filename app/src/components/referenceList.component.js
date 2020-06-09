@@ -1,5 +1,6 @@
-import React                            from 'react';
-import { genericHtmlClass as htmlClass} from '../constants/htmlClass.constants.js';
+import React                             from 'react';
+import { headers }                       from '../constants/webDisplay.constants.js';
+import { genericHtmlClass as htmlClass } from '../constants/htmlClass.constants.js';
 
 export default function ReferenceList ( props )
 {
@@ -18,6 +19,9 @@ export default function ReferenceList ( props )
 
     return (
         <div className={ htmlClass.referenceList.list }>
+            <div className={ htmlClass.referenceList.header }>
+                { headers.reference }
+            </div>
             { references }
         </div>
     );

@@ -1,9 +1,11 @@
 import React               from 'react';
+import Conclusion          from './conclusion.component.js';
 import ReferenceList       from './referenceList.component.js';
 import Viewer              from './viewer.component.js';
 import { recordHtmlClass } from '../constants/htmlClass.constants.js';
 import { subheaders }      from '../constants/webDisplay.constants.js'; 
 import { databaseKeys }    from '../constants/database.constants.js';
+import { domain }          from '../constants/path.constants.js';
 import 
 { 
     isString, 
@@ -218,19 +220,23 @@ export default function RecordModule ( props )
 
     const 
     {
+        faultTree,
+        conclusion,
         manifest,
         reference
     } = recordData;
 
-    const title   = recordData.object && recordData.object.name;
-    const modules = generateModules( recordData );
+    const title            = recordData.object && recordData.object.name;
+    const modules          = generateModules( recordData );
+    const conclusionModule = conclusion ? <Conclusion sections={ conclusion[0] } /> : false;
+    const faultTreeImg     = faultTree ? ( <img 
+                                            alt=""
+                                            className={ recordHtmlClass.faultTree }
+                                            src={ domain + faultTree.path } /> ) : false;
 
     const referenceList = reference ? <ReferenceList list={ reference } /> : false;
-    const viewers       = showViewer && manifest ? manifest.filter( item => item.page === "record" )
-                          .map( ( item, index ) =>
-                          {
-                                return <Viewer key={ index } path={ item.path } />
-                          } ) : false;
+    const viewers       = showViewer && manifest ? manifest.filter( item => item.page === 'record' )
+                          .map( ( item, index ) => <Viewer key={ index } path={ item.path } /> ) : false;
 
     return(
         <div className={ recordHtmlClass.record }>
@@ -239,8 +245,10 @@ export default function RecordModule ( props )
                 { title }
             </h3>
             { modules }
-            { referenceList }
             { viewers }
+            { faultTreeImg }
+            { conclusionModule }
+            { referenceList }
 
         </div>
     )

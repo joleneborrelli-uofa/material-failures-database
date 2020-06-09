@@ -15,7 +15,16 @@ export const headers =
     material    : 'Material',
     processing  : 'Processing',
     environment : 'Environmental Interactions',
-    use         : 'Use Case and History'
+    use         : 'Use Case and History',
+    reference   : 'References'
+};
+
+export const conclusion =
+{
+    header              : 'Report',
+    history             : 'History',
+    inspection_analysis : 'Inspection and Analysis',
+    failure_diagnosis   : 'Failure Diagnosis'
 };
 
 export const subheaders =

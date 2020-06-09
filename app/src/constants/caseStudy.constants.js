@@ -66,7 +66,7 @@ export const caseStudy =
 
         environment :
         {
-            loading                     : 'What type of loading did the object experience? How frequent did it occur?',
+            interaction_loading         : 'What type of loading did the object experience? How frequent did it occur?',
             ambient                     : '',
             light_exposure              : '',
             geographic_location         : '',

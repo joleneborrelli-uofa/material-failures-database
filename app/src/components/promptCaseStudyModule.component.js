@@ -342,7 +342,7 @@ export default class PromptCaseStudyModule extends React.Component
             interaction_thermal_note         : this.state.interaction_thermal_note,
             interaction_tribological         : this.state.interaction_tribological,
             interaction_tribological_note    : this.state.interaction_tribological_note,
-            additionalPromptText : this.state.additionalPromptText.get( 'environment' )
+            additionalPromptText             : this.state.additionalPromptText.get( 'environment' )
         };
 
         const useState =
