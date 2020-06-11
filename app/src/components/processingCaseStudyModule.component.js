@@ -69,7 +69,7 @@ export default function ProcessingCaseStudyModule ( props )
 
             <PromptTitle 
                 title={ constants.residual_stress }
-                visibility={ htmlVisibility[visibility.residualStress] }>
+                visibility={ htmlVisibility[visibility.residual_stress] }>
 
                 <PromptPairedRadioGroupList
                     statekey="residual_stress"

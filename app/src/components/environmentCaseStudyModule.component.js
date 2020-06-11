@@ -123,7 +123,7 @@ export default function EnvironmentCaseStudyModule ( props )
 
                 <PromptTextArea 
                     name="interaction_stress_note"
-                    value={ state.interaction_stress }
+                    value={ state.interaction_stress_note }
                     labelVisibility={ htmlVisibility.on }
                     handleTextAreaChange={ handleModuleChange } />
             </PromptTitle>
@@ -140,7 +140,7 @@ export default function EnvironmentCaseStudyModule ( props )
 
                 <PromptTextArea 
                     name="interaction_environment_note"
-                    value={ state.interaction_environment }
+                    value={ state.interaction_environment_note }
                     labelVisibility={ htmlVisibility.on }
                     handleTextAreaChange={ handleModuleChange } />
             </PromptTitle>
@@ -157,7 +157,7 @@ export default function EnvironmentCaseStudyModule ( props )
 
                 <PromptTextArea 
                     name="interaction_electromagnetic_note"
-                    value={ state.interaction_electromagnetic }
+                    value={ state.interaction_electromagnetic_note }
                     labelVisibility={ htmlVisibility.on }
                     handleTextAreaChange={ handleModuleChange } />
             </PromptTitle>
@@ -174,7 +174,7 @@ export default function EnvironmentCaseStudyModule ( props )
 
                 <PromptTextArea 
                     name="interaction_thermal_note"
-                    value={ state.interaction_thermal }
+                    value={ state.interaction_thermal_note }
                     labelVisibility={ htmlVisibility.on }
                     handleTextAreaChange={ handleModuleChange } />
             </PromptTitle>
@@ -191,7 +191,7 @@ export default function EnvironmentCaseStudyModule ( props )
 
                 <PromptTextArea 
                     name="interaction_tribological_note"
-                    value={ state.interaction_tribological }
+                    value={ state.interaction_tribological_note }
                     labelVisibility={ htmlVisibility.on }
                     handleTextAreaChange={ handleModuleChange } />
             </PromptTitle>
