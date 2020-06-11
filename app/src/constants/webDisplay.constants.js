@@ -16,7 +16,8 @@ export const headers =
     processing  : 'Processing',
     environment : 'Environmental Interactions',
     use         : 'Use Case and History',
-    reference   : 'References'
+    reference   : 'References',
+    faultTree   : 'Fault Tree'
 };
 
 export const conclusion =
@@ -61,7 +62,7 @@ export const subheaders =
     interaction_electromagnetic : 'Electromagnetic Interactions',
     interaction_thermal         : 'Thermal Interactions',
     interaction_tribological    : 'Tribological Interactions',
-    loading                     : 'Loading',
+    interaction_loading         : 'Loading',
     loading_frequency           : 'Loading Frequency',
     problem_statement           : 'Problem Statement',
     functionality_loss          : 'Loss of Functionality',

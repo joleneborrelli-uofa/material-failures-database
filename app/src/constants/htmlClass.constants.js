@@ -35,7 +35,12 @@ export const recordHtmlClass =
     line            : 'fa-line',
     liLines         : 'fa-li-lines',
     ulLines         : 'fa-ul-lines',
-    faultTree       : 'fa-fault-tree',
+    faultTree       : 
+    {
+        wrapper : 'fa-fault-tree-wrapper',
+        header  : 'fa-fault-tree-header',
+        img     : 'fa-fault-tree-img'
+    },
     conclusion      : 
     {
         wrapper   : 'fa-conclusion-wrapper',

@@ -23,7 +23,7 @@ export default function Homepage()
     const fetchDisplayItems = async () => 
     {
         axios
-            .get( 'http://localhost:4001/api/display' )
+            .get( '/api/display' )
             .then( res => 
             {
                 prepareLinks( res.data );
