@@ -7,7 +7,8 @@ exports.headers =
     'use',
     'reference',
     'manifest',
-    'conclusion'
+    'conclusion',
+    'fault_tree'
 ];
 
 exports.visibility =
@@ -59,6 +60,10 @@ exports.defaultRecordTables =
     'environment_weather_exposure',
     'environment_storage_location',
     'environment_interaction_stress',
+    'environment_interaction_environment',
+    'environment_interaction_electromagnetic',
+    'environment_interaction_thermal',
+    'environment_interaction_tribological',
     'environment_interaction_loading',
     'use_problem_statement',
     'use_functionality_loss',

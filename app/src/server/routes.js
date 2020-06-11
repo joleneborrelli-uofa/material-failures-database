@@ -152,7 +152,7 @@ const routes =
         const sql = `SELECT display.object_id, 
                             display.case_study, 
                             display.record, 
-                            display.thumbnail 
+                            display.path
                      FROM display`;
 
         return all( sql, 'display' )

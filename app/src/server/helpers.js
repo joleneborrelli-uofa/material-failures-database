@@ -66,8 +66,8 @@ const formatByHeader = table =>
                         console.error( error );
                     }
 
-                    // Remove the header prefix
-                    let field = tableName.split( '_' ).slice( 1 ).join( '_' );
+                    // Remove the header prefix and take substring after _.
+                    let field = tableName.replace( header, '' ).substring( 1 );
 
                     // If it is a table with a header prefix
                     if( field )
@@ -205,8 +205,8 @@ const formatByPromptVisibility = table =>
             // Loop over each selected table
             selectTableNames.forEach( tableName =>
             {
-                // Remove the header prefix
-                let field = tableName.split( '_' ).slice( 1 ).join( '_' );
+                // Remove the header prefix and take the substring after _
+                let field = tableName.replace( header, '' ).substring( 1 );
 
                 if( field && !excludedColumns.includes( field ) )
                 {

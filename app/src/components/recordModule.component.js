@@ -2,10 +2,9 @@ import React               from 'react';
 import Conclusion          from './conclusion.component.js';
 import ReferenceList       from './referenceList.component.js';
 import Viewer              from './viewer.component.js';
+import FaultTree           from './faultTree.component.js';
 import { recordHtmlClass } from '../constants/htmlClass.constants.js';
 import { subheaders }      from '../constants/webDisplay.constants.js'; 
-import { databaseKeys }    from '../constants/database.constants.js';
-import { domain }          from '../constants/path.constants.js';
 import 
 { 
     isString, 
@@ -102,7 +101,7 @@ export default function RecordModule ( props )
 
                     if( hasObjects )
                     {
-                        submodules.push( generateFormattedLines( value, key ) )
+                        submodules.push( generateFormattedLines( value ) )
                     }
                 }
             }
@@ -153,15 +152,12 @@ export default function RecordModule ( props )
     }
 
     /**
-     * !!DO THIS BETTER!!
-     *
      * Generates multiple formatted strings
      *
-     * @param  { Array }  value             value of subheader 
-     * @param  { String } subheader         module subheader
-     * @return { Array }  formatted strings
+     * @param  { Array }  value value of subheader 
+     * @return { Array }        formatted strings
      */
-    const generateFormattedLines = ( value, subheader ) =>
+    const generateFormattedLines = ( value ) =>
     {
         let strings = [];
 
@@ -169,21 +165,15 @@ export default function RecordModule ( props )
         {
             let keys = Object.keys( value[i] );
 
-            let typeKey        = subheader + databaseKeys.type;
-            let descriptionKey = subheader + databaseKeys.description;
-            let subtypeKeys    = 
-            [
-                value[i][subheader + databaseKeys.subtype],
-                value[i][subheader + databaseKeys.normalcy],
-                value[i][subheader + databaseKeys.forces],
-                value[i][subheader + databaseKeys.frequency]
-            ].filter( subtypeKey => subtypeKey !== undefined );
+            let typekey        = keys.find( key => key.includes( 'type' ) );
+            let descriptionkey = keys.find( key => key.includes( 'description' ) );
+            let subtypekey     = keys.filter( key => key !== typekey && key !== descriptionkey );
 
-            let type        = keys.includes( typeKey ) ? value[i][typeKey] : '';
-            let subtype     = subtypeKeys.length !== 0 ? subtypeKeys.join( ', ' ) : '';
-            let description = keys.includes( descriptionKey ) ? value[i][descriptionKey] : '';
+            let type        = value[i][typekey];
+            let description = value[i][descriptionkey];
+            let subtypes    = subtypekey.map( key => ( { key, 'value' : value[i][key] } ) );
             
-            strings.push( generateFormattedLine( type, subtype, description ) );
+            strings.push( generateFormattedLine( type, subtypes, description ) );
         }
 
         return strings;
@@ -197,13 +187,30 @@ export default function RecordModule ( props )
      * @param  { String } description      data description
      * @return { Markup } formatted string
      */
-    const generateFormattedLine = ( type, subtype, description ) =>
+    const generateFormattedLine = ( type = '', subtypes = [], description = '' ) =>
     {
+        let subtype = '';
 
-        // If there is no subtype, do not include it
+        subtypes.forEach( ( item, index, array ) =>
+        {
+            let length = array.length;
+            let key    = item.key.split( '_' ).pop();
+               
+            subtype += `${ capitalize( key ) }: ${ capitalize( item.value ) }`;
+
+            if( length !== 1 && index !== length - 1 ) subtype = `${ subtype }, `;
+        } );
+
+        if( subtype )
+        {
+            subtype = ` (${ subtype })`;
+        }
+
         // If there is no description, do not include it or the colon
-        subtype     = subtype ? ` (${ capitalize( subtype ) })` : '';
-        description = description ? `: ${ capitalize( description ) }` : '';
+        if( description )
+        {
+            description = ` - ${ capitalize( description ) }`;
+        }
 
         return <p 
                 key={ createUniqueId( type ) }
@@ -220,7 +227,7 @@ export default function RecordModule ( props )
 
     const 
     {
-        faultTree,
+        fault_tree,
         conclusion,
         manifest,
         reference
@@ -229,14 +236,10 @@ export default function RecordModule ( props )
     const title            = recordData.object && recordData.object.name;
     const modules          = generateModules( recordData );
     const conclusionModule = conclusion ? <Conclusion sections={ conclusion[0] } /> : false;
-    const faultTreeImg     = faultTree ? ( <img 
-                                            alt=""
-                                            className={ recordHtmlClass.faultTree }
-                                            src={ domain + faultTree.path } /> ) : false;
-
-    const referenceList = reference ? <ReferenceList list={ reference } /> : false;
-    const viewers       = showViewer && manifest ? manifest.filter( item => item.page === 'record' )
-                          .map( ( item, index ) => <Viewer key={ index } path={ item.path } /> ) : false;
+    const faultTreeImg     = fault_tree ? <FaultTree path={ fault_tree } /> : false;
+    const referenceList    = reference ? <ReferenceList list={ reference } /> : false;
+    const viewers          = showViewer && manifest ? manifest.filter( item => item.page === 'record' )
+                                           .map( ( item, index ) => <Viewer key={ index } path={ item.path } /> ) : false;
 
     return(
         <div className={ recordHtmlClass.record }>
