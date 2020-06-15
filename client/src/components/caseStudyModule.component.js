@@ -1,11 +1,11 @@
-import React, { useState }                 from 'react';
-import { caseStudyHtmlClass as htmlClass } from '../constants/htmlClass.constants.js';
-import { caseStudy }                       from '../constants/caseStudy.constants.js';
-import { getAdditionalPrompts }            from '../helpers.js';
-import LandingCaseStudyModule              from './landingCaseStudyModule.component.js'; 
-import PhotoEvidenceCaseStudyModule        from './photoEvidenceCaseStudyModule.component.js'; 
-import BackgroundEvidenceCaseStudyModule   from './backgroundEvidenceCaseStudyModule.component.js';
-import PromptCaseStudyModule               from './promptCaseStudyModule.component.js';
+import React, { useState, useLayoutEffect } from 'react';
+import { caseStudyHtmlClass as htmlClass }  from '../constants/htmlClass.constants.js';
+import { caseStudy }                        from '../constants/caseStudy.constants.js';
+import { getAdditionalPrompts }             from '../helpers.js';
+import LandingCaseStudyModule               from './landingCaseStudyModule.component.js'; 
+import PhotoEvidenceCaseStudyModule         from './photoEvidenceCaseStudyModule.component.js'; 
+import BackgroundEvidenceCaseStudyModule    from './backgroundEvidenceCaseStudyModule.component.js';
+import PromptCaseStudyModule                from './promptCaseStudyModule.component.js';
 
 export default function CaseStudyModule ( props )
 {
@@ -17,6 +17,12 @@ export default function CaseStudyModule ( props )
     } = props;
 
     const { manifest } = studyData;
+
+    // Hook
+    useLayoutEffect( () =>
+    {
+        window.scrollTo( 0, 0 );
+    } );
 
     // State
     const [currentPage, setCurrentPage]       = useState( 0 );
@@ -74,32 +80,31 @@ export default function CaseStudyModule ( props )
     const nextButtonClass = `${ htmlClass.pagination.next } ${ nextVisibility }`;
 
     return (
-        <div>
-            <div className={ htmlClass.caseStudy }>
+        <div className={ htmlClass.caseStudy }>
 
-                <div className={ landingClass }>
-                    <LandingCaseStudyModule 
-                        title={ title }
-                        caseNumber={ caseNumber } />
-                </div>
+            <div className={ landingClass }>
+                <LandingCaseStudyModule 
+                    title={ title }
+                    caseNumber={ caseNumber } />
+            </div>
 
-                <div className={ photoClass }>
-                    <PhotoEvidenceCaseStudyModule 
-                        manifest={ manifest } />
-                </div>
+            <div className={ photoClass }>
+                <PhotoEvidenceCaseStudyModule 
+                    currentPage={ currentPage }
+                    manifest={ manifest } />
+            </div>
 
-                <div className={ backgroundClass }>
-                    <BackgroundEvidenceCaseStudyModule 
-                        manifest={ manifest }
-                        recordData={ studyData } />
-                </div>
+            <div className={ backgroundClass }>
+                <BackgroundEvidenceCaseStudyModule 
+                    currentPage={ currentPage }
+                    manifest={ manifest }
+                    recordData={ studyData } />
+            </div>
 
-                <div className={ promptClass }>
-                    <PromptCaseStudyModule 
-                        additionalPrompts={ additionalPrompts }
-                        visibility={ visibility } />
-                </div>
-
+            <div className={ promptClass }>
+                <PromptCaseStudyModule 
+                    additionalPrompts={ additionalPrompts }
+                    visibility={ visibility } />
             </div>
 
             <div className={ htmlClass.pagination.page }>
@@ -119,7 +124,9 @@ export default function CaseStudyModule ( props )
                     onClick={ onButtonClick }>
                     { caseStudy.prev }
                 </button>
+
             </div>
+
         </div>
     )
 };

@@ -9,8 +9,9 @@ export default function RecordModuleApi ( props )
     const { id } = props;
 
     // State
-    const [loading, setLoading]       = useState( 'on' );
-    const [recordData, setRecordData] = useState( {} ) ;
+    const [loading, setLoading]         = useState( 'on' );
+    const [recordData, setRecordData]   = useState( {} ) ;
+    const [reloadCount, setReloadCount] = useState( 0 );
 
     useEffect( () =>
     {

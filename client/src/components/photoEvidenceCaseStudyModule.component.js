@@ -5,14 +5,20 @@ import Viewer                 from './viewer.component.js';
 
 export default function PhotoEvidenceCaseStudyModule ( props )
 {
-    const { manifest }  = props;
-    const htmlClass     = caseStudyHtmlClass.photoEvidence;
+    const 
+    { 
+        currentPage,
+        manifest 
+    } = props;
 
-    const viewers = manifest ? manifest.filter( item => item.page === "photo" )
-                                       .map( ( pageManifest, index ) =>
-                                       {
-                                          return <Viewer key={ index } path={ pageManifest.path } />
-                                       } ) : false;
+    const isVisible = caseStudy.pages[currentPage] === 'photo';
+    const htmlClass = caseStudyHtmlClass.photoEvidence;
+
+    const viewers = isVisible && manifest ? manifest.filter( item => item.page === 'photo' )
+                   .map( ( pageManifest, index ) =>
+                   {
+                      return <Viewer key={ index } path={ pageManifest.path } />
+                   } ) : false;
 
     return (
         <div className={ htmlClass.page }>

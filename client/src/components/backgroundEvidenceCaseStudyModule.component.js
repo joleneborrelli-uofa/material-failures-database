@@ -9,17 +9,20 @@ export default function BackgroundEvidenceCaseStudyModule ( props )
     const showViewer = false;
     const 
     { 
+        currentPage,
         manifest,
         recordData
-    }  = props;
+    } = props;
 
+    // To ensure viewer shows images at proper size at init
+    const isVisible = caseStudy.pages[currentPage] === 'background';
     const htmlClass = caseStudyHtmlClass.backgroundResearch;
 
-    const viewers = manifest ?  manifest.filter( item => item.page === "background" )
-                                        .map( ( pageManifest, index ) =>
-                                        {
-                                            return <Viewer key={ index } path={ pageManifest.path } />
-                                        } ) : false;
+    const viewers = manifest && isVisible ?  manifest.filter( item => item.page === 'background' )
+                    .map( ( pageManifest, index ) =>
+                    {
+                        return <Viewer key={ index } path={ pageManifest.path } />
+                    } ) : false;
 
     return (
         <div className={ htmlClass.page }>
@@ -31,10 +34,10 @@ export default function BackgroundEvidenceCaseStudyModule ( props )
                     { caseStudy.backgroundResearchSubtitle }
                 </h3>
             </div>
+            { viewers }
             <RecordModule 
                 showViewer={ showViewer }
                 recordData={ recordData } />
-            { viewers }
         </div>
     )
 

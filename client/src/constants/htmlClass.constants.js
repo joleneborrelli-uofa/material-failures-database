@@ -2,7 +2,7 @@
 
 export const genericHtmlClass =
 {
-    viewer        : 'fa-viewer',
+    viewer        : 'fa-mirador',
     referenceList :
     {
         header    : 'fa-reference-header',

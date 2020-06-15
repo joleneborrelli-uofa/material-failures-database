@@ -247,6 +247,7 @@ export default function RecordModule ( props )
             <h3 className={ recordHtmlClass.title }>
                 { title }
             </h3>
+
             { modules }
             { viewers }
             { faultTreeImg }

@@ -7,7 +7,6 @@ import { useParams } from 'react-router-dom';
 
 export default function Page() 
 {
-    let element = false;
 
     let
     { 
@@ -18,14 +17,12 @@ export default function Page()
     if( page === 'case-study' )
     {
         // Make case study query to database with the id number
-        element = <CaseStudyModuleApi id={ id } />;
+        return ( <CaseStudyModuleApi id={ id } /> );
     }
 
     if( page === 'record' )
     {
         // Make record query to database with the id number
-        element = <RecordModuleApi id={ id } />;
+        return ( <RecordModuleApi id={ id } /> );
     }
-
-    return element;
 }

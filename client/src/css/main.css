@@ -9,18 +9,14 @@ a:visited
     color : #000;
 }
 
-#uv
-{
-    width  : 800px;
-    height : 600px;
-}
+/* Mirador Viewer */
 
-.uv
+.fa-mirador .fullscreen
 {
-    width  : 600px !important;
-    height : 600px !important;
-    background-color: #000;
-    margin : auto;
+    height   : 44em;
+    width    : 44em;
+    position : relative;
+    margin   : auto;
 }
 
 /* Record CSS */
@@ -140,12 +136,13 @@ a:visited
 
 .fa-pagination-prev, .fa-pagination-next, .fa-download-button, .fa-prompt-button
 {
+    display: block;
     width:  8em;
     height: 3em;
     margin: auto;
 }
 
-.fa-pagination-next, .fa-download-button, .fa-prompt-button
+.fa-pagination-next, .fa-prompt-button
 {
     margin-bottom: 20px;
 }
@@ -183,7 +180,7 @@ a:visited
     width: 300px;
     height: 140px;
     margin-top: -70px;
-    margin-left: 178px;
+    margin-left: 210px;
     margin-bottom: 30px;
 }
 
@@ -196,23 +193,8 @@ a:visited
 
 .fa-case-study
 {
-    display: table;
-    width: 100%;
-    height: 80%;
-}
-
-.fa-landing-wrapper, .fa-photo-evidence-wrapper, .fa-background-research-wrapper, .fa-prompt-wrapper
-{
-    display: table-cell;
-    vertical-align: middle;
-    text-align: center;
-}
-
-.fa-landing-page, .fa-photo-evidence-page, .fa-background-research-page, .fa-prompt-page
-{
-    display: inline-block;
-    text-align: left;
-    width: 40em;
+    width: 44em;
+    margin: auto;
 }
 
 .fa-record
@@ -229,6 +211,11 @@ a:visited
 .fa-photo-evidence-title
 {
     border-bottom: 1px solid black;
+    margin-bottom: 25px;
+}
+
+.fa-background-research-title
+{
     margin-bottom: 25px;
 }
 
