@@ -106,7 +106,11 @@ export default class PromptCaseStudyModule extends React.Component
             failure_time                : '',
             failure_operation_stage     : '',
             operator                    : '',
-            additionalPromptText        : new Map()
+            object_additional_prompt_note      : new Map(),
+            material_additional_prompt_note    : new Map(),
+            processing_additional_prompt_note  : new Map(),
+            environment_additional_prompt_note : new Map(),
+            use_additional_prompt_note         : new Map(),
         }
 
         this.handleModuleChange = this.handleModuleChange.bind( this );
@@ -150,10 +154,12 @@ export default class PromptCaseStudyModule extends React.Component
     handleAdditionalPromptChange( e )
     {
         const { value, name } = e.target;
+        const textareakey     = e.target.getAttribute( 'textareakey' );
+        const statekey        = `${ name }_additional_prompt_note`;
 
         this.setState( prevState =>
         ( {
-            additionalPromptText : prevState.additionalPromptText.set( name, value )
+            [statekey] : prevState[statekey].set( textareakey, value )
         } ) );
     }
 
@@ -287,41 +293,41 @@ export default class PromptCaseStudyModule extends React.Component
             serial_number        : this.state.serial_number,
             feature              : this.state.feature,
             feature_note         : this.state.feature_note,
-            additionalPromptText : this.state.additionalPromptText.get( 'object' )
+            additional_prompt_note : this.state.object_additional_prompt_note
         }
 
         const materialState =
         {
-            fulle_name           : this.state.fulle_name,
-            'class'              : this.state['class'],
-            class_note           : this.state.class_note,
-            crystallinity        : this.state.crystallinity,
-            crystallinity_note   : this.state.crystallinity_note,
-            alloy_designation    : this.state.alloy_designation,
-            grade                : this.state.grade,
-            recyclability        : this.state.recyclability,
-            biodegradability     : this.state.biodegradability,
-            toxicity             : this.state.toxicity,
-            additionalPromptText : this.state.additionalPromptText.get( 'material' )
+            fulle_name             : this.state.fulle_name,
+            'class'                : this.state['class'],
+            class_note             : this.state.class_note,
+            crystallinity          : this.state.crystallinity,
+            crystallinity_note     : this.state.crystallinity_note,
+            alloy_designation      : this.state.alloy_designation,
+            grade                  : this.state.grade,
+            recyclability          : this.state.recyclability,
+            biodegradability       : this.state.biodegradability,
+            toxicity               : this.state.toxicity,
+            additional_prompt_note : this.state.material_additional_prompt_note
         };
 
         const processingState =
         {
-            machining            : this.state.machining,
-            machining_note       : this.state.machining_note,
-            joining              : this.state.joining,
-            joining_note         : this.state.joining_note,
-            manufacturer         : this.state.manufacturer,
-            date                 : this.state.date,
-            location             : this.state.location,
-            plant                : this.state.plant,
-            treatment            : this.state.treatment,
-            treatment_note       : this.state.treatment_note,
-            shaping              : this.state.shaping,
-            shaping_note         : this.state.shaping_note,
-            residual_stress      : this.state.residual_stress,
-            residual_stress_note : this.state.residual_stress_note,
-            additionalPromptText : this.state.additionalPromptText.get( 'processing' )
+            machining              : this.state.machining,
+            machining_note         : this.state.machining_note,
+            joining                : this.state.joining,
+            joining_note           : this.state.joining_note,
+            manufacturer           : this.state.manufacturer,
+            date                   : this.state.date,
+            location               : this.state.location,
+            plant                  : this.state.plant,
+            treatment              : this.state.treatment,
+            treatment_note         : this.state.treatment_note,
+            shaping                : this.state.shaping,
+            shaping_note           : this.state.shaping_note,
+            residual_stress        : this.state.residual_stress,
+            residual_stress_note   : this.state.residual_stress_note,
+            additional_prompt_note : this.state.processing_additional_prompt_note
         };
 
         const environmentState =
@@ -342,7 +348,7 @@ export default class PromptCaseStudyModule extends React.Component
             interaction_thermal_note         : this.state.interaction_thermal_note,
             interaction_tribological         : this.state.interaction_tribological,
             interaction_tribological_note    : this.state.interaction_tribological_note,
-            additionalPromptText             : this.state.additionalPromptText.get( 'environment' )
+            additional_prompt_note           : this.state.environment_additional_prompt_note
         };
 
         const useState =
@@ -357,7 +363,7 @@ export default class PromptCaseStudyModule extends React.Component
             failure_time            : this.state.failure_time,
             failure_operation_stage : this.state.failure_operation_stage,           
             operator                : this.state.operator,
-            additionalPromptText    : this.state.additionalPromptText.get( 'use' )
+            additional_prompt_note  : this.state.use_additional_prompt_note
         };
 
         return (

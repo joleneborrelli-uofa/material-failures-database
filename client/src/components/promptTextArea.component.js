@@ -8,6 +8,7 @@ export default function PromptTextArea ( props )
     {
         name,
         value,
+        textareakey,
         handleTextAreaChange,
         labelVisibility
     } = props;
@@ -23,6 +24,7 @@ export default function PromptTextArea ( props )
             <textarea 
                 className={ htmlClass.textareaInput }
                 name={ name }
+                textareakey={ textareakey }
                 onChange={ handleTextAreaChange }
                 defaultValue={ value } />
         </div>

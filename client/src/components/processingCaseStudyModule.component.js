@@ -165,7 +165,7 @@ export default function ProcessingCaseStudyModule ( props )
 
             <PromptAdditionalPrompts
                 name="processing"
-                value={ state.additionalPromptText }
+                value={ state.additional_prompt_note }
                 prompts={ additionalPrompts } 
                 handleChange={ handleModuleChange }/>
 

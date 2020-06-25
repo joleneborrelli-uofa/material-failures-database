@@ -216,7 +216,7 @@ export default function EnvironmentCaseStudyModule ( props )
 
             <PromptAdditionalPrompts
                 name="environment"
-                value={ state.additionalPromptText }
+                value={ state.additional_prompt_note }
                 prompts={ additionalPrompts } 
                 handleChange={ handleModuleChange }/>
 

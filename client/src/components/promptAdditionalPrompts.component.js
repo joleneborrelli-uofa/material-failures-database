@@ -9,7 +9,7 @@ export default function AdditionalPrompts ( props )
     const 
     { 
         name,
-        value = '',
+        value,
         prompts,
         handleChange
     } = props;
@@ -20,24 +20,30 @@ export default function AdditionalPrompts ( props )
     let visibility     = prompts.length > 0 ? on : off; 
     const wrapperClass = `${ htmlClass.additionalPrompt } ${ visibility }`;
 
-    const title = prompts.map( prompt =>
+    const promptGroups = prompts.map( ( prompt, index ) =>
     {
+        let textareakey = index + ''; 
+        let groupValue  = value.get( textareakey ) || '';
+
         return (
             <PromptTitle 
                 key={ createUniqueId() } 
                 title={ prompt } 
-                visibility={ on } />
+                visibility={ on }>
+                <PromptTextArea 
+                    key={ createUniqueId() }
+                    textareakey={ textareakey }
+                    name={ name }
+                    value={ groupValue }
+                    labelVisibility={ on }
+                    handleTextAreaChange={ handleChange } />
+            </PromptTitle>
         )
     } );
 
     return (
         <div className={ wrapperClass }>
-            { title }            
-            <PromptTextArea 
-                name={ name }
-                value={ value }
-                labelVisibility={ on }
-                handleTextAreaChange={ handleChange } />
+            { promptGroups }            
         </div>
     );
 

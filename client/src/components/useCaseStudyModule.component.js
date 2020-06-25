@@ -154,7 +154,7 @@ export default function UseCaseStudyModule ( props )
 
             <PromptAdditionalPrompts
                 name="use"
-                value={ state.additionalPromptText }
+                value={ state.additional_prompt_note }
                 prompts={ additionalPrompts } 
                 handleChange={ handleModuleChange } />
 

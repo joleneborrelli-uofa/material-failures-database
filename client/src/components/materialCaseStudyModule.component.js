@@ -135,7 +135,7 @@ export default function MaterialCaseStudyModule ( props )
 
             <PromptAdditionalPrompts
                 name="material"
-                value={ state.additionalPromptText }
+                value={ state.additional_prompt_note }
                 prompts={ additionalPrompts } 
                 handleChange={ handleModuleChange }/>
 
