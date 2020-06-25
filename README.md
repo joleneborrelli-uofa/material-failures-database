@@ -1,6 +1,6 @@
 # Welcome to the Material Failures Database
 
-To run the app, clone this repository to your computer and run `npm start` in the `app` directory via a command line interface.
+To run the app, clone this repository to your computer and run `npm start` in the main and `client` directory via a command line interface.
 
 # Learn more
 
