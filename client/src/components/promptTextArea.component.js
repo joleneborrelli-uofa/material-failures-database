@@ -1,20 +1,21 @@
-import React                  from 'react';
+import React, { useState }    from 'react';
 import { caseStudy }          from '../constants/caseStudy.constants.js';
 import { caseStudyHtmlClass } from '../constants/htmlClass.constants.js';
 
 export default function PromptTextArea ( props )
 {
+    // Props
     const
     {
         name,
-        value,
-        textareakey,
-        handleTextAreaChange,
         labelVisibility
     } = props;
 
     const htmlClass  = caseStudyHtmlClass.fieldPrompts;
     const labelClass = `${ htmlClass.title } ${ labelVisibility }`;
+
+    // State
+    const [value, handleTextAreaChange] = useState( '' );
 
     return (
         <div className={ htmlClass.textarea }>
@@ -24,8 +25,7 @@ export default function PromptTextArea ( props )
             <textarea 
                 className={ htmlClass.textareaInput }
                 name={ name }
-                textareakey={ textareakey }
-                onChange={ handleTextAreaChange }
+                onChange={ e => handleTextAreaChange( e.target.value ) }
                 defaultValue={ value } />
         </div>
     );

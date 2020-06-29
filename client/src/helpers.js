@@ -1,4 +1,3 @@
-import { optionChanges }       from './constants/optionChanges.constants.js';
 import { headers, subheaders } from './constants/webDisplay.constants.js';
 import { random, isString }    from 'lodash';
 
@@ -86,81 +85,65 @@ export const getAdditionalPrompts = fields =>
 /**
  * Converts the state into a formatted string
  *
- * @param  { Object Literal } state PromptCaseStudy state
+ * @param  { DOM Tree } form  form elements
  * @return { String } 
  */
-export const convertStateToText = state =>
+export const convertFormToText = form =>
 {
-    const { checkbox, radio } = optionChanges;
-
     let text = '';
 
-    for( let statekey in state )
+    for( let i = 0; i < form.length; i++ )
     {
-        let statevalue = state[statekey];
+        let name    = '';
+        let element = form[i];
+        let { type, checked, value } = element;
 
-        if( isString( statevalue ) && statevalue )
+        if( ( type === 'radio' || type === 'checkbox' ) && checked )
         {
-            let string = '';
+            let toAppend = '';
 
-            const parts     = statekey.split( '_' );
-            const lastIndex = parts.length-1;
+            name = extractPrefix( element.name );
 
-            string = `${ subheaders[statekey] }: ${ statevalue } \n`;
-
-            if( parts[lastIndex] === 'note' ) string = `Notes: ${ statevalue } \n`;
-
-            text += string;
-        }
-
-        if( statevalue.constructor === Map )
-        {
-            if( checkbox.includes( statekey ) )
+            ['subtype', 'force', 'normalcy'].forEach( suffix =>
             {
-                let checked = [];
-
-                statevalue.forEach( ( bool, option ) => bool ? checked.push( option ) : false );
-
-                if( checked.length > 0 )
+                if( name.includes( suffix ) )
                 {
-                    text += `${ subheaders[statekey] }: ${ checked.join(', ') } \n`;
+                    name = name.replace( '_' + suffix, '' );
+
+                    toAppend = ` ${ capitalize( suffix ) }`;
                 }
-            }
+            } );
 
-            if( radio.includes( statekey ) )
+            name = `${ subheaders[name] }${ toAppend }`;
+
+        } 
+
+        if( type === 'textarea' && value )
+        {
+            name = element.name;
+
+            if( name.includes( '_note' ) )
             {
-                let string = '';
+                name = name.replace( '_note', '' );
 
-                const mapvalues = Array.from( statevalue.values() );
-
-                mapvalues.forEach( mapvalue =>
-                {
-                    let keys = Object.keys( mapvalue );
-
-                    // !! DO THIS BETTER !! 
-                    // assuming there are only two keys per mapvalue
-                    if( mapvalue[keys[0]] && mapvalue[keys[1]] ) 
-                    {
-                        string += `${ mapvalue[keys[0]] }: ${ mapvalue[keys[1]] } \n`;
-                    }
-                } );
-
-                if( string ) text += `${ subheaders[statekey] } \n${ string }`;
+                name = subheaders[name] + ' Notes'
             }
-
-            if( statekey === 'additionalPromptText' )
+            else if( name.includes( '_additional_prompt' ) )
             {
-                let string = '';
-
-                statevalue.forEach( ( note, moduleName ) => 
-                {
-                    if( note ) string += `${ headers[moduleName] }: ${ note } \n`;
-                } ); 
-
-                if( string ) text += 'Module Notes: \n' + string;
+                name = name.replace( '_additional_prompt', ' Additional Notes' );
+            }
+            else
+            {
+                name = subheaders[name];
             }
         }
-    }
+
+        if( name )
+        {
+            text += `${ capitalize( name ) }: ${ value } \n \n`;
+        }
+
+    };
     
     return text;
 };

@@ -63,7 +63,6 @@ export const subheaders =
     interaction_thermal         : 'Thermal Interactions',
     interaction_tribological    : 'Tribological Interactions',
     interaction_loading         : 'Loading',
-    loading_frequency           : 'Loading Frequency',
     problem_statement           : 'Problem Statement',
     functionality_loss          : 'Loss of Functionality',
     failure_date                : 'Date of Failure',

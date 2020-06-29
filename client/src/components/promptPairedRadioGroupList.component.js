@@ -1,48 +1,89 @@
-import React                  from 'react';
-import { createUniqueId }     from '../helpers.js';
-import { caseStudy }          from '../constants/caseStudy.constants.js';
-import { caseStudyHtmlClass } from '../constants/htmlClass.constants.js'; 
-import PromptRadioGroup       from './promptRadioGroup.component.js';
+import React, { useState, useEffect } from 'react';
+import { createUniqueId }             from '../helpers.js';
+import { caseStudy }                  from '../constants/caseStudy.constants.js';
+import { caseStudyHtmlClass }         from '../constants/htmlClass.constants.js'; 
+import PromptPairedRadioGroup         from './promptPairedRadioGroup.component.js';
 
 export default function PromptPairedRadioGroupList ( props )
 {
-    const 
-    {
-        statekey,
-        buttonName,
-        pairedData,
-        pairedRadioGroup,
-        handleChange
-    } = props;
+    // Props
+    const { pairedData } = props;
+    const htmlClass      = caseStudyHtmlClass.fieldPrompts;
 
-    const radioGroups = [];
-    const htmlClass   = caseStudyHtmlClass.fieldPrompts;
+    // State
+    const [radioGroupCounter, incrementRadioGroup] = useState( 0 );
+    const [pairedGroup, handlePairedGroupChange]   = useState( new Map([['0',
+            {
+                [pairedData[0].name] : '',
+                [pairedData[1].name] : ''
+            } ]]) );
 
-    // pairedRadioGroup is a Map. Group is an object at an 
-    // key in the map, mapkey is the key.
-    pairedRadioGroup.forEach( ( group, mapkey ) =>
+    useEffect( () =>
     {
-        radioGroups.push( 
-            <div
-                className={ htmlClass.pairedRadioGroup } 
-                key={ createUniqueId() }>
-                <PromptRadioGroup
-                    mapkey={ mapkey }
-                    statekey={ statekey }
-                    name={ pairedData[0].name }
-                    value={ group[pairedData[0].name] }
-                    foreignKeys={ pairedData[0].foreignKeys }
-                    handleRadioGroupChange={ handleChange } />
-                <PromptRadioGroup 
-                    mapkey={ mapkey }
-                    statekey={ statekey }
-                    name={ pairedData[1].name }
-                    value={ group[pairedData[1].name] }
-                    foreignKeys={ pairedData[1].foreignKeys }
-                    handleRadioGroupChange={ handleChange } />
-            </div>
-        ) 
-    } );
+        onButtonClick();
+    }, [] );
+
+    // Methods
+    const handleRadioGroupChange = e =>
+    {
+        const { value } = e.target;
+        const namekey   = e.target.getAttribute( 'namekey' );
+        const mapkey    = e.target.getAttribute( 'mapkey' );
+        const prevState = pairedGroup.get( mapkey ) || {};
+        const newState  = pairedGroup.set( mapkey, { ...prevState, [namekey] : value } );
+
+       handlePairedGroupChange( newState );  
+    };
+
+    const onButtonClick = () =>
+    {
+        const counter = radioGroupCounter + 1;
+        const group   = 
+        {
+            [pairedData[0].name] : '',
+            [pairedData[1].name] : ''
+        };
+
+        // Limits the amount of grouped components to 20
+        if( counter > 20 ) return;
+
+        incrementRadioGroup( counter );
+        handlePairedGroupChange( pairedGroup.set( counter + '', group ) );
+    };
+
+    const generateRadioGroups = () =>
+    {
+        const radioGroups = [];
+
+        for ( let i = 0; i < radioGroupCounter; i++ ) 
+        {
+            let mapkey = i + '';
+            let group  = pairedGroup.get( mapkey );
+
+            radioGroups.push( 
+                <div
+                    className={ htmlClass.pairedRadioGroup } 
+                    key={ createUniqueId() }>
+                    <PromptPairedRadioGroup
+                        name={ pairedData[0].name }
+                        mapkey={ mapkey }
+                        value={ group[pairedData[0].name] }
+                        foreignKeys={ pairedData[0].foreignKeys }
+                        handleRadioGroupChange={ handleRadioGroupChange } />
+                    <PromptPairedRadioGroup 
+                        name={ pairedData[1].name }
+                        mapkey={ mapkey }
+                        value={ group[pairedData[1].name] }
+                        foreignKeys={ pairedData[1].foreignKeys }
+                        handleRadioGroupChange={ handleRadioGroupChange } />
+                </div>
+            ) 
+        };
+
+        return radioGroups;
+    };
+
+    const radioGroups = generateRadioGroups();
 
     return (
         <div>
@@ -50,9 +91,7 @@ export default function PromptPairedRadioGroupList ( props )
             <button
                 className={ htmlClass.button }
                 type="button" 
-                name={ buttonName }
-                statekey={ statekey }
-                onClick={ handleChange }>
+                onClick={ onButtonClick }>
                 { caseStudy.add }
             </button>
         </div>

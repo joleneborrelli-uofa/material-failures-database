@@ -11,12 +11,11 @@ import PromptAdditionalPrompts from './promptAdditionalPrompts.component.js';
 
 export default function ObjectCaseStudyModule ( props )
 {
+    // Props
     const  
     {
-        state,
         visibility,
-        additionalPrompts,
-        handleModuleChange
+        additionalPrompts
     } = props;
 
     const constants      = caseStudy.fieldPrompts.object;
@@ -39,9 +38,7 @@ export default function ObjectCaseStudyModule ( props )
 
                 <PromptTextArea 
                     name="rating"
-                    value={ state.rating }
-                    labelVisibility={ htmlVisibility.off }
-                    handleTextAreaChange={ handleModuleChange } />
+                    labelVisibility={ htmlVisibility.off } />
             </PromptTitle>
 
             <PromptTitle  
@@ -50,9 +47,7 @@ export default function ObjectCaseStudyModule ( props )
 
                 <PromptTextArea 
                     name="inscription"
-                    value={ state.inscription }
-                    labelVisibility={ htmlVisibility.off }
-                    handleTextAreaChange={ handleModuleChange } />
+                    labelVisibility={ htmlVisibility.off } />
             </PromptTitle>
 
             <PromptTitle  
@@ -61,9 +56,7 @@ export default function ObjectCaseStudyModule ( props )
 
                 <PromptTextArea 
                     name="serial_number"
-                    value={ state.serial_number }
-                    labelVisibility={ htmlVisibility.off }
-                    handleTextAreaChange={ handleModuleChange } />
+                    labelVisibility={ htmlVisibility.off } />
             </PromptTitle>
 
             <PromptTitle  
@@ -72,23 +65,17 @@ export default function ObjectCaseStudyModule ( props )
 
                 <PromptCheckboxGroup
                     name="feature"
-                    value={ state.feature }
-                    handleCheckboxChange={ handleModuleChange }
                     foreignKeys={ foreignKeys.object.feature } />
 
                 <PromptTextArea 
                     name="feature_note"
-                    value={ state.feature_note }
-                    labelVisibility={ htmlVisibility.on }
-                    handleTextAreaChange={ handleModuleChange } />
+                    labelVisibility={ htmlVisibility.on } />
             </PromptTitle>
 
             <PromptAdditionalPrompts
                 key={ createUniqueId() }
-                name="object"
-                value={ state.additional_prompt_note }
-                prompts={ prompts } 
-                handleChange={ handleModuleChange }/>
+                name="object_additional_prompt"
+                prompts={ prompts } />
 
         </div>
     )

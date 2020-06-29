@@ -12,13 +12,11 @@ import PromptAdditionalPrompts    from './promptAdditionalPrompts.component.js';
 
 export default function MaterialCaseStudyModule ( props )
 {
-
+    // Props
     const 
     {
-        state,
         visibility,
-        additionalPrompts,
-        handleModuleChange
+        additionalPrompts
     } = props;
 
     const constants      = caseStudy.fieldPrompts.material;
@@ -38,9 +36,7 @@ export default function MaterialCaseStudyModule ( props )
 
                 <PromptTextArea 
                     name="full_name"
-                    value={ state.full_name }
-                    labelVisibility={ htmlVisibility.off }
-                    handleTextAreaChange={ handleModuleChange } />
+                    labelVisibility={ htmlVisibility.off } />
             </PromptTitle>
 
             <PromptTitle 
@@ -48,17 +44,11 @@ export default function MaterialCaseStudyModule ( props )
                 visibility={ htmlVisibility[visibility['class']] }>
 
                 <PromptPairedRadioGroupList
-                    statekey="class"
-                    buttonName="class_button"
-                    pairedRadioGroup={ state['class'] }
-                    pairedData={ groupedComponents['class'] }
-                    handleChange={ handleModuleChange } />
+                    pairedData={ groupedComponents['class'] } />
 
                 <PromptTextArea 
                     name="class_note"
-                    value={ state.class_note }
-                    labelVisibility={ htmlVisibility.on }
-                    handleTextAreaChange={ handleModuleChange } />
+                    labelVisibility={ htmlVisibility.on } />
             </PromptTitle>
 
             <PromptTitle  
@@ -67,15 +57,11 @@ export default function MaterialCaseStudyModule ( props )
 
                 <PromptRadioGroup
                     name="crystallinity"
-                    value={ state.crystallinity }
-                    foreignKeys={ foreignKeys.material.crystallinity }
-                    handleRadioGroupChange={ handleModuleChange } />
+                    foreignKeys={ foreignKeys.material.crystallinity } />
 
                 <PromptTextArea 
                     name="crystallinity_note"
-                    value={ state.crystallinity_note }
-                    labelVisibility={ htmlVisibility.on }
-                    handleTextAreaChange={ handleModuleChange } />
+                    labelVisibility={ htmlVisibility.on } />
             </PromptTitle>
 
             <PromptTitle  
@@ -84,9 +70,7 @@ export default function MaterialCaseStudyModule ( props )
 
                 <PromptTextArea 
                     name="alloy_designation"
-                    value={ state.alloy_designation }
-                    labelVisibility={ htmlVisibility.off }
-                    handleTextAreaChange={ handleModuleChange } />
+                    labelVisibility={ htmlVisibility.off } />
             </PromptTitle>
 
             <PromptTitle  
@@ -95,9 +79,7 @@ export default function MaterialCaseStudyModule ( props )
 
                 <PromptTextArea 
                     name="grade"
-                    value={ state.grade }
-                    labelVisibility={ htmlVisibility.off }
-                    handleTextAreaChange={ handleModuleChange } />
+                    labelVisibility={ htmlVisibility.off } />
             </PromptTitle>
 
             <PromptTitle  
@@ -106,9 +88,7 @@ export default function MaterialCaseStudyModule ( props )
 
                 <PromptTextArea 
                     name="recyclability"
-                    value={ state.recyclability }
-                    labelVisibility={ htmlVisibility.off }
-                    handleTextAreaChange={ handleModuleChange } />
+                    labelVisibility={ htmlVisibility.off } />
             </PromptTitle>
 
             <PromptTitle  
@@ -117,9 +97,7 @@ export default function MaterialCaseStudyModule ( props )
 
                 <PromptTextArea 
                     name="biodegradability"
-                    value={ state.biodegradability }
-                    labelVisibility={ htmlVisibility.off }
-                    handleTextAreaChange={ handleModuleChange } />
+                    labelVisibility={ htmlVisibility.off } />
             </PromptTitle>
 
             <PromptTitle  
@@ -128,16 +106,12 @@ export default function MaterialCaseStudyModule ( props )
 
                 <PromptTextArea 
                     name="toxicity"
-                    value={ state.toxicity }
-                    labelVisibility={ htmlVisibility.off }
-                    handleTextAreaChange={ handleModuleChange } />
+                    labelVisibility={ htmlVisibility.off } />
             </PromptTitle>
 
             <PromptAdditionalPrompts
-                name="material"
-                value={ state.additional_prompt_note }
-                prompts={ additionalPrompts } 
-                handleChange={ handleModuleChange }/>
+                name="material_additional_prompt"
+                prompts={ additionalPrompts } />
 
         </div>
     )

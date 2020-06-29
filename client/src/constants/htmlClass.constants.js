@@ -116,7 +116,7 @@ export const caseStudyHtmlClass =
         textarea         : 'fa-prompt-textarea',
         textareaInput    : 'fa-prompt-textarea-input',
         note             : 'fa-prompt-note',
-        optionLabel      : 'fa-prompt-option-label',
+        foreignKeyLabel  : 'fa-prompt-foreign-key-label',
         radio            : 'fa-prompt-radio-button',
         radioInput       : 'fa-prompt-radio-input',
         radioGroup       : 'fa-prompt-radio-group',

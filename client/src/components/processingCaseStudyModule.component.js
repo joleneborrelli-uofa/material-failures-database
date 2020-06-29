@@ -12,6 +12,7 @@ import PromptAdditionalPrompts    from './promptAdditionalPrompts.component.js';
 
 export default function ProcessingCaseStudyModule ( props )
 {
+    // Props
     const 
     {
         state,
@@ -36,17 +37,11 @@ export default function ProcessingCaseStudyModule ( props )
                 visibility={ htmlVisibility[visibility.treatment] }>
 
                 <PromptPairedRadioGroupList
-                    statekey="treatment"
-                    buttonName="treatment_button"
-                    pairedRadioGroup={ state.treatment }
-                    pairedData={ groupedComponents.treatment }
-                    handleChange={ handleModuleChange } />
+                    pairedData={ groupedComponents.treatment } />
 
                 <PromptTextArea 
                     name="treatment_note"
-                    value={ state.treatment_note }
-                    labelVisibility={ htmlVisibility.on }
-                    handleTextAreaChange={ handleModuleChange } />
+                    labelVisibility={ htmlVisibility.on } />
             </PromptTitle>
 
             <PromptTitle 
@@ -54,17 +49,11 @@ export default function ProcessingCaseStudyModule ( props )
                 visibility={ htmlVisibility[visibility.shaping] }>
 
                 <PromptPairedRadioGroupList
-                    statekey="shaping"
-                    buttonName="shaping_button"
-                    pairedRadioGroup={ state.shaping }
-                    pairedData={ groupedComponents.shaping } 
-                    handleChange={ handleModuleChange } />
+                    pairedData={ groupedComponents.shaping } />
 
                 <PromptTextArea 
                     name="shaping_note"
-                    value={ state.shaping_note }
-                    labelVisibility={ htmlVisibility.on }
-                    handleTextAreaChange={ handleModuleChange } />
+                    labelVisibility={ htmlVisibility.on } />
             </PromptTitle>
 
             <PromptTitle 
@@ -72,17 +61,11 @@ export default function ProcessingCaseStudyModule ( props )
                 visibility={ htmlVisibility[visibility.residual_stress] }>
 
                 <PromptPairedRadioGroupList
-                    statekey="residual_stress"
-                    buttonName="residual_stress_button"
-                    pairedRadioGroup={ state.residual_stress }
-                    pairedData={ groupedComponents.residual_stress } 
-                    handleChange={ handleModuleChange } />
+                    pairedData={ groupedComponents.residual_stress } />
 
                 <PromptTextArea 
                     name="residual_stress_note"
-                    value={ state.residual_stress_note }
-                    labelVisibility={ htmlVisibility.on }
-                    handleTextAreaChange={ handleModuleChange } />
+                    labelVisibility={ htmlVisibility.on } />
             </PromptTitle>
 
             <PromptTitle 
@@ -91,15 +74,11 @@ export default function ProcessingCaseStudyModule ( props )
 
                 <PromptCheckboxGroup
                     name="machining"
-                    value={ state.machining }
-                    handleCheckboxChange={ handleModuleChange }
                     foreignKeys={ foreignKeys.processing.machining } />
 
                 <PromptTextArea 
                     name="machining_note"
-                    value={ state.machining_note }
-                    labelVisibility={ htmlVisibility.on }
-                    handleTextAreaChange={ handleModuleChange } />
+                    labelVisibility={ htmlVisibility.on } />
             </PromptTitle>
 
             <PromptTitle 
@@ -108,15 +87,11 @@ export default function ProcessingCaseStudyModule ( props )
 
                 <PromptCheckboxGroup
                     name="joining"
-                    value={ state.joining }
-                    handleCheckboxChange={ handleModuleChange }
                     foreignKeys={ foreignKeys.processing.joining } />
 
                 <PromptTextArea 
                     name="joining_note"
-                    value={ state.joining_note }
-                    labelVisibility={ htmlVisibility.on }
-                    handleTextAreaChange={ handleModuleChange } />
+                    labelVisibility={ htmlVisibility.on } />
             </PromptTitle>
 
             <PromptTitle  
@@ -125,9 +100,7 @@ export default function ProcessingCaseStudyModule ( props )
 
                 <PromptTextArea 
                     name="manufacturer"
-                    value={ state.manufacturer }
-                    labelVisibility={ htmlVisibility.off }
-                    handleTextAreaChange={ handleModuleChange } />
+                    labelVisibility={ htmlVisibility.off } />
             </PromptTitle>
 
             <PromptTitle  
@@ -136,9 +109,7 @@ export default function ProcessingCaseStudyModule ( props )
 
                 <PromptTextArea 
                     name="date"
-                    value={ state.date }
-                    labelVisibility={ htmlVisibility.off }
-                    handleTextAreaChange={ handleModuleChange } />
+                    labelVisibility={ htmlVisibility.off } />
             </PromptTitle>
 
             <PromptTitle  
@@ -147,9 +118,7 @@ export default function ProcessingCaseStudyModule ( props )
 
                 <PromptTextArea 
                     name="location"
-                    value={ state.location }
-                    labelVisibility={ htmlVisibility.off }
-                    handleTextAreaChange={ handleModuleChange } />
+                    labelVisibility={ htmlVisibility.off } />
             </PromptTitle>
 
             <PromptTitle  
@@ -158,16 +127,12 @@ export default function ProcessingCaseStudyModule ( props )
 
                 <PromptTextArea 
                     name="plant"
-                    value={ state.plant }
-                    labelVisibility={ htmlVisibility.off }
-                    handleTextAreaChange={ handleModuleChange } />
+                    labelVisibility={ htmlVisibility.off } />
             </PromptTitle>
 
             <PromptAdditionalPrompts
-                name="processing"
-                value={ state.additional_prompt_note }
-                prompts={ additionalPrompts } 
-                handleChange={ handleModuleChange }/>
+                name="processing_additional_prompt"
+                prompts={ additionalPrompts } />
 
         </div>
     )

@@ -13,12 +13,11 @@ import PromptAdditionalPrompts    from './promptAdditionalPrompts.component.js';
 
 export default function EnvironmentCaseStudyModule ( props )
 {
+    // Props
     const 
     {
-        state,
         visibility,
-        additionalPrompts,
-        handleModuleChange
+        additionalPrompts
     } = props;
 
     const constants      = caseStudy.fieldPrompts.environment;
@@ -38,15 +37,11 @@ export default function EnvironmentCaseStudyModule ( props )
 
                 <PromptCheckboxGroup
                     name="light_exposure"
-                    value={ state.light_exposure }
-                    handleCheckboxChange={ handleModuleChange }
                     foreignKeys={ foreignKeys.environment.light_exposure } />
 
                 <PromptTextArea 
                     name="light_exposure_note"
-                    value={ state.light_exposure_note }
-                    labelVisibility={ htmlVisibility.on }
-                    handleTextAreaChange={ handleModuleChange } />
+                    labelVisibility={ htmlVisibility.on } />
             </PromptTitle>
 
             <PromptTitle 
@@ -55,15 +50,11 @@ export default function EnvironmentCaseStudyModule ( props )
 
                 <PromptCheckboxGroup
                     name="ambient"
-                    value={ state.ambient }
-                    handleCheckboxChange={ handleModuleChange }
                     foreignKeys={ foreignKeys.environment.ambient } />
 
                 <PromptTextArea 
                     name="ambient_note"
-                    value={ state.ambient_note }
-                    labelVisibility={ htmlVisibility.on }
-                    handleTextAreaChange={ handleModuleChange } />
+                    labelVisibility={ htmlVisibility.on } />
             </PromptTitle>
 
             <PromptTitle 
@@ -72,15 +63,11 @@ export default function EnvironmentCaseStudyModule ( props )
 
                 <PromptCheckboxGroup
                     name="weather_exposure"
-                    value={ state.weather_exposure }
-                    handleCheckboxChange={ handleModuleChange }
                     foreignKeys={ foreignKeys.environment.weather_exposure } />
 
                 <PromptTextArea 
                     name="weather_exposure_note"
-                    value={ state.weather_exposure_note }
-                    labelVisibility={ htmlVisibility.on }
-                    handleTextAreaChange={ handleModuleChange } />
+                    labelVisibility={ htmlVisibility.on } />
             </PromptTitle>
 
             <PromptTitle 
@@ -89,15 +76,11 @@ export default function EnvironmentCaseStudyModule ( props )
 
                 <PromptCheckboxGroup
                     name="storage_location"
-                    value={ state.storage_location }
-                    handleCheckboxChange={ handleModuleChange }
                     foreignKeys={ foreignKeys.environment.storage_location } />
 
                 <PromptTextArea 
                     name="storage_location_note"
-                    value={ state.storage_location_note }
-                    labelVisibility={ htmlVisibility.on }
-                    handleTextAreaChange={ handleModuleChange } />
+                    labelVisibility={ htmlVisibility.on } />
             </PromptTitle>
 
             <PromptTitle 
@@ -106,9 +89,7 @@ export default function EnvironmentCaseStudyModule ( props )
 
                 <PromptTextArea 
                     name="geographic_location"
-                    value={ state.geographic_location }
-                    labelVisibility={ htmlVisibility.on }
-                    handleTextAreaChange={ handleModuleChange } />
+                    labelVisibility={ htmlVisibility.on } />
             </PromptTitle>
 
             <PromptTitle 
@@ -117,15 +98,11 @@ export default function EnvironmentCaseStudyModule ( props )
 
                 <PromptRadioGroup
                     name="interaction_stress"
-                    value={ state.interaction_stress }
-                    foreignKeys={ foreignKeys.environment.interaction_stress }
-                    handleRadioGroupChange={ handleModuleChange } />
+                    foreignKeys={ foreignKeys.environment.interaction_stress } />
 
                 <PromptTextArea 
                     name="interaction_stress_note"
-                    value={ state.interaction_stress_note }
-                    labelVisibility={ htmlVisibility.on }
-                    handleTextAreaChange={ handleModuleChange } />
+                    labelVisibility={ htmlVisibility.on } />
             </PromptTitle>
 
             <PromptTitle 
@@ -134,15 +111,11 @@ export default function EnvironmentCaseStudyModule ( props )
 
                 <PromptRadioGroup
                     name="interaction_environment"
-                    value={ state.interaction_environment }
-                    foreignKeys={ foreignKeys.environment.interaction_environment }
-                    handleRadioGroupChange={ handleModuleChange } />
+                    foreignKeys={ foreignKeys.environment.interaction_environment } />
 
                 <PromptTextArea 
                     name="interaction_environment_note"
-                    value={ state.interaction_environment_note }
-                    labelVisibility={ htmlVisibility.on }
-                    handleTextAreaChange={ handleModuleChange } />
+                    labelVisibility={ htmlVisibility.on } />
             </PromptTitle>
 
             <PromptTitle 
@@ -151,15 +124,11 @@ export default function EnvironmentCaseStudyModule ( props )
 
                 <PromptRadioGroup
                     name="interaction_electromagnetic"
-                    value={ state.interaction_electromagnetic }
-                    foreignKeys={ foreignKeys.environment.interaction_electromagnetic }
-                    handleRadioGroupChange={ handleModuleChange } />
+                    foreignKeys={ foreignKeys.environment.interaction_electromagnetic } />
 
                 <PromptTextArea 
                     name="interaction_electromagnetic_note"
-                    value={ state.interaction_electromagnetic_note }
-                    labelVisibility={ htmlVisibility.on }
-                    handleTextAreaChange={ handleModuleChange } />
+                    labelVisibility={ htmlVisibility.on } />
             </PromptTitle>
 
             <PromptTitle 
@@ -168,15 +137,11 @@ export default function EnvironmentCaseStudyModule ( props )
 
                 <PromptRadioGroup
                     name="interaction_thermal"
-                    value={ state.interaction_thermal }
-                    foreignKeys={ foreignKeys.environment.interaction_thermal }
-                    handleRadioGroupChange={ handleModuleChange } />
+                    foreignKeys={ foreignKeys.environment.interaction_thermal } />
 
                 <PromptTextArea 
                     name="interaction_thermal_note"
-                    value={ state.interaction_thermal_note }
-                    labelVisibility={ htmlVisibility.on }
-                    handleTextAreaChange={ handleModuleChange } />
+                    labelVisibility={ htmlVisibility.on } />
             </PromptTitle>
 
             <PromptTitle 
@@ -185,40 +150,28 @@ export default function EnvironmentCaseStudyModule ( props )
 
                 <PromptRadioGroup
                     name="interaction_tribological"
-                    value={ state.interaction_tribological }
-                    foreignKeys={ foreignKeys.environment.interaction_tribological }
-                    handleRadioGroupChange={ handleModuleChange } />
+                    foreignKeys={ foreignKeys.environment.interaction_tribological } />
 
                 <PromptTextArea 
                     name="interaction_tribological_note"
-                    value={ state.interaction_tribological_note }
-                    labelVisibility={ htmlVisibility.on }
-                    handleTextAreaChange={ handleModuleChange } />
+                    labelVisibility={ htmlVisibility.on } />
             </PromptTitle>
 
             <PromptTitle 
-                title={ constants.loading }
+                title={ constants.interaction_loading }
                 visibility={ htmlVisibility[visibility.interaction_loading] }>
 
                 <PromptPairedRadioGroupList
-                    statekey="loading"
-                    buttonName="loading_button"
-                    pairedRadioGroup={ state.loading }
-                    pairedData={ groupedComponents.loading }
-                    handleChange={ handleModuleChange } />
+                    pairedData={ groupedComponents.loading } />
 
                 <PromptTextArea 
-                    name="loading_note"
-                    value={ state.loading_note }
-                    labelVisibility={ htmlVisibility.on }
-                    handleTextAreaChange={ handleModuleChange } />
+                    name="interaction_loading_note"
+                    labelVisibility={ htmlVisibility.on } />
             </PromptTitle>
 
             <PromptAdditionalPrompts
-                name="environment"
-                value={ state.additional_prompt_note }
-                prompts={ additionalPrompts } 
-                handleChange={ handleModuleChange }/>
+                name="environment_additional_prompt"
+                prompts={ additionalPrompts } />
 
         </div>  
     )

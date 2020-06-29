@@ -6,12 +6,11 @@ import PromptTextArea         from './promptTextArea.component.js';
 
 export default function AdditionalPrompts ( props )
 { 
+    // Props
     const 
     { 
         name,
-        value,
-        prompts,
-        handleChange
+        prompts
     } = props;
 
     const htmlClass   = caseStudyHtmlClass.fieldPrompts;
@@ -22,9 +21,6 @@ export default function AdditionalPrompts ( props )
 
     const promptGroups = prompts.map( ( prompt, index ) =>
     {
-        let textareakey = index + ''; 
-        let groupValue  = value.get( textareakey ) || '';
-
         return (
             <PromptTitle 
                 key={ createUniqueId() } 
@@ -32,11 +28,8 @@ export default function AdditionalPrompts ( props )
                 visibility={ on }>
                 <PromptTextArea 
                     key={ createUniqueId() }
-                    textareakey={ textareakey }
                     name={ name }
-                    value={ groupValue }
-                    labelVisibility={ on }
-                    handleTextAreaChange={ handleChange } />
+                    labelVisibility={ on } />
             </PromptTitle>
         )
     } );

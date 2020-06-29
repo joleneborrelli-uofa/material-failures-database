@@ -1,41 +1,52 @@
-import React                  from 'react';
+import React, { useState, useEffect }    from 'react';
 import { createUniqueId }     from '../helpers.js';
 import { caseStudyHtmlClass } from '../constants/htmlClass.constants.js'; 
 
 export default function PromptCheckboxGroup ( props )
 {
+    // Props
     const 
     {
-        value,
         name,
-        foreignKeys,
-        handleCheckboxChange
+        foreignKeys
     } = props;
 
     const htmlClass = caseStudyHtmlClass.fieldPrompts;
 
-    // foreignKeys is an array. Option is the value in the array.
-    const checkboxes = foreignKeys.map( option =>
+    // State
+    const [values, handleValuesChange] = useState( {} );
+
+    // Methods
+    const handleCheckboxChange = e =>
     {
-        let isChecked = value.get( option );
+        const { value, checked } = e.target;
+
+        handleValuesChange( { ...values, [value] : checked } );
+    }
+
+    const generateCheckboxes = () => foreignKeys.map( foreignKey =>
+    {
+        let isChecked = !!values[foreignKey];
 
         return ( 
             <div 
                 key={ createUniqueId() }
                 className={ htmlClass.checkbox }>
-                <label className={ htmlClass.optionLabel }>
-                    { option }
+                <label className={ htmlClass.foreignKeyLabel }>
+                    { foreignKey }
                 </label>
                 <input
                     className={ htmlClass.checkboxInput }
                     type="checkbox"
                     name={ name }
-                    value={ option }
+                    value={ foreignKey }
                     checked={ isChecked }
                     onChange={ handleCheckboxChange } /> 
             </div>
         ) 
     } );
+
+    const checkboxes  = generateCheckboxes();
 
     return (
         <div className={ htmlClass.checkboxGroup }>

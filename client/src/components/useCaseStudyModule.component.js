@@ -10,12 +10,11 @@ import PromptAdditionalPrompts from './promptAdditionalPrompts.component.js';
 
 export default function UseCaseStudyModule ( props )
 {
+    // Props
     const 
     {
-        state,
         visibility,
-        additionalPrompts,
-        handleModuleChange
+        additionalPrompts
     } = props;
 
     const constants      = caseStudy.fieldPrompts.use;
@@ -35,15 +34,11 @@ export default function UseCaseStudyModule ( props )
 
                 <PromptCheckboxGroup
                     name="specification"
-                    value={ state.specification }
-                    handleCheckboxChange={ handleModuleChange }
                     foreignKeys={ foreignKeys.use.specification } />
 
                 <PromptTextArea 
                     name="specification_note"
-                    value={ state.light_exposure_note }
-                    labelVisibility={ htmlVisibility.on }
-                    handleTextAreaChange={ handleModuleChange } />
+                    labelVisibility={ htmlVisibility.on } />
             </PromptTitle>
 
             <PromptTitle 
@@ -52,15 +47,11 @@ export default function UseCaseStudyModule ( props )
 
                 <PromptCheckboxGroup
                     name="record"
-                    value={ state.record }
-                    handleCheckboxChange={ handleModuleChange }
                     foreignKeys={ foreignKeys.use.record } />
 
                 <PromptTextArea 
                     name="record_note"
-                    value={ state.ambient_note }
-                    labelVisibility={ htmlVisibility.on }
-                    handleTextAreaChange={ handleModuleChange } />
+                    labelVisibility={ htmlVisibility.on } />
             </PromptTitle>
 
             <PromptTitle 
@@ -69,15 +60,11 @@ export default function UseCaseStudyModule ( props )
 
                 <PromptCheckboxGroup
                     name="operation"
-                    value={ state.operation }
-                    handleCheckboxChange={ handleModuleChange }
                     foreignKeys={ foreignKeys.use.operation } />
 
                 <PromptTextArea 
                     name="operation_note"
-                    value={ state.weather_exposure_note }
-                    labelVisibility={ htmlVisibility.on }
-                    handleTextAreaChange={ handleModuleChange } />
+                    labelVisibility={ htmlVisibility.on } />
             </PromptTitle>
 
             <PromptTitle 
@@ -86,15 +73,11 @@ export default function UseCaseStudyModule ( props )
 
                 <PromptCheckboxGroup
                     name="operational_factor"
-                    value={ state.operational_factor }
-                    handleCheckboxChange={ handleModuleChange }
                     foreignKeys={ foreignKeys.use.operational_factor } />
 
                 <PromptTextArea 
                     name="operational_factor_note"
-                    value={ state.operational_factor_note }
-                    labelVisibility={ htmlVisibility.on }
-                    handleTextAreaChange={ handleModuleChange } />
+                    labelVisibility={ htmlVisibility.on } />
             </PromptTitle>
 
             <PromptTitle 
@@ -103,9 +86,7 @@ export default function UseCaseStudyModule ( props )
 
                 <PromptTextArea 
                     name="functionality_loss"
-                    value={ state.functionality_loss }
-                    labelVisibility={ htmlVisibility.on }
-                    handleTextAreaChange={ handleModuleChange } />
+                    labelVisibility={ htmlVisibility.on } />
             </PromptTitle>
 
             <PromptTitle 
@@ -114,9 +95,7 @@ export default function UseCaseStudyModule ( props )
 
                 <PromptTextArea 
                     name="problem_statement"
-                    value={ state.problem_statement }
-                    labelVisibility={ htmlVisibility.on }
-                    handleTextAreaChange={ handleModuleChange } />
+                    labelVisibility={ htmlVisibility.on } />
             </PromptTitle>
 
             <PromptTitle 
@@ -125,9 +104,7 @@ export default function UseCaseStudyModule ( props )
 
                 <PromptTextArea 
                     name="failure_time"
-                    value={ state.failure_time }
-                    labelVisibility={ htmlVisibility.on }
-                    handleTextAreaChange={ handleModuleChange } />
+                    labelVisibility={ htmlVisibility.on } />
             </PromptTitle>
 
             <PromptTitle 
@@ -136,9 +113,7 @@ export default function UseCaseStudyModule ( props )
 
                 <PromptTextArea 
                     name="failure_operation_stage"
-                    value={ state.failure_operation_stage }
-                    labelVisibility={ htmlVisibility.on }
-                    handleTextAreaChange={ handleModuleChange } />
+                    labelVisibility={ htmlVisibility.on } />
             </PromptTitle>
 
             <PromptTitle 
@@ -147,16 +122,12 @@ export default function UseCaseStudyModule ( props )
 
                 <PromptTextArea 
                     name="operator"
-                    value={ state.operator }
-                    labelVisibility={ htmlVisibility.on }
-                    handleTextAreaChange={ handleModuleChange } />
+                    labelVisibility={ htmlVisibility.on } />
             </PromptTitle>
 
             <PromptAdditionalPrompts
-                name="use"
-                value={ state.additional_prompt_note }
-                prompts={ additionalPrompts } 
-                handleChange={ handleModuleChange } />
+                name="use_additional_prompt"
+                prompts={ additionalPrompts } />
 
         </div>
     )

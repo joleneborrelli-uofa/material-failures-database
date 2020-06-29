@@ -53,11 +53,11 @@ export const groupedComponents =
     loading :
     [
         {
-            name        : 'loading',
+            name        : 'interaction_loading',
             foreignKeys : foreignKeys.environment.loading
         },
         {
-            name        : 'loading_normalcy',
+            name        : 'interaction_loading_normalcy',
             foreignKeys : foreignKeys.environment.loading_normalcy
         }
     ]

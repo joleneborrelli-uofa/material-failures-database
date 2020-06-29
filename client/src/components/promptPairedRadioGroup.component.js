@@ -2,22 +2,22 @@ import React, { useState }    from 'react';
 import { createUniqueId }     from '../helpers.js';
 import { caseStudyHtmlClass } from '../constants/htmlClass.constants.js'; 
 
-export default function PromptRadioGroup ( props )
+export default function PromptPairedRadioGroup ( props )
 {
     // Props
     const
     {
         name,
-        foreignKeys
+        value,
+        mapkey,
+        foreignKeys,
+        handleRadioGroupChange
     } = props;
 
     // Hack for ensuring each radio group on page has a
     // unique name
     const inputName = `${ name }-${ createUniqueId() }`;
     const htmlClass = caseStudyHtmlClass.fieldPrompts;
-
-    // State
-    const [value, handleRadioGroupChange] = useState( '' );
 
     const radioButtons = foreignKeys.map( foreignKey =>
     {
@@ -33,8 +33,10 @@ export default function PromptRadioGroup ( props )
                         className={ htmlClass.radioInput }
                         name={ inputName }
                         value={ foreignKey }
+                        mapkey={ mapkey }
+                        namekey={ name }
                         defaultChecked={ value === foreignKey }
-                        onChange={ e => handleRadioGroupChange( e.target.value ) } />
+                        onChange={ handleRadioGroupChange } />
                 </div>
         ) 
     } );
