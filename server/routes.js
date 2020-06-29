@@ -110,10 +110,11 @@ const routes =
         } = helpers;
 
         let caseStudyTables = {};
+        const visibleTables = request.query.visibleTables || [];
 
         const tables = 
         [ 
-            ...request.query.visibleTables, 
+            ...visibleTables, 
             ...constants.defaultCaseStudyTables
         ];
 

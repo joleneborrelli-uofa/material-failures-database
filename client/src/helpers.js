@@ -2,6 +2,20 @@ import { headers, subheaders } from './constants/webDisplay.constants.js';
 import { random, isString }    from 'lodash';
 
 /**
+ * Returns a boolean value of weather or not there is record data
+ * under other headers
+ *
+ * @param  { Object Literal } recordData record data
+ * @return { Boolean } 
+ */
+export const hasRecordData = recordData =>
+{
+    const keys = Object.keys( recordData );
+
+    return keys.some( key => ['use', 'environment', 'processing', 'material'].includes( key ) );
+};
+
+/**
  * Generates a unique id for React components
  *
  * @param  { String } prefix prefix for the key

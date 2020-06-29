@@ -13,10 +13,11 @@ a:visited
 
 .fa-mirador .fullscreen
 {
-    height   : 44em;
-    width    : 44em;
-    position : relative;
-    margin   : auto;
+    height        : 44em;
+    width         : 44em;
+    position      : relative;
+    margin        : auto;
+    margin-bottom : 20px;
 }
 
 /* Record CSS */
