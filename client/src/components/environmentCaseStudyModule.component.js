@@ -99,10 +99,11 @@ export default function EnvironmentCaseStudyModule ( props )
                 <PromptRadioGroup
                     name="interaction_stress"
                     foreignKeys={ foreignKeys.environment.interaction_stress } />
-
+                
                 <PromptTextArea 
                     name="interaction_stress_note"
                     labelVisibility={ htmlVisibility.on } />
+
             </PromptTitle>
 
             <PromptTitle 
@@ -162,7 +163,7 @@ export default function EnvironmentCaseStudyModule ( props )
                 visibility={ htmlVisibility[visibility.interaction_loading] }>
 
                 <PromptPairedRadioGroupList
-                    pairedData={ groupedComponents.loading } />
+                    pairedData={ groupedComponents.interaction_loading } />
 
                 <PromptTextArea 
                     name="interaction_loading_note"

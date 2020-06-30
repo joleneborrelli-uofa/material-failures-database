@@ -167,13 +167,13 @@ export const foreignKeys =
             'Temperature variations'
         ],
 
-        loading_normalcy :
+        interaction_loading_normalcy :
         [
             'Normal',
             'Abnormal'
         ],
 
-        loading:
+        interaction_loading:
         [
             'Axial',
             'Bending',

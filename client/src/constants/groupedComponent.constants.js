@@ -50,15 +50,15 @@ export const groupedComponents =
         }
     ],
 
-    loading :
+    interaction_loading :
     [
         {
             name        : 'interaction_loading',
-            foreignKeys : foreignKeys.environment.loading
+            foreignKeys : foreignKeys.environment.interaction_loading
         },
         {
             name        : 'interaction_loading_normalcy',
-            foreignKeys : foreignKeys.environment.loading_normalcy
+            foreignKeys : foreignKeys.environment.interaction_loading_normalcy
         }
     ]
 };
