@@ -1,15 +1,15 @@
 import React             from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Homepage          from './homepage.component.js';
-import Page              from './page.component.js';
+import Home              from './Home.component.js';
+import Selector          from './Selector.component.js';
 
 export default function Router()
 {
     const Router = () => (
       <div>
         <Switch>
-            <Route exact path="/" component={ Homepage } />
-            <Route path="/:page/:id" exact component={ Page } />
+            <Route exact path="/" component={ Home } />
+            <Route path="/:selector/:id" exact component={ Selector } />
         </Switch>
       </div>
     )

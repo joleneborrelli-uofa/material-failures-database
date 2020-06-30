@@ -2,7 +2,7 @@ import React, { useState }    from 'react';
 import { caseStudy }          from '../constants/caseStudy.constants.js';
 import { caseStudyHtmlClass } from '../constants/htmlClass.constants.js';
 
-export default function PromptTextArea ( props )
+export default function TextArea ( props )
 {
     // Props
     const

@@ -2,7 +2,7 @@ import React, { useState }    from 'react';
 import { createUniqueId }     from '../helpers.js';
 import { caseStudyHtmlClass } from '../constants/htmlClass.constants.js'; 
 
-export default function PromptRadioGroup ( props )
+export default function RadioGroup ( props )
 {
     // Props
     const

@@ -1,7 +1,7 @@
 import React                  from 'react';
 import { caseStudyHtmlClass } from '../constants/htmlClass.constants.js';
 
-export default function PromptTitle ( props )
+export default function Title ( props )
 {
     const 
     { 

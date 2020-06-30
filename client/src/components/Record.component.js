@@ -1,8 +1,8 @@
 import React               from 'react';
-import Conclusion          from './conclusion.component.js';
-import ReferenceList       from './referenceList.component.js';
-import Viewer              from './viewer.component.js';
-import FaultTree           from './faultTree.component.js';
+import Conclusion          from './Conclusion.component.js';
+import ReferenceList       from './ReferenceList.component.js';
+import Viewer              from './Viewer.component.js';
+import FaultTree           from './FaultTree.component.js';
 import { recordHtmlClass } from '../constants/htmlClass.constants.js';
 import { subheaders }      from '../constants/webDisplay.constants.js'; 
 import 
@@ -19,7 +19,7 @@ import
     createUniqueId
 } from '../helpers.js';
 
-export default function RecordModule ( props )
+export default function Record ( props )
 {
     /**
      * Generates the modules given the headers that

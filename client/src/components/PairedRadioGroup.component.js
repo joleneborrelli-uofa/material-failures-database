@@ -1,8 +1,8 @@
-import React, { useState }    from 'react';
+import React                  from 'react';
 import { createUniqueId }     from '../helpers.js';
 import { caseStudyHtmlClass } from '../constants/htmlClass.constants.js'; 
 
-export default function PromptPairedRadioGroup ( props )
+export default function PairedRadioGroup ( props )
 {
     // Props
     const

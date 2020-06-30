@@ -1,9 +1,9 @@
 import axios                             from 'axios';
 import React, { useEffect, useState }    from 'react';
 import { genericHtmlClass as htmlClass } from '../constants/htmlClass.constants.js';
-import CaseStudyModule                   from './caseStudyModule.component.js';
+import CaseStudy                         from './CaseStudy.component.js';
 
-export default function CaseStudyModuleApi ( props )
+export default function CaseStudyApi ( props )
 {
     // Props
     const { id } = props;
@@ -15,7 +15,7 @@ export default function CaseStudyModuleApi ( props )
 
     useEffect( () =>
     {
-        fetchCaseStudyModuleData();
+        fetchCaseStudyData();
     }, [] );
 
     // Methods
@@ -58,7 +58,7 @@ export default function CaseStudyModuleApi ( props )
                 } )
     }
 
-    const fetchCaseStudyModuleData = async () => 
+    const fetchCaseStudyData = async () => 
     {
         let visibility = await fetchPromptVisibility();
         let studyData  = await fetchStudyData();
@@ -69,16 +69,16 @@ export default function CaseStudyModuleApi ( props )
     }
 
     // Return
-    const loadingClass    = `${ htmlClass.visibility[loading] } ${ htmlClass.loading }`;
-    const caseStudyModule = Object.keys( visibility ).length && Object.keys( studyData ).length ?
-                            ( <CaseStudyModule 
+    const loadingClass = `${ htmlClass.visibility[loading] } ${ htmlClass.loading }`;
+    const caseStudyElement = Object.keys( visibility ).length && Object.keys( studyData ).length ?
+                            ( <CaseStudy 
                                 visibility={ visibility } 
                                 studyData={ studyData } /> ) : false;
 
     return (
         <div>
             <p className={ loadingClass }>Loading. Please wait...</p>
-                { caseStudyModule }
+                { caseStudyElement }
         </div>
     );
 

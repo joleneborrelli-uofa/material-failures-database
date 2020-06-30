@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { createUniqueId }             from '../helpers.js';
 import { caseStudy }                  from '../constants/caseStudy.constants.js';
 import { caseStudyHtmlClass }         from '../constants/htmlClass.constants.js'; 
-import PromptPairedRadioGroup         from './promptPairedRadioGroup.component.js';
+import PairedRadioGroup               from './PairedRadioGroup.component.js';
 
-export default function PromptPairedRadioGroupList ( props )
+export default function PairedRadioGroupList ( props )
 {
     // Props
     const { pairedData } = props;
@@ -64,13 +64,13 @@ export default function PromptPairedRadioGroupList ( props )
                 <div
                     className={ htmlClass.pairedRadioGroup } 
                     key={ createUniqueId() }>
-                    <PromptPairedRadioGroup
+                    <PairedRadioGroup
                         name={ pairedData[0].name }
                         mapkey={ mapkey }
                         value={ group[pairedData[0].name] }
                         foreignKeys={ pairedData[0].foreignKeys }
                         handleRadioGroupChange={ handleRadioGroupChange } />
-                    <PromptPairedRadioGroup 
+                    <PairedRadioGroup 
                         name={ pairedData[1].name }
                         mapkey={ mapkey }
                         value={ group[pairedData[1].name] }

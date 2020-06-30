@@ -1,12 +1,12 @@
-import React                   from 'react';
-import { caseStudy }           from '../constants/caseStudy.constants.js';
-import { caseStudyHtmlClass }  from '../constants/htmlClass.constants.js';
-import { foreignKeys }         from '../constants/foreignKey.constants.js';
-import { headers }             from '../constants/webDisplay.constants.js';
-import PromptTextArea          from './promptTextArea.component.js'; 
-import PromptTitle             from './promptTitle.component.js'; 
-import PromptCheckboxGroup     from './promptCheckboxGroup.component.js';
-import PromptAdditionalPrompts from './promptAdditionalPrompts.component.js';
+import React                  from 'react';
+import { caseStudy }          from '../constants/caseStudy.constants.js';
+import { caseStudyHtmlClass } from '../constants/htmlClass.constants.js';
+import { foreignKeys }        from '../constants/foreignKey.constants.js';
+import { headers }            from '../constants/webDisplay.constants.js';
+import TextArea               from './TextArea.component.js'; 
+import Title                  from './Title.component.js'; 
+import CheckboxGroup          from './CheckboxGroup.component.js';
+import AdditionalPrompt       from './AdditionalPrompt.component.js';
 
 export default function UseCaseStudyModule ( props )
 {
@@ -28,104 +28,104 @@ export default function UseCaseStudyModule ( props )
                 { headers.use }
             </div>
 
-            <PromptTitle 
+            <Title 
                 title={ constants.specification } 
                 visibility={ htmlVisibility[visibility.specification] }>
 
-                <PromptCheckboxGroup
+                <CheckboxGroup
                     name="specification"
                     foreignKeys={ foreignKeys.use.specification } />
 
-                <PromptTextArea 
+                <TextArea 
                     name="specification_note"
                     labelVisibility={ htmlVisibility.on } />
-            </PromptTitle>
+            </Title>
 
-            <PromptTitle 
+            <Title 
                 title={ constants.record }
                 visibility={ htmlVisibility[visibility.record] }>
 
-                <PromptCheckboxGroup
+                <CheckboxGroup
                     name="record"
                     foreignKeys={ foreignKeys.use.record } />
 
-                <PromptTextArea 
+                <TextArea 
                     name="record_note"
                     labelVisibility={ htmlVisibility.on } />
-            </PromptTitle>
+            </Title>
 
-            <PromptTitle 
+            <Title 
                 title={ constants.operation }
                 visibility={ htmlVisibility[visibility.operation] }>
 
-                <PromptCheckboxGroup
+                <CheckboxGroup
                     name="operation"
                     foreignKeys={ foreignKeys.use.operation } />
 
-                <PromptTextArea 
+                <TextArea 
                     name="operation_note"
                     labelVisibility={ htmlVisibility.on } />
-            </PromptTitle>
+            </Title>
 
-            <PromptTitle 
+            <Title 
                 title={ constants.operational_factor }
                 visibility={ htmlVisibility[visibility.operational_factor] }>
 
-                <PromptCheckboxGroup
+                <CheckboxGroup
                     name="operational_factor"
                     foreignKeys={ foreignKeys.use.operational_factor } />
 
-                <PromptTextArea 
+                <TextArea 
                     name="operational_factor_note"
                     labelVisibility={ htmlVisibility.on } />
-            </PromptTitle>
+            </Title>
 
-            <PromptTitle 
+            <Title 
                 title={ constants.functionality_loss }
                 visibility={ htmlVisibility[visibility.functionality_loss] }>
 
-                <PromptTextArea 
+                <TextArea 
                     name="functionality_loss"
                     labelVisibility={ htmlVisibility.on } />
-            </PromptTitle>
+            </Title>
 
-            <PromptTitle 
+            <Title 
                 title={ constants.problem_statement }
                 visibility={ htmlVisibility[visibility.problem_statement] }>
 
-                <PromptTextArea 
+                <TextArea 
                     name="problem_statement"
                     labelVisibility={ htmlVisibility.on } />
-            </PromptTitle>
+            </Title>
 
-            <PromptTitle 
+            <Title 
                 title={ constants.failure_time } 
                 visibility={ htmlVisibility[visibility.failure_time] }>
 
-                <PromptTextArea 
+                <TextArea 
                     name="failure_time"
                     labelVisibility={ htmlVisibility.on } />
-            </PromptTitle>
+            </Title>
 
-            <PromptTitle 
+            <Title 
                 title={ constants.failure_operation_stage }
                 visibility={ htmlVisibility[visibility.failure_operation_stage] }>
 
-                <PromptTextArea 
+                <TextArea 
                     name="failure_operation_stage"
                     labelVisibility={ htmlVisibility.on } />
-            </PromptTitle>
+            </Title>
 
-            <PromptTitle 
+            <Title 
                 title={ constants.operator }
                 visibility={ htmlVisibility[visibility.operator] }>
 
-                <PromptTextArea 
+                <TextArea 
                     name="operator"
                     labelVisibility={ htmlVisibility.on } />
-            </PromptTitle>
+            </Title>
 
-            <PromptAdditionalPrompts
+            <AdditionalPrompt
                 name="use_additional_prompt"
                 prompts={ additionalPrompts } />
 

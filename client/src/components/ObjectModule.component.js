@@ -1,15 +1,15 @@
-import React                   from 'react';
-import { caseStudy }           from '../constants/caseStudy.constants.js';
-import { caseStudyHtmlClass }  from '../constants/htmlClass.constants.js';
-import { foreignKeys }         from '../constants/foreignKey.constants.js';
-import { headers }             from '../constants/webDisplay.constants.js';
-import { createUniqueId }      from '../helpers.js';
-import PromptTextArea          from './promptTextArea.component.js'; 
-import PromptTitle             from './promptTitle.component.js'; 
-import PromptCheckboxGroup     from './promptCheckboxGroup.component.js';
-import PromptAdditionalPrompts from './promptAdditionalPrompts.component.js';
+import React                  from 'react';
+import { caseStudy }          from '../constants/caseStudy.constants.js';
+import { caseStudyHtmlClass } from '../constants/htmlClass.constants.js';
+import { foreignKeys }        from '../constants/foreignKey.constants.js';
+import { headers }            from '../constants/webDisplay.constants.js';
+import { createUniqueId }     from '../helpers.js';
+import TextArea               from './TextArea.component.js'; 
+import Title                  from './Title.component.js'; 
+import CheckboxGroup          from './CheckboxGroup.component.js';
+import AdditionalPrompt       from './AdditionalPrompt.component.js';
 
-export default function ObjectCaseStudyModule ( props )
+export default function ObjectModule ( props )
 {
     // Props
     const  
@@ -32,47 +32,47 @@ export default function ObjectCaseStudyModule ( props )
                 { headers.object }
             </div>
 
-            <PromptTitle 
+            <Title 
                 title={ constants.rating }
                 visibility={ htmlVisibility[visibility.rating] }>
 
-                <PromptTextArea 
+                <TextArea 
                     name="rating"
                     labelVisibility={ htmlVisibility.off } />
-            </PromptTitle>
+            </Title>
 
-            <PromptTitle  
+            <Title  
                 title={ constants.inscription } 
                 visibility={ htmlVisibility[visibility.inscription] }>
 
-                <PromptTextArea 
+                <TextArea 
                     name="inscription"
                     labelVisibility={ htmlVisibility.off } />
-            </PromptTitle>
+            </Title>
 
-            <PromptTitle  
+            <Title  
                 title={ constants.serial_number }
                 visibility={ htmlVisibility[visibility.serial_number] }>
 
-                <PromptTextArea 
+                <TextArea 
                     name="serial_number"
                     labelVisibility={ htmlVisibility.off } />
-            </PromptTitle>
+            </Title>
 
-            <PromptTitle  
+            <Title  
                 title={ constants.feature } 
                 visibility={ htmlVisibility[visibility.feature] }>
 
-                <PromptCheckboxGroup
+                <CheckboxGroup
                     name="feature"
                     foreignKeys={ foreignKeys.object.feature } />
 
-                <PromptTextArea 
+                <TextArea 
                     name="feature_note"
                     labelVisibility={ htmlVisibility.on } />
-            </PromptTitle>
+            </Title>
 
-            <PromptAdditionalPrompts
+            <AdditionalPrompt
                 key={ createUniqueId() }
                 name="object_additional_prompt"
                 prompts={ prompts } />

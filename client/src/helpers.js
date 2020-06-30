@@ -1,5 +1,5 @@
 import { headers, subheaders } from './constants/webDisplay.constants.js';
-import { random, isString }    from 'lodash';
+import { random }              from 'lodash';
 
 /**
  * Returns a boolean value of weather or not there is record data

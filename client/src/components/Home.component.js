@@ -8,7 +8,7 @@ import { domain }   from '../constants/path.constants.js';
 import { Link } from "react-router-dom";
 
 
-export default function Homepage()
+export default function Home()
 {
     // State
     const [links, setLinks]     = useState( [] );

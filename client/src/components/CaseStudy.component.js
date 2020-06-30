@@ -2,10 +2,10 @@ import React, { useState, useLayoutEffect } from 'react';
 import { caseStudyHtmlClass as htmlClass }  from '../constants/htmlClass.constants.js';
 import { caseStudy }                        from '../constants/caseStudy.constants.js';
 import { getAdditionalPrompts }             from '../helpers.js';
-import LandingCaseStudyModule               from './landingCaseStudyModule.component.js'; 
-import PhotoEvidenceCaseStudyModule         from './photoEvidenceCaseStudyModule.component.js'; 
-import BackgroundEvidenceCaseStudyModule    from './backgroundEvidenceCaseStudyModule.component.js';
-import PromptCaseStudyModule                from './promptCaseStudyModule.component.js';
+import LandingPage                          from './LandingPage.component.js'; 
+import PhotographicEvidencePage             from './PhotographicEvidencePage.component.js'; 
+import BackgroundEvidencePage               from './BackgroundEvidencePage.component.js';
+import CaseStudyPage                        from './CaseStudyPage.component.js';
 
 export default function CaseStudyModule ( props )
 {
@@ -83,26 +83,26 @@ export default function CaseStudyModule ( props )
         <div className={ htmlClass.caseStudy }>
 
             <div className={ landingClass }>
-                <LandingCaseStudyModule 
+                <LandingPage 
                     title={ title }
                     caseNumber={ caseNumber } />
             </div>
 
             <div className={ photoClass }>
-                <PhotoEvidenceCaseStudyModule 
+                <PhotographicEvidencePage 
                     currentPage={ currentPage }
                     manifest={ manifest } />
             </div>
 
             <div className={ backgroundClass }>
-                <BackgroundEvidenceCaseStudyModule 
+                <BackgroundEvidencePage 
                     currentPage={ currentPage }
                     manifest={ manifest }
                     recordData={ studyData } />
             </div>
 
             <div className={ promptClass }>
-                <PromptCaseStudyModule 
+                <CaseStudyPage 
                     additionalPrompts={ additionalPrompts }
                     visibility={ visibility } />
             </div>

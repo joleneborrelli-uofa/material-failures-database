@@ -1,8 +1,8 @@
-import React, { useState, useEffect }    from 'react';
+import React, { useState }    from 'react';
 import { createUniqueId }     from '../helpers.js';
 import { caseStudyHtmlClass } from '../constants/htmlClass.constants.js'; 
 
-export default function PromptCheckboxGroup ( props )
+export default function CheckboxGroup ( props )
 {
     // Props
     const 

@@ -2,7 +2,7 @@ import React                  from 'react';
 import { caseStudy }          from '../constants/caseStudy.constants.js';
 import { caseStudyHtmlClass } from '../constants/htmlClass.constants.js';
 
-export default function LandingCaseStudyModule ( props )
+export default function LandingPage ( props )
 {
     const 
     { 

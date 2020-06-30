@@ -1,6 +1,6 @@
 import { foreignKeys } from '../constants/foreignKey.constants.js';
 
-export const groupedComponents =
+export const pairedComponents =
 {
     'class' :
     [

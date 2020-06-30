@@ -1,16 +1,16 @@
-import React                      from 'react';
-import { groupedComponents }      from '../constants/groupedComponent.constants.js';
-import { caseStudy }              from '../constants/caseStudy.constants.js';
-import { caseStudyHtmlClass }     from '../constants/htmlClass.constants.js';
-import { foreignKeys }            from '../constants/foreignKey.constants.js';
-import { headers }                from '../constants/webDisplay.constants.js';
-import PromptTextArea             from './promptTextArea.component.js'; 
-import PromptTitle                from './promptTitle.component.js'; 
-import PromptRadioGroup           from './promptRadioGroup.component.js';
-import PromptPairedRadioGroupList from './promptPairedRadioGroupList.component.js';
-import PromptAdditionalPrompts    from './promptAdditionalPrompts.component.js';
+import React                  from 'react';
+import { pairedComponents }   from '../constants/pairedComponent.constants.js';
+import { caseStudy }          from '../constants/caseStudy.constants.js';
+import { caseStudyHtmlClass } from '../constants/htmlClass.constants.js';
+import { foreignKeys }        from '../constants/foreignKey.constants.js';
+import { headers }            from '../constants/webDisplay.constants.js';
+import TextArea               from './TextArea.component.js'; 
+import Title                  from './Title.component.js'; 
+import RadioGroup             from './RadioGroup.component.js';
+import PairedRadioGroupList   from './PairedRadioGroupList.component.js';
+import AdditionalPrompt       from './AdditionalPrompt.component.js';
 
-export default function MaterialCaseStudyModule ( props )
+export default function MaterialModule ( props )
 {
     // Props
     const 
@@ -30,86 +30,86 @@ export default function MaterialCaseStudyModule ( props )
                 { headers.material }
             </div>
 
-            <PromptTitle 
+            <Title 
                 title={ constants.full_name }
                 visibility={ htmlVisibility[visibility.full_name] }>
 
-                <PromptTextArea 
+                <TextArea 
                     name="full_name"
                     labelVisibility={ htmlVisibility.off } />
-            </PromptTitle>
+            </Title>
 
-            <PromptTitle 
+            <Title 
                 title={ constants.class }
                 visibility={ htmlVisibility[visibility['class']] }>
 
-                <PromptPairedRadioGroupList
-                    pairedData={ groupedComponents['class'] } />
+                <PairedRadioGroupList
+                    pairedData={ pairedComponents['class'] } />
 
-                <PromptTextArea 
+                <TextArea 
                     name="class_note"
                     labelVisibility={ htmlVisibility.on } />
-            </PromptTitle>
+            </Title>
 
-            <PromptTitle  
+            <Title  
                 title={ constants.crystallinity }
                 visibility={ htmlVisibility[visibility.crystallinity] }>
 
-                <PromptRadioGroup
+                <RadioGroup
                     name="crystallinity"
                     foreignKeys={ foreignKeys.material.crystallinity } />
 
-                <PromptTextArea 
+                <TextArea 
                     name="crystallinity_note"
                     labelVisibility={ htmlVisibility.on } />
-            </PromptTitle>
+            </Title>
 
-            <PromptTitle  
+            <Title  
                 title={ constants.alloy_designation }
                 visibility={ htmlVisibility[visibility.alloy_designation] }>
 
-                <PromptTextArea 
+                <TextArea 
                     name="alloy_designation"
                     labelVisibility={ htmlVisibility.off } />
-            </PromptTitle>
+            </Title>
 
-            <PromptTitle  
+            <Title  
                 title={ constants.grade } 
                 visibility={ htmlVisibility[visibility.grade] }>
 
-                <PromptTextArea 
+                <TextArea 
                     name="grade"
                     labelVisibility={ htmlVisibility.off } />
-            </PromptTitle>
+            </Title>
 
-            <PromptTitle  
+            <Title  
                 title={ constants.recyclability }
                 visibility={ htmlVisibility[visibility.recyclability] }>
 
-                <PromptTextArea 
+                <TextArea 
                     name="recyclability"
                     labelVisibility={ htmlVisibility.off } />
-            </PromptTitle>
+            </Title>
 
-            <PromptTitle  
+            <Title  
                 title={ constants.biodegradability }
                 visibility={ htmlVisibility[visibility.biodegradability] }>
 
-                <PromptTextArea 
+                <TextArea 
                     name="biodegradability"
                     labelVisibility={ htmlVisibility.off } />
-            </PromptTitle>
+            </Title>
 
-            <PromptTitle  
+            <Title  
                 title={ constants.toxicity }
                 visibility={ htmlVisibility[visibility.toxicity] }>
 
-                <PromptTextArea 
+                <TextArea 
                     name="toxicity"
                     labelVisibility={ htmlVisibility.off } />
-            </PromptTitle>
+            </Title>
 
-            <PromptAdditionalPrompts
+            <AdditionalPrompt
                 name="material_additional_prompt"
                 prompts={ additionalPrompts } />
 

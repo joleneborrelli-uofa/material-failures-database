@@ -1,10 +1,10 @@
 import React                  from 'react';
 import { createUniqueId }     from '../helpers.js';
 import { caseStudyHtmlClass } from '../constants/htmlClass.constants.js';
-import PromptTitle            from './promptTitle.component.js'; 
-import PromptTextArea         from './promptTextArea.component.js'; 
+import Title                  from './Title.component.js'; 
+import TextArea               from './TextArea.component.js'; 
 
-export default function AdditionalPrompts ( props )
+export default function AdditionalPrompt ( props )
 { 
     // Props
     const 
@@ -22,15 +22,15 @@ export default function AdditionalPrompts ( props )
     const promptGroups = prompts.map( ( prompt, index ) =>
     {
         return (
-            <PromptTitle 
+            <Title 
                 key={ createUniqueId() } 
                 title={ prompt } 
                 visibility={ on }>
-                <PromptTextArea 
+                <TextArea 
                     key={ createUniqueId() }
                     name={ name }
                     labelVisibility={ on } />
-            </PromptTitle>
+            </Title>
         )
     } );
 

@@ -2,10 +2,10 @@ import React                  from 'react';
 import { hasRecordData }      from '../helpers.js';
 import { caseStudy }          from '../constants/caseStudy.constants.js';
 import { caseStudyHtmlClass } from '../constants/htmlClass.constants.js';
-import RecordModule           from '../components/recordModule.component.js';
-import Viewer                 from './viewer.component.js';
+import Record                 from '../components/Record.component.js';
+import Viewer                 from './Viewer.component.js';
 
-export default function BackgroundEvidenceCaseStudyModule ( props )
+export default function BackgroundEvidencePage ( props )
 {
     // Props
     const 
@@ -27,9 +27,9 @@ export default function BackgroundEvidenceCaseStudyModule ( props )
                         return <Viewer key={ index } path={ pageManifest.path } />
                     } ) : false;
 
-    const recordModule = hasRecordData( recordData ) ? ( <RecordModule 
-                                                            showViewer={ showViewer }
-                                                            recordData={ recordData } /> ) : false;
+    const record = hasRecordData( recordData ) ? ( <Record 
+                                                        showViewer={ showViewer }
+                                                        recordData={ recordData } /> ) : false;
 
     return (
         <div className={ htmlClass.page }>
@@ -42,7 +42,7 @@ export default function BackgroundEvidenceCaseStudyModule ( props )
                 </h3>
             </div>
             { viewers }
-            { recordModule }
+            { record }
         </div>
     )
 

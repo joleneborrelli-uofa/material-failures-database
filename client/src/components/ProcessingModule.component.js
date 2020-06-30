@@ -1,24 +1,22 @@
-import React                      from 'react';
-import { groupedComponents }      from '../constants/groupedComponent.constants.js';
-import { caseStudy }              from '../constants/caseStudy.constants.js';
-import { caseStudyHtmlClass }     from '../constants/htmlClass.constants.js';
-import { foreignKeys }            from '../constants/foreignKey.constants.js';
-import { headers }                from '../constants/webDisplay.constants.js';
-import PromptTextArea             from './promptTextArea.component.js'; 
-import PromptTitle                from './promptTitle.component.js'; 
-import PromptCheckboxGroup        from './promptCheckboxGroup.component.js';
-import PromptPairedRadioGroupList from './promptPairedRadioGroupList.component.js';
-import PromptAdditionalPrompts    from './promptAdditionalPrompts.component.js';
+import React                  from 'react';
+import { pairedComponents }   from '../constants/pairedComponent.constants.js';
+import { caseStudy }          from '../constants/caseStudy.constants.js';
+import { caseStudyHtmlClass } from '../constants/htmlClass.constants.js';
+import { foreignKeys }        from '../constants/foreignKey.constants.js';
+import { headers }            from '../constants/webDisplay.constants.js';
+import TextArea               from './TextArea.component.js'; 
+import Title                  from './Title.component.js'; 
+import CheckboxGroup          from './CheckboxGroup.component.js';
+import PairedRadioGroupList   from './PairedRadioGroupList.component.js';
+import AdditionalPrompt       from './AdditionalPrompt.component.js';
 
-export default function ProcessingCaseStudyModule ( props )
+export default function ProcessingModule ( props )
 {
     // Props
     const 
     {
-        state,
         visibility,
-        additionalPrompts,
-        handleModuleChange
+        additionalPrompts
     } = props;
 
     const constants      = caseStudy.fieldPrompts.processing;
@@ -32,105 +30,105 @@ export default function ProcessingCaseStudyModule ( props )
                 { headers.processing }
             </div>
 
-            <PromptTitle 
+            <Title 
                 title={ constants.treatment }
                 visibility={ htmlVisibility[visibility.treatment] }>
 
-                <PromptPairedRadioGroupList
-                    pairedData={ groupedComponents.treatment } />
+                <PairedRadioGroupList
+                    pairedData={ pairedComponents.treatment } />
 
-                <PromptTextArea 
+                <TextArea 
                     name="treatment_note"
                     labelVisibility={ htmlVisibility.on } />
-            </PromptTitle>
+            </Title>
 
-            <PromptTitle 
+            <Title 
                 title={ constants.shaping }
                 visibility={ htmlVisibility[visibility.shaping] }>
 
-                <PromptPairedRadioGroupList
-                    pairedData={ groupedComponents.shaping } />
+                <PairedRadioGroupList
+                    pairedData={ pairedComponents.shaping } />
 
-                <PromptTextArea 
+                <TextArea 
                     name="shaping_note"
                     labelVisibility={ htmlVisibility.on } />
-            </PromptTitle>
+            </Title>
 
-            <PromptTitle 
+            <Title 
                 title={ constants.residual_stress }
                 visibility={ htmlVisibility[visibility.residual_stress] }>
 
-                <PromptPairedRadioGroupList
-                    pairedData={ groupedComponents.residual_stress } />
+                <PairedRadioGroupList
+                    pairedData={ pairedComponents.residual_stress } />
 
-                <PromptTextArea 
+                <TextArea 
                     name="residual_stress_note"
                     labelVisibility={ htmlVisibility.on } />
-            </PromptTitle>
+            </Title>
 
-            <PromptTitle 
+            <Title 
                 title={ constants.machining }
                 visibility={ htmlVisibility[visibility.machining] }>
 
-                <PromptCheckboxGroup
+                <CheckboxGroup
                     name="machining"
                     foreignKeys={ foreignKeys.processing.machining } />
 
-                <PromptTextArea 
+                <TextArea 
                     name="machining_note"
                     labelVisibility={ htmlVisibility.on } />
-            </PromptTitle>
+            </Title>
 
-            <PromptTitle 
+            <Title 
                 title={ constants.joining }
                 visibility={ htmlVisibility[visibility.joining] }>
 
-                <PromptCheckboxGroup
+                <CheckboxGroup
                     name="joining"
                     foreignKeys={ foreignKeys.processing.joining } />
 
-                <PromptTextArea 
+                <TextArea 
                     name="joining_note"
                     labelVisibility={ htmlVisibility.on } />
-            </PromptTitle>
+            </Title>
 
-            <PromptTitle  
+            <Title  
                 title={ constants.manufacturer }
                 visibility={ htmlVisibility[visibility.manufacturer] }>
 
-                <PromptTextArea 
+                <TextArea 
                     name="manufacturer"
                     labelVisibility={ htmlVisibility.off } />
-            </PromptTitle>
+            </Title>
 
-            <PromptTitle  
+            <Title  
                 title={ constants.date }
                 visibility={ htmlVisibility[visibility.date] }>
 
-                <PromptTextArea 
+                <TextArea 
                     name="date"
                     labelVisibility={ htmlVisibility.off } />
-            </PromptTitle>
+            </Title>
 
-            <PromptTitle  
+            <Title  
                 title={ constants.location }
                 visibility={ htmlVisibility[visibility.location] }>
 
-                <PromptTextArea 
+                <TextArea 
                     name="location"
                     labelVisibility={ htmlVisibility.off } />
-            </PromptTitle>
+            </Title>
 
-            <PromptTitle  
+            <Title  
                 title={ constants.plant }
                 visibility={ htmlVisibility[visibility.plant] }>
 
-                <PromptTextArea 
+                <TextArea 
                     name="plant"
                     labelVisibility={ htmlVisibility.off } />
-            </PromptTitle>
+            </Title>
 
-            <PromptAdditionalPrompts
+            <AdditionalPrompt
                 name="processing_additional_prompt"
                 prompts={ additionalPrompts } />
 

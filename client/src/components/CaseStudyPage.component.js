@@ -2,13 +2,13 @@ import React                               from 'react';
 import { convertFormToText }               from '../helpers.js';
 import { caseStudy }                       from '../constants/caseStudy.constants.js';
 import { caseStudyHtmlClass as htmlClass } from '../constants/htmlClass.constants.js';
-import ObjectCaseStudyModule               from './objectCaseStudyModule.component.js'; 
-import MaterialCaseStudyModule             from './materialCaseStudyModule.component.js'; 
-import ProcessingCaseStudyModule           from './processingCaseStudyModule.component.js';
-import EnvironmentCaseStudyModule          from './environmentCaseStudyModule.component.js';
-import UseCaseStudyModule                  from './useCaseStudyModule.component.js';
+import ObjectModule                        from './ObjectModule.component.js'; 
+import MaterialModule                      from './MaterialModule.component.js'; 
+import ProcessingModule                    from './ProcessingModule.component.js';
+import EnvironmentModule                   from './EnvironmentModule.component.js';
+import UseModule                           from './UseModule.component.js';
 
-export default function PromptCaseStudyModule ( props )
+export default function CaseStudyPage ( props )
 {
     // Props
     const 
@@ -48,23 +48,23 @@ export default function PromptCaseStudyModule ( props )
     return (
         <form className={ htmlClass.fieldPrompts.page }>
 
-            <ObjectCaseStudyModule 
+            <ObjectModule 
                 visibility={ visibility.object }
                 additionalPrompts={ additionalPrompts.object } />
 
-            <MaterialCaseStudyModule 
+            <MaterialModule 
                 visibility={ visibility.material }
                 additionalPrompts={ additionalPrompts.material } />
 
-            <ProcessingCaseStudyModule 
+            <ProcessingModule 
                 visibility={ visibility.processing }
                 additionalPrompts={ additionalPrompts.processing } />
 
-            <EnvironmentCaseStudyModule 
+            <EnvironmentModule 
                 visibility={ visibility.environment }
                 additionalPrompts={ additionalPrompts.environment } />
 
-            <UseCaseStudyModule 
+            <UseModule 
                 visibility={ visibility.use }
                 additionalPrompts={ additionalPrompts.use } />
 

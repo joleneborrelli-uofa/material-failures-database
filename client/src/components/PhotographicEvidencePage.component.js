@@ -1,9 +1,9 @@
 import React                  from 'react';
 import { caseStudy }          from '../constants/caseStudy.constants.js';
 import { caseStudyHtmlClass } from '../constants/htmlClass.constants.js';
-import Viewer                 from './viewer.component.js';
+import Viewer                 from './Viewer.component.js';
 
-export default function PhotoEvidenceCaseStudyModule ( props )
+export default function PhotographicEvidencePage ( props )
 {
     const 
     { 
