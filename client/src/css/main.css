@@ -4,7 +4,7 @@
     font-weight : normal;
 }
 
-a:visited 
+a, a:visited 
 {
     color : #000;
 }

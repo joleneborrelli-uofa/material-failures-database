@@ -96,7 +96,7 @@ export default function EnvironmentModule ( props )
                 title={ constants.interaction_stress } 
                 visibility={ htmlVisibility[visibility.interaction_stress] }>
 
-                <RadioGroup
+                <CheckboxGroup
                     name="interaction_stress"
                     foreignKeys={ foreignKeys.environment.interaction_stress } />
                 
@@ -110,7 +110,7 @@ export default function EnvironmentModule ( props )
                 title={ constants.interaction_environment } 
                 visibility={ htmlVisibility[visibility.interaction_environment] }>
 
-                <RadioGroup
+                <CheckboxGroup
                     name="interaction_environment"
                     foreignKeys={ foreignKeys.environment.interaction_environment } />
 
@@ -123,7 +123,7 @@ export default function EnvironmentModule ( props )
                 title={ constants.interaction_electromagnetic } 
                 visibility={ htmlVisibility[visibility.interaction_electromagnetic] }>
 
-                <RadioGroup
+                <CheckboxGroup
                     name="interaction_electromagnetic"
                     foreignKeys={ foreignKeys.environment.interaction_electromagnetic } />
 
@@ -136,7 +136,7 @@ export default function EnvironmentModule ( props )
                 title={ constants.interaction_thermal } 
                 visibility={ htmlVisibility[visibility.interaction_thermal] }>
 
-                <RadioGroup
+                <CheckboxGroup
                     name="interaction_thermal"
                     foreignKeys={ foreignKeys.environment.interaction_thermal } />
 
@@ -149,7 +149,7 @@ export default function EnvironmentModule ( props )
                 title={ constants.interaction_tribological } 
                 visibility={ htmlVisibility[visibility.interaction_tribological] }>
 
-                <RadioGroup
+                <CheckboxGroup
                     name="interaction_tribological"
                     foreignKeys={ foreignKeys.environment.interaction_tribological } />
 
