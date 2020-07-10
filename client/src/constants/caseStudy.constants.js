@@ -5,9 +5,9 @@ export const caseStudy =
     add      : 'Add',
     next     : 'Next',
     prev     : 'Prev',
-    note     : 'Notes',
+    note     : 'Evidence',
     download : 'Download',
-    pages  : [ 'landing', 'photo', 'background', 'prompt' ],
+    pages  : [ 'landing', 'photo', 'background', 'prompt'],
 
     landing :
     {
