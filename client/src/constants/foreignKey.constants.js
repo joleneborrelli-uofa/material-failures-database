@@ -140,13 +140,15 @@ export const foreignKeys =
             'Structural flaw',
             'Temperature variation',
             'Phase transformation',
-            'Non-uniform plastic deformation'
+            'Non-uniform plastic deformation',
+            'Flow induced'
         ],
 
         residual_stress_force :
         [
             'Tensile force',
-            'Compressive force'
+            'Compressive force',
+            'Shear force'
         ]
     },
 
