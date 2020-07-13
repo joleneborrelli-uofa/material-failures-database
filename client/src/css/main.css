@@ -299,6 +299,7 @@ a, a:visited
     margin-right: 1em;
     float: left;
     vertical-align: middle;
+    margin-bottom: 20px;
 }
 
 .fa-display-image
