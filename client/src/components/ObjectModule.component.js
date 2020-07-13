@@ -22,9 +22,6 @@ export default function ObjectModule ( props )
     const htmlClass      = caseStudyHtmlClass.fieldPrompts;
     const htmlVisibility = caseStudyHtmlClass.visibility
 
-    // Add the prompt which is constant to this module
-    const prompts = [ ...additionalPrompts, caseStudy.additionalPrompts.fractography ];
-
     return (
         <div className={ htmlClass.object }>
 
@@ -72,10 +69,85 @@ export default function ObjectModule ( props )
                     labelVisibility={ htmlVisibility.on } />
             </Title>
 
+            <Title  
+                title={ constants.fracture_draw } 
+                visibility={ htmlVisibility[visibility.fracture_draw] }>
+
+                <TextArea 
+                    name="fracture_draw_note"
+                    labelVisibility={ htmlVisibility.on } />
+            </Title>
+
+            <Title  
+                title={ constants.fracture_path } 
+                visibility={ htmlVisibility[visibility.fracture_path] }>
+
+                <CheckboxGroup
+                    name="fracture_path"
+                    foreignKeys={ foreignKeys.object.fracture_path } />
+
+                <TextArea 
+                    name="fracture_path_note"
+                    labelVisibility={ htmlVisibility.on } />
+            </Title>
+
+            <Title  
+                title={ constants.fracture_surface } 
+                visibility={ htmlVisibility[visibility.fracture_surface] }>
+
+                <CheckboxGroup
+                    name="fracture_surface"
+                    foreignKeys={ foreignKeys.object.fracture_surface } />
+
+                <TextArea 
+                    name="fracture_surface_note"
+                    labelVisibility={ htmlVisibility.on } />
+            </Title>
+
+            <Title  
+                title={ constants.fracture_mode } 
+                visibility={ htmlVisibility[visibility.fracture_mode] }>
+
+                <CheckboxGroup
+                    name="fracture_mode"
+                    foreignKeys={ foreignKeys.object.fracture_mode } />
+
+                <TextArea 
+                    name="fracture_mode_note"
+                    labelVisibility={ htmlVisibility.on } />
+            </Title>
+
+
+            <Title  
+                title={ constants.fracture_feature } 
+                visibility={ htmlVisibility[visibility.fracture_feature] }>
+
+                <CheckboxGroup
+                    name="fracture_feature"
+                    foreignKeys={ foreignKeys.object.fracture_feature } />
+
+                <TextArea 
+                    name="fracture_feature_note"
+                    labelVisibility={ htmlVisibility.on } />
+            </Title>
+
+            <Title  
+                title={ constants.fracture_loading } 
+                visibility={ htmlVisibility[visibility.fracture_loading] }>
+
+                <CheckboxGroup
+                    name="fracture_loading"
+                    foreignKeys={ foreignKeys.object.fracture_loading } />
+
+                <TextArea 
+                    name="fracture_loading_note"
+                    labelVisibility={ htmlVisibility.on } />
+            </Title>
+
             <AdditionalPrompt
                 key={ createUniqueId() }
                 name="object_additional_prompt"
-                prompts={ prompts } />
+                prompts={ additionalPrompts } />
 
         </div>
     )

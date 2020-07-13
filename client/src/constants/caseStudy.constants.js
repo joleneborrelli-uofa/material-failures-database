@@ -30,10 +30,16 @@ export const caseStudy =
         object :
         {
             // Identifying marks groups together
-            rating        : 'Does the object have an electrical rating?',
-            inscription   : 'Are there any inscriptions on the object? What do they tell you about the object?',
-            feature       : 'What physical features are there on the object?',
-            serial_number : 'Does the object have a serial number?'
+            rating           : 'Does the object have an electrical rating?',
+            inscription      : 'Are there any inscriptions on the object? What do they tell you about the object?',
+            feature          : 'What physical features are there on the object?',
+            serial_number    : 'Does the object have a serial number?',
+            fracture_draw    : 'Draw the object, the cracks and the fractures. Determine the crack and fracture origin(s).',
+            fracture_path    : 'Describe the fracture path(s).',
+            fracture_mode    : 'What was the fracture mode?',
+            fracture_surface : 'What is the fracture surface like?',
+            fracture_feature : 'What features are present?',
+            fracture_loading : 'What was the fracture loading mode?'
         },
 
         material :
@@ -91,11 +97,6 @@ export const caseStudy =
             operation               : 'How was the object used?',
             operator                : 'Who operated the object?'
         }
-    },
-
-    additionalPrompts:
-    {
-        fractography : 'Does the object have cracks and fractures? If yes, draw the object, the cracks and the fractures. Determine the crack and fracture origin(s).',
     },
 
     fault_tree :

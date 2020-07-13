@@ -12,6 +12,74 @@ export const foreignKeys =
             'Notch', 
             'Hole',
             'Other'
+        ],
+
+        fracture_path :
+        [
+            'Straight',
+            'Curved',
+            'Branching',
+            'Bifurcation',
+            'T-junction'
+        ],
+
+        fracture_mode :
+        [
+            'Dimple rupture', 
+            'Cleavage', 
+            'Fatigue', 
+            'Decohesive rupture',
+            'Tearing topography surface'
+        ],
+
+        fracture_feature :
+        [
+            'Equiaxed dimples',
+            'Elongated dimples (shear)',
+            'Elongated dimples (tensile tearing)',
+            'Intergranular dimple rupture',
+            'Cleavage steps', 
+            'River patterns', 
+            'Feather markings', 
+            'Chevron (herringbone) patterns', 
+            'Tongues',
+            'Twist hackles',
+            'Hackles',
+            'Stress whitening',
+            'Mirror zone',
+            'Mist region',
+            'Rib markings',
+            'Wallner lines',
+            'Conic markings',
+            'River lines',
+            'Fatigue striations',
+            'Intergranular fracture',
+            'Transgranular fracture',
+            'Voids',
+            'Inclusions',
+            'Stress concentrations',
+            'ESC damage',
+            'Localized loading',
+            'Embrittled/degraded locations',
+            'Localized ductile overload'
+        ],
+
+        fracture_surface :
+        [
+            'Brittle',
+            'Ductile',
+            'Microductility',
+            'Smooth',
+            'Rough',
+            'Dull',
+            'Glossy'
+        ],
+
+        fracture_loading :
+        [
+            'Mode I',
+            'Mode II',
+            'Mode III'
         ]
     },
 
