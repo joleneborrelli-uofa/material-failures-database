@@ -1,6 +1,9 @@
 {
   "name": "material-failures-database",
   "version": "1.0.0",
+  "engines": {
+    "node": "11.x"
+  },
   "description": "web app for material failures database",
   "main": "index.js",
   "scripts": {
