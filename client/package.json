@@ -4,17 +4,19 @@
   "engines": {
     "node": "11.x",
     "yarn": "1.x",
-    "npm" : "6.x"
+    "npm": "6.x"
   },
   "private": true,
   "proxy": "http://localhost:5000",
   "dependencies": {
+    "@blueprintjs/core": "^3.30.0",
+    "@blueprintjs/icons": "^3.19.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
     "lodash": "^4.17.15",
-    "mirador": "^3.0.0-alpha.16",
+    "mirador": "3.0.0-beta.10",
     "react": "^16.13.1",
     "react-app-polyfill": "^1.0.6",
     "react-dom": "^16.13.1",
