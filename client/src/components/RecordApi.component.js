@@ -9,8 +9,7 @@ export default function RecordApi ( props )
     const { id } = props;
 
     // State
-    const [loading, setLoading]       = useState( 'on' );
-    const [recordData, setRecordData] = useState( {} ) ;
+    const [recordData, setRecordData] = useState( {} );
 
     useEffect( () =>
     {
@@ -30,7 +29,6 @@ export default function RecordApi ( props )
                 let recordData = res.data;
 
                 setRecordData( recordData );
-                setLoading( 'off' );
             } )
             .catch( err => 
             {
@@ -39,10 +37,11 @@ export default function RecordApi ( props )
     }
 
     // Return
-    const loadingClass = `${ htmlClass.visibility[loading] } ${ htmlClass.loading }`;
-    const recordElement = Object.keys( recordData ).length ? 
-                            ( <Record 
-                                recordData={ recordData } /> ) : false;
+    const hasRecordData = Object.keys( recordData ).length;
+    const loadingStatus = hasRecordData ? 'off' : 'on';
+    const loadingClass  = `${ htmlClass.visibility[loadingStatus] } ${ htmlClass.loading }`;
+    const recordElement = hasRecordData ? ( <Record 
+                                                recordData={ recordData } /> ) : false;
 
     return (
         <div>
