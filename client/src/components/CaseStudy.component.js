@@ -1,7 +1,7 @@
 import React, { useState, useLayoutEffect } from 'react';
 import { caseStudyHtmlClass as htmlClass }  from '../constants/htmlClass.constants.js';
 import { caseStudy }                        from '../constants/caseStudy.constants.js';
-import { getAdditionalPrompts }             from '../helpers.js';
+import { getPrompt, getAdditionalPrompt }   from '../helpers.js';
 import LandingPage                          from './LandingPage.component.js'; 
 import PhotographicEvidencePage             from './PhotographicEvidencePage.component.js'; 
 import BackgroundEvidencePage               from './BackgroundEvidencePage.component.js';
@@ -64,7 +64,8 @@ export default function CaseStudyModule ( props )
     // Return
     const title             = studyData.object && studyData.object.name;
     const caseNumber        = studyData.object && studyData.object.object_id;
-    const additionalPrompts = getAdditionalPrompts( studyData );
+    const prompt            = getPrompt( studyData );
+    const additionalPrompt  = getAdditionalPrompt( studyData );
 
     // For pagination
     const pageVisibility = caseStudy.pages.map( ( page, index ) =>
@@ -75,7 +76,7 @@ export default function CaseStudyModule ( props )
     const landingClass    = `${ pageVisibility[0] } ${ htmlClass.landing.wrapper }`;
     const photoClass      = `${ pageVisibility[1] } ${ htmlClass.photoEvidence.wrapper }`;
     const backgroundClass = `${ pageVisibility[2] } ${ htmlClass.backgroundResearch.wrapper }`;
-    const promptClass     = `${ pageVisibility[3] } ${ htmlClass.fieldPrompts.wrapper }`;
+    const promptClass     = `${ pageVisibility[3] } ${ htmlClass.prompt.wrapper }`;
     const prevButtonClass = `${ htmlClass.pagination.prev } ${ prevVisibility }`;
     const nextButtonClass = `${ htmlClass.pagination.next } ${ nextVisibility }`;
 
@@ -103,7 +104,8 @@ export default function CaseStudyModule ( props )
 
             <div className={ promptClass }>
                 <CaseStudyPage 
-                    additionalPrompts={ additionalPrompts }
+                    prompt={ prompt }
+                    additionalPrompt={ additionalPrompt }
                     visibility={ visibility } />
             </div>
 

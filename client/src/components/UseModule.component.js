@@ -1,5 +1,4 @@
 import React                  from 'react';
-import { caseStudy }          from '../constants/caseStudy.constants.js';
 import { caseStudyHtmlClass } from '../constants/htmlClass.constants.js';
 import { foreignKeys }        from '../constants/foreignKey.constants.js';
 import { headers }            from '../constants/webDisplay.constants.js';
@@ -14,11 +13,11 @@ export default function UseCaseStudyModule ( props )
     const 
     {
         visibility,
-        additionalPrompts
+        prompt,
+        additionalPrompt
     } = props;
 
-    const constants      = caseStudy.fieldPrompts.use;
-    const htmlClass      = caseStudyHtmlClass.fieldPrompts;
+    const htmlClass      = caseStudyHtmlClass.prompt;
     const htmlVisibility = caseStudyHtmlClass.visibility;
 
     return (
@@ -29,7 +28,7 @@ export default function UseCaseStudyModule ( props )
             </div>
 
             <Title 
-                title={ constants.specification } 
+                title={ prompt.specification } 
                 visibility={ htmlVisibility[visibility.specification] }>
 
                 <CheckboxGroup
@@ -42,7 +41,7 @@ export default function UseCaseStudyModule ( props )
             </Title>
 
             <Title 
-                title={ constants.record }
+                title={ prompt.record }
                 visibility={ htmlVisibility[visibility.record] }>
 
                 <CheckboxGroup
@@ -55,7 +54,7 @@ export default function UseCaseStudyModule ( props )
             </Title>
 
             <Title 
-                title={ constants.operation }
+                title={ prompt.operation }
                 visibility={ htmlVisibility[visibility.operation] }>
 
                 <CheckboxGroup
@@ -68,7 +67,7 @@ export default function UseCaseStudyModule ( props )
             </Title>
 
             <Title 
-                title={ constants.operational_factor }
+                title={ prompt.operational_factor }
                 visibility={ htmlVisibility[visibility.operational_factor] }>
 
                 <CheckboxGroup
@@ -81,7 +80,7 @@ export default function UseCaseStudyModule ( props )
             </Title>
 
             <Title 
-                title={ constants.functionality_loss }
+                title={ prompt.functionality_loss }
                 visibility={ htmlVisibility[visibility.functionality_loss] }>
 
                 <TextArea 
@@ -90,7 +89,7 @@ export default function UseCaseStudyModule ( props )
             </Title>
 
             <Title 
-                title={ constants.problem_statement }
+                title={ prompt.problem_statement }
                 visibility={ htmlVisibility[visibility.problem_statement] }>
 
                 <TextArea 
@@ -99,7 +98,7 @@ export default function UseCaseStudyModule ( props )
             </Title>
 
             <Title 
-                title={ constants.failure_time } 
+                title={ prompt.failure_time } 
                 visibility={ htmlVisibility[visibility.failure_time] }>
 
                 <TextArea 
@@ -108,7 +107,7 @@ export default function UseCaseStudyModule ( props )
             </Title>
 
             <Title 
-                title={ constants.failure_operation_stage }
+                title={ prompt.failure_operation_stage }
                 visibility={ htmlVisibility[visibility.failure_operation_stage] }>
 
                 <TextArea 
@@ -117,7 +116,7 @@ export default function UseCaseStudyModule ( props )
             </Title>
 
             <Title 
-                title={ constants.operator }
+                title={ prompt.operator }
                 visibility={ htmlVisibility[visibility.operator] }>
 
                 <TextArea 
@@ -127,7 +126,7 @@ export default function UseCaseStudyModule ( props )
 
             <AdditionalPrompt
                 name="use_additional_prompt"
-                prompts={ additionalPrompts } />
+                additionalPrompt={ additionalPrompt } />
 
         </div>
     )

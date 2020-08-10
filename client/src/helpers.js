@@ -1,4 +1,5 @@
 import { headers, subheaders } from './constants/webDisplay.constants.js';
+import { caseStudy }           from './constants/caseStudy.constants.js';
 import { random }              from 'lodash';
 
 /**
@@ -77,23 +78,51 @@ export const buildHeaders = ( database ) =>
  * @param  { Object Literal } fields fields
  * @return { Object Literal } 
  */
-export const getAdditionalPrompts = fields =>
+export const getAdditionalPrompt = fields =>
 {
-    const prompts = {};
+    const additionalPrompt = {};
+
+    for( let header in headers )
+    {        
+        additionalPrompt[header] = fields[header] && fields[header].additional_prompt ? fields[header].additional_prompt : [];
+    }
+
+    return additionalPrompt;
+};
+
+/**
+ * Gets the overwritten prompts from the fields
+ * object, organized per header
+ *
+ * @param  { Object Literal } fields fields
+ * @return { Object Literal } 
+ */
+export const getPrompt = fields =>
+{
+    const prompt = {};
 
     for( let header in headers )
     {
-        let additionalPrompt = [];
+        let genericPrompt = { ...caseStudy.prompt[header] };
 
-        if( fields[header] && fields[header].additional_prompt )
+        if( fields[header] && fields[header].overwrite_prompt )
         {
-            additionalPrompt = fields[header].additional_prompt;
+            fields[header].overwrite_prompt.forEach( overwrite_prompt =>
+            {
+                let 
+                {
+                    overwrite_prompt_key,
+                    overwrite_prompt_value
+                } = overwrite_prompt;
+
+                genericPrompt[overwrite_prompt_key] = overwrite_prompt_value;
+            } );
         }
-        
-        prompts[header] = additionalPrompt;
+
+        prompt[header] = genericPrompt;
     }
 
-    return prompts;
+    return prompt;
 };
 
 /**

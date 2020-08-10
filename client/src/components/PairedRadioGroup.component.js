@@ -17,7 +17,7 @@ export default function PairedRadioGroup ( props )
     // Hack for ensuring each radio group on page has a
     // unique name
     const inputName = `${ name }-${ createUniqueId() }`;
-    const htmlClass = caseStudyHtmlClass.fieldPrompts;
+    const htmlClass = caseStudyHtmlClass.prompt;
 
     const radioButtons = foreignKeys.map( foreignKey =>
     {

@@ -10,7 +10,7 @@ export default function Title ( props )
         visibility
     } = props;
     
-    const htmlClass  = caseStudyHtmlClass.fieldPrompts;
+    const htmlClass  = caseStudyHtmlClass.prompt;
     const labelClass = `${ htmlClass.module } ${ visibility }`;
 
     return (

@@ -134,7 +134,6 @@ const routes =
             caseStudyTables.object = await get( sql, 'object' );            
 
             caseStudyTables = formatByHeader( caseStudyTables );
-
         }
         catch( error )
         {

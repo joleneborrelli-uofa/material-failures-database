@@ -21,10 +21,15 @@ exports.defaultCaseStudyTables =
 [
     'manifest',
     'object_additional_prompt',
+    'object_overwrite_prompt',
     'material_additional_prompt',
+    'material_overwrite_prompt',
     'processing_additional_prompt',
+    'processing_overwrite_prompt',
     'environment_additional_prompt',
-    'use_additional_prompt'
+    'environment_overwrite_prompt',
+    'use_additional_prompt',
+    'use_overwrite_prompt'
 ];
 
 exports.defaultRecordTables =

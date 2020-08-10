@@ -1,13 +1,11 @@
 import React                  from 'react';
 import { pairedComponents }   from '../constants/pairedComponent.constants.js';
-import { caseStudy }          from '../constants/caseStudy.constants.js';
 import { caseStudyHtmlClass } from '../constants/htmlClass.constants.js';
 import { foreignKeys }        from '../constants/foreignKey.constants.js';
 import { headers }            from '../constants/webDisplay.constants.js';
 import TextArea               from './TextArea.component.js'; 
 import Title                  from './Title.component.js'; 
 import CheckboxGroup          from './CheckboxGroup.component.js';
-import RadioGroup             from './RadioGroup.component.js';
 import PairedRadioGroupList   from './PairedRadioGroupList.component.js';
 import AdditionalPrompt       from './AdditionalPrompt.component.js';
 
@@ -17,11 +15,11 @@ export default function EnvironmentModule ( props )
     const 
     {
         visibility,
-        additionalPrompts
+        prompt,
+        additionalPrompt
     } = props;
 
-    const constants      = caseStudy.fieldPrompts.environment;
-    const htmlClass      = caseStudyHtmlClass.fieldPrompts;
+    const htmlClass      = caseStudyHtmlClass.prompt;
     const htmlVisibility = caseStudyHtmlClass.visibility;
 
     return (
@@ -32,7 +30,7 @@ export default function EnvironmentModule ( props )
             </div>
 
             <Title 
-                title={ constants.light_exposure }
+                title={ prompt.light_exposure }
                 visibility={ htmlVisibility[visibility.light_exposure] }>
 
                 <CheckboxGroup
@@ -45,7 +43,7 @@ export default function EnvironmentModule ( props )
             </Title>
 
             <Title 
-                title={ constants.ambient } 
+                title={ prompt.ambient } 
                 visibility={ htmlVisibility[visibility.ambient] }>
 
                 <CheckboxGroup
@@ -58,7 +56,7 @@ export default function EnvironmentModule ( props )
             </Title>
 
             <Title 
-                title={ constants.weather_exposure }
+                title={ prompt.weather_exposure }
                 visibility={ htmlVisibility[visibility.weather_exposure] }>
 
                 <CheckboxGroup
@@ -71,7 +69,7 @@ export default function EnvironmentModule ( props )
             </Title>
 
             <Title 
-                title={ constants.storage_location }
+                title={ prompt.storage_location }
                 visibility={ htmlVisibility[visibility.storage_location] }>
 
                 <CheckboxGroup
@@ -84,7 +82,7 @@ export default function EnvironmentModule ( props )
             </Title>
 
             <Title 
-                title={ constants.geographic_location } 
+                title={ prompt.geographic_location } 
                 visibility={ htmlVisibility[visibility.geographic_location] }>
 
                 <TextArea 
@@ -93,7 +91,7 @@ export default function EnvironmentModule ( props )
             </Title>
 
             <Title 
-                title={ constants.interaction_stress } 
+                title={ prompt.interaction_stress } 
                 visibility={ htmlVisibility[visibility.interaction_stress] }>
 
                 <CheckboxGroup
@@ -107,7 +105,7 @@ export default function EnvironmentModule ( props )
             </Title>
 
             <Title 
-                title={ constants.interaction_environment } 
+                title={ prompt.interaction_environment } 
                 visibility={ htmlVisibility[visibility.interaction_environment] }>
 
                 <CheckboxGroup
@@ -120,7 +118,7 @@ export default function EnvironmentModule ( props )
             </Title>
 
             <Title 
-                title={ constants.interaction_electromagnetic } 
+                title={ prompt.interaction_electromagnetic } 
                 visibility={ htmlVisibility[visibility.interaction_electromagnetic] }>
 
                 <CheckboxGroup
@@ -133,7 +131,7 @@ export default function EnvironmentModule ( props )
             </Title>
 
             <Title 
-                title={ constants.interaction_thermal } 
+                title={ prompt.interaction_thermal } 
                 visibility={ htmlVisibility[visibility.interaction_thermal] }>
 
                 <CheckboxGroup
@@ -146,7 +144,7 @@ export default function EnvironmentModule ( props )
             </Title>
 
             <Title 
-                title={ constants.interaction_tribological } 
+                title={ prompt.interaction_tribological } 
                 visibility={ htmlVisibility[visibility.interaction_tribological] }>
 
                 <CheckboxGroup
@@ -159,7 +157,7 @@ export default function EnvironmentModule ( props )
             </Title>
 
             <Title 
-                title={ constants.interaction_loading }
+                title={ prompt.interaction_loading }
                 visibility={ htmlVisibility[visibility.interaction_loading] }>
 
                 <PairedRadioGroupList
@@ -172,7 +170,7 @@ export default function EnvironmentModule ( props )
 
             <AdditionalPrompt
                 name="environment_additional_prompt"
-                prompts={ additionalPrompts } />
+                additionalPrompt={ additionalPrompt } />
 
         </div>  
     )

@@ -98,9 +98,7 @@ export const caseStudyHtmlClass =
         title   : 'fa-background-research-title'  
     },
 
-    promptsTitle : 'fa-prompts-title',
-
-    fieldPrompts :
+    prompt :
     {
         wrapper          : 'fa-prompt-wrapper',
         page             : 'fa-prompt-page',

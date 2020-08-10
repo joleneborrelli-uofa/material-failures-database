@@ -10,21 +10,21 @@ export default function AdditionalPrompt ( props )
     const 
     { 
         name,
-        prompts
+        additionalPrompt
     } = props;
 
-    const htmlClass   = caseStudyHtmlClass.fieldPrompts;
+    const htmlClass   = caseStudyHtmlClass.prompt;
     const { on, off } = caseStudyHtmlClass.visibility;
 
-    let visibility     = prompts.length > 0 ? on : off; 
+    let visibility     = additionalPrompt.length > 0 ? on : off; 
     const wrapperClass = `${ htmlClass.additionalPrompt } ${ visibility }`;
 
-    const promptGroups = prompts.map( ( prompt, index ) =>
+    const promptGroups = additionalPrompt.map( ( title, index ) =>
     {
         return (
             <Title 
                 key={ createUniqueId() } 
-                title={ prompt } 
+                title={ title } 
                 visibility={ on }>
                 <TextArea 
                     key={ createUniqueId() }

@@ -1,6 +1,5 @@
 import React                  from 'react';
 import { pairedComponents }   from '../constants/pairedComponent.constants.js';
-import { caseStudy }          from '../constants/caseStudy.constants.js';
 import { caseStudyHtmlClass } from '../constants/htmlClass.constants.js';
 import { foreignKeys }        from '../constants/foreignKey.constants.js';
 import { headers }            from '../constants/webDisplay.constants.js';
@@ -16,11 +15,11 @@ export default function ProcessingModule ( props )
     const 
     {
         visibility,
-        additionalPrompts
+        prompt,
+        additionalPrompt
     } = props;
 
-    const constants      = caseStudy.fieldPrompts.processing;
-    const htmlClass      = caseStudyHtmlClass.fieldPrompts;
+    const htmlClass      = caseStudyHtmlClass.prompt;
     const htmlVisibility = caseStudyHtmlClass.visibility;
 
     return (
@@ -31,7 +30,7 @@ export default function ProcessingModule ( props )
             </div>
 
             <Title 
-                title={ constants.treatment }
+                title={ prompt.treatment }
                 visibility={ htmlVisibility[visibility.treatment] }>
 
                 <PairedRadioGroupList
@@ -43,7 +42,7 @@ export default function ProcessingModule ( props )
             </Title>
 
             <Title 
-                title={ constants.shaping }
+                title={ prompt.shaping }
                 visibility={ htmlVisibility[visibility.shaping] }>
 
                 <PairedRadioGroupList
@@ -55,7 +54,7 @@ export default function ProcessingModule ( props )
             </Title>
 
             <Title 
-                title={ constants.residual_stress }
+                title={ prompt.residual_stress }
                 visibility={ htmlVisibility[visibility.residual_stress] }>
 
                 <PairedRadioGroupList
@@ -67,7 +66,7 @@ export default function ProcessingModule ( props )
             </Title>
 
             <Title 
-                title={ constants.machining }
+                title={ prompt.machining }
                 visibility={ htmlVisibility[visibility.machining] }>
 
                 <CheckboxGroup
@@ -80,7 +79,7 @@ export default function ProcessingModule ( props )
             </Title>
 
             <Title 
-                title={ constants.joining }
+                title={ prompt.joining }
                 visibility={ htmlVisibility[visibility.joining] }>
 
                 <CheckboxGroup
@@ -93,7 +92,7 @@ export default function ProcessingModule ( props )
             </Title>
 
             <Title  
-                title={ constants.manufacturer }
+                title={ prompt.manufacturer }
                 visibility={ htmlVisibility[visibility.manufacturer] }>
 
                 <TextArea 
@@ -102,7 +101,7 @@ export default function ProcessingModule ( props )
             </Title>
 
             <Title  
-                title={ constants.date }
+                title={ prompt.date }
                 visibility={ htmlVisibility[visibility.date] }>
 
                 <TextArea 
@@ -111,7 +110,7 @@ export default function ProcessingModule ( props )
             </Title>
 
             <Title  
-                title={ constants.location }
+                title={ prompt.location }
                 visibility={ htmlVisibility[visibility.location] }>
 
                 <TextArea 
@@ -120,7 +119,7 @@ export default function ProcessingModule ( props )
             </Title>
 
             <Title  
-                title={ constants.plant }
+                title={ prompt.plant }
                 visibility={ htmlVisibility[visibility.plant] }>
 
                 <TextArea 
@@ -130,7 +129,7 @@ export default function ProcessingModule ( props )
 
             <AdditionalPrompt
                 name="processing_additional_prompt"
-                prompts={ additionalPrompts } />
+                additionalPrompt={ additionalPrompt } />
 
         </div>
     )

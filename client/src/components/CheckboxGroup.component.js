@@ -11,7 +11,7 @@ export default function CheckboxGroup ( props )
         foreignKeys
     } = props;
 
-    const htmlClass = caseStudyHtmlClass.fieldPrompts;
+    const htmlClass = caseStudyHtmlClass.prompt;
 
     // State
     const [values, handleValuesChange] = useState( {} );

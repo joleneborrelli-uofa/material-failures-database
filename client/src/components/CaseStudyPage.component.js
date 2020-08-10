@@ -14,7 +14,8 @@ export default function CaseStudyPage ( props )
     const 
     { 
         visibility,
-        additionalPrompts 
+        prompt,
+        additionalPrompt 
     } = props;
    
     // Methods
@@ -46,27 +47,32 @@ export default function CaseStudyPage ( props )
     };
 
     return (
-        <form className={ htmlClass.fieldPrompts.page }>
+        <form className={ htmlClass.prompt.page }>
 
             <ObjectModule 
                 visibility={ visibility.object }
-                additionalPrompts={ additionalPrompts.object } />
+                prompt={ prompt.object }
+                additionalPrompt={ additionalPrompt.object } />
 
             <MaterialModule 
                 visibility={ visibility.material }
-                additionalPrompts={ additionalPrompts.material } />
+                prompt={ prompt.material }
+                additionalPrompt={ additionalPrompt.material } />
 
             <ProcessingModule 
                 visibility={ visibility.processing }
-                additionalPrompts={ additionalPrompts.processing } />
+                prompt={ prompt.processing }
+                additionalPrompt={ additionalPrompt.processing } />
 
             <EnvironmentModule 
                 visibility={ visibility.environment }
-                additionalPrompts={ additionalPrompts.environment } />
+                prompt={ prompt.environment }
+                additionalPrompt={ additionalPrompt.environment } />
 
             <UseModule 
                 visibility={ visibility.use }
-                additionalPrompts={ additionalPrompts.use } />
+                prompt={ prompt.use }
+                additionalPrompt={ additionalPrompt.use } />
 
             <div className={ htmlClass.download.wrapper }>
                 <button 

@@ -23,9 +23,7 @@ export const caseStudy =
     backgroundResearchTitle    : `You head back to the office. To collect background research, you access literature, go online, make phone calls and write emails.`,
     backgroundResearchSubtitle : `This is the data you find.`,
 
-    promptsTitle : 'The photos...the background research...How does it all add up? You put on your detective\'s cap and get to work.', 
-
-    fieldPrompts :
+    prompt :
     {
         object :
         {

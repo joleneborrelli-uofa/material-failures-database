@@ -1,6 +1,5 @@
 import React                  from 'react';
 import { pairedComponents }   from '../constants/pairedComponent.constants.js';
-import { caseStudy }          from '../constants/caseStudy.constants.js';
 import { caseStudyHtmlClass } from '../constants/htmlClass.constants.js';
 import { foreignKeys }        from '../constants/foreignKey.constants.js';
 import { headers }            from '../constants/webDisplay.constants.js';
@@ -16,11 +15,11 @@ export default function MaterialModule ( props )
     const 
     {
         visibility,
-        additionalPrompts
+        prompt,
+        additionalPrompt
     } = props;
 
-    const constants      = caseStudy.fieldPrompts.material;
-    const htmlClass      = caseStudyHtmlClass.fieldPrompts;
+    const htmlClass      = caseStudyHtmlClass.prompt;
     const htmlVisibility = caseStudyHtmlClass.visibility;
 
     return (
@@ -31,7 +30,7 @@ export default function MaterialModule ( props )
             </div>
 
             <Title 
-                title={ constants.full_name }
+                title={ prompt.full_name }
                 visibility={ htmlVisibility[visibility.full_name] }>
 
                 <TextArea 
@@ -40,7 +39,7 @@ export default function MaterialModule ( props )
             </Title>
 
             <Title 
-                title={ constants.class }
+                title={ prompt['class'] }
                 visibility={ htmlVisibility[visibility['class']] }>
 
                 <PairedRadioGroupList
@@ -52,7 +51,7 @@ export default function MaterialModule ( props )
             </Title>
 
             <Title  
-                title={ constants.crystallinity }
+                title={ prompt.crystallinity }
                 visibility={ htmlVisibility[visibility.crystallinity] }>
 
                 <RadioGroup
@@ -65,7 +64,7 @@ export default function MaterialModule ( props )
             </Title>
 
             <Title  
-                title={ constants.alloy_designation }
+                title={ prompt.alloy_designation }
                 visibility={ htmlVisibility[visibility.alloy_designation] }>
 
                 <TextArea 
@@ -74,7 +73,7 @@ export default function MaterialModule ( props )
             </Title>
 
             <Title  
-                title={ constants.grade } 
+                title={ prompt.grade } 
                 visibility={ htmlVisibility[visibility.grade] }>
 
                 <TextArea 
@@ -83,7 +82,7 @@ export default function MaterialModule ( props )
             </Title>
 
             <Title  
-                title={ constants.recyclability }
+                title={ prompt.recyclability }
                 visibility={ htmlVisibility[visibility.recyclability] }>
 
                 <TextArea 
@@ -92,7 +91,7 @@ export default function MaterialModule ( props )
             </Title>
 
             <Title  
-                title={ constants.biodegradability }
+                title={ prompt.biodegradability }
                 visibility={ htmlVisibility[visibility.biodegradability] }>
 
                 <TextArea 
@@ -101,7 +100,7 @@ export default function MaterialModule ( props )
             </Title>
 
             <Title  
-                title={ constants.toxicity }
+                title={ prompt.toxicity }
                 visibility={ htmlVisibility[visibility.toxicity] }>
 
                 <TextArea 
@@ -111,7 +110,7 @@ export default function MaterialModule ( props )
 
             <AdditionalPrompt
                 name="material_additional_prompt"
-                prompts={ additionalPrompts } />
+                additionalPrompt={ additionalPrompt } />
 
         </div>
     )

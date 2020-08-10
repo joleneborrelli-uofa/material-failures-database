@@ -1,5 +1,4 @@
 import React                  from 'react';
-import { caseStudy }          from '../constants/caseStudy.constants.js';
 import { caseStudyHtmlClass } from '../constants/htmlClass.constants.js';
 import { foreignKeys }        from '../constants/foreignKey.constants.js';
 import { headers }            from '../constants/webDisplay.constants.js';
@@ -15,11 +14,11 @@ export default function ObjectModule ( props )
     const  
     {
         visibility,
-        additionalPrompts
+        prompt,
+        additionalPrompt
     } = props;
 
-    const constants      = caseStudy.fieldPrompts.object;
-    const htmlClass      = caseStudyHtmlClass.fieldPrompts;
+    const htmlClass      = caseStudyHtmlClass.prompt;
     const htmlVisibility = caseStudyHtmlClass.visibility
 
     return (
@@ -30,7 +29,7 @@ export default function ObjectModule ( props )
             </div>
 
             <Title 
-                title={ constants.rating }
+                title={ prompt.rating }
                 visibility={ htmlVisibility[visibility.rating] }>
 
                 <TextArea 
@@ -39,7 +38,7 @@ export default function ObjectModule ( props )
             </Title>
 
             <Title  
-                title={ constants.inscription } 
+                title={ prompt.inscription } 
                 visibility={ htmlVisibility[visibility.inscription] }>
 
                 <TextArea 
@@ -48,7 +47,7 @@ export default function ObjectModule ( props )
             </Title>
 
             <Title  
-                title={ constants.serial_number }
+                title={ prompt.serial_number }
                 visibility={ htmlVisibility[visibility.serial_number] }>
 
                 <TextArea 
@@ -57,7 +56,7 @@ export default function ObjectModule ( props )
             </Title>
 
             <Title  
-                title={ constants.feature } 
+                title={ prompt.feature } 
                 visibility={ htmlVisibility[visibility.feature] }>
 
                 <CheckboxGroup
@@ -70,7 +69,7 @@ export default function ObjectModule ( props )
             </Title>
 
             <Title  
-                title={ constants.fracture_draw } 
+                title={ prompt.fracture_draw } 
                 visibility={ htmlVisibility[visibility.fracture_draw] }>
 
                 <TextArea 
@@ -79,7 +78,7 @@ export default function ObjectModule ( props )
             </Title>
 
             <Title  
-                title={ constants.fracture_path } 
+                title={ prompt.fracture_path } 
                 visibility={ htmlVisibility[visibility.fracture_path] }>
 
                 <CheckboxGroup
@@ -92,7 +91,7 @@ export default function ObjectModule ( props )
             </Title>
 
             <Title  
-                title={ constants.fracture_surface } 
+                title={ prompt.fracture_surface } 
                 visibility={ htmlVisibility[visibility.fracture_surface] }>
 
                 <CheckboxGroup
@@ -105,7 +104,7 @@ export default function ObjectModule ( props )
             </Title>
 
             <Title  
-                title={ constants.fracture_mode } 
+                title={ prompt.fracture_mode } 
                 visibility={ htmlVisibility[visibility.fracture_mode] }>
 
                 <CheckboxGroup
@@ -119,7 +118,7 @@ export default function ObjectModule ( props )
 
 
             <Title  
-                title={ constants.fracture_feature } 
+                title={ prompt.fracture_feature } 
                 visibility={ htmlVisibility[visibility.fracture_feature] }>
 
                 <CheckboxGroup
@@ -132,7 +131,7 @@ export default function ObjectModule ( props )
             </Title>
 
             <Title  
-                title={ constants.fracture_loading } 
+                title={ prompt.fracture_loading } 
                 visibility={ htmlVisibility[visibility.fracture_loading] }>
 
                 <CheckboxGroup
@@ -147,7 +146,7 @@ export default function ObjectModule ( props )
             <AdditionalPrompt
                 key={ createUniqueId() }
                 name="object_additional_prompt"
-                prompts={ additionalPrompts } />
+                additionalPrompt={ additionalPrompt } />
 
         </div>
     )

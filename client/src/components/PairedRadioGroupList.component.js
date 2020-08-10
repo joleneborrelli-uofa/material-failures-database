@@ -8,7 +8,7 @@ export default function PairedRadioGroupList ( props )
 {
     // Props
     const { pairedData } = props;
-    const htmlClass      = caseStudyHtmlClass.fieldPrompts;
+    const htmlClass      = caseStudyHtmlClass.prompt;
 
     // State
     const [radioGroupCounter, incrementRadioGroup] = useState( 0 );
