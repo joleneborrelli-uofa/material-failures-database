@@ -2,6 +2,12 @@
 
 export const unknownObject = 'Unknown Object';
 
+export const messages = 
+{
+    loading    : 'Loading. Please wait...',
+    restricted : 'Sorry, this page cannot be displayed'
+};
+
 export const mainPage =
 {
     caseStudyLink : 'Case Study',

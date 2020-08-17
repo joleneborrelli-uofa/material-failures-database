@@ -21,7 +21,7 @@ export const genericHtmlClass =
     displayItem   : 'fa-display-item',
     displayImage  : 'fa-display-image',
     mainHeader    : 'fa-main-header',
-    loading       : 'fa-loading'
+    message       : 'fa-message'
 };
 
 export const recordHtmlClass = 

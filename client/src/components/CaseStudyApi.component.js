@@ -1,22 +1,40 @@
 import axios                             from 'axios';
 import React, { useEffect, useState }    from 'react';
 import { genericHtmlClass as htmlClass } from '../constants/htmlClass.constants.js';
+import { messages }                      from '../constants/webDisplay.constants.js';
 import CaseStudy                         from './CaseStudy.component.js';
 
 export default function CaseStudyApi ( props )
 {
     // Props
     const { id } = props;
+    const 
+    {
+        loading,
+        restricted
+    } = messages;
 
     // State
     const [caseStudyData, setCaseStudyData] = useState( {} );
+    const [message, setMessage]             = useState( loading );
 
     useEffect( () =>
     {
-        fetchCaseStudyData();
+        prepareForDisplay();
     }, [] );
 
     // Methods
+    const fetchDisplayStatus = async () =>
+    {
+        return axios
+            .get( '/api/display' )
+            .then( res => res.data.find( item => item.object_id === parseInt( id, 10 ) ) )
+            .catch( err => 
+            {
+                console.error( `Error getting display list: ${ err }` ) 
+            } )
+    }
+
     const fetchPromptVisibility = async () =>
     {
         return axios
@@ -56,25 +74,34 @@ export default function CaseStudyApi ( props )
                 } )
     }
 
-    const fetchCaseStudyData = async () => 
+    const prepareForDisplay = async () =>
     {
-        let visibility = await fetchPromptVisibility();
-        let studyData  = await fetchStudyData();
+        let displayStatus = await fetchDisplayStatus();
 
-        setCaseStudyData( { studyData, visibility } );
+        if( displayStatus && displayStatus.case_study === 'on' ) 
+        {
+            let visibility = await fetchPromptVisibility();
+            let studyData  = await fetchStudyData();
+
+            setCaseStudyData( { studyData, visibility } );
+        }
+        else
+        {
+            setMessage( restricted );
+        }
     }
 
     // Return
     const hasCaseStudyData = Object.keys( caseStudyData ).length;
-    const loadingStatus    = hasCaseStudyData ? 'off' : 'on';
-    const loadingClass     = `${ htmlClass.visibility[loadingStatus] } ${ htmlClass.loading }`;
+    const messageStatus    = hasCaseStudyData ? 'off' : 'on';
+    const messageClass     = `${ htmlClass.visibility[messageStatus] } ${ htmlClass.message }`;
     const caseStudyElement = hasCaseStudyData ? ( <CaseStudy 
                                                         visibility={ caseStudyData.visibility } 
                                                         studyData={ caseStudyData.studyData } /> ) : false;
 
     return (
         <div>
-            <p className={ loadingClass }>Loading. Please wait...</p>
+            <p className={ messageClass }>{ message }</p>
                 { caseStudyElement }
         </div>
     );
