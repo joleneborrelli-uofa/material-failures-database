@@ -1,8 +1,9 @@
 import React, { useEffect, useState }    from 'react';
 import { genericHtmlClass as htmlClass } from '../constants/htmlClass.constants.js';
-import axios        from 'axios';
-import { mainPage } from '../constants/webDisplay.constants.js';
-import { domain }   from '../constants/path.constants.js';
+import { mainPage, messages }            from '../constants/webDisplay.constants.js';
+import { domain } from '../constants/path.constants.js';
+import axios      from 'axios';
+
 
 // React Router
 import { Link } from "react-router-dom";
@@ -82,12 +83,12 @@ export default function Home()
     }
 
     // Return
-    const loadingClass = `${ htmlClass.visibility[loading] } ${ htmlClass.loading }`;
+    const messageClass = `${ htmlClass.visibility[loading] } ${ htmlClass.message }`;
 
     return (
         <div>
             <h2 className={ htmlClass.mainHeader }>{ mainPage.title }</h2>
-            <p className={ loadingClass }>Loading. Please wait...</p>
+            <p className={ messageClass }>{ messages.loading }</p>
             <ul>
                 { links }
             </ul>

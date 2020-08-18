@@ -24,6 +24,16 @@ export const genericHtmlClass =
     message       : 'fa-message'
 };
 
+export const settingsHtmlClass =
+{
+    list          : 'fa-settings-list',
+    item          : 'fa-settings-list-item',
+    value         : 'fa-settings-list-value',
+    header        : 'fa-settings-list-header',
+    subheader     : 'fa-settings-list-subheader',
+    toggleButton  : 'fa-settings-toggle-button'
+};
+
 export const recordHtmlClass = 
 {
     record          : 'fa-record',

@@ -91,7 +91,7 @@ a, a:visited
     margin             : 15px 0 5px 15px;
 }
 
-.fa-ul-lines 
+.fa-ul-lines, .fa-settings-list, .fa-settings-list-item
 {
 	list-style-type      : none;
 	padding-inline-start : 0;
@@ -320,4 +320,29 @@ a, a:visited
 {
     margin: auto;
     text-align: center;
+}
+
+.fa-settings-list-value
+{
+    text-transform: capitalize;
+    font-weight: bold; 
+}
+
+.fa-settings-list-item
+{
+    border-bottom: 1px solid black;
+}
+
+.fa-settings-toggle-button
+{
+    margin-bottom: 15px;
+}
+
+.fa-settings-list
+{
+    border-left: 5px solid green;
+    border-top: 5px solid green;
+    padding-left: 40px;
+    margin-bottom: 40px;
+    width: 50%;
 }

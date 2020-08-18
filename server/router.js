@@ -7,6 +7,14 @@ const router = express.Router();
 // and thumbnail of all items in database
 router.get( '/display', routes.display );
 
+// Settings API call, to get the display and
+// object tables
+router.get( '/settings', routes.settings );
+
+// Settings API call, to post the toggled
+// display setting
+router.post( '/settings', routes.toggle );
+
 // Record API call, to get all tables which are
 // necessary to display a record
 router.get( '/record', routes.record );

@@ -1,6 +1,6 @@
-const database  = require( './db.js' );
-const helpers   = require( './helpers.js' );
-const constants = require( './constants' );
+const openDatabase = require( './db.js' );
+const helpers      = require( './helpers.js' );
+const constants    = require( './constants' );
 
 /**
  * Executes a get query, where all rows are returned
@@ -9,24 +9,59 @@ const constants = require( './constants' );
  * @param  { String } tableName table name
  * @return { Promise } 
  */
-const all = ( sql, tableName ) => 
+const all = async ( sql, tableName ) => 
 {
-    return new Promise( ( resolve, reject ) =>
+    try
     {
-        database.all( sql, ( error, result ) =>
-        {
-            if ( error ) 
-            {
-                console.log( `Error in get from ${ tableName } table`, error )
+        let database = await openDatabase( 'OPEN_READONLY' );
 
-                reject( error )
-            } 
-            else 
+        let callDatabaseAll = () => 
+        {
+            return new Promise( ( resolve, reject ) => 
             {
-                resolve( result )
-            }
-        } )
-    } )  
+                database.all( sql, ( error, result ) =>
+                {
+                    if ( error ) 
+                    {
+                        reject( new Error( `Error in get from ${ tableName } table: ${ error }` ) );
+                    } 
+                    else
+                    {
+                       resolve( result );
+                    }
+                } );
+            } );
+        };
+
+        let closeDatabase = () =>
+        {
+            return new Promise( ( resolve, reject ) =>
+            {
+                database.close( ( error ) => 
+                {
+                    if ( error ) 
+                    {
+                        reject( new Error( `Error in all database close: ${ error }` ) );
+                    }
+                    else
+                    {
+                        console.log( `Disconnected from material failures database after all in ${ tableName }` )
+
+                        resolve();
+                    }                    
+                } );
+            } )
+        };
+
+        let databaseAll = await callDatabaseAll();
+        let close       = await closeDatabase();
+
+        return databaseAll;
+    }
+    catch ( error )
+    {
+        console.log( error.message );
+    }
 };
 
 /**
@@ -36,24 +71,122 @@ const all = ( sql, tableName ) =>
  * @param  { String } tableName table name
  * @return { Promise } 
  */
-const get = ( sql, tableName ) => 
-{
-    return new Promise( ( resolve, reject ) =>
+const get = async ( sql, tableName ) => 
+ {
+    try
     {
-        database.get( sql, ( error, result ) =>
-        {
-            if ( error ) 
-            {
-                console.log( `Error in get from ${ tableName } table`, error )
+        let database = await openDatabase( 'OPEN_READONLY' );
 
-                reject( error )
-            } 
-            else 
+        let callDatabaseGet = () => 
+        {
+            return new Promise( ( resolve, reject ) => 
             {
-                resolve( result )
-            }
-        } )
-    } )  
+                database.get( sql, ( error, result ) =>
+                {
+                    if ( error ) 
+                    {
+                        reject( new Error( `Error in get from ${ tableName } table: ${ error }` ) );
+                    } 
+                    else
+                    {
+                       resolve( result );
+                    }
+                } );
+            } );
+        };
+
+        let closeDatabase = () =>
+        {
+            return new Promise( ( resolve, reject ) =>
+            {
+                database.close( ( error ) => 
+                {
+                    if ( error ) 
+                    {
+                        reject( new Error( `Error in all database close: ${ error }` ) );
+                    }
+                    else
+                    {
+                        console.log( `Disconnected from material failures database after get in ${ tableName }` )
+
+                        resolve();
+                    }                    
+                } );
+            } )
+        };
+
+        let databaseGet = await callDatabaseGet();
+        let close       = await closeDatabase();
+
+        return databaseGet;
+    }
+    catch ( error )
+    {
+        console.log( error.message );
+    }
+};
+
+/**
+ * Executes an update query, where the first row is returned
+ *
+ * @param  { String } sql       query string
+ * @param  { String } tableName table name
+ * @param  {}
+ * @return { Promise } 
+ */
+const update = async ( sql, tableName ) =>
+{
+    try
+    {
+        let database = await openDatabase( 'OPEN_READWRITE' );
+
+        let callDatabaseRun = () => 
+        {
+            return new Promise( ( resolve, reject ) => 
+            { 
+                database.run( sql, ( error ) =>
+                {
+                    if ( error ) 
+                    {
+                        reject( new Error( `Error in update in ${ tableName } table : ${ error }` ) );
+                    } 
+                    else
+                    {
+                        resolve();
+                    }
+                } );
+            } )
+        };
+
+        let closeDatabase = () =>
+        {
+            return new Promise( ( resolve, reject ) =>
+            {
+                database.close( ( error ) => 
+                {
+                    if ( error ) 
+                    {
+                        reject( new Error( `Error in all database close: ${ error }` ) );
+                    }
+                    else
+                    {
+                        console.log( `Disconnected from material failures database after run in ${ tableName }` )
+
+                        resolve();
+                    }                    
+                } );
+            } )
+        };
+
+        let databaseRun = await callDatabaseRun();
+        let close       = await closeDatabase();
+
+        return;
+    }
+    catch ( error )
+    {
+        console.log( error.message );
+    }  
 };
 
 const routes =
@@ -165,6 +298,55 @@ const routes =
                     response.json( 
                     { 
                         message: `Error in display table response: ${ error }` 
+                    } )
+                } )
+    },
+
+    // Settings route
+    settings : async ( request, response ) =>
+    {
+        const sql = `SELECT display.object_id, 
+                            display.case_study, 
+                            display.record, 
+                            display.path, 
+                            object.name
+                    FROM display
+                    INNER JOIN object ON display.object_id=object.object_id`;
+
+        return all( sql, 'display' )
+                .then( table =>
+                {
+                    response.json( table );
+                } )
+                .catch( error => 
+                {
+                    response.json( 
+                    { 
+                        message: `Error in settings response: ${ error }` 
+                    } )
+                } )
+    },
+
+    // Toggle route
+    toggle : async ( request, response ) =>
+    {
+        const fieldString  = request.body.fieldString;
+        const objectString = request.body.objectString;
+
+        const sql = `UPDATE display
+                     SET ${ fieldString }
+                     WHERE ${ objectString }`;
+
+         return update( sql, 'display' )
+                .then( () => 
+                {
+                    response.json();
+                } )
+                .catch( error => 
+                {
+                    response.json( 
+                    { 
+                        message: `Error in settings table response: ${ error }` 
                     } )
                 } )
     },

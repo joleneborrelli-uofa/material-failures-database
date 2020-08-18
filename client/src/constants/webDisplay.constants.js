@@ -2,6 +2,14 @@
 
 export const unknownObject = 'Unknown Object';
 
+export const settings =
+{
+    button              : 'Toggle',
+    pageTitle           : 'Display Settings',
+    recordVisibility    : 'Record Visibility',
+    caseStudyVisibility : 'Case Study Visibility'
+};
+
 export const messages = 
 {
     loading    : 'Loading. Please wait...',

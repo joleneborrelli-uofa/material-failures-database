@@ -12,31 +12,38 @@ const app  = express();
 app.use( cors() )
 app.use( helmet() )
 app.use( compression() )
-app.use( bodyParser.urlencoded( { extended: false } ) )
-app.use( bodyParser.json() )
+// app.use( bodyParser.urlencoded( { extended: false } ) )
+// app.use( bodyParser.json() )
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // Serve the static files from the React app
 app.use( express.static( path.join( __dirname, 'client/build' ) ) );
 
 app.use( '/api', router );
 
-app.use( function ( err, req, res, next ) 
+app.use( ( err, req, res, next ) =>
 {
     console.error( err.stack )
 
     res.status( 500 ).send( 'Response 500: Server Error. Very Frustrating!' )
 } )
 
-app.use( function ( req, res, next ) 
+app.use( ( req, res, next ) =>
 {
     res.status( 404 ).send( 'Response 400: Page Not Found. Hmmmm...' )
+} )
+
+app.post( '/settings', ( req, res ) => 
+{
+    res.status( 200 ).send( req.body );  
 } )
 
 app.get( '*', ( req, res ) =>
 {
     res.sendFile( path.join( __dirname + '/client/build/index.html' ) );
 } );
-
 
 app.listen( port, () => 
 {
