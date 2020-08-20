@@ -4,12 +4,12 @@ import { caseStudyHtmlClass } from '../constants/htmlClass.constants.js';
 
 export default function LandingPage ( props )
 {
+    // Props
     const 
     { 
         title,
         caseNumber
     } = props;
-
 
     const constants = caseStudy.landing;
     const htmlClass = caseStudyHtmlClass.landing;

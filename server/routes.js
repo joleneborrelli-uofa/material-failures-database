@@ -1,194 +1,12 @@
-const openDatabase = require( './db.js' );
-const helpers      = require( './helpers.js' );
-const constants    = require( './constants' );
+const db        = require( './db.js' );
+const helpers   = require( './helpers.js' );
+const constants = require( './constants.js' );
 
-/**
- * Executes a get query, where all rows are returned
- *
- * @param  { String } sql       query string
- * @param  { String } tableName table name
- * @return { Promise } 
- */
-const all = async ( sql, tableName ) => 
-{
-    try
-    {
-        let database = await openDatabase( 'OPEN_READONLY' );
 
-        let callDatabaseAll = () => 
-        {
-            return new Promise( ( resolve, reject ) => 
-            {
-                database.all( sql, ( error, result ) =>
-                {
-                    if ( error ) 
-                    {
-                        reject( new Error( `Error in get from ${ tableName } table: ${ error }` ) );
-                    } 
-                    else
-                    {
-                       resolve( result );
-                    }
-                } );
-            } );
-        };
+// Make database methods available 
+const { all, get, update } = db;
 
-        let closeDatabase = () =>
-        {
-            return new Promise( ( resolve, reject ) =>
-            {
-                database.close( ( error ) => 
-                {
-                    if ( error ) 
-                    {
-                        reject( new Error( `Error in all database close: ${ error }` ) );
-                    }
-                    else
-                    {
-                        console.log( `Disconnected from material failures database after all in ${ tableName }` )
-
-                        resolve();
-                    }                    
-                } );
-            } )
-        };
-
-        let databaseAll = await callDatabaseAll();
-        let close       = await closeDatabase();
-
-        return databaseAll;
-    }
-    catch ( error )
-    {
-        console.log( error.message );
-    }
-};
-
-/**
- * Executes a get query, where the first row is returned
- *
- * @param  { String } sql       query string
- * @param  { String } tableName table name
- * @return { Promise } 
- */
-const get = async ( sql, tableName ) => 
- {
-    try
-    {
-        let database = await openDatabase( 'OPEN_READONLY' );
-
-        let callDatabaseGet = () => 
-        {
-            return new Promise( ( resolve, reject ) => 
-            {
-                database.get( sql, ( error, result ) =>
-                {
-                    if ( error ) 
-                    {
-                        reject( new Error( `Error in get from ${ tableName } table: ${ error }` ) );
-                    } 
-                    else
-                    {
-                       resolve( result );
-                    }
-                } );
-            } );
-        };
-
-        let closeDatabase = () =>
-        {
-            return new Promise( ( resolve, reject ) =>
-            {
-                database.close( ( error ) => 
-                {
-                    if ( error ) 
-                    {
-                        reject( new Error( `Error in all database close: ${ error }` ) );
-                    }
-                    else
-                    {
-                        console.log( `Disconnected from material failures database after get in ${ tableName }` )
-
-                        resolve();
-                    }                    
-                } );
-            } )
-        };
-
-        let databaseGet = await callDatabaseGet();
-        let close       = await closeDatabase();
-
-        return databaseGet;
-    }
-    catch ( error )
-    {
-        console.log( error.message );
-    }
-};
-
-/**
- * Executes an update query, where the first row is returned
- *
- * @param  { String } sql       query string
- * @param  { String } tableName table name
- * @param  {}
- * @return { Promise } 
- */
-const update = async ( sql, tableName ) =>
-{
-    try
-    {
-        let database = await openDatabase( 'OPEN_READWRITE' );
-
-        let callDatabaseRun = () => 
-        {
-            return new Promise( ( resolve, reject ) => 
-            { 
-                database.run( sql, ( error ) =>
-                {
-                    if ( error ) 
-                    {
-                        reject( new Error( `Error in update in ${ tableName } table : ${ error }` ) );
-                    } 
-                    else
-                    {
-                        resolve();
-                    }
-                } );
-            } )
-        };
-
-        let closeDatabase = () =>
-        {
-            return new Promise( ( resolve, reject ) =>
-            {
-                database.close( ( error ) => 
-                {
-                    if ( error ) 
-                    {
-                        reject( new Error( `Error in all database close: ${ error }` ) );
-                    }
-                    else
-                    {
-                        console.log( `Disconnected from material failures database after run in ${ tableName }` )
-
-                        resolve();
-                    }                    
-                } );
-            } )
-        };
-
-        let databaseRun = await callDatabaseRun();
-        let close       = await closeDatabase();
-
-        return;
-    }
-    catch ( error )
-    {
-        console.log( error.message );
-    }  
-};
-
+// API routes
 const routes =
 {
     // Record route
@@ -349,6 +167,33 @@ const routes =
                         message: `Error in settings table response: ${ error }` 
                     } )
                 } )
+    },
+
+    // Login route
+    login : async ( request, response ) =>
+    {
+        const username = request.body.username;
+        const password = request.body.password;
+
+        const sql = `SELECT *
+                     FROM settings
+                     WHERE username = '${ username }'`;
+
+        const row = await get( sql, 'login' ); 
+
+        if( row && row.username && row.password )
+        {
+            const hash = helpers.getPasswordHash( password );
+
+            if( hash === row.password )
+            {
+                return response.json( { redirectUrl: '/settings' } );
+            }
+            
+            return response.json( { message : 'Incorrect password' } );
+        }
+
+        response.json( { message : 'Incorrect username or password' } ); 
     },
 
     // Visibility routes

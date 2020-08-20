@@ -3,9 +3,10 @@ import { settings, messages }         from '../constants/webDisplay.constants.js
 import { createUniqueId }             from '../helpers.js';
 import { settingsHtmlClass as htmlClass, genericHtmlClass } from '../constants/htmlClass.constants.js';
 import axios from 'axios';
+import auth  from '../auth.js';
 
 
-export default function Settings()
+export default function Settings( props )
 {
     // State
     const [listSettings, setListSettings] = useState( [] );
@@ -32,24 +33,44 @@ export default function Settings()
 
     const onButtonClick = e =>
     {
-        const fieldName = e.target.name;
-        const id        = e.target.value;
+        e.preventDefault();
 
-        const object      = listSettings.find( item => item.object_id === parseInt( id, 10 ) );
-        const fieldValue  = object[fieldName];
-        const toggleValue = fieldValue === 'off' ? 'on' : 'off'; 
+        // If the user is not logged in,
+        // send them to login page
+        if( !auth.loginStatus() )
+        {            
+            props.history.push( '/login' );
+        }
+        else
+        {
+            const fieldName = e.target.name;
+            const id        = e.target.value;
 
-        axios
-        .post( 'api/settings',
-        {
-            fieldString  : `${ fieldName } = '${ toggleValue }'`,
-            objectString : `object_id = ${ parseInt( id, 10 ) }`
-        } )
-        .then( () => fetchSettings() )
-        .catch( err => 
-        {
-            console.error( `Error posting settings: ${ err }` ) 
-        } )
+            const object      = listSettings.find( item => item.object_id === parseInt( id, 10 ) );
+            const fieldValue  = object[fieldName];
+            const toggleValue = fieldValue === 'off' ? 'on' : 'off'; 
+
+            return axios
+                .post( 'api/settings',
+                {
+                    fieldString  : `${ fieldName } = '${ toggleValue }'`,
+                    objectString : `object_id = ${ parseInt( id, 10 ) }`
+                } )
+                .then( () => fetchSettings() )
+                .catch( err => 
+                {
+                    console.error( `Error posting settings: ${ err }` ) 
+                } )
+        }
+    }
+
+    const onLogout = e =>
+    {
+        e.preventDefault();
+
+        auth.logout();
+
+        props.history.push( '/' );
     }
 
     const getListSettings = () =>
@@ -84,7 +105,7 @@ export default function Settings()
                                 name="record"
                                 value={ id } 
                                 onClick={ onButtonClick }>
-                                { settings.button }
+                                { settings.toggleButton }
                             </button>
                     </li>
                     <li 
@@ -98,7 +119,7 @@ export default function Settings()
                                 name="case_study"
                                 value={ id }
                                 onClick={ onButtonClick }>
-                                { settings.button }
+                                { settings.toggleButton }
                             </button>
                     </li>
                 </ul>
@@ -113,9 +134,18 @@ export default function Settings()
 
     return (
         <div>
-            <h2 className={ htmlClass.header }>{ settings.pageTitle }</h2>
-            <p className={ messageClass }>{ messages.loading }</p>
-            { getListSettings() }
+            <button
+                className={ htmlClass.logoutButton }
+                type="button" 
+                name="logout"
+                onClick={ onLogout }>
+                { settings.logoutButton }
+            </button>
+            <div>
+                <h2 className={ htmlClass.header }>{ settings.pageTitle }</h2>
+                <p className={ messageClass }>{ messages.loading }</p>
+                { getListSettings() }
+            </div>
         </div>
     );
 }

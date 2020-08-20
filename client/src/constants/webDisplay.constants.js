@@ -4,10 +4,21 @@ export const unknownObject = 'Unknown Object';
 
 export const settings =
 {
-    button              : 'Toggle',
+    toggleButton        : 'Toggle',
+    logoutButton        : 'Logout',
     pageTitle           : 'Display Settings',
     recordVisibility    : 'Record Visibility',
     caseStudyVisibility : 'Case Study Visibility'
+};
+
+export const login =
+{
+    usernameLabel : 'Username',
+    passwordLabel : 'Password',
+    username      : 'Enter your username',
+    password      : 'Enter your password',
+    button        : 'Login',
+    validate      : 'Please fill all fields'
 };
 
 export const messages = 
@@ -20,7 +31,8 @@ export const mainPage =
 {
     caseStudyLink : 'Case Study',
     recordLink    : 'Record',
-    title         : 'Material Failures Database'
+    title         : 'Material Failures Database',
+    loginButton   : 'Login'
 };
 
 export const headers =

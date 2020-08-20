@@ -9,7 +9,7 @@ import axios      from 'axios';
 import { Link } from "react-router-dom";
 
 
-export default function Home()
+export default function Home( props )
 {
     // State
     const [links, setLinks]     = useState( [] );
@@ -82,11 +82,25 @@ export default function Home()
         setLinks( links );
     }
 
+    const onLogin = e =>
+    {
+        e.preventDefault();
+
+        props.history.push( '/login' );
+    }
+
     // Return
     const messageClass = `${ htmlClass.visibility[loading] } ${ htmlClass.message }`;
 
     return (
         <div>
+            <button
+                className={ htmlClass.loginButton }
+                type="button" 
+                name="login"
+                onClick={ onLogin }>
+                { mainPage.loginButton }
+            </button>
             <h2 className={ htmlClass.mainHeader }>{ mainPage.title }</h2>
             <p className={ messageClass }>{ messages.loading }</p>
             <ul>

@@ -338,6 +338,13 @@ a, a:visited
     margin-bottom: 15px;
 }
 
+.fa-settings-logout-button, .fa-main-login-button
+{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
 .fa-settings-list
 {
     border-left: 5px solid green;
@@ -345,4 +352,43 @@ a, a:visited
     padding-left: 40px;
     margin-bottom: 40px;
     width: 50%;
+}
+
+.fa-login-wrapper
+{
+    width: 300px;
+    height: 200px;
+    text-align: center;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.fa-login-input-wrapper
+{
+    margin-bottom: 40px;
+}
+
+.fa-login-label
+{
+    margin-right: 10px;
+}
+
+.fa-login-validate
+{
+    margin-top: 20px;
+    padding: 5px;
+    background-color: red;
+    color: white;
+}
+
+.fa-login-message
+{
+    margin-top: 20px;
+    padding: 5px;
+    background-color: black;
+    color: white;
 }

@@ -12,11 +12,8 @@ const app  = express();
 app.use( cors() )
 app.use( helmet() )
 app.use( compression() )
-// app.use( bodyParser.urlencoded( { extended: false } ) )
-// app.use( bodyParser.json() )
-
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+app.use( bodyParser.urlencoded( { extended: true } ) )
+app.use( bodyParser.json() )
 
 // Serve the static files from the React app
 app.use( express.static( path.join( __dirname, 'client/build' ) ) );
@@ -33,11 +30,6 @@ app.use( ( err, req, res, next ) =>
 app.use( ( req, res, next ) =>
 {
     res.status( 404 ).send( 'Response 400: Page Not Found. Hmmmm...' )
-} )
-
-app.post( '/settings', ( req, res ) => 
-{
-    res.status( 200 ).send( req.body );  
 } )
 
 app.get( '*', ( req, res ) =>

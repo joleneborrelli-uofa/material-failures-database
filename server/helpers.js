@@ -1,12 +1,33 @@
 const constants = require( './constants' );
 const isArray   = require( 'lodash/fp/isArray' );
-const cloneDeep = require( 'lodash/fp/cloneDeep' );
+const crypto    = require( 'crypto' );
 
 
-const generateSql = ( tableName, id ) =>
+/**
+ * Generates a password hash. Author: Janith Kasun 
+ *
+ * @param  { String } password  password
+ * @return { String } hash      password hash
+ */
+const getPasswordHash = password => 
+{
+    const sha256 = crypto.createHash( 'sha256' );
+    const hash   = sha256.update( password ).digest( 'base64' );
+    
+    return hash;
+};
+
+/**
+ * Generates an SQL string 
+ *
+ * @param  { String } tablename name of the table
+ * @param  { String } id        object id
+ * @return { String } sql 
+ */
+const generateSql = ( tablename, id ) =>
 {
     return `SELECT * 
-            FROM ${ tableName } 
+            FROM ${ tablename } 
             WHERE object_id = ${ id }`;
 };
 
@@ -248,3 +269,4 @@ exports.generateSql              = generateSql;
 exports.formatByHeader           = formatByHeader;
 exports.formatByPromptVisibility = formatByPromptVisibility;
 exports.formatByValueVisibility  = formatByValueVisibility;
+exports.getPasswordHash          = getPasswordHash;

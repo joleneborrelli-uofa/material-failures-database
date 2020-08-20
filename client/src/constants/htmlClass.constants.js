@@ -21,7 +21,19 @@ export const genericHtmlClass =
     displayItem   : 'fa-display-item',
     displayImage  : 'fa-display-image',
     mainHeader    : 'fa-main-header',
-    message       : 'fa-message'
+    message       : 'fa-message',
+    loginButton   : 'fa-main-login-button'
+};
+
+export const loginHtmlClass =
+{
+    loginWrapper : 'fa-login-wrapper',
+    inputWrapper : 'fa-login-input-wrapper',
+    label        : 'fa-login-label',
+    input        : 'fa-login-input',
+    button       : 'fa-login-button',
+    validate     : 'fa-login-validate',
+    message      : 'fa-login-message'
 };
 
 export const settingsHtmlClass =
@@ -31,7 +43,8 @@ export const settingsHtmlClass =
     value         : 'fa-settings-list-value',
     header        : 'fa-settings-list-header',
     subheader     : 'fa-settings-list-subheader',
-    toggleButton  : 'fa-settings-toggle-button'
+    toggleButton  : 'fa-settings-toggle-button',
+    logoutButton  : 'fa-settings-logout-button'
 };
 
 export const recordHtmlClass = 
@@ -85,13 +98,13 @@ export const caseStudyHtmlClass =
 
     landing   :
     {
-        wrapper    : 'fa-landing-wrapper',
-        page       : 'fa-landing-page',
-        title      : 'fa-landing-title',
-        caseTitle  : 'fa-landing-case-title',
-        caseNumber : 'fa-landing-case-number',
-        status     : 'fa-landing-status',
-        logo       : 'fa-landing-logo'
+        wrapper     : 'fa-landing-wrapper',
+        page        : 'fa-landing-page',
+        title       : 'fa-landing-title',
+        caseTitle   : 'fa-landing-case-title',
+        caseNumber  : 'fa-landing-case-number',
+        status      : 'fa-landing-status',
+        logo        : 'fa-landing-logo'
     },
 
     photoEvidence : 

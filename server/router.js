@@ -15,6 +15,10 @@ router.get( '/settings', routes.settings );
 // display setting
 router.post( '/settings', routes.toggle );
 
+// Login API call, to check the users 
+// credentials 
+router.post( '/login', routes.login );
+
 // Record API call, to get all tables which are
 // necessary to display a record
 router.get( '/record', routes.record );
