@@ -54,7 +54,7 @@ export default function Settings( props )
                 .post( 'api/settings',
                 {
                     fieldString  : `${ fieldName } = '${ toggleValue }'`,
-                    objectString : `object_id = ${ parseInt( id, 10 ) }`
+                    objectString : `object_id = ${ id }`
                 } )
                 .then( () => fetchSettings() )
                 .catch( err => 
