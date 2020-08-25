@@ -164,7 +164,7 @@ const routes =
                 {
                     response.json( 
                     { 
-                        message: `Error in settings table response: ${ error }` 
+                        message: `Error in toggle response: ${ error }` 
                     } )
                 } )
     },
