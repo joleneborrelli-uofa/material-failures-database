@@ -1,37 +1,36 @@
 import React, { useEffect, useState } from 'react';
 import { settings, messages }         from '../constants/webDisplay.constants.js';
 import { createUniqueId }             from '../helpers.js';
-import { settingsHtmlClass as htmlClass, genericHtmlClass } from '../constants/htmlClass.constants.js';
-import axios from 'axios';
-import auth  from '../auth.js';
-
+import fetchSettings                  from './api/fetchSettings.api.js';
+import sendSettings                   from './api/sendSettings.api.js';
+import auth                           from '../auth.js';
+import 
+{ 
+    settingsHtmlClass as htmlClass, 
+    genericHtmlClass 
+} from '../constants/htmlClass.constants.js';
 
 export default function Settings( props )
 {
     // State
-    const [listSettings, setListSettings] = useState( [] );
+    const [list, setList] = useState( [] );
 
     useEffect( () => 
     {
-        fetchSettings();
+        prepareForDisplay();
     }, [] );
 
     // Methods
-    const fetchSettings = async () => 
+    const onLogout = e =>
     {
-        return axios
-            .get( '/api/settings' )
-            .then( res => 
-            {
-                setListSettings( res.data ) 
-            } )
-            .catch( err => 
-            {
-                console.error( `Error getting display list: ${ err }` ) 
-            } )
-    }
+        e.preventDefault();
 
-    const onButtonClick = e =>
+        auth.logout();
+
+        props.history.push( '/' );
+    } 
+
+    const onButtonClick = async ( e ) =>
     {
         e.preventDefault();
 
@@ -43,39 +42,22 @@ export default function Settings( props )
         }
         else
         {
-            const fieldName = e.target.name;
+            const fieldname = e.target.name;
             const id        = e.target.value;
 
-            const object      = listSettings.find( item => item.object_id === parseInt( id, 10 ) );
-            const fieldValue  = object[fieldName];
+            const object      = list.find( item => item.object_id === parseInt( id, 10 ) );
+            const fieldValue  = object[fieldname];
             const toggleValue = fieldValue === 'off' ? 'on' : 'off'; 
 
-            return axios
-                .post( 'api/settings',
-                {
-                    fieldString  : `${ fieldName } = '${ toggleValue }'`,
-                    objectString : `object_id = ${ id }`
-                } )
-                .then( () => fetchSettings() )
-                .catch( err => 
-                {
-                    console.error( `Error posting settings: ${ err }` ) 
-                } )
+            await sendSettings( id, fieldname, toggleValue );
+
+            prepareForDisplay();
         }
     }
 
-    const onLogout = e =>
+    const prepareList = () =>
     {
-        e.preventDefault();
-
-        auth.logout();
-
-        props.history.push( '/' );
-    }
-
-    const getListSettings = () =>
-    {
-        return listSettings.map( item =>
+        return list.map( item =>
         {
             let 
             {
@@ -127,10 +109,18 @@ export default function Settings( props )
         } ); 
     }
 
+    const prepareForDisplay = async () => 
+    {
+        const settingsList = await fetchSettings();
+
+        setList( settingsList );
+    }
+
     // Return
-    const hasListSettings = listSettings.length > 0;
-    const messageStatus   = hasListSettings ? 'off' : 'on';
-    const messageClass    = `${ genericHtmlClass.visibility[messageStatus] } ${ genericHtmlClass.message }`;
+    const hasList       = list.length > 0;
+    const settingsList  = hasList ? prepareList() : [];
+    const messageStatus = hasList ? 'off' : 'on';
+    const messageClass  = `${ genericHtmlClass.visibility[messageStatus] } ${ genericHtmlClass.message }`;
 
     return (
         <div>
@@ -144,7 +134,7 @@ export default function Settings( props )
             <div>
                 <h2 className={ htmlClass.header }>{ settings.pageTitle }</h2>
                 <p className={ messageClass }>{ messages.loading }</p>
-                { getListSettings() }
+                { settingsList }
             </div>
         </div>
     );

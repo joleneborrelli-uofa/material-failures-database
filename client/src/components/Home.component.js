@@ -1,46 +1,26 @@
 import React, { useEffect, useState }    from 'react';
 import { genericHtmlClass as htmlClass } from '../constants/htmlClass.constants.js';
 import { mainPage, messages }            from '../constants/webDisplay.constants.js';
-import { domain } from '../constants/path.constants.js';
-import axios      from 'axios';
-
+import { domain }                        from '../constants/path.constants.js';
+import fetchDisplayItems                 from './api/fetchDisplayItems.api.js';
 
 // React Router
 import { Link } from "react-router-dom";
 
-
 export default function Home( props )
 {
     // State
-    const [links, setLinks]     = useState( [] );
-    const [loading, setLoading] = useState( 'on' );
+    const [displayItems, setDisplayItems] = useState( [] );
 
     useEffect( () => 
     {
-        fetchDisplayItems();
+        prepareForDisplay();
     }, [] );
 
     // Methods
-    const fetchDisplayItems = async () => 
+    const prepareLinks = () =>
     {
-        axios
-            .get( '/api/display' )
-            .then( res => 
-            {
-                prepareLinks( res.data );
-                setLoading( 'off' );
-            } )
-            .catch( err => 
-            {
-                console.error( `Error getting display list: ${ err }` ) 
-            } )
-    }
-
-    const prepareLinks = ( items ) =>
-    {
-        let links;
-
-        links = items.map( ( item, index ) =>
+        return displayItems.map( ( item, index ) =>
         {
             let 
             {
@@ -78,8 +58,13 @@ export default function Home( props )
                 </li>
             );
         } );  
+    }
 
-        setLinks( links );
+    const prepareForDisplay = async () =>
+    {
+        const items = await fetchDisplayItems();
+
+        setDisplayItems( items );
     }
 
     const onLogin = e =>
@@ -90,7 +75,10 @@ export default function Home( props )
     }
 
     // Return
-    const messageClass = `${ htmlClass.visibility[loading] } ${ htmlClass.message }`;
+    const hasDisplayItems = displayItems.length > 0;
+    const messageStatus   = hasDisplayItems ? 'off' : 'on';
+    const links           = hasDisplayItems ? prepareLinks() : [];
+    const messageClass    = `${ htmlClass.visibility[messageStatus] } ${ htmlClass.message }`;
 
     return (
         <div>

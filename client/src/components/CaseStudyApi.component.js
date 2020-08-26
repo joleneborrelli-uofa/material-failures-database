@@ -1,8 +1,11 @@
-import axios                             from 'axios';
 import React, { useEffect, useState }    from 'react';
 import { genericHtmlClass as htmlClass } from '../constants/htmlClass.constants.js';
 import { messages }                      from '../constants/webDisplay.constants.js';
 import CaseStudy                         from './CaseStudy.component.js';
+import fetchDisplayStatus                from './api/fetchDisplayStatus.api.js';
+import fetchPromptVisibility             from './api/fetchPromptVisibility.api.js';
+import fetchFieldVisibility              from './api/fetchFieldVisibility.api.js';
+import fetchStudyData                    from './api/fetchStudyData.api.js';
 
 export default function CaseStudyApi ( props )
 {
@@ -24,66 +27,17 @@ export default function CaseStudyApi ( props )
     }, [] );
 
     // Methods
-    const fetchDisplayStatus = async () =>
-    {
-        return axios
-            .get( '/api/display' )
-            .then( res => res.data.find( item => item.object_id === parseInt( id, 10 ) ) )
-            .catch( err => 
-            {
-                console.error( `Error getting display list: ${ err }` ) 
-            } )
-    }
-
-    const fetchPromptVisibility = async () =>
-    {
-        return axios
-                .get( '/api/visibility/prompt', 
-                { 
-                    params: { id } 
-                } )
-                .then( res => res.data )
-                .catch( err => 
-                {
-                    console.error( `Error getting prompt visibility: ${ err }` ) 
-                } )    	
-    }
-
-    const fetchStudyData = async () =>
-    {
-        let visibleTables = await axios
-                                .get( '/api/visibility/field',
-                                { 
-                                    params: { id } 
-                                } )
-                                .then( res => res.data )
-                                .catch( err => 
-                                {
-                                    console.error( `Error getting field visibility: ${ err }` ) 
-                                } )
-
-        return axios 
-                .get( '/api/study',
-                { 
-                    params: { id, visibleTables } 
-                } ) 
-                .then( res => res.data )
-                .catch( err => 
-                {
-                    console.error( `Error getting case study fields: ${ err }` ) 
-                } )
-    }
-
     const prepareForDisplay = async () =>
     {
-        let displayStatus = await fetchDisplayStatus();
+        let displayStatus = await fetchDisplayStatus( id );
 
         if( displayStatus && displayStatus.case_study === 'on' ) 
         {
-            let visibility = await fetchPromptVisibility();
-            let studyData  = await fetchStudyData();
+            let promptVisibility = await fetchPromptVisibility( id );
+            let fieldVisibility  = await fetchFieldVisibility( id ); 
+            let studyData        = await fetchStudyData( id, fieldVisibility );
 
-            setCaseStudyData( { studyData, visibility } );
+            setCaseStudyData( { studyData, promptVisibility } );
         }
         else
         {
@@ -96,7 +50,7 @@ export default function CaseStudyApi ( props )
     const messageStatus    = hasCaseStudyData ? 'off' : 'on';
     const messageClass     = `${ htmlClass.visibility[messageStatus] } ${ htmlClass.message }`;
     const caseStudyElement = hasCaseStudyData ? ( <CaseStudy 
-                                                        visibility={ caseStudyData.visibility } 
+                                                        visibility={ caseStudyData.promptVisibility } 
                                                         studyData={ caseStudyData.studyData } /> ) : false;
 
     return (

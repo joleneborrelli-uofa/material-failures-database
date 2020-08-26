@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import axios               from 'axios';
 import auth                from '../auth';
+import sendLoginInfo       from './api/sendLoginInfo.api.js';
 import { login }           from '../constants/webDisplay.constants.js';
-import { loginHtmlClass as htmlClass, genericHtmlClass } from '../constants/htmlClass.constants.js';
-
+import 
+{ 
+    loginHtmlClass as htmlClass, 
+    genericHtmlClass 
+} from '../constants/htmlClass.constants.js';
 
 export default function Login( props )
 {
@@ -13,6 +16,23 @@ export default function Login( props )
 
 
     // Methods
+    const prepareLogin = async ( username, password ) =>
+    {
+        const response = await sendLoginInfo( username, password );
+        const message  = response.message ? response.message : '';
+
+        if( message )
+        {
+            setMessage( message );
+        }
+        else
+        {
+            auth.login();
+
+            props.history.push( response.redirectUrl );
+        }
+    }
+
     const validate = e =>
     {
         e.preventDefault();
@@ -25,7 +45,7 @@ export default function Login( props )
 
         if( username && password )
         {
-            sendLoginInfo( username, password ); 
+            prepareLogin( username, password ); 
 
             // If there is a username and password,
             // keep the message off
@@ -36,41 +56,10 @@ export default function Login( props )
         setMessage( '' );
     }
 
-    const sendLoginInfo = ( username, password ) =>
-    {
-        return axios
-            .post( 'api/login', 
-            { 
-                username, 
-                password
-            } )
-            .then( res =>
-            {
-                // If there was a login error, display it
-                let message = res.data.message ? res.data.message : '';
-
-                if( message )
-                {
-                    setMessage( message );
-                }
-                else
-                {
-                    auth.login();
-
-                    props.history.push( res.data.redirectUrl );
-                }
-
-            } )
-            .catch( err => 
-            {
-                console.error( `Error posting login: ${ err }` ) 
-            } )
-    }
-
     const validateVisibility = isValid ? genericHtmlClass.visibility.off : genericHtmlClass.visibility.on;
     const messageVisibility  = message ? genericHtmlClass.visibility.on : genericHtmlClass.visibility.off;
-    const validateClass   = `${ validateVisibility } ${ htmlClass.validate }`;
-    const messageClass    = `${ messageVisibility } ${ htmlClass.message }`;
+    const validateClass      = `${ validateVisibility } ${ htmlClass.validate }`;
+    const messageClass       = `${ messageVisibility } ${ htmlClass.message }`;
 
     // Return
     return( 
