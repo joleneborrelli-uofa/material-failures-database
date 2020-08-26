@@ -57,22 +57,22 @@ const formatByHeader = table =>
 {
     const { headers }   = constants;
     const response      = {};
-    const allTableNames = Object.keys( table );
+    const allTablenames = Object.keys( table );
 
     headers.forEach( header =>
     {
         // Select all tables that contain the header
-        let selectTableNames = allTableNames.filter( tableName => 
-                                    tableName.includes( header ) );
+        let selectTablenames = allTablenames.filter( tablename => 
+                                    tablename.includes( header ) );
 
         // If there are tables that contain the header
-        if( selectTableNames.length > 0 )
+        if( selectTablenames.length > 0 )
         {
             response[header] = {};
 
-            selectTableNames.forEach( tableName =>
+            selectTablenames.forEach( tablename =>
             {
-                let rows = table[tableName];
+                let rows = table[tablename];
 
                 // If the table has entries ie. is not empty
                 if( isArray( rows ) && rows.length > 0 )
@@ -88,7 +88,7 @@ const formatByHeader = table =>
                     }
 
                     // Remove the header prefix and take substring after _.
-                    let field = tableName.replace( header, '' ).substring( 1 );
+                    let field = tablename.replace( header, '' ).substring( 1 );
 
                     // If it is a table with a header prefix
                     if( field )
@@ -210,28 +210,28 @@ const formatByPromptVisibility = table =>
     } = constants;
 
     const response      = {};
-    const allTableNames = Object.keys( table );
+    const allTablenames = Object.keys( table );
 
     headers.forEach( header =>
     {
         // Select all tables that have contain the header
-        let selectTableNames = allTableNames.filter( tableName => 
-                                    tableName.includes( header ) );
+        let selectTablenames = allTablenames.filter( tablename => 
+                                    tablename.includes( header ) );
 
         // If there are tables that contain the header
-        if( selectTableNames.length > 0 )
+        if( selectTablenames.length > 0 )
         {
             response[header] = {};
 
             // Loop over each selected table
-            selectTableNames.forEach( tableName =>
+            selectTablenames.forEach( tablename =>
             {
                 // Remove the header prefix and take the substring after _
-                let field = tableName.replace( header, '' ).substring( 1 );
+                let field = tablename.replace( header, '' ).substring( 1 );
 
                 if( field && !excludedColumns.includes( field ) )
                 {
-                    response[header][field] = table[tableName]; 
+                    response[header][field] = table[tablename]; 
                 }
             } )
         }

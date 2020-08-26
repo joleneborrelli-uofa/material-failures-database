@@ -26,10 +26,10 @@ const routes =
         {
             for( let i = 0; i < tables.length; i++ )
             {
-                let tableName = tables[i];
-                let sql = generateSql( tableName, request.query.id );
+                let tablename = tables[i];
+                let sql = generateSql( tablename, request.query.id );
 
-                recordTables[tableName] = await all( sql, tableName );
+                recordTables[tablename] = await all( sql, tablename );
             }
 
             // Add object table
@@ -73,16 +73,16 @@ const routes =
         {
             for( let i = 0; i < tables.length; i++ )
             {
-                let tableName = tables[i];
-                let sql = generateSql( tableName, request.query.id );
+                let tablename = tables[i];
+                let sql = generateSql( tablename, request.query.id );
 
-                caseStudyTables[tableName] = await all( sql, tableName );
+                caseStudyTables[tablename] = await all( sql, tablename );
             }
 
             // Add object table
             sql = generateSql( 'object', request.query.id );
 
-            caseStudyTables.object = await get( sql, 'object' );            
+            caseStudyTables.object = await get( sql, 'object' ); 
 
             caseStudyTables = formatByHeader( caseStudyTables );
         }

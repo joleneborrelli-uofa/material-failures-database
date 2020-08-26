@@ -8,13 +8,11 @@ const openDatabase = async ( mode ) =>
 
 	return new Promise( ( resolve, reject ) =>
     {
-        database = new sqlite3.Database( dbPath, sqlite3[mode], ( err ) => 
+        database = new sqlite3.Database( dbPath, sqlite3[mode], ( error ) => 
         {
-            if ( err ) 
+            if ( error ) 
             {
-                console.log( err.message )
-
-                reject( err );
+                reject( new Error( `Error connecting to the database: ${ error }` ) );
             } 
             else 
             {
@@ -28,13 +26,13 @@ const openDatabase = async ( mode ) =>
 };
 
 /**
- * Executes a get query, where all rows are returned
+ * Executes an all query, where all rows are returned
  *
  * @param  { String } sql       query string
- * @param  { String } tableName table name
+ * @param  { String } tablename table name
  * @return { Promise } 
  */
-const all = async ( sql, tableName ) => 
+const all = async ( sql, tablename ) => 
 {
     try
     {
@@ -48,7 +46,7 @@ const all = async ( sql, tableName ) =>
                 {
                     if ( error ) 
                     {
-                        reject( new Error( `Error in get from ${ tableName } table: ${ error }` ) );
+                        reject( new Error( `Error in get from ${ tablename } table: ${ error }` ) );
                     } 
                     else
                     {
@@ -70,7 +68,7 @@ const all = async ( sql, tableName ) =>
                     }
                     else
                     {
-                        console.log( `Disconnected from material failures database after all in ${ tableName }` )
+                        console.log( `Disconnected from material failures database after all in ${ tablename }` )
 
                         resolve();
                     }                    
@@ -93,10 +91,10 @@ const all = async ( sql, tableName ) =>
  * Executes a get query, where the first row is returned
  *
  * @param  { String } sql       query string
- * @param  { String } tableName table name
+ * @param  { String } tablename table name
  * @return { Promise } 
  */
-const get = async ( sql, tableName ) => 
+const get = async ( sql, tablename ) => 
  {
     try
     {
@@ -110,7 +108,7 @@ const get = async ( sql, tableName ) =>
                 {
                     if ( error ) 
                     {
-                        reject( new Error( `Error in get from ${ tableName } table: ${ error }` ) );
+                        reject( new Error( `Error in get from ${ tablename } table: ${ error }` ) );
                     } 
                     else
                     {
@@ -132,7 +130,7 @@ const get = async ( sql, tableName ) =>
                     }
                     else
                     {
-                        console.log( `Disconnected from material failures database after get in ${ tableName }` )
+                        console.log( `Disconnected from material failures database after get in ${ tablename }` )
 
                         resolve();
                     }                    
@@ -155,11 +153,11 @@ const get = async ( sql, tableName ) =>
  * Executes an update query, where the first row is returned
  *
  * @param  { String } sql       query string
- * @param  { String } tableName table name
+ * @param  { String } tablename table name
  * @param  {}
  * @return { Promise } 
  */
-const update = async ( sql, tableName ) =>
+const update = async ( sql, tablename ) =>
 {
     try
     {
@@ -173,7 +171,7 @@ const update = async ( sql, tableName ) =>
                 {
                     if ( error ) 
                     {
-                        reject( new Error( `Error in update in ${ tableName } table : ${ error }` ) );
+                        reject( new Error( `Error in update in ${ tablename } table : ${ error }` ) );
                     } 
                     else
                     {
@@ -195,7 +193,7 @@ const update = async ( sql, tableName ) =>
                     }
                     else
                     {
-                        console.log( `Disconnected from material failures database after run in ${ tableName }` )
+                        console.log( `Disconnected from material failures database after run in ${ tablename }` )
 
                         resolve();
                     }                    
