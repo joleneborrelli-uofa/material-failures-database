@@ -1,8 +1,7 @@
 import axios from 'axios';
 
 /**
- * Fetches the display status (i.e. 'on' or 'off') 
- * of an object 
+ * Fetches the display data of an object 
  *
  * @param  { Integer } id
  * @return { Object Literal } 

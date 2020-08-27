@@ -1,9 +1,7 @@
 import axios from 'axios';
 
-
 /**
- * Fetches the display status (i.e. 'on' or 'off') 
- * of an object 
+ * Sends the settings data for updating
  *
  * @param { Integer } id
  * @param { String } fieldname
@@ -12,7 +10,7 @@ import axios from 'axios';
 const sendSettings = async ( id, fieldname, toggleValue ) =>
 {
     return axios
-	       .post( 'api/settings',
+	       .post( '/api/settings',
 	       {
 	           fieldString  : `${ fieldname } = '${ toggleValue }'`,
 	           objectString : `object_id = ${ id }`

@@ -10,7 +10,7 @@ import axios from 'axios';
 const sendLoginInfo = async ( username, password ) =>
 {
     return axios
-           .post( 'api/login', 
+           .post( '/api/login', 
             { 
                 username, 
                 password
