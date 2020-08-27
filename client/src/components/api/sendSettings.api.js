@@ -17,9 +17,9 @@ const sendSettings = async ( id, fieldname, toggleValue ) =>
 	           fieldString  : `${ fieldname } = '${ toggleValue }'`,
 	           objectString : `object_id = ${ id }`
 	       } )
-	       .catch( err => 
+	       .catch( error => 
 	       {
-	           console.error( `Error posting settings: ${ err }` ) 
+	           throw new Error( `sendSettings ${ error.response.data }` ); 
 	       } )
 }
 

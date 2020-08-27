@@ -11,6 +11,7 @@ export default function Home( props )
 {
     // State
     const [displayItems, setDisplayItems] = useState( [] );
+    const [message, setMessage]           = useState( messages.loading );
 
     useEffect( () => 
     {
@@ -62,9 +63,18 @@ export default function Home( props )
 
     const prepareForDisplay = async () =>
     {
-        const items = await fetchDisplayItems();
+        try
+        {
+            const items = await fetchDisplayItems();
 
-        setDisplayItems( items );
+            setDisplayItems( items );
+        }
+        catch( error )
+        {
+            console.error( error );
+
+            setMessage( messages.error.api );
+        }
     }
 
     const onLogin = e =>
@@ -90,7 +100,7 @@ export default function Home( props )
                 { mainPage.loginButton }
             </button>
             <h2 className={ htmlClass.mainHeader }>{ mainPage.title }</h2>
-            <p className={ messageClass }>{ messages.loading }</p>
+            <p className={ messageClass }>{ message }</p>
             <ul>
                 { links }
             </ul>

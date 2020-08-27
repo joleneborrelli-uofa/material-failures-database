@@ -15,9 +15,9 @@ const fetchFieldVisibility = async ( id ) =>
                 params: { id } 
             } )
             .then( res => res.data )
-            .catch( err => 
+            .catch( error => 
             {
-                console.error( `Error getting field visibility: ${ err }` ) 
+                throw new Error( `fetchFieldVisibility ${ error.response.data }` );
             } )
 }
 

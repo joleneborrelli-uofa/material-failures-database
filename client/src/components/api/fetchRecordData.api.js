@@ -15,9 +15,9 @@ const fetchRecordData = async ( id ) =>
             params: { id } 
         } ) 
         .then( res => res.data )
-        .catch( err => 
+        .catch( error => 
         {
-            console.error( `Error getting record fields: ${ err }` ) 
+            throw new Error( `fetchRecordData ${ error.response.data }` );
         } )
 }
 

@@ -17,9 +17,9 @@ const fetchStudyData = async ( id, visibleTables ) =>
                 params: { id, visibleTables } 
             } ) 
             .then( res => res.data )
-            .catch( err => 
+            .catch( error => 
             {
-                console.error( `Error getting case study fields: ${ err }` ) 
+                throw new Error( `fetchStudyData ${ error.response.data }` );
             } )
 }
 

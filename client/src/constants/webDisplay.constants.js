@@ -17,14 +17,19 @@ export const login =
     passwordLabel : 'Password',
     username      : 'Enter your username',
     password      : 'Enter your password',
-    button        : 'Login',
-    validate      : 'Please fill all fields'
+    button        : 'Login'
 };
 
 export const messages = 
 {
     loading    : 'Loading. Please wait...',
-    restricted : 'Sorry, this page cannot be displayed'
+    restricted : 'Sorry, this page cannot be displayed',
+    empty      : 'Please fill all fields',
+    error :
+    {
+        api   : 'API error. Please contact jnychka@ualberta.ca',
+        login : 'Login error. Please contact jnychka@ualberta.ca'
+    }
 };
 
 export const mainPage =

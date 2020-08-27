@@ -16,9 +16,9 @@ const sendLoginInfo = async ( username, password ) =>
                 password
             } )
             .then( res => res.data )
-            .catch( err => 
+            .catch( error => 
             {
-                console.error( `Error posting login: ${ err }` ) 
+               throw new Error( `sendLoginInfo ${ error.response.data }` ); 
             } )
 }
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import auth                from '../auth';
 import sendLoginInfo       from './api/sendLoginInfo.api.js';
-import { login }           from '../constants/webDisplay.constants.js';
+import { login, messages } from '../constants/webDisplay.constants.js';
 import 
 { 
     loginHtmlClass as htmlClass, 
@@ -11,34 +11,40 @@ import
 export default function Login( props )
 {
     // State
-    const [isValid, setValidity] = useState( true );
-    const [message, setMessage]  = useState( '' );
+    const [message, setMessage] = useState( '' );
 
 
     // Methods
     const prepareLogin = async ( username, password ) =>
     {
-        const response = await sendLoginInfo( username, password );
-        const message  = response.message ? response.message : '';
-
-        if( message )
+        try
         {
-            setMessage( message );
-        }
-        else
-        {
-            auth.login();
+            const response = await sendLoginInfo( username, password );
+            const message  = response.message ? response.message : '';
 
-            props.history.push( response.redirectUrl );
+            if( message )
+            {
+                setMessage( message );
+            }
+            else
+            {
+                auth.login();
+
+                props.history.push( response.redirectUrl );
+            }
         }
+        catch( error )
+        {
+            console.error( error );
+
+            setMessage( messages.error.login );
+        }
+
     }
 
     const validate = e =>
     {
         e.preventDefault();
-
-        // Assume it is invalid
-        let validity = false;
 
         const username = e.target[0].value.trim();
         const password = e.target[1].value.trim();
@@ -46,20 +52,15 @@ export default function Login( props )
         if( username && password )
         {
             prepareLogin( username, password ); 
-
-            // If there is a username and password,
-            // keep the message off
-            validity = true; 
         }
-
-        setValidity( validity );
-        setMessage( '' );
+        else
+        {
+            setMessage( messages.empty )
+        }
     }
 
-    const validateVisibility = isValid ? genericHtmlClass.visibility.off : genericHtmlClass.visibility.on;
-    const messageVisibility  = message ? genericHtmlClass.visibility.on : genericHtmlClass.visibility.off;
-    const validateClass      = `${ validateVisibility } ${ htmlClass.validate }`;
-    const messageClass       = `${ messageVisibility } ${ htmlClass.message }`;
+    const messageVisibility = message ? genericHtmlClass.visibility.on : genericHtmlClass.visibility.off;
+    const messageClass      = `${ messageVisibility } ${ htmlClass.message }`;
 
     // Return
     return( 
@@ -92,9 +93,6 @@ export default function Login( props )
                         className={ htmlClass.button }>
                         { login.button }
                     </button>
-                <div className={ validateClass }>
-                    { login.validate }
-                </div>
                 <div className={ messageClass }>
                     { message }
                 </div>

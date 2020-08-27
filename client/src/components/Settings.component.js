@@ -13,7 +13,8 @@ import
 export default function Settings( props )
 {
     // State
-    const [list, setList] = useState( [] );
+    const [list, setList]       = useState( [] );
+    const [message, setMessage] = useState( messages.loading );
 
     useEffect( () => 
     {
@@ -30,7 +31,7 @@ export default function Settings( props )
         props.history.push( '/' );
     } 
 
-    const onButtonClick = async ( e ) =>
+    const onButtonClick = e =>
     {
         e.preventDefault();
 
@@ -49,9 +50,7 @@ export default function Settings( props )
             const fieldValue  = object[fieldname];
             const toggleValue = fieldValue === 'off' ? 'on' : 'off'; 
 
-            await sendSettings( id, fieldname, toggleValue );
-
-            prepareForDisplay();
+            updateForDisplay( id, fieldname, toggleValue );
         }
     }
 
@@ -111,15 +110,44 @@ export default function Settings( props )
 
     const prepareForDisplay = async () => 
     {
-        const settingsList = await fetchSettings();
+        try
+        {
+            const settingsList = await fetchSettings();
 
-        setList( settingsList );
+            setList( settingsList );            
+        }
+        catch( error )
+        {
+            console.error( error );
+
+            setMessage( messages.error.api );
+        }
+    }
+
+    const updateForDisplay = async ( id, fieldname, toggleValue ) =>
+    {
+        let settingsList = [];
+
+        try
+        {
+            await sendSettings( id, fieldname, toggleValue );
+
+            settingsList = await fetchSettings();          
+        }
+        catch( error )
+        {
+            console.error( error );
+
+            setMessage( messages.error.api );
+        }
+        finally
+        {
+            setList( settingsList );        
+        }  
     }
 
     // Return
-    const hasList       = list.length > 0;
-    const settingsList  = hasList ? prepareList() : [];
-    const messageStatus = hasList ? 'off' : 'on';
+    const messageStatus = list.length > 0 ? 'off' : 'on';
     const messageClass  = `${ genericHtmlClass.visibility[messageStatus] } ${ genericHtmlClass.message }`;
 
     return (
@@ -133,8 +161,8 @@ export default function Settings( props )
             </button>
             <div>
                 <h2 className={ htmlClass.header }>{ settings.pageTitle }</h2>
-                <p className={ messageClass }>{ messages.loading }</p>
-                { settingsList }
+                <p className={ messageClass }>{ message }</p>
+                { prepareList() }
             </div>
         </div>
     );

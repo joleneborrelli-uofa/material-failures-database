@@ -10,9 +10,9 @@ const fetchDisplayItems = async () =>
     return axios
             .get( '/api/display' )
             .then( res => res.data )
-            .catch( err => 
+            .catch( error => 
             {
-                console.error( `Error getting display list: ${ err }` ) 
+                throw new Error( `fetchDisplayItems ${ error.response.data }` );
             } )
 }
 

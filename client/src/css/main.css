@@ -320,6 +320,7 @@ a, a:visited
 {
     margin: auto;
     text-align: center;
+    white-space: pre-wrap;
 }
 
 .fa-settings-list-value
@@ -375,14 +376,6 @@ a, a:visited
 .fa-login-label
 {
     margin-right: 10px;
-}
-
-.fa-login-validate
-{
-    margin-top: 20px;
-    padding: 5px;
-    background-color: red;
-    color: white;
 }
 
 .fa-login-message

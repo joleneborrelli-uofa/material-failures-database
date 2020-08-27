@@ -11,15 +11,10 @@ export default function CaseStudyApi ( props )
 {
     // Props
     const { id } = props;
-    const 
-    {
-        loading,
-        restricted
-    } = messages;
 
     // State
     const [caseStudyData, setCaseStudyData] = useState( {} );
-    const [message, setMessage]             = useState( loading );
+    const [message, setMessage]             = useState( messages.loading );
 
     useEffect( () =>
     {
@@ -29,19 +24,28 @@ export default function CaseStudyApi ( props )
     // Methods
     const prepareForDisplay = async () =>
     {
-        let displayStatus = await fetchDisplayStatus( id );
-
-        if( displayStatus && displayStatus.case_study === 'on' ) 
+        try
         {
-            let promptVisibility = await fetchPromptVisibility( id );
-            let fieldVisibility  = await fetchFieldVisibility( id ); 
-            let studyData        = await fetchStudyData( id, fieldVisibility );
+            let displayStatus = await fetchDisplayStatus( id );
 
-            setCaseStudyData( { studyData, promptVisibility } );
+            if( displayStatus && displayStatus.case_study === 'on' ) 
+            {
+                let promptVisibility = await fetchPromptVisibility( id );
+                let fieldVisibility  = await fetchFieldVisibility( id ); 
+                let studyData        = await fetchStudyData( id, fieldVisibility );
+
+                setCaseStudyData( { studyData, promptVisibility } );
+            }
+            else
+            {
+                setMessage( message.restricted );
+            }           
         }
-        else
+        catch( error )
         {
-            setMessage( restricted );
+            console.error( error );
+
+            setMessage( messages.error.api );
         }
     }
 

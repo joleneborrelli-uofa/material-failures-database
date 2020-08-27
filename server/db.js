@@ -12,7 +12,7 @@ const openDatabase = async ( mode ) =>
         {
             if ( error ) 
             {
-                reject( new Error( `Error connecting to the database: ${ error }` ) );
+                reject( `error connecting to the database: ${ error }` );
             } 
             else 
             {
@@ -34,57 +34,50 @@ const openDatabase = async ( mode ) =>
  */
 const all = async ( sql, tablename ) => 
 {
-    try
-    {
-        let database = await openDatabase( 'OPEN_READONLY' );
+    let database = await openDatabase( 'OPEN_READONLY' );
 
-        let callDatabaseAll = () => 
+    let callDatabaseAll = () => 
+    {
+        return new Promise( ( resolve, reject ) => 
         {
-            return new Promise( ( resolve, reject ) => 
-            {
-                database.all( sql, ( error, result ) =>
+            database.all( sql, ( error, result ) =>
+            {                
+                if ( error ) 
                 {
-                    if ( error ) 
-                    {
-                        reject( new Error( `Error in get from ${ tablename } table: ${ error }` ) );
-                    } 
-                    else
-                    {
-                       resolve( result );
-                    }
-                } );
+                    reject( `in 'database.all' during query in ${ tablename } table: ${ error }` );
+                } 
+                else
+                {
+                   resolve( result );
+                }
             } );
-        };
+        } );
+    };
 
-        let closeDatabase = () =>
-        {
-            return new Promise( ( resolve, reject ) =>
-            {
-                database.close( ( error ) => 
-                {
-                    if ( error ) 
-                    {
-                        reject( new Error( `Error in all database close: ${ error }` ) );
-                    }
-                    else
-                    {
-                        console.log( `Disconnected from material failures database after all in ${ tablename }` )
-
-                        resolve();
-                    }                    
-                } );
-            } )
-        };
-
-        let databaseAll = await callDatabaseAll();
-        let close       = await closeDatabase();
-
-        return databaseAll;
-    }
-    catch ( error )
+    let closeDatabase = () =>
     {
-        console.log( error.message );
-    }
+        return new Promise( ( resolve, reject ) =>
+        {
+            database.close( ( error ) => 
+            {
+                if ( error ) 
+                {
+                    reject( `in all 'database.close': ${ error }` );
+                }
+                else
+                {
+                    console.log( `Disconnected from material failures database after 'database.all' in ${ tablename }` )
+
+                    resolve();
+                }                    
+            } );
+        } )
+    };
+
+    let databaseAll = await callDatabaseAll();
+    let close       = await closeDatabase();
+
+    return databaseAll;
 };
 
 /**
@@ -96,57 +89,50 @@ const all = async ( sql, tablename ) =>
  */
 const get = async ( sql, tablename ) => 
  {
-    try
-    {
-        let database = await openDatabase( 'OPEN_READONLY' );
+    let database = await openDatabase( 'OPEN_READONLY' );
 
-        let callDatabaseGet = () => 
+    let callDatabaseGet = () => 
+    {
+        return new Promise( ( resolve, reject ) => 
         {
-            return new Promise( ( resolve, reject ) => 
+            database.get( sql, ( error, result ) =>
             {
-                database.get( sql, ( error, result ) =>
+                if ( error ) 
                 {
-                    if ( error ) 
-                    {
-                        reject( new Error( `Error in get from ${ tablename } table: ${ error }` ) );
-                    } 
-                    else
-                    {
-                       resolve( result );
-                    }
-                } );
+                    reject( `in 'database.get' during query in ${ tablename } table: ${ error }` );
+                } 
+                else
+                {
+                   resolve( result );
+                }
             } );
-        };
+        } );
+    };
 
-        let closeDatabase = () =>
-        {
-            return new Promise( ( resolve, reject ) =>
-            {
-                database.close( ( error ) => 
-                {
-                    if ( error ) 
-                    {
-                        reject( new Error( `Error in all database close: ${ error }` ) );
-                    }
-                    else
-                    {
-                        console.log( `Disconnected from material failures database after get in ${ tablename }` )
-
-                        resolve();
-                    }                    
-                } );
-            } )
-        };
-
-        let databaseGet = await callDatabaseGet();
-        let close       = await closeDatabase();
-
-        return databaseGet;
-    }
-    catch ( error )
+    let closeDatabase = () =>
     {
-        console.log( error.message );
-    }
+        return new Promise( ( resolve, reject ) =>
+        {
+            database.close( ( error ) => 
+            {
+                if ( error ) 
+                {
+                    reject( `in get 'database.close': ${ error }` );
+                }
+                else
+                {
+                    console.log( `Disconnected from material failures database after 'database.get' in ${ tablename }` )
+
+                    resolve();
+                }                    
+            } );
+        } )
+    };
+
+    let databaseGet = await callDatabaseGet();
+    let close       = await closeDatabase();
+
+    return databaseGet;
 };
 
 /**
@@ -159,57 +145,50 @@ const get = async ( sql, tablename ) =>
  */
 const update = async ( sql, tablename ) =>
 {
-    try
+    let database = await openDatabase( 'OPEN_READWRITE' );
+
+    let callDatabaseRun = () => 
     {
-        let database = await openDatabase( 'OPEN_READWRITE' );
-
-        let callDatabaseRun = () => 
-        {
-            return new Promise( ( resolve, reject ) => 
-            { 
-                database.run( sql, ( error ) =>
-                {
-                    if ( error ) 
-                    {
-                        reject( new Error( `Error in update in ${ tablename } table : ${ error }` ) );
-                    } 
-                    else
-                    {
-                        resolve();
-                    }
-                } );
-            } )
-        };
-
-        let closeDatabase = () =>
-        {
-            return new Promise( ( resolve, reject ) =>
+        return new Promise( ( resolve, reject ) => 
+        { 
+            database.run( sql, ( error ) =>
             {
-                database.close( ( error ) => 
+                if ( error ) 
                 {
-                    if ( error ) 
-                    {
-                        reject( new Error( `Error in all database close: ${ error }` ) );
-                    }
-                    else
-                    {
-                        console.log( `Disconnected from material failures database after run in ${ tablename }` )
+                    reject( `in 'database.update' during query in ${ tablename } table : ${ error }` );
+                } 
+                else
+                {
+                    resolve();
+                }
+            } );
+        } )
+    };
 
-                        resolve();
-                    }                    
-                } );
-            } )
-        };
-
-        let databaseRun = await callDatabaseRun();
-        let close       = await closeDatabase();
-
-        return;
-    }
-    catch ( error )
+    let closeDatabase = () =>
     {
-        console.log( error.message );
-    }  
+        return new Promise( ( resolve, reject ) =>
+        {
+            database.close( ( error ) => 
+            {
+                if ( error ) 
+                {
+                    reject( `in update 'database.close': ${ error }` );
+                }
+                else
+                {
+                    console.log( `Disconnected from material failures database after 'database.run' in ${ tablename }` )
+
+                    resolve();
+                }                    
+            } );
+        } )
+    };
+
+    let databaseRun = await callDatabaseRun();
+    let close       = await closeDatabase();
+
+    return;
 };
 
 exports.all    = all;

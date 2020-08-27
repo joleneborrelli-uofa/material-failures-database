@@ -12,9 +12,9 @@ const fetchDisplayStatus = async ( id ) =>
     return axios
         .get( '/api/display' )
         .then( res => res.data.find( item => item.object_id === parseInt( id, 10 ) ) )
-        .catch( err => 
+        .catch( error => 
         {
-            console.error( `Error getting display list: ${ err }` ) 
+            throw new Error( `fetchDisplayStatus ${ error.response.data }` );
         } )
 }
 

@@ -38,17 +38,17 @@ const routes =
             recordTables.object = await get( sql, 'object' );            
 
             recordTables = helpers.formatByHeader( recordTables );
+
+            response.json( recordTables );
         }
         catch( error )
         {
-            response.json( 
-            { 
-                message: `Error in record tables response: ${ error }` 
-            } )
+            const message = `GET /api/record error, ${ error }`;
+
+            console.log( message );
+            
+            response.status( 400 ).json( message );
         }
-
-        response.json( recordTables );
-
     },
 
     // Study route
@@ -85,16 +85,17 @@ const routes =
             caseStudyTables.object = await get( sql, 'object' ); 
 
             caseStudyTables = formatByHeader( caseStudyTables );
+
+            response.json( caseStudyTables );
         }
         catch( error )
         {
-            response.json( 
-            { 
-                message: `Error in case study tables response: ${ error }` 
-            } )
-        }
+            const message = `GET /api/study error, ${ error }`;
 
-        response.json( caseStudyTables );
+            console.log( message );
+            
+            response.status( 400 ).json( message );
+        }
     },
 
     // Display route
@@ -113,10 +114,11 @@ const routes =
                 } )
                 .catch( error => 
                 {
-                    response.json( 
-                    { 
-                        message: `Error in display table response: ${ error }` 
-                    } )
+                    const message = `GET /api/display error, ${ error }`;
+
+                    console.log( message );
+                    
+                    response.status( 400 ).json( message );
                 } )
     },
 
@@ -138,10 +140,11 @@ const routes =
                 } )
                 .catch( error => 
                 {
-                    response.json( 
-                    { 
-                        message: `Error in settings response: ${ error }` 
-                    } )
+                    const message = `GET /api/settings error, ${ error }`;
+
+                    console.log( message );
+                    
+                    response.status( 400 ).json( message );
                 } )
     },
 
@@ -162,10 +165,11 @@ const routes =
                 } )
                 .catch( error => 
                 {
-                    response.json( 
-                    { 
-                        message: `Error in toggle response: ${ error }` 
-                    } )
+                    const message = `POST /api/display error, ${ error }`;
+
+                    console.log( message );
+                    
+                    response.status( 400 ).json( message );
                 } )
     },
 
@@ -179,21 +183,32 @@ const routes =
                      FROM settings
                      WHERE username = '${ username }'`;
 
-        const row = await get( sql, 'login' ); 
-
-        if( row && row.username && row.password )
+        try
         {
-            const hash = helpers.getPasswordHash( password );
+            const row = await get( sql, 'login' ); 
 
-            if( hash === row.password )
+            if( row && row.username && row.password )
             {
-                return response.json( { redirectUrl: '/settings' } );
-            }
-            
-            return response.json( { message : 'Incorrect password' } );
-        }
+                const hash = helpers.getPasswordHash( password );
 
-        response.json( { message : 'Incorrect username or password' } ); 
+                if( hash === row.password )
+                {
+                    return response.json( { redirectUrl: '/settings' } );
+                }
+                
+                return response.json( { message : 'Incorrect password' } );
+            }
+
+            response.json( { message : 'Incorrect username or password' } ); 
+        }
+        catch( error )
+        {
+            const message = `GET /api/login error, ${ error }`;
+
+            console.log( message );
+            
+            return response.status( 400 ).json( message );
+        }
     },
 
     // Visibility routes
@@ -217,10 +232,11 @@ const routes =
                     } )
                     .catch( error => 
                     {
-                        response.json( 
-                        { 
-                            message: `Error in prompt visibility table response: ${ error }` 
-                        } )
+                        const message = `GET /api/visibility/prompt error, ${ error }`;
+
+                        console.log( message );
+                        
+                        response.status( 400 ).json( message );
                     } )
         },
 
@@ -242,10 +258,11 @@ const routes =
                     } )
                     .catch( error => 
                     {
-                        response.json( 
-                        { 
-                            message: `Error in field visibility table response: ${ error }` 
-                        } )
+                        const message = `GET /api/visibility/field error, ${ error }`;
+
+                        console.log( message );
+                        
+                        response.status( 400 ).json( message );
                     } )
         }
     }

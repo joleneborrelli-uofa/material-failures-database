@@ -9,15 +9,10 @@ export default function RecordApi ( props )
 {
     // Props
     const { id } = props;
-    const 
-    {
-        loading,
-        restricted
-    } = messages;
 
     // State
     const [recordData, setRecordData] = useState( {} );
-    const [message, setMessage]       = useState( loading );
+    const [message, setMessage]       = useState( messages.loading );
 
     useEffect( () =>
     {
@@ -27,17 +22,26 @@ export default function RecordApi ( props )
     // Methods
     const prepareForDisplay = async () =>
     {
-        const displayStatus = await fetchDisplayStatus( id );
-
-        if( displayStatus && displayStatus.record === 'on' ) 
+        try
         {
-            const data = await fetchRecordData( id );
+            const displayStatus = await fetchDisplayStatus( id );
 
-            setRecordData( data );
+            if( displayStatus && displayStatus.record === 'on' ) 
+            {
+                const data = await fetchRecordData( id );
+
+                setRecordData( data );
+            }
+            else
+            {
+                setMessage( messages.restricted );
+            }
         }
-        else
+        catch( error )
         {
-            setMessage( restricted );
+            console.error( error );
+
+            setMessage( messages.error.api );
         }
     }
 

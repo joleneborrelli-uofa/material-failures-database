@@ -15,9 +15,9 @@ const fetchPromptVisibility = async ( id ) =>
                 params: { id } 
             } )
             .then( res => res.data )
-            .catch( err => 
+            .catch( error => 
             {
-                console.error( `Error getting prompt visibility: ${ err }` ) 
+                throw new Error( `fetchPromptVisibility ${ error.response.data }` ); 
             } ) 
 }
 
