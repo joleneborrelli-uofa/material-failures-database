@@ -21,13 +21,13 @@ it( 'fetches the study data for an object from the API', async () =>
         params : 
         { 
             id : '5' ,
-            visibleTables : ['feature']
+            visibleTables : ['object_feature']
         } 
     };
 
     axios.get.mockResolvedValue( studyData );
 
-    await expect( fetchStudyData( '5', ['feature'] ) ).resolves.toEqual( studyData.data );
+    await expect( fetchStudyData( '5', ['object_feature'] ) ).resolves.toEqual( studyData.data );
 
     expect( axios.get ).toHaveBeenCalledWith( '/api/study', params );
 } );

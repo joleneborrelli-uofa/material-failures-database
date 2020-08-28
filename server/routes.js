@@ -18,16 +18,15 @@ const routes =
             formatByHeader 
         } = helpers;
 
-        let recordTables = {};
+        let sql, recordTables = {};
 
-        const { defaultRecordTables : tables } = constants;
-
+        const { defaultRecordTables : tables } = constants  
         try
         {
             for( let i = 0; i < tables.length; i++ )
             {
                 let tablename = tables[i];
-                let sql = generateSql( tablename, request.query.id );
+                sql = generateSql( tablename, request.query.id );
 
                 recordTables[tablename] = await all( sql, tablename );
             }
@@ -35,7 +34,7 @@ const routes =
             // Add object table
             sql = generateSql( 'object', request.query.id );
 
-            recordTables.object = await get( sql, 'object' );            
+            recordTables.object = await get( sql, 'object' ); 
 
             recordTables = helpers.formatByHeader( recordTables );
 
@@ -60,7 +59,8 @@ const routes =
             formatByHeader
         } = helpers;
 
-        let caseStudyTables = {};
+        let sql, caseStudyTables = {};
+
         const visibleTables = request.query.visibleTables || [];
 
         const tables = 
@@ -74,7 +74,7 @@ const routes =
             for( let i = 0; i < tables.length; i++ )
             {
                 let tablename = tables[i];
-                let sql = generateSql( tablename, request.query.id );
+                sql = generateSql( tablename, request.query.id );
 
                 caseStudyTables[tablename] = await all( sql, tablename );
             }
@@ -165,7 +165,7 @@ const routes =
                 } )
                 .catch( error => 
                 {
-                    const message = `POST /api/display error, ${ error }`;
+                    const message = `POST /api/settings error, ${ error }`;
 
                     console.log( message );
                     
@@ -183,7 +183,7 @@ const routes =
                      FROM settings
                      WHERE username = '${ username }'`;
 
-        try
+        try 
         {
             const row = await get( sql, 'login' ); 
 
@@ -203,7 +203,7 @@ const routes =
         }
         catch( error )
         {
-            const message = `GET /api/login error, ${ error }`;
+            const message = `POST /api/login error, ${ error }`;
 
             console.log( message );
             
