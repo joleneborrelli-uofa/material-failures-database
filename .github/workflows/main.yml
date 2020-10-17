@@ -28,8 +28,10 @@ jobs:
     - run: npm run build --if-present
     - run: npm test
   testing:
-    - run: cd ./client
+    - name: client tests
+    - working-directory: ./client
     - run: npm run test a
-    - run: cd ../server
+    - name: server tests
+    - working-directory: ./server
     - run: npm run test
     
