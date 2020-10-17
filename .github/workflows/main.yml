@@ -44,7 +44,8 @@ jobs:
   server_tests:
     runs-on: ubuntu-latest
     name: server tests
-    working-directory: ./server
     steps:
+      - name: Running unit test
+      working-directory: ./server
       - run: npm run test
     
