@@ -45,8 +45,9 @@ jobs:
     runs-on: ubuntu-latest
     name: server tests
     steps:
-      - name: Running unit test
+      - name: Switch directory
         run: |
           cd ./server
+      - name: run test  
         run: npm run test
     
