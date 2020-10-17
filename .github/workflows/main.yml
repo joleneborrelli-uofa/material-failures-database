@@ -46,6 +46,6 @@ jobs:
     name: server tests
     steps:
       - name: Running unit test
-      working-directory: ./server
-      - run: npm run test
+        working-directory: ./server
+        run: npm run test
     
