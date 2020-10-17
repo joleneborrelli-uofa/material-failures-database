@@ -42,8 +42,8 @@ jobs:
     steps:
       - name: print current directory
         run: pwd
-      - name: Switch directory
-        run: cd ./server
+      - name: print contents
+        run: ls
       - name: run test  
         run: npm run test
     
