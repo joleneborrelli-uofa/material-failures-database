@@ -45,10 +45,6 @@ jobs:
     runs-on: ubuntu-latest
     name: server tests
     steps:
-      - name: test working directory
-        working-directory: /home/runner/work/material-failures-database/material-failures-database/server
-        run: pwd
-      - name: Running unit test
+      - run: npm run test
         working-directory: server
-        run: npm run test
     
