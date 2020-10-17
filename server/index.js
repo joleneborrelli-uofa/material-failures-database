@@ -4,7 +4,7 @@ const bodyParser  = require( 'body-parser' );
 const compression = require( 'compression' );
 const cors        = require( 'cors' );
 const helmet      = require( 'helmet' );
-const router      = require( './server/router.js' );
+const router      = require( './router.js' );
 
 const port = process.env.PORT || 5000;
 const app  = express();
