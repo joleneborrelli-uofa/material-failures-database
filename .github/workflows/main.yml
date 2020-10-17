@@ -32,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ../../client
+        working-directory: ./client
     name: client tests
     steps:
       - run: npm run test a
@@ -40,7 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ../../server
+        working-directory: ./server
     name: server tests
     steps:
       - run: npm run test
