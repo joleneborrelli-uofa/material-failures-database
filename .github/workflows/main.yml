@@ -46,7 +46,7 @@ jobs:
     name: server tests
     steps:
       - name: test working directory
-        working-directory: server
+        working-directory: /home/runner/work/material-failures-database/material-failures-database/server
         run: pwd
       - name: Running unit test
         working-directory: server
