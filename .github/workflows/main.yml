@@ -29,6 +29,7 @@ on:
 #     - run: npm test
 jobs:
   client_tests:
+    runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: client
@@ -36,6 +37,7 @@ jobs:
     steps:
       - run: npm run test a
   server_tests:
+    runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: server
