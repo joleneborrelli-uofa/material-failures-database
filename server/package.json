@@ -8,7 +8,7 @@
   "description": "web app for material failures database",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "pm2 start index.js",
     "test": "jest --forceExit",
     "heroku-postbuild": "cd ../client && npm install --only=dev && npm install && npm run build"
   },
