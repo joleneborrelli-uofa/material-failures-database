@@ -260,7 +260,6 @@ const formatByValueVisibility = table =>
 
 
 exports.generateSql              = generateSql;
-exports.formatByRow              = formatByRow;
 exports.formatByHeader           = formatByHeader;
 exports.formatByPromptVisibility = formatByPromptVisibility;
 exports.formatByValueVisibility  = formatByValueVisibility;
