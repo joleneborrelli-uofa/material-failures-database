@@ -151,12 +151,6 @@ const formatByRow = rows =>
                 delete row[key];
             }
 
-            // Throw error if key value is null
-            if( row[key] && row[key] === null )
-            {
-                throw errorMessages.nullValue;
-            }
-
             // Throw error if the object is empty
             if( !Object.keys( row ).length > 0 )
             {

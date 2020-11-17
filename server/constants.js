@@ -94,6 +94,5 @@ exports.excludedColumns =
 
 exports.errorMessages =
 {
-    nullValue : 'Field cannnot have a null value',
     noFields  : 'Row does not have fields'
 };
