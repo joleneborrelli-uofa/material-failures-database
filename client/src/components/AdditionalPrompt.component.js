@@ -1,6 +1,6 @@
 import React                  from 'react';
 import { createUniqueId }     from '../helpers.js';
-import { caseStudyHtmlClass } from '../constants/htmlClass.constants.js';
+import { caseStudyHtmlClass, genericHtmlClass } from '../constants/htmlClass.constants.js';
 import Title                  from './Title.component.js'; 
 import TextArea               from './TextArea.component.js'; 
 
@@ -14,7 +14,7 @@ export default function AdditionalPrompt ( props )
     } = props;
 
     const htmlClass   = caseStudyHtmlClass.prompt;
-    const { on, off } = caseStudyHtmlClass.visibility;
+    const { on, off } = genericHtmlClass.visibility;
 
     let visibility     = additionalPrompt.length > 0 ? on : off; 
     const wrapperClass = `${ htmlClass.additionalPrompt } ${ visibility }`;
