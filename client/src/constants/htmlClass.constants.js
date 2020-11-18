@@ -83,12 +83,6 @@ export const caseStudyHtmlClass =
         button  : 'fa-download-button'
     },
 
-    visibility : 
-    {
-        on  : 'fa-visibility-on',
-        off : 'fa-visibility-off'
-    },
-
     pagination : 
     {
         page : 'fa-pagination',
@@ -147,5 +141,4 @@ export const caseStudyHtmlClass =
         checkboxGroup    : 'fa-prompt-checkbox-group',
         additionalPrompt : 'fa-prompt-additional-prompt'
     }
-
 };
