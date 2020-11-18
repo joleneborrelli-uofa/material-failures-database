@@ -1,5 +1,5 @@
 import React                  from 'react';
-import { caseStudyHtmlClass } from '../constants/htmlClass.constants.js';
+import { caseStudyHtmlClass, genericHtmlClass } from '../constants/htmlClass.constants.js';
 import { foreignKeys }        from '../constants/foreignKey.constants.js';
 import { headers }            from '../constants/webDisplay.constants.js';
 import TextArea               from './TextArea.component.js'; 
@@ -18,7 +18,7 @@ export default function UseCaseStudyModule ( props )
     } = props;
 
     const htmlClass      = caseStudyHtmlClass.prompt;
-    const htmlVisibility = caseStudyHtmlClass.visibility;
+    const htmlVisibility = genericHtmlClass.visibility;
 
     return (
         <div className={ htmlClass.use }>

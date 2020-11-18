@@ -1,5 +1,5 @@
 import React, { useState, useLayoutEffect } from 'react';
-import { caseStudyHtmlClass as htmlClass }  from '../constants/htmlClass.constants.js';
+import { caseStudyHtmlClass as htmlClass, genericHtmlClass }  from '../constants/htmlClass.constants.js';
 import { caseStudy }                        from '../constants/caseStudy.constants.js';
 import { getPrompt, getAdditionalPrompt }   from '../helpers.js';
 import LandingPage                          from './LandingPage.component.js'; 
@@ -18,6 +18,8 @@ export default function CaseStudyModule ( props )
 
     const { manifest } = studyData;
 
+    const { on, off } = genericHtmlClass.visibility;
+
     // Hook
     useLayoutEffect( () =>
     {
@@ -26,16 +28,16 @@ export default function CaseStudyModule ( props )
 
     // State
     const [currentPage, setCurrentPage]       = useState( 0 );
-    const [nextVisibility, setNextVisibility] = useState( htmlClass.visibility.on );
-    const [prevVisibility, setPrevVisibility] = useState( htmlClass.visibility.off );
+    const [nextVisibility, setNextVisibility] = useState( on );
+    const [prevVisibility, setPrevVisibility] = useState( off );
 
     // Methods
     const onButtonClick = ( e ) =>
     {
         let pageNumber;
 
-        let nextVisibility = htmlClass.visibility.on;
-        let prevVisibility = htmlClass.visibility.on;
+        let nextVisibility = on;
+        let prevVisibility = on;
 
         const { value }   = e.target;
         // To account for zero indexed array
@@ -47,13 +49,13 @@ export default function CaseStudyModule ( props )
         if( pageNumber <= 0 )
         {
             pageNumber     = 0;
-            prevVisibility = htmlClass.visibility.off;
+            prevVisibility = off;
         }           
 
         if( pageNumber >= pagesLength ) 
         {
             pageNumber     = pagesLength;
-            nextVisibility = htmlClass.visibility.off;
+            nextVisibility = off;
         }
 
         setCurrentPage( pageNumber );
@@ -70,7 +72,7 @@ export default function CaseStudyModule ( props )
     // For pagination
     const pageVisibility = caseStudy.pages.map( ( page, index ) =>
     {
-        return currentPage === index ? htmlClass.visibility.on : htmlClass.visibility.off;
+        return currentPage === index ? on : off;
     } );
 
     const landingClass    = `${ pageVisibility[0] } ${ htmlClass.landing.wrapper }`;
